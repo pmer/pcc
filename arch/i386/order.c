@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.21 2004/10/03 15:56:51 ragge Exp $	*/
+/*	$Id: order.c,v 1.22 2005/01/07 09:37:29 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -256,7 +256,7 @@ regalloc(NODE *p, struct optab *q, int wantreg)
 			regc = alloregs(p->n_left, NOPREF);
 			if (REGNUM(regc) == ECX) {
 				/* must move */
-				regc = getregs(NOPREF, 1);
+				regc = getregs(NOPREF, 1, 0);
 				p->n_left = movenode(p->n_left, REGNUM(regc));
 				regblk[ECX] &= ~1;
 			}
