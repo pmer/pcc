@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.130 2005/01/02 17:55:36 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.131 2005/01/14 15:46:53 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -621,6 +621,7 @@ dclargs()
 done:	cendarg();
 	setloc1(PROG);
 	defalign(ALINT);
+	defnam(cftnsp);
 	ftnno = getlab();
 	retlab = getlab();
 	send_passt(IP_PROLOG, -1, -1, DECREF(cftnsp->stype));
