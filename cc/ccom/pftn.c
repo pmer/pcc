@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.87 2003/07/07 20:39:44 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.88 2003/07/29 09:16:19 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -540,7 +540,9 @@ ftnend()
 	tmpfree(); /* Release memory resources */
 	send_passt(IP_LOCCTR, DATA);
 }
-	
+
+#define TNULL   INCREF(MOETY)   /* pointer to MOETY -- impossible type */
+
 void
 dclargs()
 {
