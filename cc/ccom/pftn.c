@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.94 2003/08/02 11:22:44 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.95 2003/08/02 16:23:34 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -431,13 +431,8 @@ defid(NODE *q, int class)
 			dynalloc(p, &autooff);
 		else
 			oalloc(p, &autooff);
-#ifdef BACKAUTO
-		if (autooff < maxautooff)
-			maxautooff = autooff;
-#else
 		if (autooff > maxautooff)
 			maxautooff = autooff;
-#endif
 		break;
 	case STATIC:
 	case EXTDEF:
