@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.28 2003/08/05 21:45:17 ragge Exp $	*/
+/*	$Id: order.c,v 1.29 2003/08/12 09:36:17 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -470,6 +470,11 @@ setasop(NODE *p)
 	if (ISLONGLONG(p->n_type)) {
 		if (p->n_left->n_op != REG || !istreg(p->n_left->n_rval))
 			return 0;
+		if ((p->n_op == ASG LS || p->n_op == ASG RS) &&
+		    (ro != REG && ro != ICON)) {
+			order(p->n_right, INAREG|INBREG);
+			return 1;
+		}
 		order(p->n_right, INTEMP);
 		return 1;
 	}
