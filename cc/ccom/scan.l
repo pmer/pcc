@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.17 2003/01/30 22:01:11 ragge Exp $	*/
+/*	$Id: scan.l,v 1.18 2003/02/06 19:07:18 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -129,6 +129,7 @@ static int floatcon(void);
 					stwart = instruct;
 					yylval.nodep = mkty(sp->stype,
 					    sp->dimoff, sp->sizoff);
+					yylval.nodep->tn.rval = id;
 					return(TYPE);
 				}
 				stwart = (stwart&SEENAME) ? instruct : 0;
