@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.103 2003/09/12 15:14:01 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.104 2003/11/13 15:59:46 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -934,6 +934,9 @@ int
 talign(unsigned int ty, struct suedef *sue)
 {
 	int i;
+
+	if (ISPTR(ty))
+		return(ALPOINT); /* shortcut */
 
 	if(sue == NULL && ty!=INT && ty!=CHAR && ty!=SHORT &&
 	    ty!=UNSIGNED && ty!=UCHAR && ty!=USHORT) {
