@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.20 2004/08/28 16:04:29 ragge Exp $	*/
+/*	$Id: cc.c,v 1.21 2004/09/02 21:26:06 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -152,6 +152,10 @@ char *argv[]; {
 		switch (argv[i][1]) {
 		default:
 			goto passa;
+
+		case 'B': /* other search paths for binaries XXX support? */
+			break;
+
 		case 'X':
 			Xflag++;
 			break;
