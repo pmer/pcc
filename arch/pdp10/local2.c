@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.75 2003/09/02 12:36:54 ragge Exp $	*/
+/*	$Id: local2.c,v 1.76 2003/09/02 14:37:34 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -666,6 +666,10 @@ zzzcode(NODE *p, int c)
 	CONSZ hval;
 
 	switch (c) {
+	case 'A': /* ildb right arg */
+		adrput(p->n_left->n_left);
+		break;
+
 	case 'C':
 		constput(p);
 		break;
