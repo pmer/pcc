@@ -1,4 +1,4 @@
-/*	$Id: stabs.c,v 1.6 2004/12/30 10:33:30 ragge Exp $	*/
+/*	$Id: stabs.c,v 1.7 2005/01/08 11:27:30 pj Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -33,9 +33,10 @@
  * examine simple variables and do stack traces.
  * Based on the stabs documentation that follows gdb.
  */
-#ifdef STABS
 
 #include "pass1.h"
+
+#ifdef STABS
 
 #include <sys/types.h>
 #include <stab.h>
