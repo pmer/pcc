@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.105 2004/06/21 08:19:47 ragge Exp $	*/
+/*	$Id: reader.c,v 1.106 2004/09/04 11:12:25 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -316,9 +316,6 @@ pass2_compile(struct interpass *ip)
 		break;
 	case IP_DEFLAB:
 		deflab(ip->ip_lbl);
-		break;
-	case IP_DEFNAM:
-		defname(ip->ip_name, ip->ip_vis);
 		break;
 	case IP_ASM:
 		printf("\t%s\n", ip->ip_asm);
