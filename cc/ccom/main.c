@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.51 2005/01/16 13:59:17 pj Exp $	*/
+/*	$Id: main.c,v 1.52 2005/02/08 20:19:34 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -44,7 +44,7 @@ int iTflag, oTflag;
 int xdebug, mdebug, sdebug, gflag;
 int Wstrict_prototypes, Wmissing_prototypes, Wimplicit_int,
 	Wimplicit_function_declaration;
-int xssaflag, xtailcallflag;
+int xssaflag, xtailcallflag, xnewreg;
 
 int e2debug, t2debug, f2debug;
 
