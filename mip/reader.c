@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.39 2003/08/04 10:59:57 ragge Exp $	*/
+/*	$Id: reader.c,v 1.40 2003/08/04 14:12:02 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -954,14 +954,17 @@ void
 optdump(struct interpass *ip)
 {
 	static char *nm[] = { "node", "prolog", "newblk", "epilog", "locctr",
-		"deflab", "defnam" };
+		"deflab", "defnam", "asm" };
 	printf("type %s\n", nm[ip->type-1]);
 	switch (ip->type) {
 	case IP_NODE:
 		fwalk(ip->ip_node, e2print, 0);
 		break;
 	case IP_DEFLAB:
-		printf("label" LABFMT "\n", ip->ip_lbl);
+		printf("label " LABFMT "\n", ip->ip_lbl);
+		break;
+	case IP_ASM:
+		printf(": %s\n", ip->ip_asm);
 		break;
 	}
 }

@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.48 2003/07/30 16:18:44 ragge Exp $	*/
+/*	$Id: local.c,v 1.49 2003/08/03 17:11:21 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -154,7 +154,6 @@ rmpc:			l->n_type = p->n_type;
 		    (l->n_type == INT || l->n_type == UNSIGNED)) {
 			p->n_op = RS;
 			p->n_right = bcon(2);
-			p->n_type = INT;
 			break;
 		}
 		
