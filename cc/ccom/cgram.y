@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.76 2003/06/06 19:39:55 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.77 2003/06/07 17:52:35 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1403,8 +1403,6 @@ doacall(NODE *f, NODE *a)
 		proto_adapt(aidx, a);
 	return buildtree(a == NIL ? UNARY CALL : CALL, f, a);
 }
-
-int newsidx;
 
 static void
 struc_decl(NODE *tn, NODE *p)
