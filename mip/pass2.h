@@ -1,4 +1,4 @@
-/*	$Id: pass2.h,v 1.34 2004/04/18 12:14:35 ragge Exp $	*/
+/*	$Id: pass2.h,v 1.35 2004/05/15 08:06:17 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -196,7 +196,9 @@ struct optab *nxtmatch(struct optab *);
 int chkmatch(NODE *, int, int, int);
 int match(NODE *p, int cookie);
 int nmatch(NODE *p, int what);
+#ifndef special
 int special(NODE *, int);
+#endif
 int setasg(NODE *, int);
 int setuni(NODE *, int);
 int sucomp(NODE *);
