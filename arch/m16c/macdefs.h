@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.8 2005/01/21 15:24:10 pj Exp $	*/
+/*	$Id: macdefs.h,v 1.9 2005/01/29 12:13:13 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -151,6 +151,7 @@ typedef long long OFFSZ;
 #define	TBREGS	(REGBIT(A0))
 
 #define MYREADER(p)
+#define	MYP2TREE(p) myp2tree(p)
 
 #if 0
 #define MYCANON(p) mycanon(p)
@@ -158,4 +159,4 @@ typedef long long OFFSZ;
 #endif
 
 #define TAILCALL
-#define special(a, b)	SRNOPE
+#define	SFTN	(SPECIAL|6)
