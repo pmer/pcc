@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.60 2003/07/30 08:47:30 ragge Exp $	*/
+/*	$Id: trees.c,v 1.61 2003/07/30 11:27:48 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1712,9 +1712,9 @@ ecomp(NODE *p)
 		reached = 1;
 	}
 	p = optim(p);
+	rmcops(p);
 	walkf(p, prtdcon);
 	send_passt(IP_LOCCTR, PROG);
-	rmcops(p);
 	if (p->n_op == ICON && p->n_type == VOID)
 		tfree(p);
 	else
