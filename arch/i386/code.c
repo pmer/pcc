@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.6 2004/12/20 18:27:09 ragge Exp $	*/
+/*	$Id: code.c,v 1.7 2004/12/30 10:36:29 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -123,6 +123,11 @@ bccode()
 /* flag is 1 if errors, 0 if none */
 void
 ejobcode(int flag )
+{
+}
+
+void
+bjobcode()
 {
 }
 
