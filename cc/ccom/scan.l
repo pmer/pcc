@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.16 2003/01/26 22:35:57 ragge Exp $	*/
+/*	$Id: scan.l,v 1.17 2003/01/30 22:01:11 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -55,6 +55,7 @@ static int floatcon(void);
 %}
 
 %%
+"asm"			{ return(ASM); }
 "auto"			{ yylval.intval = AUTO; return(CLASS); }
 "break"			{ yylval.intval = BREAK; return(BREAK); }
 "case"			{ yylval.intval = CASE; return(CASE); }
