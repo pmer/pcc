@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.53 2003/08/06 15:06:39 ragge Exp $	*/
+/*	$Id: table.c,v 1.54 2003/08/12 09:36:17 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -67,9 +67,9 @@ struct optab table[] = {
 		"	ior AL,A1\n"
 		"	tlz AL,0740000\n", },
 
-/* Convert int/unsigned/long/ulong/struct/union ptr to int */
+/* Convert int/unsigned/long/ulong/struct/union/func ptr to int */
 { SCONV,	INTAREG,
-	SAREG|STAREG,	TPTRTO|TWORD|TSTRUCT,
+	SAREG|STAREG,	TPTRTO|TWORD|TSTRUCT|TPOINT,
 	SANY,		TWORD,
 		0,	RLEFT,
 		"	lsh AL,2\n", },
