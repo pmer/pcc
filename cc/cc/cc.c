@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.10 2004/05/16 15:31:21 ragge Exp $	*/
+/*	$Id: cc.c,v 1.11 2004/05/29 14:11:47 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -59,9 +59,9 @@ char *cppadd[] = {
 #endif
 
 #define SBSIZE 10000
-#define MAXINC 10
+#define MAXINC 100
 #define MAXFIL 100
-#define MAXLIB 100
+#define MAXLIB 10000
 #define MAXOPT 100
 char	*tmp0;
 char	*tmp1;
