@@ -1,4 +1,4 @@
-/*	$Id: pass2.h,v 1.22 2003/08/04 14:12:02 ragge Exp $	*/
+/*	$Id: pass2.h,v 1.23 2003/08/06 17:08:46 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -197,6 +197,7 @@ void defname(char *name, int visib);
 int e2print(NODE *p, int down, int *a, int *b);
 int canaddr(NODE *);
 void myoptim(struct interpass *);
+void cbgen(int op, int label);
 
 extern	char *rnames[];
 
