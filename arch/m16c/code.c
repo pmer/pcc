@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.6 2005/01/14 15:46:19 ragge Exp $	*/
+/*	$Id: code.c,v 1.7 2005/01/17 21:26:23 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -133,7 +133,7 @@ bfcode(struct symtab **a, int n)
 	if (cftnsp->stype == STRTY+FTN || cftnsp->stype == UNIONTY+FTN) {
 		/* Function returns struct, adjust arg offset */
 		for (i = 0; i < n; i++)
-			a[i]->soffset += SZPOINT;
+			a[i]->soffset += SZPOINT(INT);
 	}
 	/* first check if there are 1-byte parameters */
 	for (hasch = i = 0; i < n && i < 6; i++)
