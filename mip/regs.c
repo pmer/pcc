@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.35 2005/01/11 14:27:08 ragge Exp $	*/
+/*	$Id: regs.c,v 1.36 2005/01/17 21:25:33 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -50,6 +50,7 @@
  */
 
 #include "pass2.h"
+#include <strings.h>
 
 static int usedregs;
 int regblk[REGSZ];
