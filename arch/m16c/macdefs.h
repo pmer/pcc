@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.6 2005/01/14 15:46:19 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.7 2005/01/20 21:23:42 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -156,4 +156,5 @@ typedef long long OFFSZ;
 #define MYOPTIM
 #endif
 
+#define TAILCALL
 #define special(a, b)	SRNOPE
