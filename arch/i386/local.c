@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.1 2003/08/06 17:09:32 ragge Exp $	*/
+/*	$Id: local.c,v 1.2 2003/08/06 20:08:48 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -102,6 +102,8 @@ clocal(NODE *p)
 
 	case SCONV:
 		l = p->n_left;
+		o = l->n_op;
+		m = l->n_type;
 
 		if (o == ICON) {
 			CONSZ val = l->n_lval;
