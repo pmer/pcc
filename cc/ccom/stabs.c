@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.133 2004/06/21 11:16:34 ragge Exp $	*/
+/*	$Id: stabs.c,v 1.6 2004/12/30 10:33:30 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -33,6 +33,7 @@
  * examine simple variables and do stack traces.
  * Based on the stabs documentation that follows gdb.
  */
+#ifdef STABS
 
 #include "pass1.h"
 
@@ -350,3 +351,5 @@ cprint(char *fmt, ...)
 	vprintf(fmt, ap);
 	va_end(ap);
 }
+
+#endif
