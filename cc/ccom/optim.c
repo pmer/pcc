@@ -1,4 +1,4 @@
-/*	$Id: optim.c,v 1.11 2003/07/07 14:57:15 ragge Exp $	*/
+/*	$Id: optim.c,v 1.12 2003/07/29 09:25:15 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -162,7 +162,7 @@ optim(NODE *p)
 		else if( LCON(p) && RCON(p) && conval( p->n_left, o, p->n_right ) ){
 			zapright:
 			nfree(p->n_right);
-			q = makety(p->n_left, p->n_type, p->n_df, p->n_sue);
+			q = makety(p->n_left, p->n_type, p->n_qual, p->n_df, p->n_sue);
 			nfree(p);
 			return clocal(q);
 			}
