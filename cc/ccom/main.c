@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.48 2005/01/02 13:16:45 pj Exp $	*/
+/*	$Id: main.c,v 1.49 2005/01/11 14:27:08 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -224,6 +224,8 @@ main(int argc, char *argv[])
 	btdim[ULONGLONG] = SZLONGLONG;
 	/* starts past any of the above */
 	reached = 1;
+
+	bjobcode();
 
 #ifdef STABS
 	if (gflag) {
