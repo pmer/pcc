@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.116 2005/02/05 14:39:07 ragge Exp $	*/
+/*	$Id: reader.c,v 1.117 2005/02/05 15:55:49 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1106,6 +1106,7 @@ void
 canon(p) NODE *p; {
 	/* put p in canonical form */
 
+	deltemp = NULL;		/* Always forget old nodes */
 	walkf(p, deltemp);
 	walkf(p, setleft);	/* ptrs at left node for arithmetic */
 	walkf(p, oreg2);	/* look for and create OREG nodes */
