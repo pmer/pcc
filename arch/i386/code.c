@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.5 2004/06/21 08:19:46 ragge Exp $	*/
+/*	$Id: code.c,v 1.6 2004/12/20 18:27:09 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -41,7 +41,7 @@ defalign(int n)
 	if (lastloc == PROG || n == 1)
 		return;
 	s = (isinlining ? permalloc(40) : tmpalloc(40));
-	sprintf(s, "	.align %d\n", n);
+	sprintf(s, ".align %d", n);
 	send_passt(IP_ASM, s);
 }
 
