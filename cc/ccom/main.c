@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.35 2003/07/30 16:18:23 ragge Exp $	*/
+/*	$Id: main.c,v 1.36 2003/08/02 11:22:44 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -38,7 +38,7 @@ int lflag, odebug, rdebug, radebug, vdebug, s2debug, udebug, x2debug;
 #if !defined(MULTIPASS) || defined(PASST)
 int iTflag, oTflag;
 #endif
-int xdebug, mdebug, sdebug, gflag;
+int xdebug, mdebug, sdebug, gflag = 1;
 int Wstrict_prototypes, Wmissing_prototypes, Wimplicit_int,
 	Wimplicit_function_declaration;
 
