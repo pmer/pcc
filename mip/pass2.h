@@ -1,4 +1,4 @@
-/*	$Id: pass2.h,v 1.19 2003/07/30 12:58:50 ragge Exp $	*/
+/*	$Id: pass2.h,v 1.20 2003/07/30 17:38:53 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -176,10 +176,7 @@ extern	struct optab {
 
 extern	NODE resc[];
 
-extern	OFFSZ tmpoff;
-extern	OFFSZ maxoff;
-extern	OFFSZ baseoff;
-extern	OFFSZ maxtemp;
+extern	int autooff, maxautooff;
 extern	int maxtreg;
 extern	int ftnno;
 

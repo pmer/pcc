@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.53 2003/07/30 17:38:25 ragge Exp $	*/
+/*	$Id: local2.c,v 1.54 2003/08/03 10:49:38 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -100,7 +100,7 @@ eoftn(int regs, int autos, int retlab)
 	register OFFSZ spoff;	/* offset from stack pointer */
 	int i;
 
-	spoff = maxoff;
+	spoff = maxautooff;
 	if (spoff >= AUTOINIT)
 		spoff -= AUTOINIT;
 	spoff /= SZINT;
