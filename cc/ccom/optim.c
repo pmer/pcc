@@ -1,4 +1,4 @@
-/*	$Id: optim.c,v 1.15 2003/09/12 14:32:53 ragge Exp $	*/
+/*	$Id: optim.c,v 1.16 2003/09/12 14:53:29 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -101,6 +101,8 @@ optim(NODE *p)
 		break;
 
 	case ADDROF:
+		if (LO(p) == TEMP)
+			return p;
 		if( LO(p) != NAME ) cerror( "& error" );
 
 		if( !andable(p->n_left) ) return(p);
