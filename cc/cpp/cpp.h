@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.6 2004/09/04 08:29:06 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.7 2005/01/08 08:35:52 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -58,7 +58,7 @@ extern	int	trulvl;
 extern	int	flslvl;
 extern	int	elflvl;
 extern	int	elslvl;
-extern	int	tflag;
+extern	int	tflag, Cflag;
 
 /* args for lookup() */
 #define FIND    0
