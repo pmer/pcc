@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.55 2003/08/14 07:53:52 ragge Exp $	*/
+/*	$Id: table.c,v 1.56 2003/08/16 12:25:46 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -461,6 +461,13 @@ struct optab table[] = {
 		"	and AL,AR\n"
 		"	and UL,UR\n", },
 
+{ ASG OR,	INAREG|FOREFF,
+	SAREG|STAREG,			TLL,
+	SAREG|STAREG|SNAME|SOREG,	TLL,
+		0,	RLEFT,
+		"	ior AL,AR\n"
+		"	ior UL,UR\n", },
+
 { PLUS,	INTAREG,
 	STAREG,		TFLOAT,
 	SAREG|STAREG|SNAME|SOREG,	TFLOAT,
@@ -562,6 +569,12 @@ struct optab table[] = {
 	SAREG|STAREG,	TANY,
 		0,	RRIGHT,
 		"ZV", },
+
+{ ASSIGN,	INAREG|INTAREG|FOREFF,
+	SAREG|STAREG,	TUSHORT|TUCHAR,
+	SOREG,		TANY,
+		0,	RLEFT,
+		"	ldb AL,AR\n", },
 
 /*
  * DIV/MUL 
