@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.11 2004/05/29 14:11:47 ragge Exp $	*/
+/*	$Id: cc.c,v 1.12 2004/06/08 21:07:25 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -505,7 +505,7 @@ int
 cunlink(f)
 char *f;
 {
-	if (f==0)
+	if (f==0 || Xflag)
 		return(0);
 	return(unlink(f));
 }
