@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.95 2003/06/19 16:32:29 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.96 2003/06/19 21:16:24 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1157,9 +1157,6 @@ fend(void)
 	if (reached)
 		retstat |= NRETVAL;
 	ftnend();
-	if (isinlining)
-		inline_end();
-	inline_prtout();
 	fun_inline = 0;
 	cftnsp = NULL;
 }
