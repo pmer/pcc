@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.52 2005/02/05 14:39:07 ragge Exp $	*/
+/*	$Id: common.c,v 1.53 2005/03/02 17:02:51 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -63,6 +63,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "pass2.h"
 
@@ -488,6 +489,16 @@ permalloc(int size)
 }
 
 static char *tmplink;
+
+void *
+tmpcalloc(int size)
+{
+	void *rv;
+
+	rv = tmpalloc(size);
+	memset(rv, 0, size);
+	return rv;
+}
 
 void *
 tmpalloc(int size)
