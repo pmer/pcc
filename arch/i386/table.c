@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.38 2004/12/13 16:09:26 ragge Exp $	*/
+/*	$Id: table.c,v 1.39 2004/12/30 10:36:29 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -691,6 +691,14 @@ struct optab table[] = {
 	SAREG|STAREG,	TCHAR|TUCHAR,
 		NAREG,	RRIGHT,
 		"	movb ZL,ZR\n" },
+
+/* needed for reg->fpreg sconv at force */
+{ MOVE,		FOREFF|INTBREG,
+	SBREG|STBREG,	TFLOAT|TDOUBLE|TLDOUBLE,
+	SBREG|STBREG,	TFLOAT|TDOUBLE|TLDOUBLE,
+		0,	RRIGHT,
+		"" },
+
 /*
  * DIV/MOD/MUL 
  */
