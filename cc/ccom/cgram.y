@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.109 2003/07/29 09:16:18 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.110 2003/07/29 09:20:18 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -633,8 +633,6 @@ statement:	   e ';' { ecomp( $1 ); }
 			else if (reached)
 				branch(brklab);
 			flostat |= FBRK;
-			if (brkflag)
-				goto rch;
 			reached = 0;
 		}
 		|  C_CONTINUE  ';' {
