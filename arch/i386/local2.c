@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.39 2005/01/29 12:13:49 ragge Exp $	*/
+/*	$Id: local2.c,v 1.40 2005/02/05 16:10:06 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -59,6 +59,10 @@ prologue(struct interpass_prolog *ipp)
 	int addto;
 
 	ftype = ipp->ipp_type;
+	if (ipp->ipp_vis)
+		printf("	.globl %s\n", ipp->ipp_name);
+	printf("	.align 4\n", ipp->ipp_name);
+	printf("%s:\n", ipp->ipp_name);
 	if (Oflag == 0) {
 		/*
 		 * non-optimized code, jump to epilogue for code generation.
