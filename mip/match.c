@@ -1,4 +1,4 @@
-/*	$Id: match.c,v 1.25 2004/04/20 15:49:46 ragge Exp $	*/
+/*	$Id: match.c,v 1.26 2004/04/29 16:30:49 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -265,7 +265,7 @@ expand(NODE *p, int cookie, char *cp)
 			continue;
 
 		case 'C': /* for constant value only */
-			conput( getlr( p, *++cp ) );
+			conput(stdout, getlr( p, *++cp ) );
 			continue;
 
 		case 'I': /* in instruction */

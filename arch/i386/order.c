@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.9 2003/08/11 14:01:44 ragge Exp $	*/
+/*	$Id: order.c,v 1.10 2004/05/15 13:43:49 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -77,8 +77,7 @@ offstar(NODE *p)
 
 	if( p->n_op == PLUS || p->n_op == MINUS ){
 		if( p->n_right->n_op == ICON ){
-			p = p->n_left;
-			geninsn(p, INTAREG|INAREG);
+			geninsn(p->n_left, INTAREG|INAREG);
 			p->n_su = -1;
 			return 1;
 		}
