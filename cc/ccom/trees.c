@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.110 2004/06/08 21:07:25 ragge Exp $	*/
+/*	$Id: trees.c,v 1.111 2004/06/12 08:57:28 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1633,7 +1633,8 @@ prtdcon(NODE *p)
 		defalign( p->n_type == DOUBLE ? ALDOUBLE : ALFLOAT );
 
 		send_passt(IP_DEFLAB, i = getlab());
-		fincode(p, p->n_type == DOUBLE ? SZDOUBLE : SZFLOAT);
+		fincode(p, p->n_type == LDOUBLE ? SZLDOUBLE :
+		    p->n_type == DOUBLE ? SZDOUBLE : SZFLOAT);
 		p->n_op = NAME;
 		p->n_lval = 0;
 		p->n_sp = tmpalloc(sizeof(struct symtab_hdr));
