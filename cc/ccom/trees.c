@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.85 2003/09/01 08:28:55 ragge Exp $	*/
+/*	$Id: trees.c,v 1.86 2003/09/02 22:06:56 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -691,6 +691,9 @@ chkpun(NODE *p)
 				    "operator %s", copst(p->n_op));
 			return;
 		}
+		if ((t1 == ENUMTY && t2 <= BTMASK) ||
+		    (t2 == ENUMTY && t1 <= BTMASK))
+			return;
 	}
 
 	if (ISPTR(t1) || ISARY(t1))
