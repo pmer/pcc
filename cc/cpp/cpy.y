@@ -1,4 +1,4 @@
-/*	$Id: cpy.y,v 1.3 2004/06/25 10:34:09 ragge Exp $	*/
+/*	$Id: cpy.y,v 1.1 2004/08/28 13:17:47 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -62,6 +62,7 @@
  */
 
 %{
+#include <string.h>
 int yylex2(void);
 #define yylex yylex2
 %}
