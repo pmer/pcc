@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.11 2004/12/11 09:13:41 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.12 2005/01/13 12:36:54 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -50,8 +50,8 @@
 #define SZLDOUBLE	96
 #define SZLONG		32
 #define SZSHORT		16
-#define SZPOINT		32
 #define SZLONGLONG	64
+#define SZPOINT(t)	32
 
 /*
  * Alignment constraints
