@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.56 2005/03/02 16:36:43 ragge Exp $	*/
+/*	$Id: main.c,v 1.57 2005/03/09 19:42:21 pj Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -46,7 +46,7 @@ int xssaflag, xtailcallflag, xnewreg;
 
 int e2debug, t2debug, f2debug, b2debug;
 
-int btdim[24];
+struct suedef btdims[24];
 char *prgname;
 
 static void prtstats(void);
@@ -224,20 +224,20 @@ main(int argc, char *argv[])
 
 	/* dimension table initialization */
 
-	btdim[VOID] = 0;
-	btdim[CHAR] = SZCHAR;
-	btdim[INT] = SZINT;
-	btdim[FLOAT] = SZFLOAT;
-	btdim[DOUBLE] = SZDOUBLE;
-	btdim[LDOUBLE] = SZLDOUBLE;
-	btdim[LONG] = SZLONG;
-	btdim[LONGLONG] = SZLONGLONG;
-	btdim[SHORT] = SZSHORT;
-	btdim[UCHAR] = SZCHAR;
-	btdim[USHORT] = SZSHORT;
-	btdim[UNSIGNED] = SZINT;
-	btdim[ULONG] = SZLONG;
-	btdim[ULONGLONG] = SZLONGLONG;
+	btdims[VOID].suesize = 0;
+	btdims[CHAR].suesize = SZCHAR;
+	btdims[INT].suesize = SZINT;
+	btdims[FLOAT].suesize = SZFLOAT;
+	btdims[DOUBLE].suesize = SZDOUBLE;
+	btdims[LDOUBLE].suesize = SZLDOUBLE;
+	btdims[LONG].suesize = SZLONG;
+	btdims[LONGLONG].suesize = SZLONGLONG;
+	btdims[SHORT].suesize = SZSHORT;
+	btdims[UCHAR].suesize = SZCHAR;
+	btdims[USHORT].suesize = SZSHORT;
+	btdims[UNSIGNED].suesize = SZINT;
+	btdims[ULONG].suesize = SZLONG;
+	btdims[ULONGLONG].suesize = SZLONGLONG;
 	/* starts past any of the above */
 	reached = 1;
 
