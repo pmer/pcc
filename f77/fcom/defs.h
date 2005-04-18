@@ -1,4 +1,4 @@
-/*	$Id: defs.h,v 1.1 2005/04/17 12:56:08 ragge Exp $	*/
+/*	$Id: defs.h,v 1.2 2005/04/17 20:05:54 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -451,7 +451,7 @@ extern int nliterals;
 /* popular functions with non integer return values */
 
 
-int *ckalloc();
+int *ckalloc(int);
 char *varstr(), *nounder(), *varunder();
 char *copyn(), *copys();
 chainp hookup(), mkchain();
