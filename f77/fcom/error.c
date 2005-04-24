@@ -1,4 +1,4 @@
-/*	$Id: error.c,v 1.2 2005/04/18 18:44:25 ragge Exp $	*/
+/*	$Id: error.c,v 1.3 2005/04/22 07:04:30 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -66,7 +66,7 @@ err(char *s, ...)
 	++nerr;
 }
 
-
+void
 yyerror(s)
 char *s;
 { err(s); }
