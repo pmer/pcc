@@ -1,4 +1,4 @@
-/*	$Id: defines.h,v 1.5 2005/04/30 07:55:34 ragge Exp $	*/
+/*	$Id: defines.h,v 1.6 2005/04/30 11:19:50 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -70,9 +70,9 @@ Polish = POLISH
 #endif
 
 #define M(x) (1<<x)
-#define ALLOC(x) (struct x *) ckalloc(sizeof(struct x))
+#define ALLOC(x) ckalloc(sizeof(struct x))
 #define	BALLO()	(bigptr)ckalloc(sizeof(struct bigblock))
-typedef int *ptr;
+typedef void *ptr;
 typedef FILE *FILEP;
 typedef short flag;
 typedef long int ftnint;
