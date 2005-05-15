@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.38 2005/02/19 13:44:02 pj Exp $	*/
+/*	$Id: cc.c,v 1.39 2005/05/15 09:55:02 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -317,8 +317,8 @@ main(int argc, char *argv[])
 		na = 0;
 		av[na++] = "cpp";
 		av[na++] = "-D__PCC__=" MKS(PCC_MAJOR);
-		av[na++] = "-D__PCC_MINOR__" MKS(PCC_MINOR);
-		av[na++] = "-D__PCC_MINORMINOR__" MKS(PCC_MINORMINOR);
+		av[na++] = "-D__PCC_MINOR__=" MKS(PCC_MINOR);
+		av[na++] = "-D__PCC_MINORMINOR__=" MKS(PCC_MINORMINOR);
 		if (!nostdinc)
 			av[na++] = "-S", av[na++] = STDINC;
 		if (sysinc)
