@@ -1,4 +1,4 @@
-/*	$Id: optim2.c,v 1.23 2005/05/21 14:29:22 ragge Exp $	*/
+/*	$Id: optim2.c,v 1.24 2005/05/21 14:54:33 ragge Exp $	*/
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -379,6 +379,12 @@ if (xnewreg == 0) {
 	 * Loop over instruction assignment until the register assignment
 	 * code is satisfied.
 	 */
+#if 0
+	extern int tempmin, tempmax;
+
+	tempmin = ip->ip_tmpnum;
+	tempmin = ie->ip_tmpnum;
+#endif
 	do {
 		/* do instruction assignment */
 		DLIST_FOREACH(ip, &ipole, qelem) {
