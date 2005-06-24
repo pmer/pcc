@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.44 2005/04/02 07:56:47 ragge Exp $	*/
+/*	$Id: local2.c,v 1.45 2005/05/22 10:45:46 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -971,3 +971,9 @@ struct hardops hardops[] = {
 #endif
 	{ 0 },
 };
+
+void
+rmove(int s, int d, TWORD t)
+{
+	printf("	movl %s,%s\n", rnames[s], rnames[d]);
+}
