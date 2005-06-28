@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.45 2005/05/22 10:45:46 ragge Exp $	*/
+/*	$Id: local2.c,v 1.46 2005/06/24 08:45:31 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -134,7 +134,6 @@ eoftn(struct interpass_prolog *ipp)
 		spoff = offcalc(ipp);
 
 	/* return from function code */
-	deflab(ipp->ipp_ip.ip_lbl);
 	for (i = ipp->ipp_regs; i < MAXRVAR; i++) {
 		fprintf(stdout, "	movl -%d(%s),%s\n",
 		    regoff[i-ipp->ipp_regs], rnames[FPREG], rnames[i+1]);
