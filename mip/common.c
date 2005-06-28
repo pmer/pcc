@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.55 2005/04/16 09:01:54 ragge Exp $	*/
+/*	$Id: common.c,v 1.56 2005/05/11 19:31:56 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -435,13 +435,13 @@ tprint(FILE *fp, TWORD t, TWORD q)
 	}
 }
 
+int crslab = 10;
 /*
  * Return a number for internal labels.
  */
 int 
 getlab()
 {
-        static int crslab = 10;
 	return crslab++;
 }
 

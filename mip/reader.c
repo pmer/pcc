@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.135 2005/06/27 13:40:14 ragge Exp $	*/
+/*	$Id: reader.c,v 1.136 2005/06/28 07:16:45 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -82,7 +82,6 @@ int nrecur;
 int lflag;
 int x2debug;
 int udebug = 0;
-int ftnno;
 int thisline;
 int fregs;
 int p2autooff, p2maxautooff;
