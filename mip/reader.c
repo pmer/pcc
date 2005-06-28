@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.134 2005/06/27 11:45:36 ragge Exp $	*/
+/*	$Id: reader.c,v 1.135 2005/06/27 13:40:14 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -703,7 +703,7 @@ store(NODE *p)
 	r = mklnode(OREG, s, FPREG, p->n_type);
 	ip = ipnode(mkbinode(ASSIGN, q, p, p->n_type));
 
-	if (xsaveip)
+	if (xsaveip || xnewreg)
 		storesave = ip;
 	else
 		emit(ip);
