@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.55 2005/06/29 07:12:41 ragge Exp $	*/
+/*	$Id: regs.c,v 1.56 2005/06/29 12:40:08 ragge Exp $	*/
 /*
  * Copyright (c) 2005 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -980,7 +980,7 @@ nsucomp(NODE *p)
 			p->n_su |= DORIGHT;
 		} else if (right == left) {
 			/* A favor to 2-operand architectures */
-			if (q->rewrite & RLEFT)
+			if ((q->rewrite & RRIGHT) == 0)
 				p->n_su |= DORIGHT;
 		}
 	} else if ((p->n_su & RMASK) || (p->n_su & LMASK)) {
