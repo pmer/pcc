@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.47 2005/06/28 13:29:00 ragge Exp $	*/
+/*	$Id: manifest.h,v 1.48 2005/06/30 13:59:17 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -251,6 +251,8 @@ struct interpass {
 
 /*
  * Special struct for prologue/epilogue.
+ * - ip_lblnum contains the lowest/highest+1 label used
+ * - ip_lbl is set before/after all code and after/before the prolog/epilog.
  */
 struct interpass_prolog {
 	struct interpass ipp_ip;
