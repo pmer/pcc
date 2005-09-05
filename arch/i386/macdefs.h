@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.19 2005/05/15 21:06:34 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.20 2005/08/03 06:29:22 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -178,6 +178,7 @@ typedef long long OFFSZ;
 #define TBREGS	0
 #endif
 
+#define	MYADDEDGE(x, t) if (t < INT) { AddEdge(x, ESI); AddEdge(x, EDI); }
 #define MYREADER(p) myreader(p)
 #define MYCANON(p) mycanon(p)
 #define	MYOPTIM
