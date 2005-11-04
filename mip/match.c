@@ -1,4 +1,4 @@
-/*      $Id: match.c,v 1.35 2005/10/15 09:08:10 ragge Exp $   */
+/*      $Id: match.c,v 1.36 2005/11/04 06:56:32 ragge Exp $   */
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -61,6 +61,8 @@
  */
 
 # include "pass2.h"
+
+#include <strings.h>
 
 int e2print(NODE *p, int down, int *a, int *b);
 void prttype(int t);
