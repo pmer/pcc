@@ -1,4 +1,4 @@
-/*      $Id: match.c,v 1.40 2005/11/06 22:13:28 ragge Exp $   */
+/*      $Id: match.c,v 1.41 2005/11/12 08:27:42 ragge Exp $   */
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -818,6 +818,10 @@ findasg(NODE *p, int cookie)
 	F2DEBUG(("findasg: node %p class %d\n", p, sh));
 	SCLASS(rv, sh);
 	p->n_su = rv;
+	if (p->n_left->n_op == TEMP) {
+		if (TCLASS(p->n_left->n_su) == 0)
+			SCLASS(p->n_left->n_su, sh);
+	}
 	return sh;
 #else
 	return rv;
