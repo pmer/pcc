@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.29 2005/12/08 20:10:38 ragge Exp $	*/
+/*	$Id: order.c,v 1.30 2005/12/29 09:15:05 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -28,6 +28,8 @@
 
 
 # include "pass2.h"
+
+#include <string.h>
 
 int canaddr(NODE *);
 
