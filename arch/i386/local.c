@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.33 2005/09/17 07:58:40 ragge Exp $	*/
+/*	$Id: local.c,v 1.34 2005/12/04 11:49:00 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -257,6 +257,7 @@ clocal(NODE *p)
 		p->n_op = ASSIGN;
 		p->n_right = p->n_left;
 		p->n_left = block(REG, NIL, NIL, p->n_type, 0, MKSUE(INT));
+		p->n_left->n_rval = RETREG(p->n_type);
 		break;
 	}
 //printf("ut:\n");
