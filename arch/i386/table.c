@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.61 2006/01/01 16:17:01 ragge Exp $	*/
+/*	$Id: table.c,v 1.62 2006/01/07 08:10:25 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -652,13 +652,13 @@ struct optab table[] = {
 	SAREG|SNAME|SOREG,	TSHORT|TUSHORT,
 	SCON,		TANY,
 		0,	0,
-		"	movw ZR,ZL\n", },
+		"	movw AR,AL\n", },
 
 { ASSIGN,	FOREFF|INAREG,
 	SAREG,	TSHORT|TUSHORT,
 	SCON,		TANY,
 		0,	RLEFT,
-		"	movw ZR,ZL\n", },
+		"	movw AR,AL\n", },
 
 { ASSIGN,	FOREFF,
 	SHCH|SNAME|SOREG,	TCHAR|TUCHAR,

@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.103 2006/01/06 12:47:34 ragge Exp $	*/
+/*	$Id: regs.c,v 1.104 2006/01/07 08:10:25 ragge Exp $	*/
 /*
  * Copyright (c) 2005 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1130,7 +1130,7 @@ Build(struct interpass *ipole)
 	if (xtemps) {
 		/* Just fetch space for the temporaries from stack */
 
-		nbits = xbits;
+		nbits = xbits+(NUMBITS-1);
 		gen = alloca(nbblocks*sizeof(bittype*));
 		kill = alloca(nbblocks*sizeof(bittype*));
 		in = alloca(nbblocks*sizeof(bittype*));
