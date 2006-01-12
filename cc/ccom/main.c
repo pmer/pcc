@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.62 2005/06/30 13:59:41 ragge Exp $	*/
+/*	$Id: main.c,v 1.63 2005/09/05 17:07:16 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -174,7 +174,9 @@ main(int argc, char *argv[])
 				case 's': /* shape matching */
 					++s2debug;
 					break;
-				case 'u': ++udebug; break;
+				case 'u': /* Sethi-Ullman debugging */
+					++udebug;
+					break;
 				case 'x': ++x2debug; break;
 				case 'n': ++nflag; break;
 				default:
