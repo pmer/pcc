@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.33 2006/01/28 07:27:12 ragge Exp $	*/
+/*	$Id: order.c,v 1.34 2006/02/04 17:43:46 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -237,9 +237,14 @@ nspecial(struct optab *q)
 		break;
 	case LS:
 	case RS:
-		{
+		if (q->visit & (INAREG|INBREG)) {
 			static struct rspecial s[] = {
 				{ NRIGHT, ECX }, { 0 } };
+			return s;
+		} else if (q->visit & INCREG) {
+			static struct rspecial s[] = {
+				{ NEVER, EAX }, { NEVER, EDX },
+				{ NEVER, ECX }, { NRES, EAXEDX }, { 0 } };
 			return s;
 		}
 		break;
