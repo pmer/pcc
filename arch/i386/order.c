@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.34 2006/02/04 17:43:46 ragge Exp $	*/
+/*	$Id: order.c,v 1.35 2006/02/05 18:30:51 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -148,6 +148,7 @@ struct rspecial *
 nspecial(struct optab *q)
 {
 	switch (q->op) {
+	case STASG:
 	case STARG:
 		{
 			static struct rspecial s[] = {

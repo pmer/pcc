@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.58 2005/09/05 17:07:16 ragge Exp $	*/
+/*	$Id: common.c,v 1.59 2006/02/05 18:30:51 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -266,7 +266,7 @@ int cdope(int);
 #endif
 
 void
-fwalk(NODE *t, int (*f)(NODE *, int, int *, int *), int down)
+fwalk(NODE *t, void (*f)(NODE *, int, int *, int *), int down)
 {
 
 	int down1, down2;
