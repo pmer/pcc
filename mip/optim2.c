@@ -1,4 +1,4 @@
-/*	$Id: optim2.c,v 1.41 2006/01/28 07:27:12 ragge Exp $	*/
+/*	$Id: optim2.c,v 1.42 2006/03/18 15:30:49 ragge Exp $	*/
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -817,7 +817,7 @@ printip(struct interpass *pole)
 	struct interpass_prolog *ipp, *epp;
 
 	DLIST_FOREACH(ip, pole, qelem) {
-		if (ip->type >= MAXIP)
+		if (ip->type > MAXIP)
 			printf("IP(%d) (%p): ", ip->type, ip);
 		else
 			printf("%s (%p): ", foo[ip->type], ip);
