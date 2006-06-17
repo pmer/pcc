@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.61 2006/02/18 08:19:42 ragge Exp $	*/
+/*	$Id: common.c,v 1.62 2006/02/18 15:20:47 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -148,9 +148,7 @@ talloc()
 	extern int inlnodecnt, recovernodes;
 	register NODE *p;
 
-	if ((usednodes++ - inlnodecnt) > TREESZ)
-		cerror("out of tree space; usednodes %d inlnodecnt %d",
-		    usednodes, inlnodecnt);
+	usednodes++;
 
 	if (recovernodes)
 		inlnodecnt++;
