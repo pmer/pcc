@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.155 2006/06/04 13:26:08 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.156 2006/06/15 19:05:23 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -161,6 +161,7 @@ static void adddef(void);
 static void savebc(void);
 static void swstart(int);
 static NODE * structref(NODE *p, int f, char *name);
+static char *mkpstr(char *str);
 
 /*
  * State for saving current switch state (when nested switches).
