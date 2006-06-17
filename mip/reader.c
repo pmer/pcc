@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.191 2006/06/10 08:25:32 ragge Exp $	*/
+/*	$Id: reader.c,v 1.192 2006/06/13 06:14:30 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1055,9 +1055,10 @@ oreg2(NODE *p)
 {
 	if (p->n_op != UMUL)
 		return;
-	if (oregok(p, 1) == 0)
-		return;
-	ormake(p);
+	if (oregok(p, 1))
+		ormake(p);
+	if (p->n_op == UMUL)
+		myormake(p);
 }
 
 void
