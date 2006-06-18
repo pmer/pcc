@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.151 2006/06/14 17:53:08 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.152 2006/06/15 19:05:23 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -618,6 +618,24 @@ done:	cendarg();
 	plabel(prolab); /* after prolog, used in optimization */
 	retlab = getlab();
 	bfcode(parr, nparams);
+	if (xtemps) {
+		/* put arguments in temporaries */
+		for (i = 0; i < nparams; i++) {
+			NODE *q, *r, *s;
+
+			p = parr[i];
+			if (p->stype == STRTY || p->stype == UNIONTY ||
+			    cisreg(p->stype) == 0)
+				continue;
+			spname = p;
+			q = buildtree(NAME, 0, 0);
+			r = tempnode(0, p->stype, p->sdf, p->ssue);
+			s = buildtree(ASSIGN, r, q);
+			p->soffset = r->n_lval;
+			p->sflags |= STNODE;
+			ecomp(s);
+		}
+	}
 	lparam = NULL;
 	nparams = 0;
 }
