@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.143 2006/07/12 13:31:56 ragge Exp $	*/
+/*	$Id: regs.c,v 1.144 2006/07/13 10:09:47 ragge Exp $	*/
 /*
  * Copyright (c) 2005 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1014,8 +1014,6 @@ unionize(NODE *p, int bb)
 		i = 0;
 		BITCLEAR(gen[bb], (b+i));
 		BITSET(kill[bb], (b+i));
-		if (o == INCR || o == DECR)
-			BITSET(gen[bb], (b+i));
 #endif
 		unionize(p->n_right, bb);
 		return;

@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.62 2006/02/18 15:20:47 ragge Exp $	*/
+/*	$Id: common.c,v 1.63 2006/06/17 08:23:30 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -342,8 +342,6 @@ struct dopest {
 	{ RS, ">>", BITYPE|SHFFLG, },
 	{ OR, "|", BITYPE|COMMFLG|SIMPFLG, },
 	{ ER, "^", BITYPE|COMMFLG|SIMPFLG, },
-	{ INCR, "++", BITYPE|ASGFLG, },
-	{ DECR, "--", BITYPE|ASGFLG, },
 	{ STREF, "->", BITYPE, },
 	{ CALL, "CALL", BITYPE|CALLFLG, },
 	{ FORTCALL, "FCALL", BITYPE|CALLFLG, },
