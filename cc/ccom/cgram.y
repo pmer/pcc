@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.156 2006/06/15 19:05:23 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.157 2006/06/17 09:38:23 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -930,6 +930,7 @@ term:		   term C_INCOP {  $$ = buildtree( $2, $1, bcon(1) ); }
 				$$ = buildtree(ADDROF, $2, NIL);
 		}
 		|  '-' term { $$ = buildtree(UMINUS, $2, NIL ); }
+		|  '+' term { $$ = $2; }
 		|  C_UNOP term { $$ = buildtree( $1, $2, NIL ); }
 		|  C_INCOP term {
 			$$ = buildtree($1 == INCR ? PLUSEQ : MINUSEQ,
