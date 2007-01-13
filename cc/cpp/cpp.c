@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.43 2006/12/30 08:18:05 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.44 2007/01/02 19:47:37 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -1038,8 +1038,8 @@ expdef(vp, rp, gotwarn)
 	for (i = 0; i < narg && c != ')'; i++) {
 		args[i] = stringbuf;
 		plev = 0;
-		if ((c = yylex()) == WSPACE)
-			c = yylex();
+		while ((c = yylex()) == WSPACE || c == '\n')
+			;
 		for (;;) {
 			if (plev == 0 && (c == ')' || c == ','))
 				break;
