@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.152 2006/07/15 15:25:20 ragge Exp $	*/
+/*	$Id: trees.c,v 1.153 2006/12/30 08:19:00 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -670,6 +670,12 @@ conval(NODE *p, int o, NODE *q)
 		break;
 	case NE:
 		p->n_lval = p->n_lval != val;
+		break;
+	case OROR:
+		p->n_lval = p->n_lval || val;
+		break;
+	case ANDAND:
+		p->n_lval = p->n_lval && val;
 		break;
 	default:
 		return(0);
