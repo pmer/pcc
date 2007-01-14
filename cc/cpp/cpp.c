@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.44 2007/01/02 19:47:37 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.45 2007/01/13 12:59:14 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -929,7 +929,7 @@ expmac(struct recur *rp)
 				stringbuf = och;
 				continue; /* New longer identifier */
 			}
-			unpstr(yytext);
+			unpstr((usch *)yytext);
 			if (orgexp == -1)
 				cunput(EXPAND);
 			else if (orgexp == 1)
