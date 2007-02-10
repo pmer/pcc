@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.114 2006/06/15 19:05:23 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.115 2006/07/15 07:34:19 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -261,7 +261,7 @@ void deflabel(char *);
 void deflab1(int);
 void setloc1(int);
 void gotolabel(char *);
-int esccon(char **sptr);
+unsigned int esccon(char **sptr);
 void inline_start(char *name);
 void inline_end(void);
 void inline_addarg(struct interpass *);
