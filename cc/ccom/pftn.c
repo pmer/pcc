@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.158 2007/02/07 17:46:38 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.159 2007/02/10 15:51:37 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1388,8 +1388,7 @@ nidcl(NODE *p, int class)
 	switch (class) {
 	case EXTDEF:
 		/* simulate initialization by 0 */
-		beginit(p->n_sp, class);
-		endinit();
+		simpleinit(p->n_sp, bcon(0));
 		break;
 	case EXTERN:
 		if (commflag)
