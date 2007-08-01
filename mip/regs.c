@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.145 2006/07/15 07:34:19 ragge Exp $	*/
+/*	$Id: regs.c,v 1.146 2006/10/07 09:19:34 ragge Exp $	*/
 /*
  * Copyright (c) 2005 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -893,14 +893,24 @@ insnwalk(NODE *p)
 		struct rspecial *rc;
 		for (rc = nspecial(q); rc->op; rc++) {
 			switch (rc->op) {
-#define	ONLY(c,s) if (c) s(c, &ablock[rc->num]); break;
-			case NLEFT: ONLY(lr, moveadd)
-			case NOLEFT: /* ONLY(lr, AddEdge) */
-				addedge_r(p->n_left, &ablock[rc->num]); break;
-			case NRIGHT: ONLY(rr, moveadd)
-			case NORIGHT: /* ONLY(rr, AddEdge) */
-				addedge_r(p->n_right, &ablock[rc->num]); break;
-			case NEVER: addalledges(&ablock[rc->num]); break;
+#define	ONLY(c,s) if (c) s(c, &ablock[rc->num])
+			case NLEFT:
+				addalledges(&ablock[rc->num]);
+				ONLY(lr, moveadd);
+				break;
+			case NOLEFT:
+				addedge_r(p->n_left, &ablock[rc->num]);
+				break;
+			case NRIGHT:
+				addalledges(&ablock[rc->num]);
+				ONLY(rr, moveadd);
+				break;
+			case NORIGHT:
+				addedge_r(p->n_right, &ablock[rc->num]);
+				break;
+			case NEVER:
+				addalledges(&ablock[rc->num]);
+				break;
 #undef ONLY
 			}
 		}
