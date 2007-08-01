@@ -1,5 +1,5 @@
 %{
-/*	$Id: scanner.l,v 1.9 2007/01/15 05:19:12 ragge Exp $	*/
+/*	$Id: scanner.l,v 1.10 2007/02/10 15:52:19 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson. All rights reserved.
@@ -675,7 +675,8 @@ svinp(void)
 
 	while ((c = input()) && c != '\n')
 		savch(c);
-	savstr((usch *)"\n");
+	savch('\n');
+	savch(0);
 	BEGIN 0;
 	return cp;
 }
