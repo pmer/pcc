@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.66 2006/12/22 06:23:09 ragge Exp $	*/
+/*	$Id: main.c,v 1.67 2007/02/07 17:46:38 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -253,6 +253,7 @@ main(int argc, char *argv[])
 	/* dimension table initialization */
 
 	btdims[VOID].suesize = 0;
+	btdims[BOOL].suesize = SZBOOL;
 	btdims[CHAR].suesize = SZCHAR;
 	btdims[INT].suesize = SZINT;
 	btdims[FLOAT].suesize = SZFLOAT;

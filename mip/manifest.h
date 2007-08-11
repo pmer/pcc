@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.55 2006/06/17 08:23:30 ragge Exp $	*/
+/*	$Id: manifest.h,v 1.56 2007/07/06 17:02:27 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -78,12 +78,8 @@
 #define	ENUMTY		17
 #define	MOETY		18	/* member of enum */
 #define	VOID		19
-/*
- * The following is only used in pass1, for simplicity.
- */
-#define	SIGNED		20
 
-#define	MAXTYPES	21	/* highest type+1 used by common code */
+#define	MAXTYPES	19	/* highest type+1 to be used by lang code */
 /*
  * Various flags
  */
