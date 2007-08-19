@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.56 2007/07/06 17:02:27 ragge Exp $	*/
+/*	$Id: manifest.h,v 1.57 2007/08/11 09:05:05 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -170,7 +170,7 @@
 /*
  * 
  */
-extern int idebug, bdebug, tdebug, edebug;
+extern int bdebug, tdebug, edebug;
 extern int ddebug, xdebug, f2debug;
 extern int iTflag, oTflag;
 extern int vdebug, sflag, nflag, gflag;
