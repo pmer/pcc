@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.122 2007/08/11 09:05:06 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.123 2007/08/19 19:21:14 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -197,7 +197,7 @@ extern	int isinlining;
 
 extern	struct symtab *spname;
 
-extern	int sdebug, idebug;
+extern	int sdebug, idebug, pdebug;
 
 /* various labels */
 extern	int brklab;
