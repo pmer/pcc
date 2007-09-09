@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.159 2007/08/01 04:55:46 ragge Exp $	*/
+/*	$Id: trees.c,v 1.160 2007/08/11 09:05:06 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -594,10 +594,8 @@ conval(NODE *p, int o, NODE *q)
 		return(0);
 	if (p->n_sp != NULL && o != PLUS && o != MINUS)
 		return(0);
-	if (u) {
-		v1 = p->n_lval;
-		v2 = q->n_lval;
-	}
+	v1 = p->n_lval;
+	v2 = q->n_lval;
 	switch( o ){
 
 	case PLUS:

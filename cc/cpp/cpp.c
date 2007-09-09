@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.52 2007/08/19 19:22:16 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.53 2007/09/09 09:58:54 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -1366,6 +1366,7 @@ lookup(usch *key, int enterf)
 
 	case 1:
 		w = sympole;
+		svbit = 0; /* XXX gcc */
 		break;
 
 	default:
