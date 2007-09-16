@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.168 2007/09/09 17:42:33 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.169 2007/09/15 07:37:43 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -140,6 +140,7 @@
 # include "pass1.h"
 # include <stdarg.h>
 # include <string.h>
+# include <stdlib.h>
 
 static int fun_inline;	/* Reading an inline function */
 int oldstyle;	/* Current function being defined */
