@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.57 2007/08/11 09:05:05 ragge Exp $	*/
+/*	$Id: manifest.h,v 1.58 2007/08/19 19:21:14 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -292,6 +292,14 @@ void send_passt(int type, ...);
 char	*hash(char *s);
 char	*savestr(char *cp);
 char	*tstr(char *cp);
+
+#ifndef HAVE_STRLCPY
+size_t strlcpy(char *dst, const char *src, size_t siz);
+#endif
+
+#ifndef HAVE_STRLCAT
+size_t strlcat(char *dst, const char *src, size_t siz);
+#endif
 
 /* memory management stuff */
 void *permalloc(int size);
