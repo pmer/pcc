@@ -1,4 +1,4 @@
-/*	$Id: init.c,v 1.26 2007/08/19 19:24:52 ragge Exp $	*/
+/*	$Id: init.c,v 1.27 2007/09/22 12:30:09 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004, 2007 Anders Magnusson (ragge@ludd.ltu.se).
@@ -854,6 +854,8 @@ asginit(NODE *p)
 		/* HACKHACKHACK */
 		struct instk *is = pstk;
 
+		if (pstk == NULL)
+			stkpush();
 		while (ISSOU(pstk->in_t) || ISARY(pstk->in_t))
 			stkpush();
 		if (pstk->in_prev && 
