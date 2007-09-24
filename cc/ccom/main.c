@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.69 2007/08/25 05:59:33 ragge Exp $	*/
+/*	$Id: main.c,v 1.70 2007/09/09 10:01:01 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -110,7 +110,7 @@ main(int argc, char *argv[])
 
 	prgname = argv[0];
 
-	while ((ch = getopt(argc, argv, "VlwX:Z:W:sOT:gx:k")) != -1)
+	while ((ch = getopt(argc, argv, "VlwX:Z:W:sOT:gx:kv")) != -1)
 		switch (ch) {
 #if !defined(MULTIPASS) || defined(PASS1)
 		case 'X':
@@ -218,6 +218,9 @@ main(int argc, char *argv[])
 				xdeljumps++;
 			else
 				usage();
+			break;
+		case 'v':
+			printf("ccom: %s\n", VERSSTR);
 			break;
 
 		case '?':
