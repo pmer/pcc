@@ -1,4 +1,4 @@
-/*	$Id: pass2.h,v 1.97 2006/06/17 14:23:53 ragge Exp $	*/
+/*	$Id: pass2.h,v 1.98 2006/12/22 06:23:09 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -222,7 +222,6 @@ extern	int p2autooff, p2maxautooff;
 extern	NODE
 	*talloc(void),
 	*eread(void),
-	*tcopy(NODE *),
 	*mklnode(int, CONSZ, int, TWORD),
 	*mkbinode(int, NODE *, NODE *, TWORD),
 	*mkunode(int, NODE *, int, TWORD),
