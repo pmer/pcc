@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.62 2007/09/28 08:48:14 ragge Exp $	*/
+/*	$Id: cc.c,v 1.63 2007/09/29 13:22:40 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -434,6 +434,7 @@ main(int argc, char *argv[])
 			av[na++] = "-k";
 		if (Oflag) {
 			av[na++] = "-xtemps";
+			av[na++] = "-xdeljumps";
 		}
 		for (j = 0; j < xnum; j++)
 			av[na++] = xlist[j];
