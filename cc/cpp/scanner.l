@@ -1,5 +1,5 @@
 %{
-/*	$Id: scanner.l,v 1.20 2007/09/25 20:41:07 ragge Exp $	*/
+/*	$Id: scanner.l,v 1.21 2007/09/28 15:17:46 ragge Exp $   */
 
 /*
  * Copyright (c) 2004 Anders Magnusson. All rights reserved.
@@ -33,6 +33,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+#include "../../mip/compat.h"
 #include "cpp.h"
 #include "y.tab.h"
 %}
