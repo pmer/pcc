@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.163 2007/09/16 08:26:39 ragge Exp $	*/
+/*	$Id: trees.c,v 1.164 2007/10/03 18:30:00 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -743,8 +743,10 @@ chkpun(NODE *p)
 			return;
 		break;
 	default:
-		if ((t1 == VOID && t2 != VOID) || (t1 != VOID && t2 == VOID))
-			return uerror("value of void expression used");
+		if ((t1 == VOID && t2 != VOID) || (t1 != VOID && t2 == VOID)) {
+			uerror("value of void expression used");
+			return;
+		}
 		break;
 	}
 
