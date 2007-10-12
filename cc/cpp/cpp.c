@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.66 2007/10/04 16:44:31 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.67 2007/10/12 18:05:36 stefan Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -733,7 +733,7 @@ bad:	error("bad define");
 }
 
 void
-warning(usch *s)
+xwarning(usch *s)
 {
 	usch *t;
 	usch *sb = stringbuf;
