@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.65 2007/09/25 20:41:08 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.66 2007/10/04 16:44:31 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -730,6 +730,23 @@ id:			savstr((usch *)yytext);
 	return;
 
 bad:	error("bad define");
+}
+
+void
+warning(usch *s)
+{
+	usch *t;
+	usch *sb = stringbuf;
+
+	flbuf();
+	savch(0);
+	if (ifiles != NULL) {
+		t = sheap("%s:%d: warning: ", ifiles->fname, ifiles->lineno);
+		write (2, t, strlen((char *)t));
+	}
+	write (2, s, strlen((char *)s));
+	write (2, "\n", 1);
+	stringbuf = sb;
 }
 
 void
