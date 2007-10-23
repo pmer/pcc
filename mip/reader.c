@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.203 2007/09/24 17:49:54 ragge Exp $	*/
+/*	$Id: reader.c,v 1.204 2007/10/01 15:27:54 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -552,7 +552,8 @@ rewrite(NODE *p, int rewrite, int cookie)
 		tfree(r);
 	if (rewrite == 0)
 		return;
-	CDEBUG(("rewrite: %p, reg %s\n", p, rnames[DECRA(p->n_reg, 0)]));
+	CDEBUG(("rewrite: %p, reg %s\n", p,
+	    p->n_reg == -1? "<none>" : rnames[DECRA(p->n_reg, 0)]));
 	p->n_rval = DECRA(p->n_reg, 0);
 }
 
