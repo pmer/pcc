@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.68 2007/10/12 21:37:36 stefan Exp $	*/
+/*	$Id: cpp.c,v 1.69 2007/10/22 12:23:21 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -757,7 +757,7 @@ xerror(usch *s)
 	flbuf();
 	savch(0);
 	if (ifiles != NULL) {
-		t = sheap("%s:%d: ", ifiles->fname, ifiles->lineno);
+		t = sheap("%s:%d: error: ", ifiles->fname, ifiles->lineno);
 		write (2, t, strlen((char *)t));
 	}
 	write (2, s, strlen((char *)s));
