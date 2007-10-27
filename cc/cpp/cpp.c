@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.69 2007/10/22 12:23:21 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.70 2007/10/25 17:42:47 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -558,7 +558,7 @@ define()
 	int c, i, redef;
 	int mkstr = 0, narg = -1;
 	int ellips = 0;
-	int len;
+	size_t len;
 
 	if (flslvl)
 		return;
