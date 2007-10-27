@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.21 2006/01/09 12:03:45 janeno-1 Exp $	*/
+/*	$Id: local2.c,v 1.1.1.1 2006/04/17 13:23:52 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -40,13 +40,6 @@ void genargs(NODE *p);
 static void sconv(NODE *p);
 void branchfunc(NODE *p);
 void offchg(NODE *p);
-
-void
-lineid(int l, char *fn)
-{
-    /* identify line l and file fn */
-    printf("#	line %d, file %s\n", l, fn);
-}
 
 void
 deflab(int label)
