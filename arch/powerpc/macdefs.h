@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.46 2007/08/19 19:25:22 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.1 2007/10/19 18:34:53 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -99,6 +99,7 @@ typedef long long OFFSZ;
 #define CONFMT	"%lld"		/* format for printing constants */
 #define LABFMT	"L%d"		/* format for printing labels */
 #define	STABLBL	"LL%d"		/* format for stab (debugging) labels */
+#define STAB_LINE_ABSOLUTE	/* S_LINE fields use absolute addresses */
 
 #define	MYP2TREE(p) myp2tree(p);
 
