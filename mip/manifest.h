@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.62 2007/10/04 16:44:32 ragge Exp $	*/
+/*	$Id: manifest.h,v 1.63 2007/11/03 11:05:34 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -37,6 +37,7 @@
 #define	MANIFEST
 
 #include <stdio.h>
+#include <string.h>
 #include "../config.h"
 #include "macdefs.h"
 #include "node.h"
