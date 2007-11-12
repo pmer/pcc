@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.14 2006/02/02 09:00:12 janeno-1 Exp $	*/
+/*	$Id: code.c,v 1.15 2006/02/02 14:22:56 janeno-1 Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -373,4 +373,13 @@ genswitch(struct swents **p, int n)
 	if (p[0]->slab > 0)
 		branch(p[0]->slab);
 #endif
+}
+/*
+ * Called with a function call with arguments as argument.
+ * This is done early in buildtree() and only done once.
+ */
+NODE *
+funcode(NODE *p)
+{
+	return p;
 }

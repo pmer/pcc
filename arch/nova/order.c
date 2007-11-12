@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.48 2006/07/15 07:34:19 ragge Exp $	*/
+/*	$Id: order.c,v 1.1 2006/07/30 09:30:48 ragge Exp $	*/
 /*
  * Copyright (c) 2006 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -162,3 +162,15 @@ setorder(NODE *p)
 {
 	return 0;
 }
+/*
+ * Set registers "live" at function calls (like arguments in registers).
+ * This is for liveness analysis of registers.
+ */
+int *
+livecall(NODE *p)
+{
+	static int r[1] = { -1 }; /* Terminate with -1 */
+
+	return &r[0];
+}
+
