@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.48 2007/10/05 15:39:18 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.49 2007/10/14 19:42:32 stefan Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -126,8 +126,6 @@ typedef long long OFFSZ;
 
 #define BACKAUTO 		/* stack grows negatively for automatics */
 #define BACKTEMP 		/* stack grows negatively for temporaries */
-
-#define	MYP2TREE(p) myp2tree(p);
 
 #undef	FIELDOPS		/* no bit-field instructions */
 #define	RTOLBYTES		/* bytes are numbered right to left */
@@ -295,10 +293,6 @@ int COLORMAP(int c, int *r);
 /* XXX - to die */
 #define FPREG	EBP	/* frame pointer */
 #define STKREG	ESP	/* stack pointer */
-
-#define MYREADER(p) myreader(p)
-#define MYCANON(p) mycanon(p)
-#define	MYOPTIM
 
 #define	SHSTR		(MAXSPECIAL+1)	/* short struct */
 #define	SFUNCALL	(MAXSPECIAL+2)	/* struct assign after function call */
