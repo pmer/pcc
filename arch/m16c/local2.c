@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.32 2006/02/06 09:33:09 janeno-1 Exp $	*/
+/*	$Id: local2.c,v 1.33 2007/10/27 13:21:08 stefan Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -460,6 +460,16 @@ cbgen(int o, int lab)
 	if (o < EQ || o > UGT)
 		comperr("bad conditional branch: %s", opst[o]);
 	printf("	%s " LABFMT "\n", ccbranches[o-EQ], lab);
+}
+
+void
+mycanon(NODE *p)
+{
+}
+
+void
+myoptim(struct interpass *ip)
+{
 }
 
 #if 0
