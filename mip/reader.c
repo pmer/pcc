@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.207 2007/10/29 14:13:08 ragge Exp $	*/
+/*	$Id: reader.c,v 1.208 2007/11/15 23:35:04 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1004,9 +1004,7 @@ canon(p) NODE *p; {
 #ifndef FIELDOPS
 	fwalk(p, ffld, 0);	/* look for field operators */
 # endif
-#ifdef MYCANON
-	MYCANON(p);		/* your own canonicalization routine(s) */
-#endif
+	mycanon(p);		/* your own canonicalization routine(s) */
 
 }
 
