@@ -1,4 +1,4 @@
-/*	$Id: optim2.c,v 1.46 2007/10/01 15:27:53 ragge Exp $	*/
+/*	$Id: optim2.c,v 1.47 2007/10/29 00:40:11 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -235,9 +235,7 @@ optimize(struct interpass *ipole)
 		comperr("register error");
 #endif
 
-#ifdef MYOPTIM
 	myoptim((struct interpass *)ipp);
-#endif
 }
 
 /*
