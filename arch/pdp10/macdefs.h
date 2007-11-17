@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.26 2007/11/07 21:41:19 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.27 2007/11/16 22:28:57 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -93,6 +93,7 @@
 #define	MAX_ULONGLONG	001777777777777777777777ULL	/* XXX cross */
 
 /* Default char is unsigned */
+#define TARGET_STDARGS
 #define	CHAR_UNSIGNED
 #define WCHAR_TYPE	INT	/* what used to store wchar_t */
 #define	BOOL_TYPE	INT
