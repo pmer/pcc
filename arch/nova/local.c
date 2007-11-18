@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.44 2006/07/10 10:05:35 ragge Exp $	*/
+/*	$Id: local.c,v 1.1 2006/07/30 09:30:48 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -243,8 +243,6 @@ clocal(NODE *p)
 			case UNSIGNED:
 				l->n_lval = val & 0xffffffff;
 				break;
-			case ENUMTY:
-			case MOETY:
 			case LONG:
 			case INT:
 				l->n_lval = (int)val;
