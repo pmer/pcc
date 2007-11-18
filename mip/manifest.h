@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.64 2007/11/10 09:47:43 stefan Exp $	*/
+/*	$Id: manifest.h,v 1.65 2007/11/15 23:44:14 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -77,8 +77,8 @@
 #define	LDOUBLE		14
 #define	STRTY		15
 #define	UNIONTY		16
-#define	ENUMTY		17
-#define	MOETY		18	/* member of enum */
+/* #define	ENUMTY		17 */
+/* #define	MOETY		18 */	/* member of enum */
 #define	VOID		19
 
 #define	MAXTYPES	19	/* highest type+1 to be used by lang code */
