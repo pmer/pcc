@@ -1,4 +1,4 @@
-/*	$Id: optim.c,v 1.27 2006/07/10 10:05:35 ragge Exp $	*/
+/*	$Id: optim.c,v 1.28 2006/07/11 07:54:29 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -92,7 +92,7 @@ optim(NODE *p)
 	int i;
 	TWORD t;
 
-	if( (t=BTYPE(p->n_type))==ENUMTY || t==MOETY ) econvert(p);
+	t = BTYPE(p->n_type);
 	if( oflag ) return(p);
 
 	ty = coptype(p->n_op);
