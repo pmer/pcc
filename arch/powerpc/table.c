@@ -1,4 +1,4 @@
-/*	$Id$	*/
+/*	$Id: table.c,v 1.8 2007/11/19 22:30:10 stefan Exp $	*/
 /*-
  * Copyright (c) 2007 Gregory McGarry <g.mcgarry@ieee.org>
  *
@@ -490,7 +490,7 @@ struct optab table[] = {
 	SSCON,		TANY,
 		0,	RDEST,
 		"	li AL,AR\n"
-		"	li UL,0\n", },
+		"	li UL,UR\n", },
 
 /* assign constant to register */
 { ASSIGN,	FOREFF|INAREG,
