@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.5 2007/11/05 23:15:53 stefan Exp $	*/
+/*	$Id: local2.c,v 1.6 2007/11/22 17:11:36 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -51,8 +51,10 @@ addstub(struct stub *list, char *name)
 			return;
 	}
 
-	s = malloc(sizeof(struct stub));
-	s->name = strdup(name);
+	if ((s = malloc(sizeof(struct stub))) == NULL)
+		cerror("addstub: malloc");
+	if ((s->name = strdup(name)) == NULL)
+		cerror("addstub: strdup");
 	DLIST_INSERT_BEFORE(list, s, link);
 }
 
