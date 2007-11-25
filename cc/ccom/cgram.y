@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.176 2007/11/18 17:24:57 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.177 2007/11/22 14:36:37 stefan Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -562,6 +562,10 @@ struct_declarator: declarator {
 		|  ':' con_e {
 			if (!(instruct&INSTRUCT))
 				uerror( "field outside of structure" );
+			if ($2 < 0 || $2 >= FIELD) {
+				uerror("illegal field size");
+				$2 = 1;
+			}
 			falloc(NULL, $2, -1, $<nodep>0);
 		}
 		|  declarator ':' con_e {
