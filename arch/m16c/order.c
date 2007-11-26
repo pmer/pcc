@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.17 2006/02/06 09:33:10 janeno-1 Exp $	*/
+/*	$Id: order.c,v 1.18 2007/11/12 19:03:27 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -610,3 +610,11 @@ livecall(NODE *p)
 	return &r[0];
 }
 
+/*
+ * Signal whether the instruction is acceptable for this target.
+ */
+int
+acceptable(struct optab *op)
+{
+	return 1;
+}
