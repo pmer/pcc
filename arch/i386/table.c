@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.97 2007/10/14 19:42:32 stefan Exp $	*/
+/*	$Id: table.c,v 1.98 2007/10/23 14:38:06 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -389,13 +389,13 @@ struct optab table[] = {
 
 { CALL,	INAREG,
 	SCON,	TANY,
-	SAREG,	TWORD|TPOINT,
+	SAREG,	TSHORT|TUSHORT|TWORD|TPOINT,
 		NAREG|NASL,	RESC1,	/* should be 0 */
 		"	call CL\nZC", },
 
 { UCALL,	INAREG,
 	SCON,	TANY,
-	SAREG,	TWORD|TPOINT,
+	SAREG,	TSHORT|TUSHORT|TWORD|TPOINT,
 		NAREG|NASL,	RESC1,	/* should be 0 */
 		"	call CL\n", },
 
