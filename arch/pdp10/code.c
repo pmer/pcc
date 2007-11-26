@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.33 2007/11/12 18:59:27 ragge Exp $	*/
+/*	$Id: code.c,v 1.34 2007/11/22 14:36:37 stefan Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -223,15 +223,6 @@ bycode(int t, int i)
 			putchar(t);
 		}
 	}
-}
-
-/*
- * n integer words of zeros
- */
-void
-zecode(int n)
-{
-	printf("	.block %d\n", n);
 }
 
 /*
