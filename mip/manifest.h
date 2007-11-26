@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.65 2007/11/15 23:44:14 gmcgarry Exp $	*/
+/*	$Id: manifest.h,v 1.66 2007/11/18 17:25:58 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -292,9 +292,6 @@ void send_passt(int type, ...);
 /*
  * External declarations, typedefs and the like
  */
-char	*hash(char *s);
-char	*savestr(char *cp);
-char	*tstr(char *cp);
 
 /* memory management stuff */
 void *permalloc(int size);
