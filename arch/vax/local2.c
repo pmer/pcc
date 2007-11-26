@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.3 2007/10/29 14:16:31 ragge Exp $	*/
+/*	$Id: local2.c,v 1.4 2007/11/16 22:35:32 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -1008,4 +1008,12 @@ int
 special(NODE *p, int shape)
 {
 	return SRNOPE;
+}
+
+/*
+ * Target-dependent command-line options.
+ */
+void
+mflags(char *str)
+{
 }

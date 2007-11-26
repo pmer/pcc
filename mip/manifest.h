@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.66 2007/11/18 17:25:58 ragge Exp $	*/
+/*	$Id: manifest.h,v 1.67 2007/11/26 00:00:17 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -299,6 +299,9 @@ void *tmpcalloc(int size);
 void *tmpalloc(int size);
 void tmpfree(void);
 char *newstring(char *, int len);
+
+/* command-line processing */
+void mflags(char *);
 
 void tprint(FILE *, TWORD, TWORD);
 
