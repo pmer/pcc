@@ -1,4 +1,4 @@
-/*	$Id: init.c,v 1.34 2007/10/05 12:51:18 otto Exp $	*/
+/*	$Id: init.c,v 1.35 2007/11/15 23:55:21 gmcgarry Exp $	*/
 
 /*
  * Copyright (c) 2004, 2007 Anders Magnusson (ragge@ludd.ltu.se).
@@ -490,9 +490,11 @@ scalinit(NODE *p)
 
 	p = optim(p);
 
+#ifdef notdef /* leave to the target to decide if useable */
 	if (csym->sclass != AUTO && p->n_op != ICON &&
 	    p->n_op != FCON && p->n_op != NAME)
 		cerror("scalinit not leaf");
+#endif
 
 	/* Out of elements? */
 	if (pstk == NULL) {
@@ -673,7 +675,7 @@ endinit(void)
 					infld(il->off, fsz, il->n->n_lval);
 				} else
 					ninval(il->off, fsz, il->n);
-				nfree(il->n);
+				tfree(il->n);
 			}
 			lastoff = ll->begsz + il->off + fsz;
 		}
