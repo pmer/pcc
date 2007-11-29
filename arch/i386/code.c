@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.19 2007/11/22 14:36:36 stefan Exp $	*/
+/*	$Id: code.c,v 1.20 2007/11/26 20:14:03 stefan Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -183,7 +183,7 @@ funcode(NODE *p)
 	} else {
 		for (r = p->n_right; r->n_left->n_op == CM; r = r->n_left)
 			;
-		r->n_left = block(CM, l, p->n_left, INT, 0, MKSUE(INT));
+		r->n_left = block(CM, l, r->n_left, INT, 0, MKSUE(INT));
 	}
 	return p;
 }
