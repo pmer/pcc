@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.210 2007/11/23 15:53:20 ragge Exp $	*/
+/*	$Id: reader.c,v 1.211 2007/11/28 03:02:08 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -758,7 +758,8 @@ e2print(NODE *p, int down, int *a, int *b)
 		int gregn(struct regw *);
 		if (p->n_reg == -1)
 			fprintf(prfil, "REG <undef>");
-		else if (p->n_reg < 100000) /* XXX */
+		else if (0 <= p->n_reg &&
+		    p->n_reg < (ENCRD(MAXREGS) + ENCRA(MAXREGS,0))) /* XXX */
 			fprintf(prfil, "REG %s", rnames[DECRA(p->n_reg, 0)]);
 		else
 			fprintf(prfil, "TEMP %d", gregn(p->n_regw));
