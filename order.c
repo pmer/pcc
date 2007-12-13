@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.7 2007/11/28 02:23:53 gmcgarry Exp $	*/
+/*	$Id: order.c,v 1.8 2007/11/30 23:29:13 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -40,7 +40,8 @@
 int
 notoff(TWORD t, int r, CONSZ off, char *cp)
 {
-	return (0);		/* YES */
+	if (off > 65535) return 1;
+	return 0;		/* YES */
 }
 
 /*
