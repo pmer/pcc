@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.34 2007/11/16 22:25:04 gmcgarry Exp $	*/
+/*	$Id: local2.c,v 1.35 2007/11/26 00:26:46 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -308,6 +308,12 @@ canaddr(NODE *p)
 	    (o==UMUL && shumul(p->n_left) == SRDIR))
 		return(1);
 	return(0);
+}
+
+int
+fldexpand(NODE *p, int cookie, char **cp)
+{
+	return 0;
 }
 
 /*
