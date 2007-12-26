@@ -1,4 +1,4 @@
-/*      $Id: match.c,v 1.75 2007/11/26 00:02:58 gmcgarry Exp $   */
+/*      $Id: match.c,v 1.76 2007/12/22 10:18:56 stefan Exp $   */
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -147,6 +147,7 @@ tshape(NODE *p, int shape)
 		break;
 
 	case ICON:
+	case FCON:
 		if (shape & SCON)
 			return SRDIR;
 		break;
@@ -894,7 +895,6 @@ findleaf(NODE *p, int cookie)
 		F2DEBUG(("findleaf: ixp %d\n", ixp[i]));
 		if (!acceptable(q))		/* target-dependent filter */
 			continue;
-
 		if ((q->visit & cookie) == 0)
 			continue; /* wrong registers */
 

@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.211 2007/11/28 03:02:08 gmcgarry Exp $	*/
+/*	$Id: reader.c,v 1.212 2007/12/11 12:14:12 mickey Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -436,6 +436,7 @@ again:	switch (o = p->n_op) {
 	case TEMP:
 	case NAME:
 	case ICON:
+	case FCON:
 	case OREG:
 		rv = findleaf(p, cookie);
 		break;
