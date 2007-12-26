@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.65 2007/11/18 17:28:36 ragge Exp $	*/
+/*	$Id: local.c,v 1.66 2007/12/26 13:22:25 stefan Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -399,6 +399,8 @@ myp2tree(NODE *p)
 
 		p->n_op -= (ULT-LT);
 		break;
+	case FCON:
+		cerror("fix float constants");
 	}
 }
 
