@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.62 2007/10/06 15:19:22 ragge Exp $	*/
+/*	$Id: scan.l,v 1.63 2007/10/10 16:22:39 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -388,8 +388,7 @@ cvtdig(int radix)
 			ntype = UNSIGNED;
 	}
 	ntype = ctype(ntype);
-	p = block(ICON, NIL, NIL, ntype, 0, MKSUE(ntype));
-	p->n_lval = v;
+	p = xbcon(v, NULL, ntype);
 	ASGLVAL(p->n_slval, v);
 
 	return p;
