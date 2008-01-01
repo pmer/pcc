@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.3 2007/11/22 14:36:36 stefan Exp $	*/
+/*	$Id: code.c,v 1.4 2007/11/26 20:14:03 stefan Exp $	*/
 /*
  * Copyright (c) 2006 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -40,17 +40,14 @@ defalign(int n)
 }
 
 /*
- * define the current location as the name p->sname
+ * define the current location as the name p->soname
  * never called for text segment.
  */
 void
 defnam(struct symtab *p)
 {
-	char *c = p->sname;
+	char *c = p->soname;
 
-#ifdef GCC_COMPAT
-	c = gcc_findname(p);
-#endif
 	if (p->sclass == EXTDEF)
 		printf("	.globl %s\n", c);
 	printf("%s:\n", c);

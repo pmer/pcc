@@ -1,4 +1,4 @@
-/*      $Id: code.c,v 1.5 2007/12/13 03:59:04 gmcgarry Exp $    */
+/*      $Id: code.c,v 1.6 2007/12/30 10:31:50 ragge Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -63,11 +63,8 @@ deflab(int label)
 void
 defnam(struct symtab *p)
 {
-	char *c = p->sname;
+	char *c = p->soname;
 
-#ifdef GCC_COMPAT
-	c = gcc_findname(p);
-#endif
 	if (p->sclass == EXTDEF)
 		printf("\t.global %s\n", exname(c));
 	printf("%s:\n", exname(c));
