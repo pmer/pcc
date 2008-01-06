@@ -1,4 +1,4 @@
-/*      $Id: match.c,v 1.76 2007/12/22 10:18:56 stefan Exp $   */
+/*      $Id: match.c,v 1.77 2007/12/26 12:23:22 ragge Exp $   */
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -277,8 +277,10 @@ expand(NODE *p, int cookie, char *cp)
 
 		case 'F':  /* this line deleted if FOREFF is active */
 			if (cookie & FOREFF) {
-				while (*++cp != '\n' && *(cp - 1) != '\0')
-					continue;
+				while (*cp && *cp != '\n')
+					cp++;
+				if (*cp == 0)
+					return;
 			}
 			continue;
 
