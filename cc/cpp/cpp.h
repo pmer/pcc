@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.30 2007/10/12 21:37:36 stefan Exp $	*/
+/*	$Id: cpp.h,v 1.31 2007/10/18 20:41:41 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -29,7 +29,7 @@
 
 #include <stdio.h> /* for obuf */
 
-#include "../../config.h"
+#include "config.h"
 
 typedef unsigned char usch;
 #ifdef YYTEXT_POINTER
