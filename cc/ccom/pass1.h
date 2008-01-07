@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.132 2008/01/01 17:17:57 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.133 2008/01/06 15:07:06 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -35,6 +35,7 @@
 
 #include <sys/types.h>
 #include <stdarg.h>
+#include <stdint.h>
 
 #include "manifest.h"
 
