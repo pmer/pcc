@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.186 2008/01/18 18:14:10 stefan Exp $	*/
+/*	$Id: cgram.y,v 1.187 2008/01/26 22:16:17 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -515,7 +515,9 @@ moe_list:	   moe
 		;
 
 moe:		   C_NAME {  moedef($1); }
+		|  C_TYPENAME {  moedef($1); }
 		|  C_NAME '=' con_e { enummer = $3; moedef($1); }
+		|  C_TYPENAME '=' con_e { enummer = $3; moedef($1); }
 		;
 
 struct_dcl:	   str_head '{' struct_dcl_list '}' empty {
