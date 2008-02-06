@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.190 2008/01/29 21:50:30 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.191 2008/02/02 16:27:50 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1348,6 +1348,11 @@ fundef(NODE *tp, NODE *p)
 	struct symtab *s;
 	int class = tp->n_lval, oclass;
 	char *c;
+
+	if (p->n_op != CALL && p->n_op != UCALL) {
+		uerror("invalid function definition");
+		p = bdty(UCALL, p);
+	}
 
 	/* Save function args before they are clobbered in tymerge() */
 	/* Typecheck against prototype will be done in defid(). */
