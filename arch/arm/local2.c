@@ -1,4 +1,4 @@
-/*      $Id: local2.c,v 1.8 2007/11/26 00:26:46 gmcgarry Exp $    */
+/*      $Id: local2.c,v 1.9 2007/12/22 10:18:55 stefan Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -34,6 +34,8 @@
 
 #include "pass1.h"
 #include "pass2.h"
+
+extern void defalign(int);
 
 /*
  * these mnemonics match the order of the preprocessor decls
