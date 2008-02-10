@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.24 2008/01/06 15:10:41 ragge Exp $	*/
+/*	$Id: code.c,v 1.25 2008/01/07 21:33:44 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -48,6 +48,13 @@ defloc(struct symtab *sp)
 	}
 	t = sp->stype;
 	s = ISFTN(t) ? PROG : ISCON(cqual(t, sp->squal)) ? RDATA : DATA;
+#ifdef TLS
+	if (sp->sflags & STLS) {
+		if (s != DATA)
+			cerror("non-data symbol in tls section");
+		nextsect = ".tdata";
+	}
+#endif
 	if (nextsect) {
 		printf("	.section %s\n", nextsect);
 		nextsect = NULL;
