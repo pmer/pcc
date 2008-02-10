@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.9 2007/12/22 10:18:55 stefan Exp $	*/
+/*	$Id: local2.c,v 1.10 2008/01/06 15:12:31 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -860,7 +860,6 @@ adrput(FILE *io, NODE *p)
 		conput(io, p);
 		return;
 
-	case MOVE:
 	case REG:
 		switch (p->n_type) {
 		case LONGLONG:
