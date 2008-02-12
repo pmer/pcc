@@ -1,4 +1,4 @@
-/*      $Id: local2.c,v 1.11 2008/02/10 19:25:43 ragge Exp $    */
+/*      $Id: local2.c,v 1.9 2007/12/22 10:18:55 stefan Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -690,7 +690,13 @@ adrput(FILE *io, NODE *p)
 
 	case OREG:
 		r = p->n_rval;
-		fprintf(io, "[%s,#%d]", rnames[p->n_rval], (int)p->n_lval);
+                if (R2TEST(r))
+			fprintf(io, "[%s, %s, lsl #%d]",
+				rnames[R2UPK1(r)],
+				rnames[R2UPK2(r)],
+				R2UPK3(r));
+		else
+			fprintf(io, "[%s,#%d]", rnames[p->n_rval], (int)p->n_lval);
 		return;
 
 	case ICON:
