@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.215 2008/02/09 11:09:38 ragge Exp $	*/
+/*	$Id: reader.c,v 1.216 2008/02/10 19:22:21 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -309,7 +309,7 @@ emit(struct interpass *ip)
 		deflab(ip->ip_lbl);
 		break;
 	case IP_ASM:
-		printf("\t%s\n", ip->ip_asm);
+		printf("%s", ip->ip_asm);
 		break;
 	default:
 		cerror("emit %d", ip->type);
