@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.6 2007/12/03 15:47:00 gmcgarry Exp $	*/
+/*	$Id: ccconfig.h,v 1.7 2008/01/06 17:18:55 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -48,6 +48,7 @@
 #define	DYNLINKER { "-dynamic-linker", "/lib/ld-linux.so.2", NULL }
 
 #define CRT0FILE LIBDIR "crt1.o"
+#define CRT0FILE_PROFILE LIBDIR "gcrt1.o"
 #define	LIBCLIBS { "-lc", "-lgcc_s", NULL }
 
 #define STARTFILES { LIBDIR "crti.o", GCCLIBDIR "crtbegin.o", NULL }
