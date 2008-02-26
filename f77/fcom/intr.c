@@ -1,4 +1,4 @@
-/*	$Id: intr.c,v 1.4 2005/04/30 07:55:34 ragge Exp $	*/
+/*	$Id: intr.c,v 1.5 2005/05/01 13:26:43 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -33,6 +33,10 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "macdefs.h"
+
+#include "ftypes.h"
+#include "defines.h"
 #include "defs.h"
 
 union
