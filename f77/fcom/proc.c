@@ -1,4 +1,4 @@
-/*	$Id: proc.c,v 1.8 2008/02/26 17:15:02 ragge Exp $	*/
+/*	$Id: proc.c,v 1.9 2008/02/26 21:35:40 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -33,8 +33,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 #include <string.h>
-
-#include "macdefs.h"
 
 #include "ftypes.h"
 #include "defines.h"
