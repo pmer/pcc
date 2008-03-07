@@ -1,4 +1,4 @@
-/*      $Id: local.c,v 1.12 2008/03/03 02:58:28 gmcgarry Exp $    */
+/*      $Id: local.c,v 1.13 2008/03/06 06:07:02 gmcgarry Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -592,10 +592,10 @@ ninval(CONSZ off, int fsz, NODE *p)
 		if (!features(FEATURE_BIGENDIAN))
 #endif
 			printf("\t.word\t0x%x\n\t.word\t0x%x\n",
-			    u.i[1], u.i[0]);
+			    u.i[0], u.i[1]);
 		else
 			printf("\t.word\t0x%x\n\t.word\t0x%x\n",
-			    u.i[0], u.i[1]);
+			    u.i[1], u.i[0]);
 		break;
 	case FLOAT:
 		u.f = (float)p->n_dcon;
