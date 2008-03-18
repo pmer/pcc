@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.71 2008/01/06 17:18:55 ragge Exp $	*/
+/*	$Id: manifest.h,v 1.72 2008/02/20 01:11:38 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -168,6 +168,7 @@
 #define DATA		1		/* (rw) data segment */
 #define RDATA		2		/* (ro) data segment */
 #define STRNG		3		/* (ro) string segment */
+#define	UDATA		4		/* (rw) uninitialized data */
 
 
 #define	regno(p)	((p)->n_rval)	/* register number */
