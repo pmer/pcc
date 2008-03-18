@@ -1,5 +1,5 @@
 %{
-/*	$Id: scanner.l,v 1.32 2008/01/15 16:40:15 ragge Exp $   */
+/*	$Id: scanner.l,v 1.33 2008/02/26 14:34:09 reed Exp $   */
 
 /*
  * Copyright (c) 2004 Anders Magnusson. All rights reserved.
@@ -596,7 +596,7 @@ chknl(int ignore)
 	slow = 1;
 	while ((t = yylex()) == WSPACE)
 		;
-	if (t != '\n')
+	if (t != '\n') {
 		if (ignore) {
 			warning("newline expected, got \"%s\"", yytext);
 			/* ignore rest of line */
@@ -605,6 +605,7 @@ chknl(int ignore)
 		}
 		else
 			error("newline expected, got \"%s\"", yytext);
+	}
 	slow = 0;
 }
 
