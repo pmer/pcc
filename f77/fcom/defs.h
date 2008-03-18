@@ -1,4 +1,4 @@
-/*	$Id: defs.h,v 1.12 2008/03/14 17:26:48 ragge Exp $	*/
+/*	$Id: defs.h,v 1.13 2008/03/16 10:28:14 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -37,6 +37,7 @@
 #include <stdlib.h>
 
 #define VL 6
+#define XL 8
 
 #define MAXINCLUDES 10
 #define MAXLITERALS 20
