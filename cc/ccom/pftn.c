@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.195 2008/02/10 22:14:28 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.196 2008/03/18 21:54:54 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -483,6 +483,11 @@ dclargs()
 	struct params *a;
 	struct symtab *p, **parr = NULL; /* XXX gcc */
 	int i;
+
+	if (lparam->sym == NULL) {
+		uerror("parameter name omitted");
+		return;
+	}
 
 	/*
 	 * Deal with fun(void) properly.
