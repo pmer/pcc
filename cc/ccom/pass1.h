@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.138 2008/02/09 16:16:52 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.139 2008/02/10 10:03:58 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -304,7 +304,6 @@ void endinit(void);
 void ilbrace(void);
 void irbrace(void);
 void scalinit(NODE *p);
-int ftoint(NODE *, CONSZ **);
 void p1print(char *fmt, ...);
 char *copst(int);
 int cdope(int);
