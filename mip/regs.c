@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.167 2007/12/30 10:31:51 ragge Exp $	*/
+/*	$Id: regs.c,v 1.168 2008/02/09 11:09:38 ragge Exp $	*/
 /*
  * Copyright (c) 2005 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -952,6 +952,13 @@ insnwalk(NODE *p)
 	}
 
 	if (o == ASSIGN) {
+		/* avoid use of unhandled registers */
+		if (p->n_left->n_op == REG &&
+		    !TESTBIT(validregs, regno(p->n_left)))
+			lr = NULL;
+		if (p->n_right->n_op == REG &&
+		    !TESTBIT(validregs, regno(p->n_right)))
+			rr = NULL;
 		/* needs special treatment */
 		if (lr && rr)
 			moveadd(lr, rr);
