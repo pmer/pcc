@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.11 2008/02/20 01:19:15 gmcgarry Exp $	*/
+/*	$Id: ccconfig.h,v 1.12 2008/03/14 17:32:34 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -61,6 +61,7 @@
 #define CPPMDADD { "-D__pdp10__", NULL, }
 #elif defined(mach_powerpc)
 #define	CPPMDADD { "-D__ppc__", NULL, }
+#define STARTLABEL "_start"
 #elif defined(mach_vax)
 #define CPPMDADD { "-D__vax__", NULL, }
 #elif defined(mach_sparc64)
