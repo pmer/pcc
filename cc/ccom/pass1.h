@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.139 2008/02/10 10:03:58 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.140 2008/03/20 00:25:20 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -33,9 +33,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "config.h"
+
 #include <sys/types.h>
 #include <stdarg.h>
+#ifdef HAVE_STDINT_H
 #include <stdint.h>
+#endif
 
 #include "manifest.h"
 
