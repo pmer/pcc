@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.11 2008/01/22 05:08:58 david Exp $	*/
+/*	$Id: table.c,v 1.12 2008/04/15 00:46:17 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -755,7 +755,7 @@ struct optab table[] = {
 { UMINUS,	INBREG,
 	SBREG,	TLONGLONG|TULONGLONG,
 	SANY,	TANY,
-		NBREG|NAREG|NBSL,	RESC1,
+		NBREG|NAREG|NBSL,	RESC2,
 		"	subu A1,$zero,AL\n"
 		"	subu U1,$zero,UL\n"
 		"	sltu A2,$zero,A1\n"
