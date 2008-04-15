@@ -1,4 +1,4 @@
-/*      $Id: match.c,v 1.77 2007/12/26 12:23:22 ragge Exp $   */
+/*      $Id: match.c,v 1.78 2008/01/06 05:40:41 ragge Exp $   */
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -60,9 +60,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-# include "pass2.h"
+#include "pass2.h"
 
+#ifdef HAVE_STRINGS_H
 #include <strings.h>
+#endif
 
 void prttype(int t);
 void setclass(int tmp, int class);
