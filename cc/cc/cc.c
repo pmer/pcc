@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.86 2008/04/15 10:03:31 gmcgarry Exp $	*/
+/*	$Id: cc.c,v 1.87 2008/04/16 02:32:04 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -280,7 +280,8 @@ main(int argc, char *argv[])
 				break;
 
 			case 'p':
-				if (strcmp(argv[i], "-pg") == 0)
+				if (strcmp(argv[i], "-pg") == 0 ||
+				    strcmp(argv[i], "-p") == 0)
 					pgflag++;
 				else if (strcmp(argv[i], "-pthread") == 0)
 					pthreads++;
