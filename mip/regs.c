@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.170 2008/03/31 05:37:35 ragge Exp $	*/
+/*	$Id: regs.c,v 1.171 2008/04/15 10:00:43 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2005 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1047,8 +1047,11 @@ insnwalk(NODE *p)
 
 	case LTYPE:
 		switch (o) {
-		case TEMP:
 		case REG:
+			if (!TESTBIT(validregs, regno(p)))
+				break; /* never add moves */
+			/* FALLTHROUGH */
+		case TEMP:
 			i = regno(p);
 			rr = (o == TEMP ? &nblock[i] :  &ablock[i]);
 			if (rv != rr) {
