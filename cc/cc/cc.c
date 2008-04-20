@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.91 2008/04/19 13:14:06 ragge Exp $	*/
+/*	$Id: cc.c,v 1.92 2008/04/19 13:19:26 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -779,6 +779,7 @@ callsys(char *f, char *v[])
 {
 	int t, status = 0;
 	char cmd[MAX_PATH];
+	int len;
 	STARTUPINFO si;
 	PROCESS_INFORMATION pi;
 	DWORD exitCode;
@@ -814,7 +815,7 @@ callsys(char *f, char *v[])
 	}
 
 	WaitForSingleObject(pi.hProcess, INFINITE);
-	GetExitCodeProcess(pi.hProcess, &exitCode;
+	GetExitCodeProcess(pi.hProcess, &exitCode);
 	return (exitCode != 0);
 }
 
