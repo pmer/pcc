@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.80 2008/04/13 16:36:56 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.81 2008/04/15 09:56:27 gmcgarry Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -81,7 +81,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <unistd.h>
 #include <ctype.h>
 
 #ifdef HAVE_ALLOCA_H
