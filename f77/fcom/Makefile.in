@@ -1,4 +1,4 @@
-#	$Id: Makefile.in,v 1.7 2008/03/16 10:28:13 ragge Exp $
+#	$Id: Makefile.in,v 1.8 2008/04/21 14:41:44 gmcgarry Exp $
 #
 # Makefile for the Fortran 77 command
 #  Running on the @targmach@
@@ -114,4 +114,6 @@ external.h external.c: ${MIPDIR}/mkext.c $(MDIR)/table.c
 	${MIPDIR}/mkext.c $(MDIR)/table.c ${MIPDIR}/common.c
 	./mkext
 	-rm -f mkext.o table.o common.o
+
+$(OBJS): external.h
 
