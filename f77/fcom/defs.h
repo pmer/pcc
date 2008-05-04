@@ -1,4 +1,4 @@
-/*	$Id: defs.h,v 1.14 2008/03/18 16:42:38 ragge Exp $	*/
+/*	$Id: defs.h,v 1.15 2008/03/23 09:17:44 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -51,8 +51,8 @@
 typedef struct bigblock *bigptr;
 typedef union chainedblock *chainp;
 
-extern FILEP infile;
-extern FILEP diagfile;
+extern FILE *infile;
+extern FILE *diagfile;
 extern long int headoffset;
 
 extern char token [ ];

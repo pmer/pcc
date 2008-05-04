@@ -1,4 +1,4 @@
-/*	$Id: init.c,v 1.10 2008/03/14 17:26:48 ragge Exp $	*/
+/*	$Id: init.c,v 1.11 2008/03/23 09:17:44 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -37,8 +37,8 @@
 #include "defs.h"
 
 
-FILEP infile	= { stdin };
-FILEP diagfile	= { stderr };
+FILEP infile;
+FILEP diagfile;
 
 long int headoffset;
 
