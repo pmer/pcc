@@ -1,4 +1,4 @@
-/*	$Id: expr.c,v 1.17 2008/03/22 16:22:25 ragge Exp $	*/
+/*	$Id: expr.c,v 1.18 2008/03/23 09:17:44 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -34,7 +34,6 @@
  */
 #include <string.h>
 
-#include "ftypes.h"
 #include "defines.h"
 #include "defs.h"
 

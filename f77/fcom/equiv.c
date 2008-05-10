@@ -1,4 +1,4 @@
-/*	$Id: equiv.c,v 1.8 2008/02/26 21:35:40 ragge Exp $	*/
+/*	$Id: equiv.c,v 1.9 2008/03/05 18:50:33 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -33,7 +33,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ftypes.h"
 #include "defines.h"
 #include "defs.h"
 
