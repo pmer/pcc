@@ -1,4 +1,4 @@
-/*	$Id: lex.c,v 1.10 2008/05/04 09:53:35 ragge Exp $	*/
+/*	$Id: lex.c,v 1.11 2008/05/10 07:53:41 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -186,11 +186,11 @@ popinclude()
 
 	if(infile != stdin)
 		fclose(infile);
-	free(infname);
+	ckfree(infname);
 
 	--nincl;
 	t = inclp->inclnext;
-	free(inclp);
+	ckfree(inclp);
 	inclp = t;
 	if(inclp == NULL)
 		return(NO);
@@ -206,7 +206,7 @@ popinclude()
 		p = inclp->incllinp;
 		while(--k >= 0)
 			*endcd++ = *p++;
-		free(inclp->incllinp);
+		ckfree(inclp->incllinp);
 	} else
 		nextcd = NULL;
 	return(YES);

@@ -1,4 +1,4 @@
-/*	$Id: defs.h,v 1.17 2008/05/04 16:47:23 ragge Exp $	*/
+/*	$Id: defs.h,v 1.18 2008/05/05 21:34:45 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -203,8 +203,6 @@ struct entrypoint
 
 struct primblock
 	{
-	unsigned tag:4;
-	unsigned vtype:4;
 	struct bigblock *namep;
 	struct bigblock *argsp;
 	bigptr fcharp;
@@ -549,6 +547,9 @@ struct bigblock *intraddr(struct bigblock *np);
 struct bigblock *intrcall(bigptr, bigptr, int);
 void setloc(int);
 void prnloc(char *name);
+void fprint(bigptr p, int indx);
+void ckfree(void *p);
+
 
 int fno;
 int type;
