@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.202 2008/04/13 17:14:22 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.203 2008/04/18 06:54:50 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -671,6 +671,8 @@ ibrace:		   '{' {  ilbrace(); }
 /*	STATEMENTS	*/
 
 compoundstmt:	   begin block_item_list '}' {  
+			if (sspflag && blevel == 2)
+				sspend();
 #ifdef STABS
 			if (gflag && blevel > 2)
 				stabs_rbrac(blevel);
@@ -685,6 +687,8 @@ compoundstmt:	   begin block_item_list '}' {
 			savctx = savctx->next;
 		}
 		|  begin '}' {
+			if (sspflag && blevel == 2)
+				sspend();
 #ifdef STABS
 			if (gflag && blevel > 2)
 				stabs_rbrac(blevel);
@@ -719,6 +723,8 @@ begin:		  '{' {
 			bc->next = savctx;
 			savctx = bc;
 			bccode();
+			if (sspflag && blevel == 2)
+				sspstart();
 		}
 		;
 
