@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.203 2008/04/18 06:54:50 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.204 2008/06/20 05:54:26 gmcgarry Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1121,8 +1121,7 @@ funct_idn:	   C_NAME  '(' {
 			}
 			if (s->sflags & SINLINE)
 				inline_ref(s);
-			spname = s;
-			$$ = buildtree(NAME, NIL, NIL);
+			$$ = nametree(s);
 		}
 		|  term  '(' 
 		;
