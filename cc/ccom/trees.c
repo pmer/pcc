@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.196 2008/06/19 12:23:22 gmcgarry Exp $	*/
+/*	$Id: trees.c,v 1.197 2008/06/20 11:44:13 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2000,7 +2000,8 @@ ecomp(NODE *p)
 		fwalk(p, eprint, 0);
 #endif
 	if (!reached) {
-		werror("statement not reached");
+		if (Wunreachable_code)
+			werror("statement not reached");
 		reached = 1;
 	}
 	p = optim(p);
