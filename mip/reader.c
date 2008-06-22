@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.223 2008/05/16 02:02:15 gmcgarry Exp $	*/
+/*	$Id: reader.c,v 1.224 2008/06/19 07:41:12 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -614,7 +614,9 @@ genxasm(NODE *p)
 	putchar('\t');
 	while (*w != 0) {
 		if (*w == '%') {
-			if (w[1] < '0' || w[1] > (n + '0'))
+			if (w[1] == '%')
+				putchar('%');
+			else if (w[1] < '0' || w[1] > (n + '0'))
 				uerror("bad xasm arg number");
 			else
 				adrput(stdout, nary[(int)w[1]-'0']->n_left);
