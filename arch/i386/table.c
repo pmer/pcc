@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.103 2008/04/02 19:40:59 ragge Exp $	*/
+/*	$Id: table.c,v 1.104 2008/05/05 21:36:06 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -229,7 +229,7 @@ struct optab table[] = {
 
 /* convert int to char. This is done when register is loaded */
 { SCONV,	INCH,
-	SAREG,	TWORD,
+	SAREG,	TWORD|TPOINT,
 	SANY,	TCHAR|TUCHAR,
 		NSPECIAL|NBREG|NBSL,	RESC1,
 		"ZM", },
