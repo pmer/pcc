@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.206 2008/06/22 15:25:00 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.207 2008/06/23 07:44:49 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1509,7 +1509,7 @@ maxstlen(char *str)
 	int i;
 
 	for (i = 0; *str; str++, i++)
-		if (*str == '\\')
+		if (*str == '\\' || *str < 32 || *str > 0176)
 			i += 3;
 	return i;
 }
