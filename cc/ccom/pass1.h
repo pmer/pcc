@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.144 2008/06/20 05:54:26 gmcgarry Exp $	*/
+/*	$Id: pass1.h,v 1.145 2008/06/20 13:19:03 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -277,7 +277,6 @@ struct symtab *lookup(char *, int);
 struct symtab *getsymtab(char *, int);
 char *addstring(char *);
 char *addname(char *);
-char *newstring(char *, int);
 void symclear(int);
 struct symtab *hide(struct symtab *);
 void soumemb(NODE *, char *, int);
