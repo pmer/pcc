@@ -1,11 +1,11 @@
-#	$Id: Makefile.in,v 1.1 2005/05/14 11:22:00 ragge Exp $
+#	$Id: Makefile.in,v 1.2 2008/02/26 16:55:24 ragge Exp $
 #
 # Makefile.in for top-level of pcc.
 #
 
 @SET_MAKE@
 CC=@CC@
-CFLAGS=@CFLAGS@
+CFLAGS=@CFLAGS@ @ADD_CFLAGS@
 LDFLAGS=@LDFLAGS@
 CPPFLAGS=@CPPFLAGS@
 YACC=@YACC@
