@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.16 2008/06/19 07:34:30 gmcgarry Exp $	*/
+/*	$Id: code.c,v 1.17 2008/07/29 13:25:58 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -556,6 +556,12 @@ ejobcode(int flag )
 	        }
 
 	}
+#endif
+
+#ifndef os_darwin
+#define OSB(x) __STRING(x)
+#define OS OSB(TARGOS)
+        printf("\t.ident \"PCC: %s (%s)\"\n", PACKAGE_STRING, OS);
 #endif
 
 }
