@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.118 2008/08/02 09:11:38 gmcgarry Exp $	*/
+/*	$Id: cc.c,v 1.119 2008/08/07 00:30:06 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -1114,9 +1114,12 @@ copy(char *s, int extra)
 int
 cunlink(char *f)
 {
+#ifdef WIN32
+#define unlink(f) _unlink(f)
+#endif
 	if (f==0 || Xflag)
 		return(0);
-	return(unlink(f));
+	return (unlink(f));
 }
 
 #ifdef WIN32

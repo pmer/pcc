@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.84 2008/06/25 12:00:10 gmcgarry Exp $	*/
+/*	$Id: main.c,v 1.85 2008/07/18 02:17:09 gmcgarry Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -92,6 +92,9 @@ segvcatch(int a)
 
 	snprintf(buf, sizeof buf, "%sinternal compiler error: %s, line %d\n",
 	    nerrors ? "" : "major ", ftitle, lineno);
+#ifdef WIN32
+#define write _write
+#endif
 	write(STDERR_FILENO, buf, strlen(buf));
 	_exit(1);
 }
