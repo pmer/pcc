@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.150 2008/07/29 13:36:19 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.151 2008/08/08 12:26:45 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -205,7 +205,7 @@ extern	int flostat;
 extern	int retlab;
 
 /* pragma globals */
-extern int pragma_packed, pragma_aligned;
+extern int pragma_allpacked, pragma_packed, pragma_aligned;
 extern char *pragma_renamed;
 
 /*
