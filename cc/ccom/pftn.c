@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.222 2008/08/08 17:30:53 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.223 2008/08/13 22:56:33 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -810,7 +810,7 @@ dclstruct(struct rstack *r)
 		else
 			sz = tsize(sp->stype, sp->sdf, sp->ssue);
 
-		if (pragma_packed || pragma_aligned) {
+		if ((pragma_packed || pragma_aligned) && temp == STRTY) {
 			/* XXX check pack/align sizes */
 			sp->soffset = coff;
 			if (pragma_aligned)
