@@ -1,4 +1,4 @@
-/*      $Id: order.c,v 1.7 2008/04/14 01:55:54 gmcgarry Exp $    */
+/*      $Id: order.c,v 1.8 2008/04/27 11:37:03 gmcgarry Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -127,10 +127,12 @@ myormake(NODE *q)
  * Check to if the UMUL node can be converted into an OREG.
  */
 int
-shumul(NODE *p)
+shumul(NODE *p, int shape)
 {
 	/* Turns currently anything into OREG */
-	return SOREG;
+	if (shape & SOREG)
+		return SROREG;
+	return SRNOPE;
 }
 
 /*
