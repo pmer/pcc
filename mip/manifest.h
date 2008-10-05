@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.79 2008/06/29 13:45:10 ragge Exp $	*/
+/*	$Id: manifest.h,v 1.80 2008/07/16 10:09:57 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -185,7 +185,7 @@ extern int Wstrict_prototypes, Wmissing_prototypes, Wimplicit_int,
 	Wsign_compare, Wunknown_pragmas, Wunreachable_code;
 extern int funsigned_char;
 extern int sspflag;
-extern int xssaflag, xtailcallflag, xtemps, xdeljumps;
+extern int xssaflag, xtailcallflag, xtemps, xdeljumps, xdce;
 
 int yyparse(void);
 void yyaccpt(void);
