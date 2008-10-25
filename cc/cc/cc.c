@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.126 2008/08/18 20:46:28 ragge Exp $	*/
+/*	$Id: cc.c,v 1.127 2008/08/29 04:46:20 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
