@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.63 2008/08/08 12:48:57 gmcgarry Exp $	*/
+/*	$Id: macdefs.h,v 1.64 2008/10/21 09:35:47 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -132,6 +132,8 @@ typedef long long OFFSZ;
 #define	RTOLBYTES		/* bytes are numbered right to left */
 
 #define ENUMSIZE(high,low) INT	/* enums are always stored in full int */
+
+#define FINDMOPS	/* i386 has instructions that modifies memory */
 
 /* Definitions mostly used in pass2 */
 
