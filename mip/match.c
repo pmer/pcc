@@ -1,4 +1,4 @@
-/*      $Id: match.c,v 1.85 2008/10/05 15:55:31 ragge Exp $   */
+/*      $Id: match.c,v 1.86 2008/10/18 13:05:43 ragge Exp $   */
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -323,6 +323,11 @@ expand(NODE *p, int cookie, char *cp)
 			continue;
 
 		case 'O':  /* opcode string */
+#ifdef FINDMOPS
+			if (p->n_op == ASSIGN)
+				hopcode(*++cp, p->n_right->n_op);
+			else
+#endif
 			hopcode( *++cp, p->n_op );
 			continue;
 
