@@ -24,7 +24,7 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * $Id: compat.c,v 1.6 2008/06/21 23:34:11 gmcgarry Exp $
+ * $Id: compat.c,v 1.7 2008/08/08 23:19:28 gmcgarry Exp $
  */
 
 /*-
@@ -100,6 +100,7 @@
 #include <fcntl.h>
 
 #include "config.h"
+#define MKEXT	/* XXX */
 #include "manifest.h"
 
 #ifndef HAVE_STRLCAT
