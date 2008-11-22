@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.156 2008/11/15 14:02:39 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.157 2008/11/20 21:19:09 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -339,6 +339,7 @@ NODE *nametree(struct symtab *sp);
 void *inlalloc(int size);
 void pass1_lastchance(struct interpass *);
 void fldty(struct symtab *p);
+int getlab(void);
 
 #ifdef SOFTFLOAT
 typedef struct softfloat SF;
