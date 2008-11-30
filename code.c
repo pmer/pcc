@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.13 2008/01/06 16:05:59 ragge Exp $	*/
+/*	$Id: code.c,v 1.14 2008/07/29 13:25:58 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -307,7 +307,7 @@ param_double(struct symtab *sym, int *regp, int dotemps)
 		sym->sflags |= STNODE;
 	} else {
 		q = tempnode(tmpnr, sym->stype, sym->sdf, sym->ssue);
-		p = buildtree(sym);
+		p = nametree(sym);
 		p = buildtree(ASSIGN, p, q);
 		ecomp(p);
 	}
