@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.217 2008/11/22 16:07:35 ragge Exp $	*/
+/*	$Id: trees.c,v 1.218 2008/11/28 16:36:06 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -70,7 +70,7 @@
 # include "pass2.h"
 
 # include <stdarg.h>
-# include <strings.h>
+# include <string.h>
 
 static void chkpun(NODE *p);
 static int opact(NODE *p);
