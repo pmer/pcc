@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.195 2008/11/27 19:34:30 ragge Exp $	*/
+/*	$Id: regs.c,v 1.196 2008/11/30 11:41:47 ragge Exp $	*/
 /*
  * Copyright (c) 2005 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2344,7 +2344,8 @@ temparg(struct interpass *ipole, REGW *w)
 	NODE *p;
 
 	ip = DLIST_NEXT(ipole, qelem); /* PROLOG */
-	ip = DLIST_NEXT(ip, qelem); /* first DEFLAB */
+	while (ip->type != IP_DEFLAB)
+		ip = DLIST_NEXT(ip, qelem);
 	ip = DLIST_NEXT(ip, qelem); /* first NODE */
 	for (; ip->type != IP_DEFLAB; ip = DLIST_NEXT(ip, qelem)) {
 		if (ip->type == IP_ASM)
