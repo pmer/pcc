@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.130 2008/11/30 21:17:44 ragge Exp $	*/
+/*	$Id: cc.c,v 1.131 2008/12/01 07:42:00 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -593,7 +593,6 @@ main(int argc, char *argv[])
 		errorx(8, "-o given with -c || -E || -S and more than one file");
 	if (outfile && clist[0] && strcmp(outfile, clist[0]) == 0)
 		errorx(8, "output file will be clobbered");
-	if (gflag) Oflag = 0;
 #if 0
 	if (proflag)
 		pref = "/lib/mcrt0.o";
