@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.232 2008/11/20 21:19:09 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.233 2008/11/28 16:36:06 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -498,6 +498,7 @@ ftnend()
 	}
 	savbc = NULL;
 	lparam = NULL;
+	cftnsp = NULL;
 	maxautooff = autooff = AUTOINIT;
 	reached = 1;
 
