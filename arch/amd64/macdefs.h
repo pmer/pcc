@@ -1,4 +1,4 @@
-/*	$Id$	*/
+/*	$Id: macdefs.h,v 1.1 2008/11/27 05:25:15 mickey Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -67,7 +67,8 @@
 #define ALDOUBLE	64
 #define ALLDOUBLE	128
 #define ALSTRUCT	128
-#define ALSTACK		64 
+#define ALSTACK		64
+#define ALMAX		128 
 
 /*
  * Min/max values.
