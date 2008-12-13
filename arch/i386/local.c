@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.91 2008/11/29 22:06:44 ragge Exp $	*/
+/*	$Id: local.c,v 1.92 2008/12/01 07:43:20 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1147,6 +1147,7 @@ void
 defzero(struct symtab *sp)
 {
 	int off;
+	int al;
 
 #ifdef TLS
 	if (sp->sflags & STLS) {
@@ -1157,13 +1158,17 @@ defzero(struct symtab *sp)
 	}
 #endif
 
+	al = talign(sp->stype, sp->ssue)/SZCHAR;
 	off = tsize(sp->stype, sp->sdf, sp->ssue);
 	off = (off+(SZCHAR-1))/SZCHAR;
 	printf("	.%scomm ", sp->sclass == STATIC ? "l" : "");
 	if (sp->slevel == 0)
-		printf("%s,0%o\n", exname(sp->soname), off);
+		printf("%s,0%o", exname(sp->soname), off);
 	else
-		printf(LABFMT ",0%o\n", sp->soffset, off);
+		printf(LABFMT ",0%o", sp->soffset, off);
+	if (sp->sclass != STATIC)
+		printf(",%d", al);
+	printf("\n");
 }
 
 static char *
