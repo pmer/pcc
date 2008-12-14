@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.36 2008/12/01 07:16:51 gmcgarry Exp $	*/
+/*	$Id: code.c,v 1.37 2008/12/10 16:51:49 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -60,6 +60,8 @@ defloc(struct symtab *sp)
 		nextsect = ".tdata";
 	}
 #endif
+	if (sp->ssue->suesection)
+		nextsect = sp->ssue->suesection;
 	if (nextsect) {
 		printf("	.section %s\n", nextsect);
 		nextsect = NULL;
