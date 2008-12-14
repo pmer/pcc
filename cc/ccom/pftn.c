@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.239 2008/12/12 20:38:41 pantzer Exp $	*/
+/*	$Id: pftn.c,v 1.240 2008/12/13 20:03:32 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -615,9 +615,7 @@ static void
 defstr(struct symtab *sp, int class)
 {
 	sp->ssue = permalloc(sizeof(struct suedef));
-	sp->ssue->suesize = 0;
-	sp->ssue->sylnk = NULL; 
-	sp->ssue->suealign = 0;
+	memset(sp->ssue, 0, sizeof(struct suedef));
 	sp->sclass = class;
 	if (class == STNAME)
 		sp->stype = STRTY;
@@ -1771,6 +1769,7 @@ tymerge(NODE *typ, NODE *idp)
 		if (sue->suealigned > s->suealign)
 			s->suealign = sue->suealigned;
 		s->suepacked = sue->suepacked;
+		s->suesection = sue->suesection;
 	}
 #else
 	if (sue) {
