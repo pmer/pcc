@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.164 2008/12/12 17:31:01 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.165 2008/12/14 17:19:50 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -74,7 +74,6 @@ typedef unsigned int bittype; /* XXX - for basicblock */
 #define MOE		16
 #define UFORTRAN 	17
 #define USTATIC		18
-#define ILABEL		19
 
 	/* field size is ORed in */
 #define FIELD		0100
