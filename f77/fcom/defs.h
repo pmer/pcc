@@ -1,4 +1,4 @@
-/*	$Id: defs.h,v 1.19 2008/05/11 15:28:03 ragge Exp $	*/
+/*	$Id: defs.h,v 1.20 2008/05/12 20:07:47 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -551,12 +551,6 @@ void setloc(int);
 void prnloc(char *name);
 void fprint(bigptr p, int indx);
 void ckfree(void *p);
-
-
-int fno;
-int type;
-chainp args;
-
 
 #undef expptr
 #undef tagptr

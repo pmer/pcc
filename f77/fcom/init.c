@@ -1,4 +1,4 @@
-/*	$Id: init.c,v 1.13 2008/05/10 07:53:41 ragge Exp $	*/
+/*	$Id: init.c,v 1.14 2008/05/11 15:28:03 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -139,6 +139,17 @@ int nextnames	= 0;
 struct literal litpool[MAXLITERALS];
 int nliterals;
 
+/*
+ * Return a number for internal labels.
+ */
+int getlab(void);
+
+int crslab = 10;
+int
+getlab(void)
+{
+	return crslab++;
+}
 
 
 void
