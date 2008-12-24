@@ -1,4 +1,4 @@
-/*	$Id: init.c,v 1.14 2008/05/11 15:28:03 ragge Exp $	*/
+/*	$Id: init.c,v 1.15 2008/12/19 08:08:48 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -51,6 +51,7 @@ flag nowarnflag	= NO;
 flag ftn66flag	= NO;
 flag profileflag	= NO;
 flag optimflag	= NO;
+flag quietflag	= NO;
 flag shiftcase	= YES;
 flag undeftype	= NO;
 flag shortsubs	= YES;
