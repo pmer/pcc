@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.136 2008/12/22 02:04:11 gmcgarry Exp $	*/
+/*	$Id: cc.c,v 1.137 2009/01/05 14:18:34 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -100,7 +100,7 @@
 #endif
 
 #ifndef COMPILER
-#define COMPILER	"ccom";
+#define COMPILER	"ccom"
 #endif
 
 #ifndef ASSEMBLER
