@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.3 2007/10/26 15:06:41 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.4 2007/11/16 22:35:32 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -82,7 +82,6 @@
 /* Default char is signed */
 #undef  CHAR_UNSIGNED
 #define BOOL_TYPE       CHAR    /* what used to store _Bool */
-#define WCHAR_TYPE      INT     /* what used to store wchar_t */
 
 /*	size in which constants are converted */
 /*	should be long if feasable */
