@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.86 2008/11/22 16:07:35 ragge Exp $	*/
+/*	$Id: common.c,v 1.87 2008/12/03 07:10:04 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -425,6 +425,10 @@ tprint(FILE *fp, TWORD t, TWORD q)
 		"fcomplex", /* pass1 */
 		"dcomplex", /* pass1 */
 		"lcomplex", /* pass1 */
+		"fimag", /* pass1 */
+		"dimag", /* pass1 */
+		"limag", /* pass1 */
+		"enumty", /* pass1 */
 		"?", "?"
 		};
 
