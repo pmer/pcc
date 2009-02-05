@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.6 2008/05/20 05:39:19 gmcgarry Exp $	*/
+/*	$Id: ccconfig.h,v 1.7 2009/01/29 09:33:15 gmcgarry Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -31,11 +31,15 @@
  * Various settings that controls how the C compiler works.
  */
 
+#ifndef LIBDIR
+#define LIBDIR "/usr/lib/"
+#endif
+
 /* common cpp predefines */
 #define	CPPADD	{ "-D__Darwin__", "-D__APPLE__", "-I" INCLUDEDIR "/pcc", NULL }
 #define	DYNLINKER { NULL }
-#define CRT0FILE "/usr/lib/crt1.o"
-#define CRT0FILE_PROFILE "/usr/lib/gcrt1.o"
+#define CRT0FILE PCCLIBDIR "crt1.o"
+#define CRT0FILE_PROFILE PCCLIBDIR "gcrt1.o"
 #define STARTFILES { NULL }
 #define	ENDFILES { NULL }
 #define LIBCLIBS { "-lSystem", "-lpcc", NULL }
