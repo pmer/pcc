@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.97 2009/02/08 18:51:04 ragge Exp $	*/
+/*	$Id: local.c,v 1.98 2009/02/09 20:29:45 pantzer Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -946,7 +946,11 @@ zbits(OFFSZ off, int fsz)
 		}
 	}
 	if (fsz >= SZCHAR) {
-		printf("\t.zero %d\n", fsz/SZCHAR);
+#ifdef os_darwin
+		printf("\t.space %d\n", fsz/SZCHAR);
+#else
+ 		printf("\t.zero %d\n", fsz/SZCHAR);
+#endif
 		fsz -= (fsz/SZCHAR) * SZCHAR;
 	}
 	if (fsz) {
