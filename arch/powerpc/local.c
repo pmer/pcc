@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.20 2009/01/07 11:44:03 gmcgarry Exp $	*/
+/*	$Id: local.c,v 1.21 2009/02/08 16:48:52 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -146,9 +146,9 @@ picstatic(NODE *p)
 {
 	NODE *q;
 	struct symtab *sp;
-	char *n;
 
 #if defined(ELFABI)
+	char *n;
 
 	if (p->n_sp->slevel > 0) {
 		char buf[64];
