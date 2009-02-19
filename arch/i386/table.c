@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.109 2008/10/26 10:28:49 ragge Exp $	*/
+/*	$Id: table.c,v 1.110 2008/11/24 14:52:02 mickey Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -720,21 +720,6 @@ struct optab table[] = {
 	SCON,	TANY,
 		0,	RLEFT|RESCC,
 		"	Ob AR,AL\n", },
-
-/* r |= r/m */
-{ OPSIMP,	INLL|FOREFF,
-	SHLL,	TLL,
-	SHLL|SNAME|SOREG,	TLL,
-		0,	RLEFT,
-		"	Ol AR,AL\n	Ol UR,UL\n", },
-
-/* m/r |= r/const */
-{ OPSIMP,	INLL|FOREFF,
-	SHLL|SNAME|SOREG,	TLL,
-	SHLL|SCON,	TLL,
-		0,	RLEFT,
-		"	Ol AR,AL\n	Ol UR,UL\n", },
-
 
 /*
  * The next rules handle all shift operators.
