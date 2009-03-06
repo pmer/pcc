@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.146 2009/02/19 10:43:18 gmcgarry Exp $	*/
+/*	$Id: cc.c,v 1.147 2009/02/21 21:42:29 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -308,7 +308,7 @@ main(int argc, char *argv[])
 				} else if (strcmp(argv[i], "--param") == 0)
 					/* NOTHING YET */;
 				else
-					error("unrecognized option %s", argv[i]);
+					goto passa;
 				break;
 
 			case 'B': /* other search paths for binaries */
