@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.15 2008/08/08 12:51:15 gmcgarry Exp $	*/
+/*	$Id: table.c,v 1.16 2009/02/14 08:38:55 gmcgarry Exp $	*/
 /*-
  * Copyright (c) 2007 Gregory McGarry <g.mcgarry@ieee.org>
  *
@@ -771,7 +771,7 @@ struct optab table[] = {
 		0,	RDEST,
 		"	lis AL," HA16(AR) "\n"
 		"	addi AL,AL," LO16(AR) "\n"
-		"	lis UL," HA16(UR) "\n"\
+		"	lis UL," HA16(UR) "\n"
 		"	addi UL,UL," LO16(UR) "\n", },
 
 { ASSIGN,	FOREFF|INAREG,
