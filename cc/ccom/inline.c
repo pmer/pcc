@@ -1,4 +1,4 @@
-/*	$Id: inline.c,v 1.25 2008/11/28 15:23:57 ragge Exp $	*/
+/*	$Id: inline.c,v 1.26 2009/01/07 14:21:30 ragge Exp $	*/
 /*
  * Copyright (c) 2003, 2008 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -113,7 +113,9 @@ inline_addarg(struct interpass *ip)
 {
 	extern NODE *cftnod;
 
-//	SDEBUG(("inline_addarg(%p)\n", ip));
+#if 0
+	SDEBUG(("inline_addarg(%p)\n", ip));
+#endif
 	DLIST_INSERT_BEFORE(&cifun->shead, ip, qelem);
 	if (ip->type == IP_DEFLAB)
 		nlabs++;
