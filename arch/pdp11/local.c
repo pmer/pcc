@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.4 2008/12/14 21:16:58 ragge Exp $	*/
+/*	$Id: local.c,v 1.5 2009/02/08 16:41:35 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -402,16 +402,6 @@ instring(struct symtab *sp)
 	}
 	printf("%s0\n", cnt ? "" : ".byte ");
 }
-
-/*
- * Print out a wide string by calling ninval().
- */
-void
-inwstring(struct symtab *sp)
-{
-	uerror("wide strings unsupported");
-}
-
 
 static int inbits, inval;
 

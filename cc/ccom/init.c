@@ -1,4 +1,4 @@
-/*	$Id: init.c,v 1.50 2009/02/07 10:45:44 ragge Exp $	*/
+/*	$Id: init.c,v 1.51 2009/02/08 15:57:26 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004, 2007 Anders Magnusson (ragge@ludd.ltu.se).
@@ -959,8 +959,8 @@ simpleinit(struct symtab *sp, NODE *p)
 	/* May be an initialization of an array of char by a string */
 	if ((DEUNSIGN(p->n_type) == ARY+CHAR &&
 	    DEUNSIGN(sp->stype) == ARY+CHAR) ||
-	    (DEUNSIGN(p->n_type) == ARY+WCHAR_TYPE &&
-	    DEUNSIGN(sp->stype) == ARY+WCHAR_TYPE)) {
+	    (DEUNSIGN(p->n_type) == DEUNSIGN(ARY+WCHAR_TYPE) &&
+	    DEUNSIGN(sp->stype) == DEUNSIGN(ARY+WCHAR_TYPE))) {
 		/* Handle "aaa" as { 'a', 'a', 'a' } */
 		beginit(sp);
 		strcvt(p);
