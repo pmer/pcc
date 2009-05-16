@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.97 2009/01/27 17:12:03 ragge Exp $	*/
+/*	$Id: main.c,v 1.98 2009/01/31 20:37:14 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -367,6 +367,7 @@ main(int argc, char *argv[])
 		nfree(p);
 	}
 #endif
+	complinit();
 
 #ifdef STABS
 	if (gflag) {
