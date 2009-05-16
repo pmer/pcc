@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.199 2009/01/07 11:21:30 ragge Exp $	*/
+/*	$Id: regs.c,v 1.200 2009/03/14 22:18:37 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2005 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2555,8 +2555,10 @@ ngenregs(struct p2env *p2e)
 		nblock = tmpalloc(tbits * sizeof(REGW));
 
 		nblock -= tempmin;
+#ifdef HAVE_C99_FORMAT
 		RDEBUG(("nblock %p num %d size %zu\n",
 		    nblock, tbits, (size_t)(tbits * sizeof(REGW))));
+#endif
 	}
 	live = tmpalloc(BIT2BYTE(xbits));
 
