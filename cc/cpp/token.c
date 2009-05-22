@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.16 2009/04/14 23:22:46 gmcgarry Exp $	*/
+/*	$Id: token.c,v 1.17 2009/04/19 09:15:47 gmcgarry Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -442,9 +442,11 @@ contr:			while ((ch = input()) == ' ' || ch == '\t')
 #define	CC(s)	if (strcmp(yytext, s) == 0)
 			CC("ifndef") {
 				contr = 0; ifndefstmt();
+				BEGIN 0;
 				goto zagain;
 			} else CC("ifdef") {
 				contr = 0; ifdefstmt();
+				BEGIN 0;
 				goto zagain;
 			} else CC("if") {
 				contr = 0; storepb(); BEGIN IFR;
@@ -907,7 +909,6 @@ ifdefstmt(void)
 		while (input() != '\n')
 			;
 		unput('\n');
-		yylex();
 		flslvl++;
 		return;
 	}
