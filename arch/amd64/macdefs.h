@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.4 2009/01/24 21:43:48 gmcgarry Exp $	*/
+/*	$Id: macdefs.h,v 1.5 2009/05/22 08:18:02 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -36,7 +36,7 @@
  */
 #define makecc(val,i)	lastcon = (lastcon<<8)|((val<<24)>>24);
 
-#define ARGINIT		64	/* # bits above fp where arguments start */
+#define ARGINIT		128	/* # bits above fp where arguments start */
 #define AUTOINIT	0	/* # bits below fp where automatics start */
 
 /*
