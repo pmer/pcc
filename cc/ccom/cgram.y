@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.262 2009/05/16 12:11:14 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.263 2009/05/19 19:25:55 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -674,7 +674,7 @@ struct_declarator: declarator attr_var {
 		|  ':' con_e {
 			if (fldchk($2))
 				$2 = 1;
-			falloc(NULL, $2, -1, $<nodep>0);
+			falloc(NULL, $2, $<nodep>0);
 		}
 		|  declarator ':' con_e {
 			if (fldchk($3))
