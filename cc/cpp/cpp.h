@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.38 2009/01/08 23:18:19 gmcgarry Exp $	*/
+/*	$Id: cpp.h,v 1.39 2009/04/20 17:04:16 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -122,6 +122,7 @@ int pushfile(usch *fname);
 void popfile(void);
 void prtline(void);
 int yylex(void);
+int sloscan(void);
 void cunput(int);
 int curline(void);
 char *curfile(void);
@@ -149,3 +150,4 @@ void xerror(usch *);
 void expmac(struct recur *);
 int cinput(void);
 void getcmnt(void);
+void storepb(void);
