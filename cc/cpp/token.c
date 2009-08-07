@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.20 2009/08/04 19:23:44 ragge Exp $	*/
+/*	$Id: token.c,v 1.21 2009/08/07 18:57:17 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1120,7 +1120,7 @@ ppdir(void)
 	char bp[10];
 	int ch, i;
 
-	while ((ch = inch()) == ' ' || ch == '\n')
+	while ((ch = inch()) == ' ' || ch == '\t')
 		;
 	if (ch < 'a' || ch > 'z')
 		goto out; /* something else, ignore */
