@@ -1,4 +1,4 @@
-/*	$Id: optim2.c,v 1.67 2009/06/06 19:19:55 ragge Exp $	*/
+/*	$Id: optim2.c,v 1.68 2009/06/06 22:56:12 pantzer Exp $	*/
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -375,8 +375,10 @@ again:	gotone = 0;
 		o = n->ip_node->n_op;
 		if (o == GOTO)
 			i = n->ip_node->n_left->n_lval;
+#if 0 /* XXX must check for side effects in expression */
 		else if (o == CBRANCH)
 			i = n->ip_node->n_right->n_lval;
+#endif
 		else
 			continue;
 
