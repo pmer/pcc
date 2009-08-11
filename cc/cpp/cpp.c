@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.97 2009/08/01 15:53:06 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.98 2009/08/08 07:25:53 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -1229,6 +1229,7 @@ expmac(struct recur *rp)
 
 		case '\n':
 			cinput();
+			savch(' ');
 			break;
 
 		case STRING:
