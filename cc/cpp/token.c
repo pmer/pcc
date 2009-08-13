@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.25 2009/08/09 16:45:16 ragge Exp $	*/
+/*	$Id: token.c,v 1.26 2009/08/13 08:01:27 gmcgarry Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -375,8 +375,6 @@ chlit:
 		}
 		yytext[yyp] = 0;
 
-		yylval.node.op = NUMBER;
-		yylval.node.nd_val = charcon((usch *)yytext);
 		return (NUMBER);
 
 	case ' ':
@@ -538,10 +536,16 @@ yylex()
 		if (ch == c2)
 			badop("");
 		break;
+
 	case NUMBER:
-		cvtdig(yytext[0] != '0' ? 10 :
-		    yytext[1] == 'x' || yytext[1] == 'X' ? 16 : 8);
+		if (yytext[0] == '\'') {
+			yylval.node.op = NUMBER;
+			yylval.node.nd_val = charcon((usch *)yytext);
+		} else
+			cvtdig(yytext[0] != '0' ? 10 :
+			    yytext[1] == 'x' || yytext[1] == 'X' ? 16 : 8);
 		return NUMBER;
+
 	case IDENT:
 		if (strcmp(yytext, "defined") == 0) {
 			ifdef = 1;
