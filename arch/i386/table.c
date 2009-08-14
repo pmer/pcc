@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.114 2009/03/15 04:33:09 gmcgarry Exp $	*/
+/*	$Id: table.c,v 1.115 2009/03/15 10:05:13 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1029,6 +1029,7 @@ struct optab table[] = {
 		"	sall $H,A1\n"
 		"	andl $M,A1\n"
 		"	orl A1,AL\n"
+		"ZB"
 		"F	movl AR,AD\n"
 		"FZE", },
 
