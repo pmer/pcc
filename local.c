@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.19 2009/02/08 16:37:05 ragge Exp $	*/
+/*	$Id: local.c,v 1.20 2009/05/07 02:34:10 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -914,6 +914,7 @@ fixdef(struct symtab *sp)
 		    constructor ? 'c' : 'd');
 		printf("\t.p2align 2\n");
 		printf("\t.long %s\n", exname(sp->sname));
+		printf("\t.previous\n");
 		constructor = destructor = 0;
 	}
 }
