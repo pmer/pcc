@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.40 2009/08/01 15:53:06 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.41 2009/09/02 09:39:53 gmcgarry Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -78,6 +78,9 @@ struct includ {
 	usch *maxread;
 	usch *ostr;
 	usch *buffer;
+	int idx;
+	void *incs;
+	usch *fn;
 	usch bbuf[NAMEMAX+CPPBUF+1];
 } *ifiles;
 
@@ -118,7 +121,7 @@ struct symtab *lookup(usch *namep, int enterf);
 usch *gotident(struct symtab *nl);
 int slow;	/* scan slowly for new tokens */
 
-int pushfile(usch *fname);
+int pushfile(usch *fname, usch *fn, int idx, void *incs);
 void popfile(void);
 void prtline(void);
 int yylex(void);
