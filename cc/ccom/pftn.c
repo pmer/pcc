@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.272 2009/09/06 16:41:07 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.273 2009/12/20 14:39:56 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -405,6 +405,9 @@ redec:			uerror("redeclaration of %s", p->sname);
 		if ((ga = gcc_get_attr(sue, GCC_ATYP_ALIGNED))) {
 			sue->suealign = ga->a1.iarg;
 			SETOFF(sue->suesize, sue->suealign);
+		} else if ((ga = gcc_get_attr(sue, GCC_ATYP_MODE))) {
+			if (ga->a1.iarg)
+				p->stype = ga->a1.iarg;
 		}
 		ap->n_right = bcon(0);
 	}
