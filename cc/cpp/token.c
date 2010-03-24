@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.30 2009/12/31 13:17:28 ragge Exp $	*/
+/*	$Id: token.c,v 1.31 2010/02/25 15:49:00 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1138,6 +1138,10 @@ ppdir(void)
 
 	while ((ch = inch()) == ' ' || ch == '\t')
 		;
+	if (ch == '\n') { /* empty directive */
+		unch(ch);
+		return;
+	}
 	if (ch < 'a' || ch > 'z')
 		goto out; /* something else, ignore */
 	i = 0;
