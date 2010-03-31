@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.185 2010/02/25 16:27:16 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.186 2010/03/27 23:46:11 mickey Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -347,6 +347,8 @@ NODE *imop(int op, NODE *l, NODE *r);
 NODE *cxelem(int op, NODE *p);
 NODE *cxconj(NODE *p);
 NODE *cxret(NODE *p, NODE *q);
+NODE *cast(NODE *p, TWORD t, TWORD q);
+
 
 #ifdef SOFTFLOAT
 typedef struct softfloat SF;
