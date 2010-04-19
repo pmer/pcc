@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.240 2010/03/31 10:26:09 ragge Exp $	*/
+/*	$Id: trees.c,v 1.241 2010/04/18 13:22:42 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -149,6 +149,8 @@ extern int negrel[];
 #define	INTPTR	INT
 #elif SZPOINT(CHAR) <= SZLONG
 #define INTPTR	LONG
+#elif SZPOINT(CHAR) <= SZLONGLONG
+#define INTPTR	LONGLONG
 #else
 #error int size unknown
 #endif
