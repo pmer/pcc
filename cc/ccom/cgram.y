@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.276 2010/02/25 17:43:49 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.277 2010/03/19 09:07:32 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1192,7 +1192,7 @@ xa:		  { $<intval>$ = inattr; inattr = 0; }
 clbrace:	   '{'	{ $$ = clbrace($<nodep>-1); }
 		;
 
-string:		   C_STRING { widestr = $1[0] == 'L'; $$ = stradd("", $1); }
+string:		   C_STRING { widestr = 0; $$ = stradd("", $1); }
 		|  string C_STRING { $$ = stradd($1, $2); }
 		;
 
