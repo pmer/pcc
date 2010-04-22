@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.241 2010/04/18 13:22:42 ragge Exp $	*/
+/*	$Id: trees.c,v 1.242 2010/04/19 16:28:57 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -944,7 +944,11 @@ chkpun(NODE *p)
 		d1 = p->n_left->n_df;
 		d2 = p->n_right->n_df;
 		if (t1 == t2) {
-			if (p->n_left->n_sue->suem != p->n_right->n_sue->suem)
+			struct suedef *s1, *s2;
+
+			GETSUE(s1, p->n_left->n_sue);
+			GETSUE(s2, p->n_right->n_sue);
+			if (s1->suem != s2->suem)
 				werror("illegal structure pointer combination");
 			return;
 		}
