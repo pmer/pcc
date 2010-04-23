@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.277 2010/03/19 09:07:32 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.278 2010/04/21 19:40:12 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1162,6 +1162,7 @@ term:		   term C_INCOP {  $$ = biop($2, $1, bcon(1)); }
 				p = $6;
 			}
 			S.stype = $3->n_type;
+			S.sname = "fake";
 			S.sdf = $3->n_df;
 			S.ssue = $3->n_sue;
 			S.sclass = AUTO;
