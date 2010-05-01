@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.257 2009/12/20 14:33:08 ragge Exp $	*/
+/*	$Id: reader.c,v 1.258 2010/03/27 23:46:12 mickey Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -376,15 +376,6 @@ pass2_compile(struct interpass *ip)
 	if (e2debug) {
 		printf("Efter ADDROF/TEMP\n");
 		printip(&p2e->ipole);
-	}
-#endif
-
-#if 0
-	DLIST_FOREACH(ip, &p2e->ipole, qelem) {
-		if (ip->type != IP_NODE)
-			continue;
-		if (xtemps == 0)
-			walkf(ip->ip_node, deltemp, 0);
 	}
 #endif
 
