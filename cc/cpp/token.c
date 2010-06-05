@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.33 2010/04/18 16:42:32 ragge Exp $	*/
+/*	$Id: token.c,v 1.34 2010/04/20 11:20:20 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -188,8 +188,9 @@ xloop:		if (ch == -1)
 							} else
 								PUTCH(' ');
 							break;
-						} else
-							unch(ch);
+						}
+						unch(ch);
+						ch = '*';
 					}
 					if (Cflag) PUTCH(ch);
 				}
