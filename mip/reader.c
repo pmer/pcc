@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.260 2010/05/21 16:10:03 ragge Exp $	*/
+/*	$Id: reader.c,v 1.261 2010/06/12 08:28:13 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1102,6 +1102,7 @@ ffld(NODE *p, int down, int *down1, int *down2 )
 		} else {
 			int mz;
 
+			mz = 0;
 #define	SZT(x) case x: mz = SZ ## x; break;
 			switch (ty) {
 			SZT(CHAR) SZT(SHORT) SZT(INT) SZT(LONG)
