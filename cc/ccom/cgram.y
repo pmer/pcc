@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.296 2010/08/11 14:08:44 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.297 2010/08/29 14:06:44 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1163,7 +1163,7 @@ cast_type:	   specifier_qualifier_list {
 			nfree($1);
 		}
 		|  specifier_qualifier_list abstract_declarator {
-			$$ = tymerge($1, $2);
+			$$ = tymerge($1, aryfix($2));
 			nfree($1);
 		}
 		;
