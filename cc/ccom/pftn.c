@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.289 2010/08/12 06:39:22 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.290 2010/08/29 14:06:44 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2178,6 +2178,7 @@ doacall(struct symtab *sp, NODE *f, NODE *a)
 			for (w = a; w->n_left->n_op == CM; w = w->n_left)
 				w->n_right = oldarg(w->n_right);
 			w->n_left = oldarg(w->n_left);
+			w->n_right = oldarg(w->n_right);
 		}
 		goto build;
 	}
