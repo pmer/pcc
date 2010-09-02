@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.290 2010/08/29 14:06:44 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.291 2010/09/01 16:22:48 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1393,6 +1393,8 @@ dynalloc(struct symtab *p, int *poff)
 			uerror("aggregate dynamic array not allowed");
 		if (tn)
 			spalloc(tn, pol, tsize(t, 0, p->sap));
+		else
+			tfree(pol);
 	}
 	arrstkp = 0;
 }
