@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.253 2010/08/12 06:39:22 ragge Exp $	*/
+/*	$Id: trees.c,v 1.254 2010/08/29 13:58:50 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1785,6 +1785,8 @@ tempnode(int nr, TWORD type, union dimfun *df, struct attr *ap)
 {
 	NODE *r;
 
+	if (tvaloff == -NOOFFSET)
+		tvaloff++; /* Skip this for array indexing */
 	r = block(TEMP, NIL, NIL, type, df, ap);
 	regno(r) = nr ? nr : tvaloff;
 	tvaloff += szty(type);
