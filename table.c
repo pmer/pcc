@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.12 2008/04/15 00:46:17 gmcgarry Exp $	*/
+/*	$Id: table.c,v 1.13 2008/04/15 10:24:23 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1004,7 +1004,7 @@ struct optab table[] = {
 { STASG,        INAREG|FOREFF,
         SOREG|SNAME,	TANY,
         SAREG,  	TPTRTO|TANY,
-                NSPECIAL,       RRIGHT,
+                NSPECIAL,       RDEST,
                 "ZQ", },
 
 /*
