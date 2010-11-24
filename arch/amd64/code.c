@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.39 2010/11/11 19:47:10 ragge Exp $	*/
+/*	$Id: code.c,v 1.40 2010/11/17 19:54:24 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -649,7 +649,7 @@ argtyp(TWORD t, union dimfun *df, struct attr *ap)
 {
 	int cl = 0;
 
-	if (t <= ULONG || ISPTR(t)) {
+	if (t <= ULONG || ISPTR(t) || t == BOOL) {
 		cl = ngpr < 6 ? INTEGER : INTMEM;
 	} else if (t == FLOAT || t == DOUBLE) {
 		cl = nsse < 8 ? SSE : SSEMEM;
