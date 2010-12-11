@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.35 2010/12/04 20:42:43 ragge Exp $	*/
+/*	$Id: local2.c,v 1.36 2010/12/04 20:52:16 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -129,7 +129,9 @@ eoftn(struct interpass_prolog *ipp)
 		printf("	leave\n");
 		printf("	ret\n");
 	}
+#ifndef MACHOABI
 	printf("\t.size %s,.-%s\n", ipp->ipp_name, ipp->ipp_name);
+#endif
 }
 
 /*
