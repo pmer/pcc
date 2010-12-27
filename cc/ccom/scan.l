@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.95 2010/11/07 13:36:14 ragge Exp $	*/
+/*	$Id: scan.l,v 1.96 2010/11/24 18:00:00 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -621,6 +621,8 @@ pragma()
 		pragma_aligned = ary[2] ? atoi(ary[2]) : 1;
 	} else if (strcmp(ary[1], "rename") == 0) {
 		pragma_renamed = newstring(ary[2], strlen(ary[2]));
+	} else if (strcmp(ary[1], "GCC") == 0) {
+		/* pragma_gcc(); Ignored for now */
 	} else if (strcmp(ary[1], "weak") == 0) {
 		struct symtab *sp = lookup(addname(ary[2]), SNORMAL);
 		sp->sap =
