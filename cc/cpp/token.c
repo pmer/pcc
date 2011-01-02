@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.40 2010/08/29 16:53:38 ragge Exp $	*/
+/*	$Id: token.c,v 1.41 2010/12/27 18:13:10 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -471,6 +471,8 @@ chlit:
 		goto any;
 
 	case '\"':
+		if (tflag)
+			goto any;
 	strng:
 		for (;;) {
 			if ((ch = inch()) == '\\') {
@@ -486,10 +488,10 @@ chlit:
 		return(STRING);
 
 	case 'L':
-		if ((ch = inch()) == '\"') {
+		if ((ch = inch()) == '\"' && !tflag) {
 			yytext[yyp++] = (usch)ch;
 			goto strng;
-		} else if (ch == '\'') {
+		} else if (ch == '\'' && !tflag) {
 			yytext[yyp++] = (usch)ch;
 			goto chlit;
 		}
