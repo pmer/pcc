@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.111 2010/12/29 11:49:09 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.112 2011/01/09 15:25:39 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -135,7 +135,7 @@ void usage(void);
 usch *xstrdup(const char *str);
 const usch *prtprag(const usch *opb);
 static void addidir(char *idir, struct incs **ww);
-void imp(char *);
+void imp(const char *);
 #define IMP(x) if (dflag>1) imp(x)
 
 int
@@ -1662,7 +1662,7 @@ def:		default:
 }
 
 void
-imp(char *str)
+imp(const char *str)
 {
 	printf("%s (%d) '", str, bidx);
 	prline(ifiles->curptr);
