@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.6 2008/08/08 12:55:41 gmcgarry Exp $	*/
+/*	$Id: local.c,v 1.7 2008/12/14 21:16:58 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -631,9 +631,10 @@ setloc1(int locc)
  * Give target the opportunity of handling pragmas.
  */
 int
-mypragma(char **ary)
+mypragma(char *str)
 {
-	return 0; }
+	return 0;
+}
 
 /*
  * Called when a identifier has been declared, to give target last word.
