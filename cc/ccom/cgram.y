@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.314 2010/12/21 14:18:07 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.315 2010/12/25 11:34:20 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -843,8 +843,8 @@ statement:	   e ';' { ecomp(eve($1)); symclear(blevel); }
 			    cftnsp->stype != VOID+FTN)
 				uerror("return value required");
 			rch:
-			if (!reached && Wunreachable_code)
-				werror( "statement is not reached");
+			if (!reached)
+				warner(Wunreachable_code, NULL);
 			reached = 0;
 		}
 		|  C_RETURN e  ';' {
