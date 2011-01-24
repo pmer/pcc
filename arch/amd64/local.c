@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.37 2011/01/16 16:31:41 ragge Exp $	*/
+/*	$Id: local.c,v 1.38 2011/01/21 21:49:39 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -153,7 +153,7 @@ mk3str(char *s1, char *s2, char *s3)
 	int len = strlen(s1) + strlen(s2) + strlen(s3) + 1;
 	char *sd;
 
-	sd = tmpalloc(len);
+	sd = inlalloc(len);
 	strlcpy(sd, s1, len);
 	strlcat(sd, s2, len);
 	strlcat(sd, s3, len);
