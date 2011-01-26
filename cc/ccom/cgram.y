@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.316 2011/01/22 22:08:23 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.317 2011/01/25 19:00:04 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -800,7 +800,8 @@ statement:	   e ';' { ecomp(eve($1)); symclear(blevel); }
 			if (flostat & FCONT)
 				reached = 1;
 			if (reached)
-				cbranch(eve($5), bcon($1));
+				cbranch(buildtree(NE, eve($5), bcon(0)),
+				    bcon($1));
 			else
 				tfree(eve($5));
 			plabel( brklab);
