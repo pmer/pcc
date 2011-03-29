@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.40 2011/01/16 20:26:33 ragge Exp $	*/
+/*	$Id: local2.c,v 1.41 2011/02/18 16:52:37 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1043,8 +1043,13 @@ retry:	switch (c) {
 	case 'M':
 	case 'N':
 		if (p->n_left->n_op != ICON) {
-			if ((c = XASMVAL1(cw)))
+			if ((c = XASMVAL1(cw))) {
+				if (c == 'r') {
+					p->n_name++;
+					return 0;
+				}
 				goto retry;
+			}
 			uerror("xasm arg not constant");
 		}
 		v = p->n_left->n_lval;
