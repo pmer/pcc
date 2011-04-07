@@ -1,4 +1,4 @@
-/*	$Id: stabs.c,v 1.30 2009/06/14 11:43:41 ragge Exp $	*/
+/*	$Id: stabs.c,v 1.31 2010/08/11 14:08:44 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -101,7 +101,7 @@ stabs_init()
 {
 	struct stabtype *st;
 
-#define	ADDTYPE(y) addtype(y, NULL, MKAP(y))
+#define	ADDTYPE(y) addtype(y, NULL, 0)
 
 	ptype("int", ADDTYPE(INT)->num, INTNUM, MIN_INT, MAX_INT);
 
