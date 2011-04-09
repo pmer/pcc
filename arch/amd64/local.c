@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.44 2011/03/27 15:03:20 ragge Exp $	*/
+/*	$Id: local.c,v 1.45 2011/04/07 18:50:15 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -591,11 +591,6 @@ clocal(NODE *p)
 			l->n_ap = NULL;
 			nfree(p);
 			return clocal(l);
-		}
-		if (DEUNSIGN(p->n_type) == SHORT &&
-		    DEUNSIGN(l->n_type) == SHORT) {
-			nfree(p);
-			p = l;
 		}
 		if ((p->n_type == CHAR || p->n_type == UCHAR ||
 		    p->n_type == SHORT || p->n_type == USHORT) &&
