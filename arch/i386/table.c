@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.130 2011/03/30 20:09:49 ragge Exp $	*/
+/*	$Id: table.c,v 1.131 2011/04/03 08:54:14 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -160,6 +160,13 @@ struct optab table[] = {
 		"	fildl (%esp)\n	addl $4,%esp\n", },
 
 /* short to something */
+
+/* convert (u)short to (u)short. */
+{ SCONV,	INAREG,
+	SAREG,	TSHORT|TUSHORT,
+	SAREG,	TSHORT|TUSHORT,
+		0,	RLEFT,
+		"", },
 
 /* convert short (in memory) to char */
 { SCONV,	INCH,
