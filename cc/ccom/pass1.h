@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.215 2011/02/17 13:44:13 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.216 2011/04/07 18:50:16 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -361,6 +361,7 @@ struct symtab *strmemb(struct attr *ap);
 int yylex(void);
 void yyerror(char *);
 int pragmas_gcc(char *t);
+NODE *cstknode(TWORD t, union dimfun *df, struct attr *ap);
 
 NODE *builtin_check(NODE *f, NODE *a);
 
