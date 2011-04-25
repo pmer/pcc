@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.131 2011/04/03 08:54:14 ragge Exp $	*/
+/*	$Id: table.c,v 1.132 2011/04/09 12:49:22 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1656,11 +1656,19 @@ struct optab table[] = {
 		0,	0,
 		"	subl $12,%esp\n	fstpt (%esp)\n", },
 
+#if defined(MACHOABI)
 { STARG,	FOREFF,
 	SAREG|SOREG|SNAME|SCON,	TANY,
 	SANY,	TSTRUCT,
 		NSPECIAL|NAREG,	0,
 		"ZF", },
+#else
+{ STARG,	FOREFF,
+	SAREG,	TPTRTO|TSTRUCT,
+	SANY,	TSTRUCT,
+		NSPECIAL,	0,
+		"ZF", },
+#endif
 
 # define DF(x) FORREW,SANY,TANY,SANY,TANY,REWRITE,x,""
 
