@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.141 2011/04/19 20:05:10 ragge Exp $	*/
+/*	$Id: local.c,v 1.142 2011/04/27 09:05:49 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -411,7 +411,6 @@ clocal(NODE *p)
 			if (kflag == 0) {
 				if (q->slevel == 0)
 					break;
-				p->n_lval = 0;
 			} else if (blevel > 0)
 				p = picstatic(p);
 			break;
