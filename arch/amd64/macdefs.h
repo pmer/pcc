@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.17 2011/02/18 17:16:57 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.18 2011/04/14 16:44:25 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -118,8 +118,6 @@ typedef long long OFFSZ;
 
 #undef	FIELDOPS		/* no bit-field instructions */
 #define	RTOLBYTES		/* bytes are numbered right to left */
-
-#define ENUMSIZE(high,low) INT	/* enums are always stored in full int */
 
 #define FINDMOPS	/* i386 has instructions that modifies memory */
 

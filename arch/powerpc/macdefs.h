@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.10 2009/09/19 23:49:43 gmcgarry Exp $	*/
+/*	$Id: macdefs.h,v 1.11 2010/11/26 17:06:31 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -123,8 +123,6 @@ typedef long long OFFSZ;
 #endif
 
 #undef	FIELDOPS		/* no bit-field instructions */
-
-#define ENUMSIZE(high,low) INT	/* enums are always stored in full int */
 
 /* Definitions mostly used in pass2 */
 

@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.1 2006/07/30 09:30:48 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.2 2007/11/16 22:27:42 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2006 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -121,8 +121,6 @@ typedef long OFFSZ;
 
 #undef	FIELDOPS		/* no bit-field instructions */
 #define	RTOLBYTES		/* bytes are numbered right to left */
-
-#define ENUMSIZE(high,low) INT	/* enums are always stored in full int */
 
 /* Definitions mostly used in pass2 */
 
