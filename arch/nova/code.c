@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.5 2008/01/01 17:31:00 ragge Exp $	*/
+/*	$Id: code.c,v 1.6 2011/04/07 18:50:15 ragge Exp $	*/
 /*
  * Copyright (c) 2006 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -156,16 +156,6 @@ bycode(int t, int i)
 			putchar(t);
 		}
 	}
-}
-
-/*
- * return the alignment of field of type t
- */
-int
-fldal(unsigned int t)
-{
-	uerror("illegal field type");
-	return(ALINT);
 }
 
 /* fix up type of field p */

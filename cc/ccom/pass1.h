@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.216 2011/04/07 18:50:16 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.217 2011/04/17 08:15:16 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -346,7 +346,6 @@ void defid(NODE *q, int class);
 void efcode(void);
 void ecomp(NODE *p);
 void cendarg(void);
-int fldal(unsigned int);
 int upoff(int size, int alignment, int *poff);
 void nidcl(NODE *p, int class);
 void eprint(NODE *, int, int *, int *);

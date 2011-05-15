@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.59 2011/03/29 20:11:15 ragge Exp $	*/
+/*	$Id: code.c,v 1.60 2011/04/07 18:50:15 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -421,16 +421,6 @@ funcode(NODE *p)
 	}
 #endif
 	return p;
-}
-
-/*
- * return the alignment of field of type t
- */
-int
-fldal(unsigned int t)
-{
-	uerror("illegal field type");
-	return(ALINT);
 }
 
 /* fix up type of field p */

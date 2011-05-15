@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.7 2008/01/01 17:31:01 ragge Exp $	*/
+/*	$Id: code.c,v 1.8 2009/02/08 16:55:08 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -184,12 +184,6 @@ bycode( t, i ){
 		printf( "0x%x", t );
 		if( i == 07 ) printf( "\n" );
 		}
-	}
-
-int
-fldal( t ) unsigned t; { /* return the alignment of field of type t */
-	uerror( "illegal field type" );
-	return( ALINT );
 	}
 
 void

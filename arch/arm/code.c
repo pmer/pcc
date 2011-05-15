@@ -1,4 +1,4 @@
-/*      $Id: code.c,v 1.21 2009/02/08 16:07:52 ragge Exp $    */
+/*      $Id: code.c,v 1.22 2011/04/07 18:50:15 ragge Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -451,16 +451,6 @@ ejobcode(int flag )
 void
 bjobcode()
 {
-}
-
-/*
- * Compute the alignment of object with type 't'.
- */
-int
-fldal(unsigned int t)
-{
-	uerror("illegal field type");
-	return(ALINT);
 }
 
 /*
