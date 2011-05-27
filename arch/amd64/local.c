@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.48 2011/05/08 20:46:37 plunky Exp $	*/
+/*	$Id: local.c,v 1.49 2011/05/24 01:01:15 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -91,6 +91,8 @@ static int ininval;
 static NODE *
 picext(NODE *p)
 {
+#if defined(ELFABI)
+
 	NODE *q;
 	struct symtab *sp;
 	char *c, *g;
@@ -111,6 +113,12 @@ picext(NODE *p)
 	q->n_sp = sp;
 	nfree(p);
 	return q;
+
+#elif defined(MACHOABI)
+
+	return p;
+
+#endif
 }
 
 #ifdef notdef
