@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.55 2011/05/18 10:02:22 ragge Exp $	*/
+/*	$Id: token.c,v 1.56 2011/05/22 17:17:32 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -182,7 +182,7 @@ static void
 fastscan(void)
 {
 	struct symtab *nl;
-	int ch, i, ccnt, onemore;
+	int ch, i = 0;
 	int nnl = 0;
 	usch *cp;
 
@@ -375,7 +375,6 @@ con:			PUTCH(ch);
 					ch = NXTCH();
 				goto xloop;
 			}
-			onemore = i = ccnt = 0;
 			do {
 				yytext[i++] = (usch)ch;
 				ch = NXTCH();
