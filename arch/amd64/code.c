@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.53 2011/04/26 20:17:34 ragge Exp $	*/
+/*	$Id: code.c,v 1.54 2011/05/15 17:08:35 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -468,13 +468,10 @@ ejobcode(int flag )
 	}
 		
 
-#define _MKSTR(x) #x
-#define MKSTR(x) _MKSTR(x)
-#define OS MKSTR(TARGOS)
 #ifdef MACHOABI
-	printf("\t.ident \"PCC: %s (%s)\"\n", PACKAGE_STRING, OS);
+	printf("\t.ident \"PCC: %s\"\n", VERSSTR);
 #else
-        printf("\t.ident \"PCC: %s (%s)\"\n\t.end\n", PACKAGE_STRING, OS);
+	printf("\t.ident \"PCC: %s\"\n\t.end\n", VERSSTR);
 #endif
 }
 

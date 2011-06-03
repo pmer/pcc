@@ -1,4 +1,4 @@
-#	$Id: Makefile.in,v 1.8 2008/12/19 08:08:48 ragge Exp $
+#	$Id: Makefile.in,v 1.9 2011/04/28 00:39:49 gmcgarry Exp $
 #
 # Makefile.in for the f77 frontend of pcc.
 #
@@ -13,6 +13,7 @@ includedir = @includedir@
 strip = @strip@
 CC = @CC@
 TARGOS = @targos@
+TARGOSVER = @targosver@
 TARGMACH = @targmach@
 PCCLIBDIR = $(libdir)/pcc/$(TARGET)/$(VERSION)/lib
 PCCINCDIR = $(libdir)/pcc/$(TARGET)/$(VERSION)/include

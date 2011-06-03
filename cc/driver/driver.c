@@ -1,4 +1,4 @@
-/*	$Id: driver.c,v 1.5 2011/05/27 06:12:56 plunky Exp $	*/
+/*	$Id: driver.c,v 1.6 2011/05/27 06:15:52 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -554,7 +554,7 @@ main(int argc, char **argv)
 	strlist_init(&late_dso_csu_files);
 	strlist_init(&temp_outputs);
 
-	init_platform_specific("linux", "x86_64");
+	init_platform_specific(TARGOS, TARGMACH);
 
 	while (--argc) {
 		++argv;
