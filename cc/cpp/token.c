@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.56 2011/05/22 17:17:32 ragge Exp $	*/
+/*	$Id: token.c,v 1.58 2011/05/30 04:24:06 gmcgarry Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -887,7 +887,7 @@ prtline()
 void
 cunput(int c)
 {
-#ifdef CPP_DEBUG
+#ifdef PCC_DEBUG
 //	extern int dflag;
 //	if (dflag)printf(": '%c'(%d)\n", c > 31 ? c : ' ', c);
 #endif

@@ -1,5 +1,5 @@
 %{
-/*	$Id: scanner.l,v 1.48 2008/08/21 16:32:40 ragge Exp $   */
+/*	$Id: scanner.l,v 1.49 2009/02/14 09:23:55 ragge Exp $   */
 
 /*
  * Copyright (c) 2004 Anders Magnusson. All rights reserved.
@@ -530,7 +530,7 @@ prtline()
 void
 cunput(int c)
 {
-#ifdef CPP_DEBUG
+#ifdef PCC_DEBUG
 	extern int dflag;
 	if (dflag)printf(": '%c'(%d)", c > 31 ? c : ' ', c);
 #endif
