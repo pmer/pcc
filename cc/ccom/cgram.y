@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.330 2011/05/30 17:31:30 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.331 2011/05/31 15:28:11 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -779,7 +779,6 @@ begin:		  '{' {
 			bc->contlab = autooff;
 			bc->next = savctx;
 			savctx = bc;
-			bccode();
 			if (!isinlining && sspflag && blevel == 2)
 				sspstart();
 		}

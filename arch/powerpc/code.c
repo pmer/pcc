@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.25 2011/05/15 17:08:35 ragge Exp $	*/
+/*	$Id: code.c,v 1.26 2011/06/03 15:34:00 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -488,15 +488,6 @@ efcode()
         regno(p) = R3;
         p = buildtree(ASSIGN, p, q);
         ecomp(p);
-}
-
-/*
- * by now, the automatics and register variables are allocated
- */
-void
-bccode()
-{
-	SETOFF(autooff, SZINT);
 }
 
 struct stub stublist;
