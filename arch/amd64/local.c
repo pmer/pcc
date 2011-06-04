@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.52 2011/06/01 17:41:04 ragge Exp $	*/
+/*	$Id: local.c,v 1.53 2011/06/02 15:41:26 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -710,15 +710,6 @@ andable(NODE *p)
 	if (p->n_sp->sclass == STATIC || p->n_sp->sclass == USTATIC)
 		return 0;
 	return 1;
-}
-
-/*
- * at the end of the arguments of a ftn, set the automatic offset
- */
-void
-cendarg()
-{
-	autooff = AUTOINIT;
 }
 
 /*
