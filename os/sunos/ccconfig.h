@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.2 2009/04/12 11:18:12 gmcgarry Exp $	*/
+/*	$Id: ccconfig.h,v 1.3 2009/05/19 05:15:38 gmcgarry Exp $	*/
 
 /*
  * Copyright (c) 2008 Adam Hoka.
@@ -67,5 +67,3 @@
 #else
 #error defines for arch missing
 #endif
-
-#define	STABS

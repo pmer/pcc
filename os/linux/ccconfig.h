@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.19 2010/11/09 08:40:50 ragge Exp $	*/
+/*	$Id: ccconfig.h,v 1.20 2011/06/04 07:47:14 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -70,5 +70,3 @@
 #ifndef LIBDIR
 #define LIBDIR "/usr/lib/"
 #endif
-
-#define STABS

@@ -1,4 +1,4 @@
-/*	 $Id$ */
+/*	 $Id: ccconfig.h,v 1.1 2011/03/16 17:24:32 ragge Exp $ */
 /*
  * Escrit per Antoine Leca pel projecte PCC, 2011-03.
  * Copyright (C) 2011 Anders Magnusson (ragge@ludd.luth.se).
@@ -81,7 +81,3 @@
 #else
 #error defines for arch missing
 #endif
-
-#define STABS
-
-
