@@ -1,4 +1,4 @@
-/*	$Id$	*/
+/*	$Id: macdefs.h,v 1.14 2011/06/05 08:54:42 plunky Exp $	*/
 
 /*
  * Copyright (c) 2008 David Crawshaw <david@zentus.com>
@@ -102,7 +102,7 @@ typedef long long OFFSZ;
 #define BACKTEMP 		/* Stack grows negatively for temporaries. */
 
 #undef	FIELDOPS
-#define RTOLBYTES
+#define TARGET_ENDIAN TARGET_BE
 
 #define BYTEOFF(x) 	((x)&03)
 #define BITOOR(x)	(x)

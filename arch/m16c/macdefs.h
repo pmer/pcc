@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.22 2006/02/06 09:33:10 janeno-1 Exp $	*/
+/*	$Id: macdefs.h,v 1.23 2007/11/16 22:23:04 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -105,7 +105,7 @@ typedef long long OFFSZ;
 #define BACKTEMP		/* stack grows negatively for temporaries */
 
 #undef	FIELDOPS		/* no bit-field instructions */
-#define RTOLBYTES		/* bytes are numbered right to left */
+#define TARGET_ENDIAN TARGET_LE
 
 /* Definitions mostly used in pass2 */
 
