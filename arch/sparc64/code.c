@@ -1,4 +1,4 @@
-/*	$Id$	*/
+/*	$Id: code.c,v 1.18 2011/06/05 08:54:42 plunky Exp $	*/
 
 /*
  * Copyright (c) 2008 David Crawshaw <david@zentus.com>
@@ -106,6 +106,10 @@ ejobcode(int flag)
 void
 bjobcode()
 {
+	astypnames[USHORT] = astypnames[SHORT] = "\t.half";
+	astypnames[INT] = astypnames[UNSIGNED] = "\t.long";
+	astypnames[LONG] = astypnames[ULONG] = 
+	    astypnames[LONGLONG] = astypnames[ULONGLONG] = "\t.xword";
 }
 
 /*
