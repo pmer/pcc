@@ -1,4 +1,4 @@
-#	$Id: Makefile.in,v 1.4 2011/04/28 00:39:49 gmcgarry Exp $
+#	$Id: Makefile.in,v 1.5 2011/06/05 13:04:57 plunky Exp $
 #
 # Makefile.in for top-level of pcc.
 #
@@ -25,5 +25,4 @@ distclean:
 		    exec $(MAKE) $(MFLAGS) $@) || exit $$?; \
 		echo "<=== $$_nextdir_"; \
 	done
-	/bin/rm -rf Makefile config.log stamp-h1 config.status \
-	    configure.lineno config.h autom4te.cache
+	/bin/rm -f Makefile
