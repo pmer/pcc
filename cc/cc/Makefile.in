@@ -1,4 +1,4 @@
-#	$Id: Makefile.in,v 1.24 2011/06/05 13:13:15 plunky Exp $
+#	$Id: Makefile.in,v 1.25 2011/06/05 13:32:19 plunky Exp $
 #
 # Makefile.in for the cc part of pcc.
 #
@@ -66,7 +66,7 @@ install:
 	test -z "${DESTDIR}$(PCCLIBDIR)" || mkdir -p "${DESTDIR}$(PCCLIBDIR)"
 
 clean:
-	/bin/rm -f  $(OBJS) ${DEST}
+	rm -f  $(OBJS) ${DEST}
 
 distclean: clean
-	/bin/rm -f  Makefile
+	rm -f  Makefile
