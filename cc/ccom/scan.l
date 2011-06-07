@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.106 2011/04/25 11:31:37 ragge Exp $	*/
+/*	$Id: scan.l,v 1.107 2011/06/02 15:29:54 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -595,9 +595,9 @@ wcharcon(void)
 	}
 
 	if (i == 0)
-		uerror("empty wide character constant");
+		uerror("empty wide-character constant");
 	if (i > 1)
-		werror("too many characters in wide character constant");
+		werror("too many characters in wide-character constant");
 	return xbcon(lastcon, NULL, ctype(UNSIGNED));
 }
 
