@@ -1,4 +1,4 @@
-/*	$Id$	*/
+/*	$Id: local2.c,v 1.25 2011/06/05 08:54:42 plunky Exp $	*/
 
 /*
  * Copyright (c) 2008 David Crawshaw <david@zentus.com>
@@ -58,10 +58,6 @@ prologue(struct interpass_prolog *ipp)
 			stack += 16;
 
 	/* TODO printf("\t.proc %d\n"); */
-	if (ipp->ipp_vis)
-		printf("\t.global %s\n", ipp->ipp_name);
-	printf("\t.align 4\n");
-	printf("%s:\n", ipp->ipp_name);
 	if (SIMM13(stack))
 		printf("\tsave %%sp,-%d,%%sp\n", stack);
 	else {

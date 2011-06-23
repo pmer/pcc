@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.19 2011/05/11 14:37:14 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.20 2011/06/05 10:19:24 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -245,7 +245,6 @@ int COLORMAP(int c, int *r);
  * i386-specific symbol table flags.
  */
 #define SBEENHERE	SLOCAL1
-#define	STLS		SLOCAL2
 
 /*
  * Extended assembler macros.
