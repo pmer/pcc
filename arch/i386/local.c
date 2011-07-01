@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.153 2011/06/23 13:39:26 ragge Exp $	*/
+/*	$Id: local.c,v 1.154 2011/06/25 07:59:25 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1006,8 +1006,12 @@ defzero(struct symtab *sp)
 	al = ispow2(al);
 #endif
 
-	if (sp->sclass == STATIC)
-		printf("\t.local %s\n", name);
+	if (sp->sclass == STATIC) {
+		if (sp->slevel == 0) {
+			printf("\t.local %s\n", name);
+		} else
+			printf("\t.local " LABFMT "\n", sp->soffset);
+	}
 	if (sp->slevel == 0)
 		printf("\t.comm %s,0%o,%d\n", name, off, al);
 	else
