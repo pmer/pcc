@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.327 2011/06/24 13:01:57 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.328 2011/06/30 19:41:16 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2783,8 +2783,13 @@ scnames(int c)
 	}
 #endif
 
+#ifdef os_openbsd
+static char *stack_chk_fail = "__stack_smash_handler";
+static char *stack_chk_guard = "__guard";
+#else
 static char *stack_chk_fail = "__stack_chk_fail";
 static char *stack_chk_guard = "__stack_chk_guard";
+#endif
 static char *stack_chk_canary = "__stack_chk_canary";
 
 void
