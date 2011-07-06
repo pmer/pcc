@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.92 2010/03/27 23:46:12 mickey Exp $	*/
+/*	$Id: common.c,v 1.93 2011/01/22 22:08:23 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -570,7 +570,7 @@ permalloc(int size)
 	if (size <= 0)
 		cerror("permalloc2");
 	if (allocleft < size) {
-		/* looses unused bytes */
+		/* loses unused bytes */
 		lostmem += allocleft;
 		if ((allocpole = malloc(MEMCHUNKSZ)) == NULL)
 			cerror("permalloc: out of memory");
