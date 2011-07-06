@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.229 2011/06/23 13:41:25 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.230 2011/06/29 19:46:21 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -617,7 +617,7 @@ void stabs_struct(struct symtab *, struct attr *);
  * The following types are only used in pass1.
  */
 #define SIGNED		(MAXTYPES+1)
-#define BOOL		(MAXTYPES+2)
+#define FARG		(MAXTYPES+2)
 #define	FIMAG		(MAXTYPES+3)
 #define	IMAG		(MAXTYPES+4)
 #define	LIMAG		(MAXTYPES+5)
