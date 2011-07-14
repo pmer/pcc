@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.189 2011/07/06 12:02:22 plunky Exp $	*/
+/*	$Id: cc.c,v 1.190 2011/07/14 09:06:50 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -802,7 +802,10 @@ main(int argc, char *argv[])
 		av[na++] = "-D__GNUC__=4";
 		av[na++] = "-D__GNUC_MINOR__=3";
 		av[na++] = "-D__GNUC_PATCHLEVEL__=1";
-		av[na++] = "-D__GNUC_STDC_INLINE__=1";
+		if (xgcc)
+			av[na++] = "-D__GNUC_GNU_INLINE__=1";
+		else
+			av[na++] = "-D__GNUC_STDC_INLINE__=1";
 #endif
 #endif
 		av[na++] = "-D__VERSION__=" MKS(VERSSTR);
