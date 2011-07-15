@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.60 2011/06/05 08:43:50 plunky Exp $	*/
+/*	$Id: token.c,v 1.61 2011/07/06 16:01:23 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -546,7 +546,7 @@ chlit:
 		goto any;
 
 	case '\"':
-		if (tflag)
+		if (tflag && defining)
 			goto any;
 	strng:
 		for (;;) {

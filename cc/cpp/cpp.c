@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.136 2011/07/06 17:15:23 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.137 2011/07/10 17:26:50 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -654,7 +654,7 @@ define()
 	np = lookup((usch *)yytext, ENTER);
 	redef = np->value != NULL;
 
-	readmac = 1;
+	defining = readmac = 1;
 	sbeg = stringbuf;
 	if ((c = sloscan()) == '(') {
 		narg = 0;
@@ -833,7 +833,7 @@ id:			savstr((usch *)yytext);
 		}
 		c = sloscan();
 	}
-	readmac = 0;
+	defining = readmac = 0;
 	/* remove trailing whitespace */
 	while (stringbuf > sbeg) {
 		if (stringbuf[-1] == ' ' || stringbuf[-1] == '\t')
