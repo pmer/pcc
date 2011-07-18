@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.138 2011/07/15 10:52:59 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.139 2011/07/16 16:14:56 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1505,7 +1505,9 @@ oho:			while ((c = sloscan()) == '\n') {
 			} else
 				savstr((usch *)yytext);
 			while ((c = sloscan()) == '\n') {
+				ifiles->lineno++;
 				cinput();
+				chkdir();
 				savch(' ');
 			}
 		}
