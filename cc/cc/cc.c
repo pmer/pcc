@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.191 2011/07/14 13:29:54 ragge Exp $	*/
+/*	$Id: cc.c,v 1.192 2011/07/23 08:28:37 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -267,7 +267,6 @@ struct Wflags {
 } Wflags[] = {
 	{ "-Wtruncate", 0 },
 	{ "-Wno-truncate", NEGATIVE },
-	{ "-Werror", 0 },
 	{ "-Wshadow", 0 },
 	{ "-Wno-shadow", NEGATIVE },
 	{ "-Wpointer-sign", INWALL },
@@ -472,6 +471,8 @@ main(int argc, char *argv[])
 						t = u;
 					}
 					cpplist[ncpp++] = t;
+				} else if (strcmp(argv[i], "-Werror") == 0) {
+					wlist[nw++] = argv[i];
 				} else if (strcmp(argv[i], "-Wall") == 0) {
 					Wallflag = 1;
 				} else if (strcmp(argv[i], "-WW") == 0) {
