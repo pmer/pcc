@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.14 2011/05/27 10:27:58 plunky Exp $	*/
+/*	$Id: macdefs.h,v 1.15 2011/06/05 10:19:24 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -122,6 +122,7 @@ typedef long long OFFSZ;
 
 #undef	FIELDOPS		/* no bit-field instructions */
 #define TARGET_ENDIAN TARGET_LE
+#define	MYALIGN
 
 /* Definitions mostly used in pass2 */
 
