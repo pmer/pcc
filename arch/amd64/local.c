@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.60 2011/06/29 07:18:34 ragge Exp $	*/
+/*	$Id: local.c,v 1.61 2011/07/30 14:47:18 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -413,6 +413,7 @@ clocal(NODE *p)
 		break;
 #endif
 
+#if 0
 	case PCONV:
 		/* Remove redundant PCONV's. Be careful */
 		l = p->n_left;
@@ -449,6 +450,7 @@ clocal(NODE *p)
 		nfree(p);
 		p = l;
 		break;
+#endif
 		
 	case SCONV:
 		/* Special-case shifts */
