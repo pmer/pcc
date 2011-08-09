@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.232 2011/07/14 08:57:43 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.233 2011/08/03 19:25:32 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -612,6 +612,7 @@ void stabs_struct(struct symtab *, struct attr *);
 #define XREAL		(MAXOP+31)
 #define XIMAG		(MAXOP+32)
 #define TYMERGE		(MAXOP+33)
+#define LABEL		(MAXOP+34)
 
 
 /*
