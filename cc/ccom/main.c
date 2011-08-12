@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.109 2011/07/14 08:57:43 ragge Exp $	*/
+/*	$Id: main.c,v 1.110 2011/07/27 19:08:07 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -146,7 +146,7 @@ main(int argc, char *argv[])
 
 	prgname = argv[0];
 
-	while ((ch = getopt(argc, argv, "OT:VW:X:Z:f:gklm:psvwx:")) != -1)
+	while ((ch = getopt(argc, argv, "OT:VW:X:Z:f:gklm:psvwx:")) != -1) {
 		switch (ch) {
 #if !defined(MULTIPASS) || defined(PASS1)
 		case 'X':
@@ -267,25 +267,26 @@ main(int argc, char *argv[])
 		default:
 			usage();
 		}
-		argc -= optind;
-		argv += optind;
+	}
+	argc -= optind;
+	argv += optind;
 
-		if (argc > 0 && strcmp(argv[0], "-") != 0) {
-			if (freopen(argv[0], "r", stdin) == NULL) {
-				fprintf(stderr, "open input file '%s':",
-				    argv[0]);
-				perror(NULL);
-				exit(1);
-			}
+	if (argc > 0 && strcmp(argv[0], "-") != 0) {
+		if (freopen(argv[0], "r", stdin) == NULL) {
+			fprintf(stderr, "open input file '%s':",
+			    argv[0]);
+			perror(NULL);
+			exit(1);
 		}
-		if (argc > 1 && strcmp(argv[1], "-") != 0) {
-			if (freopen(argv[1], "w", stdout) == NULL) {
-				fprintf(stderr, "open output file '%s':",
-				    argv[1]);
-				perror(NULL);
-				exit(1);
-			}
+	}
+	if (argc > 1 && strcmp(argv[1], "-") != 0) {
+		if (freopen(argv[1], "w", stdout) == NULL) {
+			fprintf(stderr, "open output file '%s':",
+			    argv[1]);
+			perror(NULL);
+			exit(1);
 		}
+	}
 
 	mkdope();
 	signal(SIGSEGV, segvcatch);
