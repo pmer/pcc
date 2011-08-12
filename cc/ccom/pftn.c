@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.336 2011/07/31 07:36:25 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.337 2011/08/10 08:20:38 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2114,7 +2114,7 @@ tyreduce(NODE *p, struct tylnk **tylkp, int *ntdim)
 	p->n_left->n_qual = INCQAL(q) | p->n_left->n_qual;
 	tyreduce(p->n_left, tylkp, ntdim);
 
-	if (o == LB || o == (UCALL) || o == CALL)
+	if (o == LB || o == UCALL || o == CALL)
 		tylkadd(dim, tylkp, ntdim);
 	if (o == RB) {
 		dim.ddim = -1;
