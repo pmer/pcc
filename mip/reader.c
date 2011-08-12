@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.274 2011/07/13 11:39:11 ragge Exp $	*/
+/*	$Id: reader.c,v 1.275 2011/08/12 19:20:24 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -71,7 +71,6 @@
 
 /*	some storage declarations */
 int nrecur;
-int lflag;
 int x2debug, udebug, odebug;
 int thisline;
 int fregs;
