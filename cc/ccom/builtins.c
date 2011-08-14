@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.29 2011/07/28 11:02:53 ragge Exp $	*/
+/*	$Id: builtins.c,v 1.30 2011/08/11 18:31:31 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -138,7 +138,7 @@ builtin_abs(NODE *f, NODE *a, TWORD rt)
 }
 
 #define	cmop(x,y) buildtree(COMOP, x, y)
-#define	lblnod(l) block(LABEL, bcon(l), NIL, 0, 0, 0)
+#define	lblnod(l) nlabel(l)
 
 #ifndef TARGET_CXZ
 /*
