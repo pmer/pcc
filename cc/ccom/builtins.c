@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.30 2011/08/11 18:31:31 ragge Exp $	*/
+/*	$Id: builtins.c,v 1.31 2011/08/14 14:55:54 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -730,6 +730,7 @@ static const struct bitable {
 	{ "__builtin_strncat", builtin_unimp, 3, strncpyt, CHAR|PTR },
 	{ "__builtin_strcspn", builtin_unimp, 2, strcspnt, SIZET },
 	{ "__builtin_strspn", builtin_unimp, 2, strspnt, SIZET },
+	{ "__builtin_strstr", builtin_unimp, 2, strcmpt, CHAR|PTR },
 	{ "__builtin_strpbrk", builtin_unimp, 2, strpbrkt, CHAR|PTR },
 #ifndef TARGET_STDARGS
 	{ "__builtin_stdarg_start", builtin_stdarg_start, 2 },
