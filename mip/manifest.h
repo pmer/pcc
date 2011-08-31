@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.95 2011/07/06 20:15:38 ragge Exp $	*/
+/*	$Id: manifest.h,v 1.96 2011/08/12 19:20:24 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -176,9 +176,9 @@ extern int bdebug, tdebug, edebug;
 extern int ddebug, xdebug, f2debug;
 extern int iTflag, oTflag, kflag;
 extern int sflag, nflag, gflag, pflag;
-extern int funsigned_char;
 extern int sspflag;
 extern int xssa, xtailcall, xtemps, xdeljumps, xdce;
+extern int xuchar;
 
 int yyparse(void);
 void yyaccpt(void);
