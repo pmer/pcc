@@ -1,4 +1,4 @@
-/*      $Id: local.c,v 1.29 2011/06/05 10:29:09 ragge Exp $    */
+/*      $Id: local.c,v 1.30 2011/06/05 17:21:17 ragge Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -646,10 +646,12 @@ mypragma(char *str)
 		destructor = 1;
 		return 1;
 	}
-	if (strcmp(str, "section") || s2 == NULL)
-		return 0;
-	nextsect = newstring(s2, strlen(s2));
-	return 1;
+	if (strcmp(str, "section") == 0 && a2 != NULL) {
+		nextsect = newstring(a2, strlen(a2));
+		return 1;
+	}
+
+	return 0;
 }
 
 /*
