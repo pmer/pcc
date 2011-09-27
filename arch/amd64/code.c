@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.61 2011/08/12 15:33:58 ragge Exp $	*/
+/*	$Id: code.c,v 1.62 2011/08/20 12:54:27 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -354,7 +354,7 @@ ejobcode(int flag )
 	if (flag)
 		return;
 
-#ifdef MACHOAPI
+#ifdef MACHOABI
 #define PT(x)
 #else
 #define	PT(x) printf(".type __pcc_" x ",@function\n")
