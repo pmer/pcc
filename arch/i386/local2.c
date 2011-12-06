@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.163 2011/09/21 21:23:10 plunky Exp $	*/
+/*	$Id: local2.c,v 1.164 2011/11/13 22:35:18 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -337,7 +337,7 @@ fcomp(NODE *p)
 static void
 ulltofp(NODE *p)
 {
-#ifdef ELFABI
+#if defined(ELFABI) || defined(PECOFFABI)
 	static int loadlab;
 	int jmplab;
 
