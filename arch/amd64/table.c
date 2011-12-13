@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.48 2011/08/03 19:19:22 ragge Exp $	*/
+/*	$Id: table.c,v 1.49 2011/08/21 09:32:46 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2008 Anders Magnusson (ragge@ludd.ltu.se).
@@ -55,7 +55,7 @@ struct optab table[] = {
 		"", },
 
 { PCONV,	INAREG,
-	SAREG|SOREG|SNAME,	TUWORD,
+	SAREG|SOREG|SNAME,	TWORD,
 	SAREG,	TPOINT,
 		NASL|NAREG,	RESC1,
 		"	movl AL,Z1\n", },/* amd64 zero-extends 32-bit movl */
