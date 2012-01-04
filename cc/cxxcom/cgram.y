@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.341 2011/09/03 07:43:43 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.1 2012/01/01 16:20:54 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1603,7 +1603,7 @@ init_declarator(NODE *tn, NODE *p, int assign, NODE *a)
 		p->n_ap = attr_add(p->n_ap, ap);
 	}
 
-	sp = cxxlookup(p, SNORMAL);
+	sp = cxxdeclvar(p);
 
 	if (fun_inline && ISFTN(p->n_type))
 		sp->sflags |= SINLINE;
