@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.34 2011/10/24 08:53:18 plunky Exp $	*/
+/*	$Id: builtins.c,v 1.1 2012/01/01 16:20:54 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -305,7 +305,7 @@ builtin_ffsll(NODE *f, NODE *a, TWORD rt)
 static NODE *
 builtin_object_size(NODE *f, NODE *a, TWORD rt)
 {
-	int v = icons(a->n_right);
+	CONSZ v = icons(a->n_right);
 	if (v < 0 || v > 3)
 		uerror("arg2 must be between 0 and 3");
 

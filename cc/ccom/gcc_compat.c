@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.81 2011/07/27 13:41:44 ragge Exp $     */
+/*      $Id: gcc_compat.c,v 1.82 2012/03/12 09:11:22 plunky Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -513,7 +513,8 @@ gcc_tcattrfix(NODE *p)
 int
 pragmas_gcc(char *t)
 {
-	int ign, warn, err, i, u;
+	char u;
+	int ign, warn, err, i;
 	extern bittype warnary[], werrary[];
 	extern char *flagstr[], *pragstore;
 
