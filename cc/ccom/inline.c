@@ -1,4 +1,4 @@
-/*	$Id: inline.c,v 1.45 2011/07/14 09:46:02 ragge Exp $	*/
+/*	$Id: inline.c,v 1.46 2011/08/14 14:55:54 ragge Exp $	*/
 /*
  * Copyright (c) 2003, 2008 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -87,7 +87,7 @@ tcnt(NODE *p, void *arg)
 		SLIST_FIRST(&ipole)->flags &= ~CANINL; /* no stack refs */
 	if (p->n_op == NAME || p->n_op == ICON)
 		p->n_sp = NULL; /* let symtabs be freed for inline funcs */
-	if (nflag)
+	if (ndebug)
 		printf("locking node %p\n", p);
 }
 
