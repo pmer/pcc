@@ -1,4 +1,4 @@
-/*	$Id: optim.c,v 1.48 2012/03/22 18:04:41 plunky Exp $	*/
+/*	$Id: optim.c,v 1.49 2012/03/22 18:51:40 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -241,6 +241,20 @@ again:	o = p->n_op;
 			if (RV(p) == 0)  
 				p = zapleft(p);
 		}
+		break;
+
+	case QUEST:
+		if (LCON(p) == 0)
+			break;
+		if (LV(p) == 0) {
+			q = p->n_right->n_right;
+		} else {
+			q = p->n_right->n_left;
+			p->n_right->n_left = p->n_right->n_right;
+		}
+		p->n_right->n_op = UMUL; /* for tfree() */
+		tfree(p);
+		p = q;
 		break;
 
 	case MINUS:

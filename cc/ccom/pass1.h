@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.236 2012/03/12 09:11:22 plunky Exp $	*/
+/*	$Id: pass1.h,v 1.237 2012/03/22 18:51:40 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -388,7 +388,12 @@ int pragmas_gcc(char *t);
 NODE *cstknode(TWORD t, union dimfun *df, struct attr *ap);
 int concast(NODE *p, TWORD t);
 NODE *builtin_check(NODE *f, NODE *a);
+#ifdef WORD_ADDRESSED
+#define rmpconv(p) (p)
+#else
 NODE *rmpconv(NODE *);
+#endif
+NODE *optloop(NODE *);
 NODE *nlabel(int label);
 
 
