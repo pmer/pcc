@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.341 2012/03/19 15:53:33 plunky Exp $	*/
+/*	$Id: pftn.c,v 1.342 2012/03/22 18:51:40 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -376,7 +376,8 @@ defid(NODE *q, int class)
 		printf("	new entry made\n");
 #endif
 	if (type < BTMASK && (ap = attr_find(q->n_ap, GCC_ATYP_MODE))) {
-		type = ENUNSIGN(ap->iarg(0));
+		int u = ISUNSIGNED(type);
+		type = u ? ENUNSIGN(ap->iarg(0)) : ap->iarg(0);
 		if (type == XTYPE)
 			uerror("fix XTYPE basetyp");
 	}
