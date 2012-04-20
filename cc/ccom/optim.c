@@ -1,4 +1,4 @@
-/*	$Id: optim.c,v 1.49 2012/03/22 18:51:40 plunky Exp $	*/
+/*	$Id: optim.c,v 1.50 2012/03/26 16:51:50 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -394,6 +394,18 @@ again:	o = p->n_op;
 	case ULE:
 	case UGT:
 	case UGE:
+		if (LCON(p) && RCON(p) &&
+		    !ISPTR(p->n_left->n_type) && !ISPTR(p->n_right->n_type)) {
+			/* Do constant evaluation */
+			q = p->n_left;
+			if (conval(q, o, p->n_right)) {
+				nfree(p->n_right);
+				nfree(p);
+				p = q;
+				break;
+			}
+		}
+
 		if( !LCON(p) ) break;
 
 		/* exchange operands */
