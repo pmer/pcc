@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.65 2011/08/21 09:32:46 ragge Exp $	*/
+/*	$Id: local.c,v 1.66 2012/03/23 17:03:09 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -575,8 +575,11 @@ myp2tree(NODE *p)
 int
 andable(NODE *p)
 {
+#ifdef notdef
+	/* shared libraries cannot have direct referenced static syms */
 	if (p->n_sp->sclass == STATIC || p->n_sp->sclass == USTATIC)
 		return 1;
+#endif
 	return !kflag;
 }
 
