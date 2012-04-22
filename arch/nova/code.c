@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.7 2011/05/15 17:08:35 ragge Exp $	*/
+/*	$Id: code.c,v 1.8 2011/06/04 07:41:11 ragge Exp $	*/
 /*
  * Copyright (c) 2006 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -59,7 +59,7 @@ defnam(struct symtab *p)
  * deals with struct return here
  */
 void
-efcode()
+efcode(void)
 {
 	NODE *p, *q;
 	int sz;
@@ -106,12 +106,12 @@ cerror("bfcode");
 /* called just before final exit */
 /* flag is 1 if errors, 0 if none */
 void
-ejobcode(int flag )
+ejobcode(int flag)
 {
 }
 
 void
-bjobcode()
+bjobcode(void)
 {
 }
 

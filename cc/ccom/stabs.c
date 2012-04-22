@@ -1,4 +1,4 @@
-/*	$Id: stabs.c,v 1.32 2011/04/07 18:50:16 ragge Exp $	*/
+/*	$Id: stabs.c,v 1.33 2012/03/22 18:04:41 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -97,7 +97,7 @@ extern int isinlining;
  * Note that "int" is always internal number 1.
  */
 void
-stabs_init()
+stabs_init(void)
 {
 	struct stabtype *st;
 

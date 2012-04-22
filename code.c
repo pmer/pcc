@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.20 2011/06/04 07:41:11 ragge Exp $	*/
+/*	$Id: code.c,v 1.21 2011/07/28 14:12:07 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -112,7 +112,7 @@ static int rvnr;
  * deals with struct return here
  */
 void
-efcode()
+efcode(void)
 {
 	NODE *p, *q;
 	int tempnr;
@@ -416,12 +416,12 @@ bfcode(struct symtab **sp, int cnt)
 /* called just before final exit */
 /* flag is 1 if errors, 0 if none */
 void
-ejobcode(int flag )
+ejobcode(int flag)
 {
 }
 
 void
-bjobcode()
+bjobcode(void)
 {
 	printf("\t.section .mdebug.abi32\n");
 	printf("\t.previous\n");

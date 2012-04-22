@@ -1,4 +1,4 @@
-/*	$Id: flocal.c,v 1.15 2008/12/03 22:22:13 gmcgarry Exp $	*/
+/*	$Id: flocal.c,v 1.16 2008/12/19 20:26:50 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -42,7 +42,6 @@ prchars(int *s)
 {
 	printf("\t.byte 0%o,0%o\n", s[0], s[1]);
 }
-
 
 void
 setloc(int l)
@@ -180,12 +179,12 @@ prext(char *name, ftnint leng, int init)
 }
 
 void
-prendproc()
+prendproc(void)
 {
 }
 
 void
-prtail()
+prtail(void)
 {
 }
 
@@ -195,10 +194,8 @@ prolog(struct entrypoint *ep, struct bigblock *argvec)
 	/* Ignore for now.  ENTRY is not supported */
 }
 
-
-
 void
-prdbginfo()
+prdbginfo(void)
 {
 }
 

@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.109 2011/09/03 08:04:18 ragge Exp $	*/
+/*	$Id: scan.l,v 1.1 2012/01/01 16:20:55 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -224,7 +224,7 @@ int lineno;
 char *ftitle = "<stdin>";
 
 static int
-namechk()
+namechk(void)
 { 	
 	struct symtab *s;
 	int i;
@@ -797,11 +797,12 @@ struct pragmas {
 	{ "ident", NULL },
 	{ 0 },
 };
+
 /*
  * got a full pragma line.  Split it up here.
  */
 static void
-pragma()
+pragma(void)
 {
 	struct pragmas *p;
 	char *t, *pt;

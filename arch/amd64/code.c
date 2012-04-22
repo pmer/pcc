@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.62 2011/08/20 12:54:27 ragge Exp $	*/
+/*	$Id: code.c,v 1.63 2011/09/27 08:10:45 plunky Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -130,7 +130,7 @@ defloc(struct symtab *sp)
  * The return value is in (or pointed to by) RETREG.
  */
 void
-efcode()
+efcode(void)
 {
 	struct symtab *sp;
 	extern int gotnr;
@@ -349,7 +349,7 @@ bfcode(struct symtab **s, int cnt)
 /* called just before final exit */
 /* flag is 1 if errors, 0 if none */
 void
-ejobcode(int flag )
+ejobcode(int flag)
 {
 	if (flag)
 		return;
@@ -441,7 +441,7 @@ static char *gp_offset, *fp_offset, *overflow_arg_area, *reg_save_area;
 static char *gpnext, *fpnext, *_1regref, *_2regref, *memref;
 
 void
-bjobcode()
+bjobcode(void)
 {
 	struct symtab *sp;
 	struct rstack *rp;

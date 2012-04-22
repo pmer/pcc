@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.109 2011/09/03 08:04:18 ragge Exp $	*/
+/*	$Id: scan.l,v 1.110 2012/04/22 12:46:58 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -787,11 +787,12 @@ struct pragmas {
 	{ "ident", NULL },
 	{ 0 },
 };
+
 /*
  * got a full pragma line.  Split it up here.
  */
 static void
-pragma()
+pragma(void)
 {
 	struct pragmas *p;
 	char *t, *pt;

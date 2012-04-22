@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.66 2011/06/23 13:41:25 ragge Exp $	*/
+/*	$Id: code.c,v 1.67 2011/06/23 13:43:04 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -115,7 +115,7 @@ defloc(struct symtab *sp)
  * deals with struct return here
  */
 void
-efcode()
+efcode(void)
 {
 	extern int gotnr;
 	NODE *p, *q;
@@ -284,7 +284,7 @@ struct stub nlplist;
 /* called just before final exit */
 /* flag is 1 if errors, 0 if none */
 void
-ejobcode(int flag )
+ejobcode(int flag)
 {
 #if defined(MACHOABI)
 	/*
@@ -315,7 +315,7 @@ ejobcode(int flag )
 }
 
 void
-bjobcode()
+bjobcode(void)
 {
 #ifdef os_sunos
 	astypnames[SHORT] = astypnames[USHORT] = "\t.2byte";

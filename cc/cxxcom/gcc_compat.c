@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.1 2012/01/01 16:20:54 ragge Exp $     */
+/*      $Id: gcc_compat.c,v 1.2 2012/03/22 18:04:41 plunky Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -97,7 +97,7 @@ static char *g77n[] = { "__g77_integer", "__g77_uinteger",
 	"__g77_longint", "__g77_ulongint" };
 
 void
-gcc_init()
+gcc_init(void)
 {
 	struct kw *kwp;
 	NODE *p;
@@ -116,7 +116,6 @@ gcc_init()
 		defid(p, TYPEDEF);
 		nfree(p);
 	}
-
 }
 
 #define	TS	"\n#pragma tls\n# %d\n"

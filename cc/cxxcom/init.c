@@ -1,4 +1,4 @@
-/*	$Id: init.c,v 1.1 2012/01/01 16:20:54 ragge Exp $	*/
+/*	$Id: init.c,v 1.2 2012/03/22 18:51:40 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004, 2007 Anders Magnusson (ragge@ludd.ltu.se).
@@ -896,9 +896,8 @@ endictx(void)
  * process an initializer's left brace
  */
 void
-ilbrace()
+ilbrace(void)
 {
-
 #ifdef PCC_DEBUG
 	if (idebug)
 		printf("ilbrace()\n");
@@ -919,7 +918,7 @@ ilbrace()
  * called when a '}' is seen
  */
 void
-irbrace()
+irbrace(void)
 {
 #ifdef PCC_DEBUG
 	if (idebug)

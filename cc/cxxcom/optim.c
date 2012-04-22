@@ -1,4 +1,4 @@
-/*	$Id: optim.c,v 1.2 2012/03/22 18:04:41 plunky Exp $	*/
+/*	$Id: optim.c,v 1.3 2012/03/22 18:51:40 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -419,7 +419,8 @@ ispow2(CONSZ c)
 }
 
 int
-nncon( p ) NODE *p; {
+nncon(NODE *p)
+{
 	/* is p a constant without a name */
 	return( p->n_op == ICON && p->n_sp == NULL );
-	}
+}

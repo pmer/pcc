@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.101 2008/11/16 13:36:15 ragge Exp $	*/
+/*	$Id: local2.c,v 1.102 2008/11/22 16:12:25 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -824,7 +824,7 @@ zzzcode(NODE *p, int c)
 
 /* set up temporary registers */
 void
-setregs()
+setregs(void)
 {
 	fregs = 7;	/* 7 free regs on PDP10 (1-7) */
 }
@@ -1072,7 +1072,7 @@ adrput(FILE *fp, NODE *p)
 
 /*
  * print out a constant
-*/
+ */
 void
 acon(FILE *fp, NODE *p)
 {
@@ -1310,6 +1310,7 @@ void
 mflags(char *str)
 {
 }
+
 /*
  * Do something target-dependent for xasm arguments.
  * Supposed to find target-specific constraints and rewrite them.

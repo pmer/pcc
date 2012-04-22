@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.277 2011/12/24 10:59:04 ragge Exp $	*/
+/*	$Id: reader.c,v 1.278 2012/03/22 18:51:41 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1283,13 +1283,13 @@ oreg2(NODE *p, void *arg)
 }
 
 void
-canon(p) NODE *p; {
+canon(NODE *p)
+{
 	/* put p in canonical form */
 
 	walkf(p, setleft, 0);	/* ptrs at left node for arithmetic */
 	walkf(p, oreg2, 0);	/* look for and create OREG nodes */
 	mycanon(p);		/* your own canonicalization routine(s) */
-
 }
 
 void
@@ -1355,7 +1355,7 @@ freetemp(int k)
 		p2maxautooff = p2autooff;
 	return( -p2autooff );
 #endif
-	}
+}
 
 NODE *
 mklnode(int op, CONSZ lval, int rval, TWORD type)

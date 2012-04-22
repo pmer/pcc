@@ -1,4 +1,4 @@
-/*	$Id: inline.c,v 1.46 2011/08/14 14:55:54 ragge Exp $	*/
+/*	$Id: inline.c,v 1.47 2012/03/22 18:51:40 plunky Exp $	*/
 /*
  * Copyright (c) 2003, 2008 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -177,7 +177,7 @@ inline_start(struct symtab *sp)
  * Since pcc mimics gcc 4.3.1 that is the behaviour we emulate.
  */
 void
-inline_end()
+inline_end(void)
 {
 	struct symtab *sp = cifun->sp;
 
@@ -291,7 +291,7 @@ puto(struct istat *w)
  * printout functions that are referenced.
  */
 void
-inline_prtout()
+inline_prtout(void)
 {
 	struct istat *w;
 	int gotone = 0;

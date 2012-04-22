@@ -1,4 +1,4 @@
-/*	$Id: optim.c,v 1.50 2012/03/26 16:51:50 ragge Exp $	*/
+/*	$Id: optim.c,v 1.51 2012/04/20 16:19:45 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -445,7 +445,8 @@ ispow2(CONSZ c)
 }
 
 int
-nncon( p ) NODE *p; {
+nncon(NODE *p)
+{
 	/* is p a constant without a name */
 	return( p->n_op == ICON && p->n_sp == NULL );
-	}
+}

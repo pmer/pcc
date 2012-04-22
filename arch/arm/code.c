@@ -1,4 +1,4 @@
-/*      $Id: code.c,v 1.25 2011/06/04 07:41:11 ragge Exp $    */
+/*      $Id: code.c,v 1.26 2011/11/13 22:30:18 gmcgarry Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -387,7 +387,7 @@ bfcode(struct symtab **sp, int cnt)
  * End-of-Function code:
  */
 void
-efcode()
+efcode(void)
 {
 	NODE *p, *q;
 	int tempnr;
@@ -427,7 +427,7 @@ efcode()
  * End-of-job: called just before final exit.
  */
 void
-ejobcode(int flag )
+ejobcode(int flag)
 {
 	printf("\t.ident \"PCC: %s\"\n", VERSSTR);
 }
@@ -438,7 +438,7 @@ ejobcode(int flag )
  * Initialise data structures specific for the local machine.
  */
 void
-bjobcode()
+bjobcode(void)
 {
 }
 
