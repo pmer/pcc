@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.144 2011/08/31 08:31:31 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.145 2011/09/27 08:22:55 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -92,8 +92,6 @@ struct incs {
 	dev_t dev;
 	ino_t ino;
 } *incdir[2];
-#define	INCINC 0
-#define	SYSINC 1
 
 static struct symtab *filloc;
 static struct symtab *linloc;

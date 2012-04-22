@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.63 2011/07/16 16:14:56 ragge Exp $	*/
+/*	$Id: token.c,v 1.64 2011/08/30 20:12:21 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -876,8 +876,12 @@ prtline(void)
 			s = sheap("%s: %s\n", Mfile, ifiles->fname);
 			write(ofd, s, strlen((char *)s));
 		}
-	} else if (!Pflag)
-		putstr(sheap("\n# %d \"%s\"\n", ifiles->lineno, ifiles->fname));
+	} else if (!Pflag) {
+		putstr(sheap("\n# %d \"%s\"", ifiles->lineno, ifiles->fname));
+		if (ifiles->idx == SYSINC)
+			putstr(sheap(" 3"));
+		putstr(sheap("\n"));
+	}
 	stringbuf = os;
 }
 

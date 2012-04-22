@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.54 2011/09/27 08:22:55 plunky Exp $	*/
+/*	$Id: cpp.h,v 1.55 2011/09/27 08:34:59 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -112,6 +112,9 @@ struct includ {
 	usch *bbuf;
 #endif
 } *ifiles;
+#define INCINC 0
+#define SYSINC 1
+
 
 /* Symbol table entry  */
 struct symtab {
