@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.342 2012/03/24 16:53:12 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.343 2012/03/26 16:51:50 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1481,6 +1481,8 @@ init_declarator(NODE *tn, NODE *p, int assign, NODE *a)
 			uerror("cannot initialise function");
 		defid(p, uclass(class));
 		sp = p->n_sp;
+		if (sp->sdf->dfun == 0 && !issyshdr)
+			warner(Wstrict_prototypes);
 		if (parlink) {
 			/* dynamic sized arrays in prototypes */
 			tfree(parlink); /* Free delayed tree */
@@ -1488,6 +1490,8 @@ init_declarator(NODE *tn, NODE *p, int assign, NODE *a)
 		}
 	}
 	tfree(p);
+	if (issyshdr)
+		sp->sflags |= SINSYS; /* declared in system header */
 	return sp;
 }
 
@@ -1655,6 +1659,8 @@ fundef(NODE *tp, NODE *p)
 
 	cftnsp = s;
 	defid(p, class);
+	if (s->sdf->dfun == 0 && !issyshdr)
+		warner(Wstrict_prototypes);
 #ifdef GCC_COMPAT
 	if (attr_find(p->n_ap, GCC_ATYP_ALW_INL)) {
 		/* Temporary turn on temps to make always_inline work */
