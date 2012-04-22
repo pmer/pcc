@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.108 2011/06/07 12:43:36 plunky Exp $	*/
+/*	$Id: scan.l,v 1.109 2011/09/03 08:04:18 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -234,7 +234,7 @@ L?\"(\\.|[^\\"])*\"	{ yylval.strp = yytext; return C_STRING; }
 
 %%
 
-int lineno;
+int lineno, issyshdr;
 char *ftitle = "<stdin>";
 
 int
@@ -637,8 +637,13 @@ control(int t)
 			wr++;
 		if (*wr != '\"')
 			goto bad;
-		*wr = 0;
+		*wr++ = 0;
 		ftitle = addstring(eptr);
+		while (*wr == ' ')
+			wr++;
+		issyshdr = 0;
+		if (*wr == '3')
+			issyshdr = 1;
 #ifdef STABS
 		if (gflag)
 			stabs_file(ftitle);
