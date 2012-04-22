@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.30 2011/06/05 17:21:17 ragge Exp $	*/
+/*	$Id: local.c,v 1.31 2011/07/28 14:12:07 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -522,16 +522,6 @@ ctype(TWORD type)
 
 	}
 	return (type);
-}
-
-/* curid is a variable which is defined but
- * is not initialized (and not a function );
- * This routine returns the storage class for an uninitialized declaration
- */
-int
-noinit(void)
-{
-	return(EXTERN);
 }
 
 void
