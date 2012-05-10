@@ -1,4 +1,4 @@
-/*	$Id: optim.c,v 1.51 2012/04/20 16:19:45 ragge Exp $	*/
+/*	$Id: optim.c,v 1.52 2012/04/22 21:07:41 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -415,6 +415,20 @@ again:	o = p->n_op;
 		p->n_right = sp;
 		p->n_op = revrel[p->n_op - EQ ];
 		break;
+
+	case CBRANCH:
+		if (LCON(p)) {
+			if (LV(p) == 0) {
+				tfree(p);
+				p = bcon(0);
+			} else {
+				tfree(p->n_left);
+				p->n_left = p->n_right;
+				p->n_op = GOTO;
+			}
+		}
+		break;
+				
 
 #ifdef notyet
 	case ASSIGN:
