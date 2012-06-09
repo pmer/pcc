@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.84 2012/03/29 12:47:50 plunky Exp $     */
+/*      $Id: gcc_compat.c,v 1.85 2012/04/22 21:07:41 plunky Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -262,6 +262,7 @@ struct atax {
 	CS(GCC_ATYP_TLSMODEL)	{ A_1ARG|A1_STR, "tls_model" },
 	CS(GCC_ATYP_ALIASWEAK)	{ A_1ARG|A1_STR, "aliasweak" },
 	CS(GCC_ATYP_RETURNS_TWICE) { A_0ARG, "returns_twice" },
+	CS(GCC_ATYP_WARNING)	{ A_1ARG|A1_STR, "warning" },
 
 	CS(GCC_ATYP_BOUNDED)	{ A_3ARG|A_MANY|A1_NAME, "bounded" },
 };
