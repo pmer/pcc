@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.344 2012/04/22 12:49:07 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.345 2012/06/20 20:01:10 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2136,7 +2136,7 @@ eve(NODE *p)
 	case QUEST:
 	case COLON:
 		p1 = eve(p1);
-eve2:		r = buildtree(p->n_op, p1, eve(p2));
+		r = buildtree(p->n_op, p1, eve(p2));
 		break;
 
 	case INCR:
