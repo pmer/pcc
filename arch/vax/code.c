@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.17 2011/07/30 08:10:36 ragge Exp $	*/
+/*	$Id: code.c,v 1.18 2012/04/22 21:07:40 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -358,6 +358,19 @@ builtin_ffs(NODE *f, NODE *a, TWORD t)
 	q->n_name = "ffs $0,$32,%1,%0;bneq 1f;mnegl $1,%0;1:;incl %0";
 	p = block(COMOP, q, p, t, 0, 0);
 	return p;
+}
+
+NODE *  
+builtin_ffsl(NODE *f, NODE *a, TWORD t)
+{       
+	return builtin_ffs(f, a, t);
+}
+
+NODE *  
+builtin_ffsll(NODE *f, NODE *a, TWORD t)
+{
+	cerror("builtin_ffsll unimplemented");
+	return NIL;
 }
 
 NODE *
