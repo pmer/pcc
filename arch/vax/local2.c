@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.29 2012/04/22 21:07:40 plunky Exp $	*/
+/*	$Id: local2.c,v 1.30 2012/07/10 16:29:32 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -1241,7 +1241,7 @@ optim2(NODE *p, void *arg)
 			else if (lt == ULONGLONG) {
 				p->n_left = mkunode(SCONV, p->n_left,0, DOUBLE);
 				p->n_type = FLOAT;
-				mkcall(p->n_left, "__floatunsdidf");
+				mkcall(p->n_left, "__floatundidf");
 			} else if (lt == UNSIGNED) {
 				/* insert an extra double-to-float sconv */
 				p->n_left = mkunode(SCONV, p->n_left,0, DOUBLE);
@@ -1251,7 +1251,7 @@ optim2(NODE *p, void *arg)
 			if (lt == LONGLONG)
 				mkcall(p, "__floatdidf");
 			else if (lt == ULONGLONG)
-				mkcall(p, "__floatunsdidf");
+				mkcall(p, "__floatundidf");
 			break;
 			
 		}
