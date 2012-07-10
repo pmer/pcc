@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.239 2012/04/22 12:49:07 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.240 2012/06/09 08:30:21 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -370,10 +370,12 @@ int andable(NODE *);
 int conval(NODE *, int, NODE *);
 int ispow2(CONSZ);
 void defid(NODE *q, int class);
+void defid2(NODE *q, int class, char *astr);
 void efcode(void);
 void ecomp(NODE *p);
 int upoff(int size, int alignment, int *poff);
 void nidcl(NODE *p, int class);
+void nidcl2(NODE *p, int class, char *astr);
 void eprint(NODE *, int, int *, int *);
 int uclass(int class);
 int notlval(NODE *);
