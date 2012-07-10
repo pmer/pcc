@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.28 2012/03/22 18:56:17 plunky Exp $	*/
+/*	$Id: local2.c,v 1.29 2012/04/22 21:07:40 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -1141,7 +1141,7 @@ mkcall(NODE *p, char *name)
 	p->n_op = CALL;
 	p->n_right = mkunode(FUNARG, p->n_left, 0, p->n_left->n_type);
 	p->n_left = mklnode(ICON, 0, 0, FTN|p->n_type);
-	p->n_left->n_name = "__fixunsdfdi";
+	p->n_left->n_name = name;
 }
 
 /* do local tree transformations and optimizations */
@@ -1251,7 +1251,7 @@ optim2(NODE *p, void *arg)
 			if (lt == LONGLONG)
 				mkcall(p, "__floatdidf");
 			else if (lt == ULONGLONG)
-				mkcall(p->n_left, "__floatunsdidf");
+				mkcall(p, "__floatunsdidf");
 			break;
 			
 		}
