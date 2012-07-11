@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.19 2011/07/30 08:14:38 ragge Exp $	*/
+/*	$Id: table.c,v 1.20 2012/07/10 13:24:43 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -201,14 +201,14 @@ struct optab  table[] = {
 		"	cmpb	AL,AR\n", },
 
 { OPLOG,	FORCC,
-	SAREG|AWD,	TDOUBLE,
-	SAREG|AWD,	TDOUBLE,
+	SBREG|AWD,	TDOUBLE,
+	SBREG|AWD,	TDOUBLE,
 		0,	RESCC,
 		"	cmpd	AL,AR\n", },
 
 { OPLOG,	FORCC,
-	SAREG|AWD,	TFLOAT|TDOUBLE,
-	SAREG|AWD,	TFLOAT|TDOUBLE,
+	SAREG|AWD,	TFLOAT,
+	SAREG|AWD,	TFLOAT,
 		0,	RESCC,
 		"	cmpf	AL,AR\n", },
 
