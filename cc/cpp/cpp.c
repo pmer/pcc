@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.145 2011/09/27 08:22:55 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.146 2012/04/22 12:44:11 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -891,10 +891,6 @@ id:			savstr((usch *)yytext);
 #endif
 	for (i = 0; i < narg; i++)
 		free(args[i]);
-
-	/* fix \\\n */
-	if (ifiles->lineno > 1)
-		prtline();
 	return;
 
 bad:	error("bad define");
