@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.146 2012/04/22 12:44:11 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.147 2012/07/27 16:07:03 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1126,6 +1126,8 @@ delwarn(void)
 		} else
 			savstr(yytext);
 	}
+	if (stringbuf[-1] == '/')
+		savch(PHOLD); /* avoid creating comments */
 	savch(0);
 	unpstr(bp);
 	stringbuf = bp;
@@ -1772,6 +1774,7 @@ prline(const usch *s)
 		case WARN: printf("<WARN>"); break;
 		case CONC: printf("<CONC>"); break;
 		case SNUFF: printf("<SNUFF>"); break;
+		case PHOLD: printf("<PHOLD>"); break;
 		case EBLOCK: printf("<E(%d)>",s[1] + s[2] * 256); s+=2; break;
 		case '\n': printf("<NL>"); break;
 		default: printf("%c", *s); break;
@@ -1841,6 +1844,8 @@ void
 putstr(const usch *s)
 {
 	for (; *s; s++) {
+		if (*s == PHOLD)
+			continue;
 		outbuf[obufp++] = *s;
 		if (obufp == CPPBUF || (istty && *s == '\n'))
 			flbuf();

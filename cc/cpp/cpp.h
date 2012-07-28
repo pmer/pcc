@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.55 2011/09/27 08:34:59 plunky Exp $	*/
+/*	$Id: cpp.h,v 1.56 2012/04/22 12:44:11 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -73,6 +73,7 @@ extern	int	ofd;
 #define CONC	2	/* STX, not legal char */
 #define SNUFF	3	/* ETX, not legal char */
 #define	EBLOCK	4	/* EOT, not legal char */
+#define	PHOLD	5	/* ENQ, not legal char */
 
 /* Used in macro expansion */
 #define RECMAX	10000			/* max # of recursive macros */
