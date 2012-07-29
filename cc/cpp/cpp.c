@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.148 2012/07/28 20:20:03 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.149 2012/07/29 09:59:05 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1701,11 +1701,28 @@ sav:			savstr(yytext);
 			IMP("EA1");
 			/* see if ident is expandable */
 			if ((nl = lookup(och, FIND)) && okexp(nl)) {
+				/* Save blocks */
+				unsigned short *svidx =
+				    malloc(sizeof(int)*(bidx+1));
+				int svbidx = bidx;
+
+				for (i = 0; i < bidx; i++)
+					svidx[i] = bptr[i];
 				if (submac(nl, lvl+1)) {
 					/* Could expand, result on lexbuffer */
 					stringbuf = och; /* clear saved name */
 					anychange = 1;
 				}
+				cunput(c = cinput());
+				if (((spechr[c] & C_ID) && c > 63) || 
+				    c == EBLOCK) {
+					for (i = 0; i < svbidx; i++) {
+						cunput(svidx[i] >> 8);
+						cunput(svidx[i] & 255);
+						cunput(EBLOCK);
+					}
+				}
+				free(svidx);
 			} else if (bidx) {
 				/* must restore blocks */
 				if (gmult) {
