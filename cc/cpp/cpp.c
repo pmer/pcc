@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.150 2012/07/29 17:26:26 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.151 2012/07/30 09:51:52 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -223,7 +223,7 @@ main(int argc, char **argv)
 						savch('$');
 					savch(*cp);
 				}
-				savstr((usch *)""); 
+				savstr((const usch *)""); 
 				if (Mxfile) { savch(' '); savstr(Mxfile); }
 				savch(0);
 				Mxfile = fn;

@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.67 2012/07/29 17:27:12 ragge Exp $	*/
+/*	$Id: token.c,v 1.68 2012/07/30 09:51:52 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -879,7 +879,7 @@ prtline(void)
 			s = sheap("%s: %s\n", Mfile, ifiles->fname);
 			i = write(ofd, s, strlen((char *)s));
 			if (MPflag &&
-			    strcmp((char *)ifiles->fname, (char *)MPfile)) {
+			    strcmp((const char *)ifiles->fname, (char *)MPfile)) {
 				s = sheap("%s:\n", ifiles->fname);
 				i = write(ofd, s, strlen((char *)s));
 			}
