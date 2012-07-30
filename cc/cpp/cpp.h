@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.56 2012/04/22 12:44:11 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.57 2012/07/28 20:20:03 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -40,8 +40,8 @@ extern	int	elflvl;
 extern	int	elslvl;
 extern	int	dflag;
 extern	int	tflag, Cflag, Pflag;
-extern	int	Mflag, dMflag;
-extern	usch	*Mfile;
+extern	int	Mflag, dMflag, MPflag;
+extern	usch	*Mfile, *MPfile;
 extern	int	ofd;
 
 /* args for lookup() */

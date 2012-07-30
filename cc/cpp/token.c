@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.66 2012/07/17 19:40:49 ragge Exp $	*/
+/*	$Id: token.c,v 1.67 2012/07/29 17:27:12 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -807,7 +807,7 @@ pushfile(const usch *file, const usch *fn, int idx, void *incs)
 	extern struct initar *initar;
 	struct includ ibuf;
 	struct includ *ic;
-	int otrulvl;
+	int otrulvl, i;
 
 	ic = &ibuf;
 	ic->next = ifiles;
@@ -841,7 +841,7 @@ pushfile(const usch *file, const usch *fn, int idx, void *incs)
 		prinit(initar, ic);
 		initar = NULL;
 		if (dMflag)
-			write(ofd, ic->buffer, strlen((char *)ic->buffer));
+			i = write(ofd, ic->buffer, strlen((char *)ic->buffer));
 		fastscan();
 		prtline();
 		ic->infil = oin;
@@ -870,13 +870,19 @@ void
 prtline(void)
 {
 	usch *s, *os = stringbuf;
+	int i;
 
 	if (Mflag) {
 		if (dMflag)
 			return; /* no output */
 		if (ifiles->lineno == 1) {
 			s = sheap("%s: %s\n", Mfile, ifiles->fname);
-			write(ofd, s, strlen((char *)s));
+			i = write(ofd, s, strlen((char *)s));
+			if (MPflag &&
+			    strcmp((char *)ifiles->fname, (char *)MPfile)) {
+				s = sheap("%s:\n", ifiles->fname);
+				i = write(ofd, s, strlen((char *)s));
+			}
 		}
 	} else if (!Pflag) {
 		putstr(sheap("\n# %d \"%s\"", ifiles->lineno, ifiles->fname));
