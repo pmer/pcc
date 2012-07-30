@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.68 2012/07/30 09:51:52 ragge Exp $	*/
+/*	$Id: token.c,v 1.69 2012/07/30 12:47:59 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -696,6 +696,8 @@ yylex(void)
 		return NUMBER;
 	case WARN:
 		noex = 0;
+		/* FALLTHROUGH */
+	case PHOLD:
 		return yylex();
 	default:
 		return ch;
