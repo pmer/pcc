@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.101 2012/03/26 16:52:17 ragge Exp $	*/
+/*	$Id: common.c,v 1.102 2012/04/22 21:07:41 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -228,6 +228,10 @@ warner(int type, ...)
 {
 	va_list ap;
 	char *w;
+	extern int issyshdr;
+
+	if (issyshdr && type == Wtruncate)
+		return; /* Too many false positives */
 
 	if (TESTBIT(warnary, type) == 0)
 		return; /* no warning */
