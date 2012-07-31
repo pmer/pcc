@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.348 2012/07/30 15:27:47 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.349 2012/07/30 16:54:58 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -358,8 +358,13 @@ defid2(NODE *q, int class, char *astr)
 	case REGISTER:
 		break;  /* mismatch.. */
 	case SNULL:
-		if (fun_inline && ISFTN(type))
+		if (fun_inline && ISFTN(type)) {
+			if (scl == EXTERN) {
+				p->sclass = EXTDEF;
+				inline_ref(p);
+			}
 			goto done;
+		}
 		break;
 	}
 
