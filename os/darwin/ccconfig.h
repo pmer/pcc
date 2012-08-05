@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.14 2011/06/04 19:27:25 plunky Exp $	*/
+/*	$Id: ccconfig.h,v 1.15 2012/08/05 14:35:00 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -62,3 +62,28 @@ ld -arch ppc -weak_reference_mismatches non-weak -o a.out -lcrt1.o -lcrt2.o -L/u
 #else
 #error defines for arch missing
 #endif
+
+
+/*
+ * Deal with some darwin-specific args.
+ */
+#define	EARLY_ARG_CHECK	{						\
+	if (match(argp, "-install_name")) {				\
+		strlist_append(&middle_linker_flags, argp);		\
+		strlist_append(&middle_linker_flags, nxtopt(0));	\
+		continue;						\
+	} else if (match(argp, "-compatibility_version") ||		\
+	    match(argp, "-current_version")) {				\
+		strlist_append(&middle_linker_flags, argp);		\
+		strlist_append(&middle_linker_flags, nxtopt(0));	\
+		continue;						\
+	} else if (strcmp(argp, "-dynamiclib") == 0) {			\
+		shared = 1;						\
+		continue;						\
+	} else if (strcmp(argp, "-shared") == 0) {			\
+		owarning(argp);						\
+		continue;						\
+	} 								\
+}
+
+
