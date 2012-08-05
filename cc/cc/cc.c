@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.228 2012/08/05 17:43:01 ragge Exp $	*/
+/*	$Id: cc.c,v 1.229 2012/08/05 18:13:01 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1183,16 +1183,12 @@ setsuf(char *s, char ch)
 	if ((p = strrchr(s, '.'))) {
 		p[1] = ch;
 		p[2] = '\0';
+		return(s);
 	}
 	l = strlen(s)+3;
 	p = xmalloc(l);
-	strlcpy(p, s, l);
-	s = p;
-	p += l-3;
-	*p++ = '.';
-	*p++ = ch;
-	*p++ = 0;
-	return(s);
+	snprintf(p, l, "%s.%c", s, ch);
+	return(p);
 }
 
 #ifdef os_win32
