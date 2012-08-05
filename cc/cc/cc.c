@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.227 2012/08/05 17:27:30 ragge Exp $	*/
+/*	$Id: cc.c,v 1.228 2012/08/05 17:43:01 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -419,9 +419,10 @@ main(int argc, char *argv[])
 	strlist_init(&temp_outputs);
 	strlist_init(&compiler_flags);
 
-	t = argv[0];
 	if ((t = strrchr(argv[0], '/')))
 		t++;
+	else
+		t = argv[0];
 
 	if (match(t, "p++")) {
 		cxxflag = 1;
