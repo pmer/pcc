@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.19 2011/06/04 19:27:26 plunky Exp $	*/
+/*	$Id: ccconfig.h,v 1.20 2011/07/23 08:29:27 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -31,33 +31,8 @@
  * Various settings that controls how the C compiler works.
  */
 
-#ifndef LIBDIR
-#define LIBDIR "/usr/lib/"
-#endif
-
 /* common cpp predefines */
 #define	CPPADD	{ "-D__NetBSD__", "-D__ELF__", NULL, }
-
-/* host-dependent */
-#define CRT0FILE LIBDIR "crt0.o"
-#define CRT0FILE_PROFILE LIBDIR "gcrt0.o"
-
-#if TARGOSVER == 1
-#define STARTFILES { LIBDIR "crtbegin.o", NULL }
-#define	ENDFILES { LIBDIR "crtend.o", NULL }
-#else
-#define STARTFILES { LIBDIR "crti.o", LIBDIR "crtbegin.o", NULL }
-#define	ENDFILES { LIBDIR "crtend.o", LIBDIR "crtn.o", NULL }
-#endif
-
-/* shared libraries linker files */
-#if TARGOSVER == 1
-#define STARTFILES_S { LIBDIR "crtbeginS.o", NULL }
-#define	ENDFILES_S { LIBDIR "crtendS.o", NULL }
-#else
-#define STARTFILES_S { LIBDIR "crti.o", LIBDIR "crtbeginS.o", NULL }
-#define	ENDFILES_S { LIBDIR "crtendS.o", LIBDIR "crtn.o", NULL }
-#endif
 
 #ifdef LANG_F77
 #define F77LIBLIST { "-L/usr/local/lib", "-lF77", "-lI77", "-lm", "-lc", NULL };

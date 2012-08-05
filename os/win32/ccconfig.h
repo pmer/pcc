@@ -1,8 +1,4 @@
-/*	$Id: ccconfig.h,v 1.16 2011/06/05 08:54:43 plunky Exp $	*/
-
-#ifndef LIBDIR
-#define LIBDIR "/usr/lib/"
-#endif
+/*	$Id: ccconfig.h,v 1.17 2011/09/27 08:22:55 plunky Exp $	*/
 
 /*
  * Currently only supports console applications.

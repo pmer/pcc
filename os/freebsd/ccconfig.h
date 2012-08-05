@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.14 2011/06/05 08:54:43 plunky Exp $	*/
+/*	$Id: ccconfig.h,v 1.15 2012/06/25 20:11:00 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2007 David O'Brien <obrien@FreeBSD.org>
@@ -27,21 +27,12 @@
  * SUCH DAMAGE.
  */
 
-#ifndef LIBDIR
-#define LIBDIR "/usr/lib/"
-#endif
-
 #define CPPADD { "-D__FreeBSD__=" MKS(TARGOSVER), "-D__ELF__", \
 	"-D__unix__=1", "-D__unix=1", NULL, }
 
 /* host-dependent */
-#define CRT0FILE LIBDIR "crt1.o"
-#define CRT0FILE_PROFILE LIBDIR "gcrt1.o"
-#define STARTFILES { LIBDIR "crti.o", LIBDIR "crtbegin.o", NULL }
-#define ENDFILES { LIBDIR "crtend.o", LIBDIR "crtn.o", NULL }
-#define STARTFILES_S { LIBDIR "crti.o", LIBDIR "crtbeginS.o", NULL }
-#define ENDFILES_S { LIBDIR "crtendS.o", LIBDIR "crtn.o", NULL }
-#define LIBCLIBS { "-lc", "-lpcc", NULL }
+#define CRT0		"crt1.o"
+#define GCRT0		"gcrt1.o"
 #define STARTLABEL "_start"
 
 /* host-independent */
