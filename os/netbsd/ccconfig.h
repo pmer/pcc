@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.21 2012/08/05 14:35:00 ragge Exp $	*/
+/*	$Id: ccconfig.h,v 1.22 2012/08/06 12:52:20 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -40,6 +40,10 @@
 
 /* host-independent */
 #define	DYNLINKER { "-dynamic-linker", "/usr/libexec/ld.elf_so", NULL }
+
+#define DEFLIBS		{ "-lc", NULL }
+#define DEFPROFLIBS	{ "-lc_p", NULL }
+#define DEFCXXLIBS	{ "-lp++", "-lc", NULL }
 
 #if defined(mach_amd64)
 #define CPPMDADD \
