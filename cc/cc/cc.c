@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.234 2012/08/06 12:42:20 ragge Exp $	*/
+/*	$Id: cc.c,v 1.235 2012/08/06 14:25:33 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1580,9 +1580,11 @@ setup_cpp_flags(void)
 	/* Include dirs */
 	strlist_append(&sysincdirs, "=" INCLUDEDIR "pcc/");
 	strlist_append(&sysincdirs, "=" STDINC);
+#ifdef PCCINCDIR
 	if (cxxflag)
 		strlist_append(&sysincdirs, "=" PCCINCDIR "/c++");
 	strlist_append(&sysincdirs, "=" PCCINCDIR);
+#endif
 }
 
 struct flgcheck ccomflgcheck[] = {
