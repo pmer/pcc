@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.232 2012/08/06 06:47:02 ragge Exp $	*/
+/*	$Id: cc.c,v 1.233 2012/08/06 07:56:51 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1078,12 +1078,18 @@ assemble_input(char *input, char *output)
 	int retval;
 
 	strlist_init(&args);
+#ifdef PCC_EARLY_AS_ARGS
+	PCC_EARLY_AS_ARGS
+#endif
 	strlist_append_list(&args, &assembler_flags);
 	strlist_append(&args, input);
 	strlist_append(&args, "-o");
 	strlist_append(&args, output);
 	strlist_prepend(&args,
 	    find_file(as, &progdirs, X_OK));
+#ifdef PCC_LATE_AS_ARGS
+	PCC_LATE_AS_ARGS
+#endif
 	retval = strlist_exec(&args);
 	strlist_free(&args);
 	return retval;
@@ -1669,6 +1675,9 @@ void
 setup_as_flags(void)
 {
 	one = one;
+#ifdef PCC_SETUP_AS_ARGS
+	PCC_SETUP_AS_ARGS;
+#endif
 	cksetflags(asflgcheck, &assembler_flags, 'a');
 }
 
