@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.235 2012/08/06 14:25:33 ragge Exp $	*/
+/*	$Id: cc.c,v 1.236 2012/08/06 16:24:40 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -927,7 +927,7 @@ main(int argc, char *argv[])
 		strlist_append(&middle_linker_flags, ifile);
 	}
 
-	if (cflag || Eflag)
+	if (cflag || Eflag || Mflag)
 		dexit(0);
 
 	/*
