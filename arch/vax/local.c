@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.24 2011/07/22 19:28:20 ragge Exp $	*/
+/*	$Id: local.c,v 1.25 2011/07/28 11:04:14 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -86,30 +86,6 @@ clocal(p) NODE *p; {
 			r->n_rval = (q->sclass==PARAM?ARGREG:FPREG);
 			p = stref( block( STREF, r, p, 0, 0, 0 ) );
 			break;
-		}
-		break;
-
-	case PCONV:
-		/* do pointer conversions */
-		/* XXX fix propagation down of changed types */
-
-		/* if left is SCONV, cannot remove */
-		if (p->n_left->n_op == SCONV)
-			break;
-
-		ml = p->n_left->n_type;
-		if (ml < INT && p->n_left->n_op != ICON)
-			break;
-
-		if (coptype(p->n_left->n_op) == LTYPE) {
-			/*
-			 * pointers all have the same representation;
-			 * the type is inherited
-			 */
-			p->n_left->n_type = p->n_type;
-			p->n_left->n_df = p->n_df;
-			p->n_left->n_ap = p->n_ap;
-			p = nfree(p);
 		}
 		break;
 
