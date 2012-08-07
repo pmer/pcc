@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.20 2012/07/10 13:24:43 ragge Exp $	*/
+/*	$Id: table.c,v 1.21 2012/07/11 09:55:14 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -294,6 +294,7 @@ struct optab  table[] = {
 		NAREG|NASL,	RESC1,	/* should be 0 */
 		"	calls	ZC,(AL)\n", },
 
+#if 0
 { UCALL,	FOREFF,
 	SNAME,	TANY,
 	SANY,	TANY,
@@ -317,6 +318,7 @@ struct optab  table[] = {
 	SANY,	TAREG,
 		NAREG|NASL,	RESC1,	/* really reg 0 */
 		"	calls	ZC,*AL\n", },
+#endif
 
 { STCALL,	INAREG,
 	SCON,	TANY,
