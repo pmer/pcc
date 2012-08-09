@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.36 2012/08/09 11:41:27 ragge Exp $	*/
+/*	$Id: builtins.c,v 1.37 2012/08/09 11:52:11 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -770,7 +770,7 @@ builtin_check(struct symtab *sp, NODE *a)
 		cerror("builtin_check");
 
 	bt = &bitable[sp->soffset];
-	if ((bt->flags & BTNOEVE) == 0)
+	if ((bt->flags & BTNOEVE) == 0 && a != NIL)
 		a = eve(a);
 	if (((bt->flags & BTNOPROTO) == 0) && acnt(a, bt->narg, bt->tp)) {
 		uerror("wrong argument count to %s", bt->name);

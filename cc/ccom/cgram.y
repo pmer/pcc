@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.347 2012/07/10 12:20:26 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.348 2012/08/09 11:41:27 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2067,6 +2067,8 @@ eve(NODE *p)
 		break;
 
 	case UCALL:
+		p2 = NIL;
+		/* FALLTHROUGH */
 	case CALL:
 		if (p1->n_op == NAME) {
 			sp = lookup((char *)p1->n_sp, 0);
