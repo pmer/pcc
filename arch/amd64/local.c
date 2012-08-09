@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.66 2012/03/23 17:03:09 ragge Exp $	*/
+/*	$Id: local.c,v 1.67 2012/04/21 20:13:13 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -855,16 +855,16 @@ fixdef(struct symtab *sp)
 }
 
 NODE *
-i386_builtin_return_address(NODE *f, NODE *a, TWORD t)
+i386_builtin_return_address(const struct bitable *bt, NODE *a)
 {
 	int nframes;
+	NODE *f;
 
 	if (a == NULL || a->n_op != ICON)
 		goto bad;
 
 	nframes = a->n_lval;
 
-	tfree(f);
 	tfree(a);
 
 	f = block(REG, NIL, NIL, PTR+VOID, 0, 0);
@@ -883,16 +883,16 @@ bad:
 }
 
 NODE *
-i386_builtin_frame_address(NODE *f, NODE *a, TWORD t)
+i386_builtin_frame_address(const struct bitable *bt, NODE *a)
 {
 	int nframes;
+	NODE *f;
 
 	if (a == NULL || a->n_op != ICON)
 		goto bad;
 
 	nframes = a->n_lval;
 
-	tfree(f);
 	tfree(a);
 
 	f = block(REG, NIL, NIL, PTR+VOID, 0, 0);

@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.349 2012/07/30 16:54:58 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.350 2012/07/31 08:59:45 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2264,14 +2264,6 @@ doacall(struct symtab *sp, NODE *f, NODE *a)
 	    (f->n_left->n_left->n_type & 0x7e0) == 0x4c0)
 		goto build;
 /* XXX XXX hack */
-
-#ifndef NO_C_BUILTINS
-	/* check for builtins. function pointers are not allowed */
-	if (f->n_op == NAME &&
-	    f->n_sp->sname[0] == '_' && f->n_sp->sname[1] == '_')
-		if ((w = builtin_check(f, a)) != NIL)
-			return w;
-#endif
 
 	/* Check for undefined or late defined enums */
 	if (BTYPE(f->n_type) == ENUMTY) {

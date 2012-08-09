@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.117 2012/03/22 18:30:34 plunky Exp $	*/
+/*	$Id: main.c,v 1.118 2012/03/22 18:51:40 plunky Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -295,6 +295,9 @@ main(int argc, char *argv[])
 	}
 #endif
 	complinit();
+#ifndef NO_BUILTIN
+	builtin_init();
+#endif
 
 #ifdef STABS
 	if (gflag) {
