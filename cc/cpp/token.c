@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.69 2012/07/30 12:47:59 plunky Exp $	*/
+/*	$Id: token.c,v 1.70 2012/07/30 17:32:40 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1235,18 +1235,20 @@ static void
 pragmastmt(void)
 {
 	int c;
+	usch *sb = stringbuf;
 
 	if (sloscan() != WSPACE)
 		error("bad pragma");
-	if (!flslvl)
-		putstr((const usch *)"\n#pragma ");
+	savstr((const usch *)"\n#pragma ");
 	do {
-		c = inch();
-		if (!flslvl)
-			putch(c);	/* Do arg expansion instead? */
+		savch(c = inch());
 	} while (c && c != '\n');
 	if (c == '\n')
 		unch(c);
+	savch(0);
+	if (!flslvl)
+		putstr(sb);
+	stringbuf = sb;
 	prtline();
 }
 
