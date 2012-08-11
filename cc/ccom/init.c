@@ -1,4 +1,4 @@
-/*	$Id: init.c,v 1.80 2012/04/22 21:07:41 plunky Exp $	*/
+/*	$Id: init.c,v 1.81 2012/07/30 13:19:01 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004, 2007 Anders Magnusson (ragge@ludd.ltu.se).
@@ -1188,6 +1188,20 @@ simpleinit(struct symtab *sp, NODE *p)
 			inval(0, sz, r);
 			inval(0, sz, p->n_right->n_right);
 			tfree(p);
+			break;
+		}
+#endif
+#ifdef TARGET_TIMODE
+		if (attr_find(sp->sap, GCC_ATYP_MODE)) {
+			if (p->n_op != ICON)
+				uerror("need to handle TImode initializer ");
+			sz = (int)tsize(sp->stype, sp->sdf, sp->sap);
+			p->n_type = ctype(LONGLONG);
+			inval(0, sz/2, p);
+			p->n_lval = 0; /* XXX fix signed types */
+			inval(0, sz/2, p);
+			tfree(p);
+			tfree(q);
 			break;
 		}
 #endif

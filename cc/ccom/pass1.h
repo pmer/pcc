@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.241 2012/07/10 12:20:26 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.242 2012/08/09 11:41:27 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -540,6 +540,8 @@ struct attr *gcc_attr_parse(NODE *);
 void gcc_tcattrfix(NODE *);
 struct gcc_attrib *gcc_get_attr(struct suedef *, int);
 void dump_attr(struct attr *gap);
+void gcc_modefix(NODE *);
+NODE *gcc_eval_timode(int op, NODE *, NODE *);
 
 struct attr *attr_add(struct attr *orig, struct attr *new);
 struct attr *attr_new(int, int);

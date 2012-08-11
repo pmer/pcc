@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.348 2012/08/09 11:41:27 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.349 2012/08/09 16:53:26 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2118,6 +2118,10 @@ eve(NODE *p)
 #ifndef NO_COMPLEX
 		p1 = eve(p1);
 		p2 = eve(p2);
+#ifdef TARGET_TIMODE
+		if ((r = gcc_eval_timode(p->n_op, p1, p2)) != NULL)
+			break;
+#endif
 		if (ANYCX(p1) || ANYCX(p2)) {
 			r = cxop(p->n_op, p1, p2);
 		} else if (ISITY(p1->n_type) || ISITY(p2->n_type)) {
@@ -2147,7 +2151,12 @@ eve(NODE *p)
 	case QUEST:
 	case COLON:
 		p1 = eve(p1);
-		r = buildtree(p->n_op, p1, eve(p2));
+		p2 = eve(p2);
+#ifdef TARGET_TIMODE
+		if ((r = gcc_eval_timode(p->n_op, p1, p2)) != NULL)
+			break;
+#endif
+		r = buildtree(p->n_op, p1, p2);
 		break;
 
 	case INCR:
