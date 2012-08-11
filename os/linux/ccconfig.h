@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.21 2011/06/04 19:27:25 plunky Exp $	*/
+/*	$Id: ccconfig.h,v 1.22 2012/08/05 14:35:00 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -47,6 +47,7 @@
 #define CPPMDADD	{ "-D__x86_64__", "-D__x86_64", "-D__amd64__", \
 	"-D__amd64", "-D__LP64__", "-D_LP64", NULL, }
 #define	DYNLINKER { "-dynamic-linker", "/lib64/ld-linux-x86-64.so.2", NULL }
+#define	DEFLIBDIRS	{ "/usr/lib64/", 0 }
 #elif defined(mach_mips)
 #define CPPMDADD { "-D__mips__", NULL, }
 #define DYNLINKER { "-dynamic-linker", "/lib/ld.so.1", NULL }
