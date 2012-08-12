@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.112 2012/07/10 12:20:26 ragge Exp $	*/
+/*	$Id: scan.l,v 1.113 2012/07/30 15:27:47 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -290,7 +290,7 @@ typround(long double dc, char *e, TWORD *tw)
 			break;
 		case 'l':
 		case 'L':
-			*tw = LDOUBLE;
+			*tw = ctype(LDOUBLE);
 			break;
 		case 'i':
 		case 'I':
