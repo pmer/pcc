@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.349 2012/08/09 16:53:26 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.350 2012/08/11 13:29:20 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2018,7 +2018,12 @@ eve(NODE *p)
 		break;
 
 	case CAST:
-		p1 = buildtree(CAST, p1, eve(p2));
+		p2 = eve(p2);
+#ifdef TARGET_TIMODE
+		if ((r = gcc_eval_ticast(p1, p2)) != NULL)
+			break;
+#endif
+		p1 = buildtree(CAST, p1, p2);
 		nfree(p1->n_left);
 		r = p1->n_right;
 		nfree(p1);
@@ -2053,7 +2058,12 @@ eve(NODE *p)
 	case UMINUS:
 	case NOT:
 	case UMUL:
-		r = buildtree(p->n_op, eve(p->n_left), NIL);
+		p1 = eve(p1);
+#ifdef TARGET_TIMODE
+		if ((r = gcc_eval_tiuni(p->n_op, p1)) != NULL)
+			break;
+#endif
+		r = buildtree(p->n_op, p1, NIL);
 		break;
 
 	case ADDROF:
