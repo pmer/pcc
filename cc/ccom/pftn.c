@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.352 2012/08/10 07:12:48 plunky Exp $	*/
+/*	$Id: pftn.c,v 1.353 2012/08/11 13:29:20 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -388,12 +388,6 @@ defid2(NODE *q, int class, char *astr)
 	if(ddebug)
 		printf("	new entry made\n");
 #endif
-	if (type < STRTY && (ap = attr_find(q->n_ap, GCC_ATYP_MODE))) {
-		int u = ISUNSIGNED(type);
-		type = u ? ENUNSIGN(ap->iarg(0)) : (TWORD)ap->iarg(0);
-		if (type == XTYPE)
-			uerror("fix XTYPE basetyp");
-	}
 	p->stype = type;
 	p->squal = qual;
 	p->sclass = (char)class;
