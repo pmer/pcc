@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.350 2012/08/11 13:29:20 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.351 2012/08/12 09:27:27 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1077,7 +1077,7 @@ addrlbl:	  C_ANDAND C_NAME {
 			struct symtab *s = lookup($2, SLBLNAME);
 			if (s->soffset == 0)
 				s->soffset = -getlab();
-			$$ = buildtree(ADDROF, nametree(s), NIL);
+			$$ = biop(ADDROF, bdty(GOTO, $2), NIL);
 #else
 			uerror("gcc extension");
 #endif
@@ -1224,7 +1224,11 @@ bdty(int op, ...)
 		q->n_right = bcon(val);
 		break;
 
+	case GOTO: /* for named labels */
+		q->n_label = SLBLNAME;
+		/* FALLTHROUGH */
 	case NAME:
+		q->n_op = NAME;
 		q->n_sp = va_arg(ap, struct symtab *); /* XXX survive tymerge */
 		break;
 
@@ -1999,7 +2003,7 @@ eve(NODE *p)
 	p2 = p->n_right;
 	switch (p->n_op) {
 	case NAME:
-		sp = lookup((char *)p->n_sp, 0);
+		sp = lookup((char *)p->n_sp, p->n_label);
 		if (sp->sflags & SINLINE)
 			inline_ref(sp);
 		r = nametree(sp);

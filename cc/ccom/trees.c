@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.308 2012/04/22 21:07:41 plunky Exp $	*/
+/*	$Id: trees.c,v 1.309 2012/06/20 20:01:10 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -719,9 +719,8 @@ nametree(struct symtab *sp)
 
 #ifdef GCC_COMPAT
 	/* Get a label name */
-	if (sp->sflags == SLBLNAME) {
-		p->n_type = VOID;
-	}
+	if (sp->sflags == SLBLNAME)
+		sp->stype = p->n_type = VOID;
 #endif
 	if (sp->stype == UNDEF) {
 		uerror("%s undefined", sp->sname);
