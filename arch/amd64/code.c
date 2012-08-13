@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.64 2012/04/22 21:07:40 plunky Exp $	*/
+/*	$Id: code.c,v 1.65 2012/08/09 11:41:27 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -752,7 +752,7 @@ argput(NODE *p)
 			r = (typ == STRCPX ? XMM0 + nsse++ : argregsi[ngpr++]);
 			ql = movtoreg(ql, r);
 
-			p = buildtree(COMOP, p, ql);
+			p = buildtree(CM, p, ql);
 		} else
 			cerror("STRREG");
 		break;
@@ -817,7 +817,8 @@ argsort(NODE *p)
 		q = p->n_right->n_left;
 		p->n_right->n_left = p->n_left;
 		p->n_left = p->n_right;
-		p->n_right = q;
+		p->n_right = p->n_left->n_right;
+		p->n_left->n_right = q;
 	}
 	if (p->n_right->n_op == ASSIGN && p->n_right->n_left->n_op == REG &&
 	    coptype(p->n_right->n_right->n_op) != LTYPE) {
