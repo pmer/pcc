@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.90 2012/08/12 15:27:55 ragge Exp $     */
+/*      $Id: gcc_compat.c,v 1.91 2012/08/12 19:55:31 ragge Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -652,7 +652,10 @@ pragmas_gcc(char *t)
 void
 gcc_modefix(NODE *p)
 {
-	struct attr *ap, *a2;
+	struct attr *ap;
+#ifdef TARGET_TIMODE
+	struct attr *a2;
+#endif
 	struct symtab *sp;
 	char *s;
 	int i, u;
