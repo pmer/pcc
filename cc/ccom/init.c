@@ -1,4 +1,4 @@
-/*	$Id: init.c,v 1.82 2012/08/11 13:29:20 ragge Exp $	*/
+/*	$Id: init.c,v 1.83 2012/08/12 14:11:51 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004, 2007 Anders Magnusson (ragge@ludd.ltu.se).
@@ -246,7 +246,9 @@ inval(CONSZ off, int fsz, NODE *p)
 			printf("+");
 		if (sp != NULL) {
 			if ((sp->sclass == STATIC && sp->slevel > 0)) {
-				printf(LABFMT, sp->soffset);
+				/* fix problem with &&label not defined yet */
+				int o = sp->soffset;
+				printf(LABFMT, o < 0 ? -o : o);
 			} else
 				printf("%s", sp->soname ?
 				    sp->soname : exname(sp->sname));

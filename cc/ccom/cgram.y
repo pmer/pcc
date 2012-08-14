@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.352 2012/08/13 20:10:22 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.353 2012/08/14 06:11:53 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1152,8 +1152,10 @@ term:		   term C_INCOP {  $$ = biop($2, $1, bcon(1)); }
 		}
 		| C_ANDAND C_NAME {
 			struct symtab *s = lookup($2, SLBLNAME);
-			if (s->soffset == 0)
+			if (s->soffset == 0) {
 				s->soffset = -getlab();
+				s->sclass = STATIC;
+			}
 			$$ = biop(ADDROF, bdty(GOTO, $2), NIL);
 		}
 		;
