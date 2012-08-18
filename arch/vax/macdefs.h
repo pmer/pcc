@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.14 2011/07/28 11:04:14 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.15 2012/07/09 20:15:04 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -256,13 +256,14 @@ int COLORMAP(int c, int *r);
 
 #define NODE struct node
 struct node;
+struct bitable;
 
 #define	TARGET_FFS		/* target-specific ffs */
-NODE *builtin_ffs(NODE *f, NODE *a, unsigned int t);
-NODE *builtin_ffsl(NODE *f, NODE *a, unsigned int t);
-NODE *builtin_ffsll(NODE *f, NODE *a, unsigned int t);
+NODE *builtin_ffs(const struct bitable *, NODE *a);
+NODE *builtin_ffsl(const struct bitable *, NODE *a);
+NODE *builtin_ffsll(const struct bitable *, NODE *a);
 
-NODE *vax_builtin_frame_address(NODE *f, NODE *a, unsigned int t);
-NODE *vax_builtin_return_address(NODE *f, NODE *a, unsigned int t);
+NODE *vax_builtin_frame_address(const struct bitable *, NODE *a);
+NODE *vax_builtin_return_address(const struct bitable *, NODE *a);
 
 #undef NODE
