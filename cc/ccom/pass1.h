@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.243 2012/08/11 13:29:20 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.244 2012/08/12 09:27:27 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -559,6 +559,7 @@ struct bitable {
 #define	BTNOPROTO	001
 #define	BTNORVAL	002
 #define	BTNOEVE		004
+#define	BTGNUONLY	010
 	short narg;
 	TWORD *tp;
 	TWORD rt;
