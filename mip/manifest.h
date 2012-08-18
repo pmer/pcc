@@ -1,4 +1,4 @@
-/*	$Id: manifest.h,v 1.98 2012/03/22 17:01:06 plunky Exp $	*/
+/*	$Id: manifest.h,v 1.99 2012/03/22 18:51:41 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -268,6 +268,7 @@ struct interpass_prolog {
 	int ipp_autos;		/* Size on stack needed */
 	int ip_tmpnum;		/* # allocated temp nodes so far */
 	int ip_lblnum;		/* # used labels so far */
+	int *ip_labels;		/* labels used in computed goto */
 #ifdef TARGET_IPP_MEMBERS
 	TARGET_IPP_MEMBERS
 #endif

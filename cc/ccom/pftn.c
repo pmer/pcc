@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.354 2012/08/12 14:11:51 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.355 2012/08/14 20:23:58 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -496,6 +496,7 @@ void
 ftnend(void)
 {
 	struct attr *gc, *gd;
+	extern int *mkclabs(void);
 	extern NODE *cftnod;
 	extern struct savbc *savbc;
 	extern struct swdef *swpole;
@@ -511,7 +512,8 @@ ftnend(void)
 			c = addname(exname(cftnsp->sname));
 		SETOFF(maxautooff, ALCHAR);
 		send_passt(IP_EPILOG, maxautooff/SZCHAR, c,
-		    cftnsp->stype, cftnsp->sclass == EXTDEF, retlab, tvaloff);
+		    cftnsp->stype, cftnsp->sclass == EXTDEF,
+		    retlab, tvaloff, mkclabs());
 	}
 
 	cftnod = NIL;
