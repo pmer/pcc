@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.91 2012/08/12 19:55:31 ragge Exp $     */
+/*      $Id: gcc_compat.c,v 1.92 2012/08/13 18:47:22 plunky Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -696,7 +696,7 @@ gcc_modefix(NODE *p)
 	case COMPLEX:
 	case LCOMPLEX:
 		/* Destination should have been converted to a struct already */
-		if (p->n_type != STRTY)
+		if (BTYPE(p->n_type) != STRTY)
 			uerror("gcc_modefix: complex not STRTY");
 		i -= (FCOMPLEX-FLOAT);
 		ap = strattr(p->n_ap);
@@ -854,8 +854,8 @@ gcc_eval_timode(int op, NODE *p1, NODE *p2)
 	if (a1 == NULL && a2 == NULL)
 		return NULL;
 
-	gotti = (a1 && strcmp(a1->sarg(0), TISTR) == 0);
-	gotti += (a2 && strcmp(a2->sarg(0), TISTR) == 0);
+	gotti = (a1 && strcmp(a1->sarg(0), TISTR) == 0 && !ISPTR(p1->n_type));
+	gotti += (a2 && strcmp(a2->sarg(0), TISTR) == 0 && !ISPTR(p2->n_type));
 
 	if (gotti == 0)
 		return NULL;
