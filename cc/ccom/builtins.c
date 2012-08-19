@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.40 2012/08/11 15:42:44 ragge Exp $	*/
+/*	$Id: builtins.c,v 1.41 2012/08/18 20:16:50 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -807,6 +807,8 @@ builtin_init()
 		if (bt->rt == 0 && (bt->flags & BTNORVAL) == 0)
 			cerror("function '%s' has no return type", bt->name);
 		p->n_type = INCREF(bt->rt) + (FTN-PTR);
+		p->n_df = memset(permalloc(sizeof(union dimfun)), 0,
+		    sizeof(union dimfun));
 		p->n_sp = sp;
 		defid(p, EXTDEF);
 		sp->soffset = i;
