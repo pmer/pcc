@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.48 2011/08/21 09:36:22 ragge Exp $	*/
+/*	$Id: local2.c,v 1.49 2011/09/21 21:23:09 plunky Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -722,6 +722,35 @@ cbgen(int o, int lab)
 	printf("	%s " LABFMT "\n", ccbranches[o-EQ], lab);
 }
 
+/*
+ * gcc xasm has the ability to generate different asm types
+ * via some magic.
+ *
+ * Only support AT&T asm for now.
+ */
+static char *
+adjustname(char *s)
+{
+	int len = strlen(s);
+	char *d = tmpalloc(len+1);
+	int i, j, flvl, tlvl;
+
+	flvl = tlvl = 0;
+	for (i = j = 0; i < len; i++) {
+		switch (s[i]) {
+		case '{': tlvl++; break;
+		case '}': if (tlvl)tlvl--; else flvl--; break;
+		case '|': tlvl--; flvl++; break;
+		default:
+			if (flvl == 0)
+				d[j++] = s[i];
+			break;
+		}
+	}
+	d[j] = 0;
+	return d;
+}
+
 static void
 fixcalls(NODE *p, void *arg)
 {
@@ -731,6 +760,9 @@ fixcalls(NODE *p, void *arg)
 	case USTCALL:
 		if (p->n_stsize+p2autooff > stkpos)
 			stkpos = p->n_stsize+p2autooff;
+		break;
+	case XASM:
+		p->n_name = adjustname(p->n_name);
 		break;
 	}
 }
