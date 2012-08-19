@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.355 2012/08/14 20:23:58 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.356 2012/08/18 15:44:13 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -413,6 +413,7 @@ defid2(NODE *q, int class, char *astr)
 	case REGISTER:
 		if (astr != NULL)
 			werror("no register assignment (yet)");
+		p->sclass = class = AUTO;
 		/* FALLTHROUGH */
 	case AUTO:
 		if (isdyn(p)) {
