@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.240 2012/08/12 06:23:52 ragge Exp $	*/
+/*	$Id: cc.c,v 1.241 2012/08/13 07:06:42 mickey Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -399,6 +399,7 @@ main(int argc, char *argv[])
 
 	lav = argv;
 	lac = argc;
+	ninput = 0;
 
 	strlist_init(&crtdirs);
 	strlist_init(&libdirs);
@@ -482,6 +483,7 @@ main(int argc, char *argv[])
 					continue; /* skip it */
 			}
 			strlist_append(&inputs, argp);
+			ninput++;
 			continue;
 		}
 
@@ -802,9 +804,6 @@ main(int argc, char *argv[])
 	}
 
 	/* Sanity checking */
-	ninput = 0;
-	STRLIST_FOREACH(s, &inputs)
-		ninput++;
 	if (cppflag) {
 		if (ninput == 0) {
 			strlist_append(&inputs, "-");
