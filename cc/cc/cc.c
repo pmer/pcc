@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.241 2012/08/13 07:06:42 mickey Exp $	*/
+/*	$Id: cc.c,v 1.242 2012/08/20 08:32:16 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1119,6 +1119,8 @@ preprocess_input(char *input, char *output, int dodep)
 
 	strlist_init(&args);
 	strlist_append_list(&args, &preprocessor_flags);
+	if (ascpp)
+		strlist_append(&args, "-D__ASSEMBLER__");
 	STRLIST_FOREACH(s, &includes) {
 		strlist_append(&args, "-i");
 		strlist_append(&args, s->value);
@@ -1463,7 +1465,6 @@ struct flgcheck {
 	{ &freestanding, 0, "-D__STDC_HOSTED__=1" },
 	{ &cxxflag, 1, "-D__cplusplus" },
 	{ &xuchar, 1, "-D__CHAR_UNSIGNED__" },
-	{ &ascpp, 1, "-D__ASSEMBLER__" },
 	{ &sspflag, 1, "-D__SSP__" },
 	{ &pthreads, 1, "-D_PTHREADS" },
 	{ &Oflag, 1, "-D__OPTIMIZE__" },
