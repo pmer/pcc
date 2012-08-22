@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.354 2012/08/14 20:23:58 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.355 2012/08/18 15:44:13 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -868,6 +868,11 @@ statement:	   e ';' { ecomp(eve($1)); symclear(blevel); }
 			p = nametree(cftnsp);
 			p->n_type = DECREF(p->n_type);
 			q = eve($2);
+#ifdef TARGET_TIMODE  
+			NODE *r;
+			if ((r = gcc_eval_ticast(RETURN, p, q)) != NULL)
+				q = r;
+#endif
 #ifndef NO_COMPLEX
 			if (ANYCX(q) || ANYCX(p))
 				q = cxret(q, p);
@@ -2020,7 +2025,7 @@ eve(NODE *p)
 	case CAST:
 		p2 = eve(p2);
 #ifdef TARGET_TIMODE
-		if ((r = gcc_eval_ticast(p1, p2)) != NULL)
+		if ((r = gcc_eval_ticast(CAST, p1, p2)) != NULL)
 			break;
 #endif
 		p1 = buildtree(CAST, p1, p2);
