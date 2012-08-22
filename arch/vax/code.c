@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.20 2012/08/07 06:24:16 ragge Exp $	*/
+/*	$Id: code.c,v 1.21 2012/08/18 20:18:00 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -52,15 +52,20 @@ setseg(int seg, char *name)
 
 	case UDATA: break;
 
+	case DTORS:
+		name = ".section .dtors,\"aw\",@progbits";
+		break;
 	case CTORS:
 		name = ".section .ctors,\"aw\",@progbits";
 		break;
 
-	case DTORS:
-	case PICRDATA:
 	case TLSDATA:
 	case TLSUDATA:
 		uerror("FIXME: unsupported segment %d", seg);
+		break;
+
+	case PICRDATA:
+		name = ".section .data.rel.ro.local,\"aw\",@progbits";
 		break;
 
 	case PICLDATA:
