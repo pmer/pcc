@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.355 2012/08/18 15:44:13 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.356 2012/08/22 16:41:27 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1655,7 +1655,7 @@ fundef(NODE *tp, NODE *p)
 			uerror("cannot inline main()");
 
 		s->sflags |= SINLINE;
-		inline_start(s);
+		inline_start(s, class);
 		if (class == EXTERN)
 			class = EXTDEF;
 	} else if (class == EXTERN)
