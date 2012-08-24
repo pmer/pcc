@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.153 2012/08/06 19:32:39 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.154 2012/08/09 18:21:29 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1746,7 +1746,7 @@ sav:			savstr(yytext);
 				c = cinput();
 				if (c == 'L') {
 					int c2 = cinput();
-					if (c2 == '\"')
+					if (c2 == '\"' || c2 == '\'')
 						donothing = 1;
 					cunput(c2);
 				}
