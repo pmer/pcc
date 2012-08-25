@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.356 2012/08/22 16:41:27 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.357 2012/08/22 17:08:18 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2183,6 +2183,10 @@ eve(NODE *p)
 	case DIVEQ:
 		p1 = eve(p1);
 		p2 = eve(p2);
+#ifdef TARGET_TIMODE
+		if ((r = gcc_eval_timode(p->n_op, p1, p2)) != NULL)
+			break;
+#endif
 #ifndef NO_COMPLEX
 		if (ANYCX(p1) || ANYCX(p2)) {
 			r = cxop(UNASG p->n_op, ccopy(p1), p2);
