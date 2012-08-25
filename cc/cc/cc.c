@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.242 2012/08/20 08:32:16 plunky Exp $	*/
+/*	$Id: cc.c,v 1.243 2012/08/20 09:03:03 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1210,17 +1210,25 @@ getsuf(char *s)
 char *
 setsuf(char *s, char ch)
 {
-	char *p, *rp;
+	char *e, *p, *rp;
 
-	if ((p = strrchr(s, '/')))
-		s = ++p;
+	e = NULL;
+	for (p = s; *p; p++) {
+		if (*p == '/')
+			s = p + 1;
+		if (*p == '.')
+			e = p;
+	}
+	if (s > e)
+		e = p;
 
-	rp = p = xmalloc(strlen(s)+3);
-	for (; (*p = *s) && *p != '.'; p++, s++)
-		;
+	rp = p = xmalloc(e - s + 3);
+	while (s < e)
+		*p++ = *s++;
+
 	*p++ = '.';
 	*p++ = ch;
-	*p = 0;
+	*p = '\0';
 	return rp;
 }
 
