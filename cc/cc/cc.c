@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.243 2012/08/20 09:03:03 plunky Exp $	*/
+/*	$Id: cc.c,v 1.244 2012/08/25 11:16:13 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -630,11 +630,10 @@ main(int argc, char *argv[])
 
 		case 'l':
 		case 'L':
-			strlist_append(&late_linker_flags, argp);
 			if (argp[2] == 0)
-				strlist_append(&late_linker_flags, nxtopt(0));
+				argp = cat(argp, nxtopt(0));
+			strlist_append(&inputs, argp);
 			break;
-
 
 		case 'm': /* target-dependent options */
 #ifdef mach_amd64
