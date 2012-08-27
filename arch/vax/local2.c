@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.30 2012/07/10 16:29:32 ragge Exp $	*/
+/*	$Id: local2.c,v 1.31 2012/07/10 20:17:02 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -603,6 +603,7 @@ zzzcode(NODE *p, int c)
 			else if( r->n_op == REG ) r->n_op = OREG;
 			else if( r->n_op != OREG ) cerror( "STASG-r" );
 
+		if (size != 0) {
 			if( size <= 0 || size > 65535 )
 				cerror("structure size <0=0 or >65535");
 
@@ -627,6 +628,7 @@ zzzcode(NODE *p, int c)
 			printf(",");
 			adrput(stdout, l);
 			printf("\n");
+		}
 
 			if( r->n_op == NAME ) r->n_op = ICON;
 			else if( r->n_op == OREG ) r->n_op = REG;
