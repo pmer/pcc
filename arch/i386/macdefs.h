@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.83 2011/06/23 13:41:25 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.84 2012/08/09 11:52:11 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -353,9 +353,9 @@ int xasmconstregs(char *);
  */
 #define TARGET_BUILTINS							\
 	{ "__builtin_frame_address", i386_builtin_frame_address, 	\
-						0, -1, 0, PTR|VOID },	\
+					BTNOPROTO, 0, 0, PTR|VOID },	\
 	{ "__builtin_return_address", i386_builtin_return_address,	\
-						0, -1, 0, PTR|VOID },
+					BTNOPROTO, 0, 0, PTR|VOID },
 
 #define NODE struct node
 struct node;

@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.22 2012/08/06 17:54:35 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.23 2012/08/09 11:41:27 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -273,9 +273,9 @@ int numconv(void *ip, void *p, void *q);
 	{ "__builtin_va_end", amd64_builtin_va_end, 0, 1, 0, VOID },	\
 	{ "__builtin_va_copy", amd64_builtin_va_copy, 0, 2, 0, VOID },	\
 	{ "__builtin_frame_address", i386_builtin_frame_address, 	\
-						0, -1, 0, PTR|VOID },	\
+					BTNOPROTO, 0, 0, PTR|VOID },	\
 	{ "__builtin_return_address", i386_builtin_return_address, 	\
-						0, -1, 0, PTR|VOID },
+					BTNOPROTO, 0, 0, PTR|VOID },
 
 #define NODE struct node
 struct node;
