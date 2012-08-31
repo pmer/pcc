@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.102 2012/04/22 21:07:41 plunky Exp $	*/
+/*	$Id: common.c,v 1.103 2012/07/31 07:33:22 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -185,6 +185,7 @@ Wflags(char *str)
 		for (i = 0; i < NUMW; i++)
 			BITSET(werrary, i);
 
+		warniserr = 1;
 		return;
 	}
 
