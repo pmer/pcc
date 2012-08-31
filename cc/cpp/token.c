@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.70 2012/07/30 17:32:40 ragge Exp $	*/
+/*	$Id: token.c,v 1.71 2012/08/10 08:12:35 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -53,7 +53,7 @@
 
 #include "compat.h"
 #include "cpp.h"
-#include "y.tab.h"
+#include "cpy.h"
 
 static void cvtdig(int rad);
 static int charcon(usch *);
