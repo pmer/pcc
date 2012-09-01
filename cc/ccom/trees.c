@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.310 2012/08/13 20:10:22 ragge Exp $	*/
+/*	$Id: trees.c,v 1.311 2012/08/18 15:44:13 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -3102,6 +3102,7 @@ copst(int op)
 	SNAM(TYPE,TYPE)
 	SNAM(COMOP,COMOP)
 	SNAM(QUEST,?)
+	SNAM(BIQUEST,?:)
 	SNAM(COLON,:)
 	SNAM(ANDAND,&&)
 	SNAM(OROR,||)
@@ -3152,6 +3153,7 @@ cdope(int op)
 	case SZOF:
 	case COMOP:
 	case QUEST:
+	case BIQUEST:
 	case COLON:
 	case LB:
 	case TYMERGE:
