@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.360 2012/09/01 08:32:14 plunky Exp $	*/
+/*	$Id: cgram.y,v 1.361 2012/09/01 09:15:14 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1968,7 +1968,7 @@ mkxasm(char *str, NODE *p)
 	q = biop(XASM, p->n_left, p->n_right);
 	q->n_name = isinlining ? newstring(str, strlen(str)+1) : str;
 	nfree(p);
-	ecomp(q);
+	ecomp(optloop(q));
 }
 
 #ifdef GCC_COMPAT
