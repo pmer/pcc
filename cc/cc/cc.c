@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.245 2012/08/27 16:30:55 ragge Exp $	*/
+/*	$Id: cc.c,v 1.246 2012/08/29 14:57:13 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -626,7 +626,7 @@ main(int argc, char *argv[])
 			break;
 
 		case 'k': /* generate PIC code */
-			kflag = F_pic;
+			kflag = argp[2] ? argp[2] - '0' : F_pic;
 			break;
 
 		case 'l':
