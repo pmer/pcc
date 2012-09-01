@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.246 2012/08/29 14:57:13 ragge Exp $	*/
+/*	$Id: cc.c,v 1.247 2012/09/01 09:18:50 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -586,8 +586,8 @@ main(int argc, char *argv[])
 				xuchar = j ? 1 : 0;
 			} else if (match(u, "unsigned-char")) {
 				xuchar = j ? 0 : 1;
-			} else if (match(argp, "stack-protector") ||
-			    match(argp, "stack-protector-all")) {
+			} else if (match(u, "stack-protector") ||
+			    match(u, "stack-protector-all")) {
 				sspflag = j ? 0 : 1;
 			}
 			/* silently ignore the rest */
