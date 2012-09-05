@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.68 2012/08/09 11:41:27 ragge Exp $	*/
+/*	$Id: local.c,v 1.69 2012/08/10 07:21:50 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -539,7 +539,7 @@ myp2tree(NODE *p)
 
 #ifdef mach_amd64
 	{
-		/* Do not loose negative zeros */
+		/* Do not lose negative zeros */
 		long double *d = &p->n_dcon;
 		long long *llp = (long long *)d;
 		short *ssp = (short *)&llp[1];
