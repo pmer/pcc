@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.279 2012/04/22 21:07:41 plunky Exp $	*/
+/*	$Id: reader.c,v 1.280 2012/09/05 16:05:12 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1448,6 +1448,10 @@ delnums(NODE *p, void *arg)
 	NODE *q;
 	TWORD t;
 	int cnt, num;
+
+	/* gcc allows % in constraints, but we ignore it */
+	if (p->n_name[0] == '%' && p->n_name[1] >= '0' && p->n_name[1] <= '9')
+		p->n_name++;
 
 	if (p->n_name[0] < '0' || p->n_name[0] > '9')
 		return; /* not numeric */
