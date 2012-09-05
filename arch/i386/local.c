@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.162 2012/08/30 19:45:08 ragge Exp $	*/
+/*	$Id: local.c,v 1.163 2012/09/05 14:21:09 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1054,18 +1054,18 @@ defzero(struct symtab *sp)
 }
 
 static char *
-section2string(char *name)
+section2string(char *name, int len)
 {
-	int len = strlen(name);
-
 #if defined(ELFABI)
-	if (strncmp(name, "link_set", 8) == 0) {
-		const char postfix[] = ",\"aw\",@progbits";
-		char *s;
+	char *s;
+	int n;
 
-		s = IALLOC(len + sizeof(postfix));
-		strcpy(s, name);
-		strcpy(s + len, postfix);
+	if (strncmp(name, "link_set", 8) == 0) {
+		const char *postfix = ",\"aw\",@progbits";
+		n = len + strlen(postfix) + 1;
+		s = IALLOC(n);
+		strlcpy(s, name, n);
+		strlcat(s, postfix, n);
 		return s;
 	}
 #endif
@@ -1132,7 +1132,7 @@ mypragma(char *str)
 	}
 #endif
 	if (strcmp(str, "section") == 0 && a2 != NULL) {
-		nextsect = section2string(a2);
+		nextsect = section2string(a2, strlen(a2));
 		return 1;
 	}
 	if (strcmp(str, "alias") == 0 && a2 != NULL) {
