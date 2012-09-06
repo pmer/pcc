@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.38 2012/09/05 14:21:09 plunky Exp $	*/
+/*	$Id: local.c,v 1.39 2012/09/05 15:12:19 mickey Exp $	*/
 /*	$OpenBSD: local.c,v 1.2 2007/11/18 17:39:55 ragge Exp $	*/
 
 /*
@@ -36,7 +36,6 @@
 #define	IALLOC(sz)	(isinlining ? permalloc(sz) : tmpalloc(sz))
 
 struct symtab *makememcpy(void);
-char *section2string(char *, int);
 
 /* clocal() is called to do local transformations on
  * an expression tree preparitory to its being
@@ -747,18 +746,18 @@ defzero(struct symtab *sp)
 		printf(LABFMT ",0%o\n", sp->soffset, off);
 }
 
-char *
-section2string(char *name, int len)
+static char *
+section2string(char *name)
 {
-	char *s;
-	int n;
+	int len = strlen(name);
 
 	if (strncmp(name, "link_set", 8) == 0) {
-		const char *postfix = ",\"aw\",@progbits";
-		n = len + strlen(postfix) + 1;
-		s = IALLOC(n);
-		strlcpy(s, name, n);
-		strlcat(s, postfix, n);
+		const char postfix[] = ",\"aw\",@progbits";
+		char *s;
+
+		s = IALLOC(len + sizeof(postfix));
+		memcpy(s, name, len);
+		memcpy(s + len, postfix, sizeof(postfix));
 		return s;
 	}
 
@@ -789,7 +788,7 @@ mypragma(char *str)
 		return 1;
 	}
 	if (strcmp(str, "section") == 0 && a2 != NULL) {
-		nextsect = section2string(a2, strlen(a2));
+		nextsect = section2string(a2);
 		return 1;
 	}
 	if (strcmp(str, "alias") == 0 && a2 != NULL) {
