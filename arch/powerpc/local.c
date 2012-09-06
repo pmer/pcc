@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.32 2011/06/04 15:22:03 ragge Exp $	*/
+/*	$Id: local.c,v 1.33 2011/07/28 14:21:49 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -52,8 +52,7 @@ addstub(struct stub *list, char *name)
         }
 
         s = permalloc(sizeof(struct stub));
-        s->name = permalloc(strlen(name) + 1);
-        strcpy(s->name, name);
+	s->name = newstring(name, strlen(name));
         DLIST_INSERT_BEFORE(list, s, link);
 }
 
@@ -664,7 +663,7 @@ fixnames(NODE *p, void *arg)
                     (c = strstr(sp->soname, "@got(31)")) == NULL)
                         cerror("fixnames2");
                 if (isu) {
-                        strcpy(c, "@plt");
+			memcpy(c, "@plt", sizeof("@plt"));
                 } else
                         *c = 0;
 
@@ -675,9 +674,8 @@ fixnames(NODE *p, void *arg)
 		    (c = strstr(sp->soname, "-L")) == NULL))
 				cerror("fixnames2");
 		if (isu) {
-			*c = 0;
 			addstub(&stublist, sp->soname+1);
-			strcpy(c, "$stub");
+			memcpy(c, "$stub", sizeof("$stub"));
 		} else 
 			*c = 0;
 

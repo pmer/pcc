@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.72 2012/09/05 15:12:19 mickey Exp $	*/
+/*	$Id: local.c,v 1.73 2012/09/06 11:32:32 plunky Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -529,7 +529,7 @@ myp2tree(NODE *p)
 
 		sp = p->n_left->n_sp;
 		if ((s = strstr(sp->sname, "@GOTPCREL")) != NULL) {
-			strcpy(s, "@PLT");
+			memcpy(s, "@PLT", sizeof("@PLT"));
 			p->n_left->n_op = ICON;
 		}
 		return;
