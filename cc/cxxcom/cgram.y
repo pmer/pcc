@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.2 2012/01/04 19:04:08 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.3 2012/08/09 13:47:24 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2106,7 +2106,7 @@ xasmop(char *str, NODE *p)
 {
 
 	p = biop(XARG, p, NIL);
-	p->n_name = isinlining ? newstring(str, strlen(str)+1) : str;
+	p->n_name = isinlining ? newstring(str, strlen(str)) : str;
 	return p;
 }
 
@@ -2119,7 +2119,7 @@ mkxasm(char *str, NODE *p)
 	NODE *q;
 
 	q = biop(XASM, p->n_left, p->n_right);
-	q->n_name = isinlining ? newstring(str, strlen(str)+1) : str;
+	q->n_name = isinlining ? newstring(str, strlen(str)) : str;
 	nfree(p);
 	ecomp(q);
 }

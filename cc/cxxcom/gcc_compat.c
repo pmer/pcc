@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.2 2012/03/22 18:04:41 plunky Exp $     */
+/*      $Id: gcc_compat.c,v 1.3 2012/04/22 21:07:41 plunky Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -318,7 +318,7 @@ setaarg(int str, union aarg *aa, NODE *p)
 		    ((str & (A1_NAME|A2_NAME|A3_NAME)) && p->n_op != NAME))
 			uerror("bad arg to attribute");
 		if (p->n_op == STRING) {
-			aa->sarg = newstring(p->n_name, strlen(p->n_name)+1);
+			aa->sarg = newstring(p->n_name, strlen(p->n_name));
 		} else
 			aa->sarg = (char *)p->n_sp;
 		nfree(p);
