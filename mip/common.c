@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.103 2012/07/31 07:33:22 ragge Exp $	*/
+/*	$Id: common.c,v 1.104 2012/08/31 18:54:33 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -754,7 +754,7 @@ newstring(char *s, int len)
 		u = c = permalloc(len);
 	} else {
 		u = c = &allocpole[MEMCHUNKSZ-allocleft];
-		allocleft -= ROUNDUP(len+1);
+		allocleft -= ROUNDUP(len);
 	}
 	while (len--)
 		*c++ = *s++;
