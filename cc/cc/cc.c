@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.250 2012/09/07 09:15:58 plunky Exp $	*/
+/*	$Id: cc.c,v 1.251 2012/09/07 09:24:40 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1345,22 +1345,18 @@ cunlink(char *f)
 char *
 gettmp(void)
 {
-#define BUFFSIZE 1000
 	DWORD pathSize;
-	char pathBuffer[BUFFSIZE];
+	char pathBuffer[MAX_PATH + 1];
 	char tempFilename[MAX_PATH];
 	UINT uniqueNum;
 
-	pathSize = GetTempPath(BUFFSIZE, pathBuffer);
-	if (pathSize < BUFFSIZE)
-		pathBuffer[pathSize] = 0;
-	else
-		pathBuffer[0] = 0;
+	pathSize = GetTempPath(sizeof(pathBuffer), pathBuffer);
+	if (pathSize == 0 || pathSize > sizeof(pathBuffer))
+		pathBuffer[0] = '\0';
 	uniqueNum = GetTempFileName(pathBuffer, "ctm", 0, tempFilename);
-	if (uniqueNum == 0) {
-		fprintf(stderr, "%s:\n", pathBuffer);
-		exit(8);
-	}
+	if (uniqueNum == 0)
+		errorx(8, "GetTempFileName failed: path \"%s\"", pathBuffer);
+
 	return xstrdup(tempFilename);
 }
 
