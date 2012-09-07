@@ -1,4 +1,4 @@
-/*	$Id: inline.c,v 1.50 2012/08/08 08:46:46 ragge Exp $	*/
+/*	$Id: inline.c,v 1.51 2012/08/22 17:08:18 ragge Exp $	*/
 /*
  * Copyright (c) 2003, 2008 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -433,8 +433,10 @@ inlinetree(struct symtab *sp, NODE *f, NODE *ap)
 
 	gainl = attr_find(sp->sap, GCC_ATYP_ALW_INL) != NULL;
 
+	n = nerrors;
 	if ((is->flags & CANINL) == 0 && gainl)
 		werror("cannot inline but always_inline");
+	nerrors = n;
 
 	if ((is->flags & CANINL) == 0 || (xinline == 0 && gainl == 0)) {
 		if (is->sp->sclass == STATIC || is->sp->sclass == USTATIC)
