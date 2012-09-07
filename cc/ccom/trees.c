@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.312 2012/09/01 08:18:26 ragge Exp $	*/
+/*	$Id: trees.c,v 1.313 2012/09/02 08:38:37 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2898,6 +2898,10 @@ pprop(NODE *p, TWORD t, struct attr *ap)
 
 	case ASSIGN:
 		break;
+
+	case COMOP:
+		p->n_right = pprop(p->n_right, t, ap);
+		return p;
 
 	default:
 		if (coptype(o) == LTYPE)
