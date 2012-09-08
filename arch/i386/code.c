@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.67 2011/06/23 13:43:04 ragge Exp $	*/
+/*	$Id: code.c,v 1.68 2012/04/22 21:07:40 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -384,3 +384,67 @@ mygenswitch(int num, TWORD type, struct swents **p, int n)
 {
 	return 0;
 }
+
+NODE *	
+builtin_return_address(const struct bitable *bt, NODE *a)
+{	
+	int nframes;
+	NODE *f; 
+	
+	if (a->n_op != ICON)
+		goto bad;
+
+	nframes = (int)a->n_lval;
+  
+	tfree(a);	
+			
+	f = block(REG, NIL, NIL, PTR+VOID, 0, 0);
+	regno(f) = FPREG;
+ 
+	while (nframes--)
+		f = block(UMUL, f, NIL, PTR+VOID, 0, 0);
+				    
+	f = block(PLUS, f, bcon(4), INCREF(PTR+VOID), 0, 0);
+	f = buildtree(UMUL, f, NIL);	
+   
+	return f;
+bad:						
+	uerror("bad argument to __builtin_return_address");
+	return bcon(0);
+}
+
+NODE *
+builtin_frame_address(const struct bitable *bt, NODE *a)
+{
+	int nframes;
+	NODE *f;
+
+	if (a->n_op != ICON)
+		goto bad;
+
+	nframes = (int)a->n_lval;
+
+	tfree(a);
+
+	f = block(REG, NIL, NIL, PTR+VOID, 0, 0);
+	regno(f) = FPREG;
+
+	while (nframes--)
+		f = block(UMUL, f, NIL, PTR+VOID, 0, 0);
+
+	return f;
+bad:
+	uerror("bad argument to __builtin_frame_address");
+	return bcon(0);
+}
+
+/*
+ * Return "canonical frame address".
+ */
+NODE *
+builtin_cfa(const struct bitable *bt, NODE *a)
+{
+	uerror("missing builtin_cfa");
+	return bcon(0);
+}
+

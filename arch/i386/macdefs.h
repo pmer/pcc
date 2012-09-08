@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.84 2012/08/09 11:52:11 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.85 2012/08/30 16:19:23 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -347,22 +347,6 @@ int xasmconstregs(char *);
 #define	XASMCONSTREGS(x) xasmconstregs(x)
 #define	MYSETXARG if (XASMVAL(cw) == 'q') {	\
 	c = 'r'; addalledges(&ablock[ESI]); addalledges(&ablock[EDI]); }
-
-/*
- * builtins.
- */
-#define TARGET_BUILTINS							\
-	{ "__builtin_frame_address", i386_builtin_frame_address, 	\
-					BTNOPROTO, 0, 0, PTR|VOID },	\
-	{ "__builtin_return_address", i386_builtin_return_address,	\
-					BTNOPROTO, 0, 0, PTR|VOID },
-
-#define NODE struct node
-struct node;
-struct bitable;
-NODE *i386_builtin_frame_address(const struct bitable *, NODE *a);
-NODE *i386_builtin_return_address(const struct bitable *, NODE *a);
-#undef NODE
 
 #if defined(MACHOABI)
 struct stub {
