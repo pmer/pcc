@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.65 2012/08/09 11:41:27 ragge Exp $	*/
+/*	$Id: code.c,v 1.66 2012/08/13 07:19:09 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -919,4 +919,62 @@ int
 mygenswitch(int num, TWORD type, struct swents **p, int n)
 {
 	return 0;
+}
+
+/*
+ * Return return as given by a.
+ */
+NODE *
+builtin_return_address(const struct bitable *bt, NODE *a)
+{
+	int nframes;
+	NODE *f;
+
+	nframes = a->n_lval;
+	tfree(a);
+
+	f = block(REG, NIL, NIL, PTR+VOID, 0, 0);
+	regno(f) = FPREG;
+
+	while (nframes--)
+		f = block(UMUL, f, NIL, PTR+VOID, 0, 0);
+
+	f = block(PLUS, f, bcon(8), INCREF(PTR+VOID), 0, 0);
+	f = buildtree(UMUL, f, NIL);
+
+	return f;
+}
+
+/*
+ * Return frame as given by a.
+ */
+NODE *
+builtin_frame_address(const struct bitable *bt, NODE *a)
+{
+	int nframes;
+	NODE *f;
+
+	nframes = a->n_lval;
+	tfree(a);
+
+	f = block(REG, NIL, NIL, PTR+VOID, 0, 0);
+	regno(f) = FPREG;
+
+	while (nframes--)
+		f = block(UMUL, f, NIL, PTR+VOID, 0, 0);
+
+	return f;
+}
+
+/*
+ * Return "canonical frame address".
+ */
+NODE *
+builtin_cfa(const struct bitable *bt, NODE *a)
+{
+	NODE *f;
+
+	f = block(REG, NIL, NIL, PTR+VOID, 0, 0);
+	regno(f) = FPREG;
+	return block(PLUS, f, bcon(16), INCREF(PTR+VOID), 0, 0);
 }

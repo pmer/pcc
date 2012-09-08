@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.23 2012/08/09 11:41:27 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.24 2012/08/30 16:19:23 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -261,6 +261,7 @@ int numconv(void *ip, void *p, void *q);
 /*
  * builtins.
  */
+#define TARGET_TIMODE
 #define TARGET_VALIST
 #define TARGET_STDARGS
 #define TARGET_BUILTINS							\
@@ -271,11 +272,7 @@ int numconv(void *ip, void *p, void *q);
 	{ "__builtin_va_arg", amd64_builtin_va_arg, BTNORVAL|BTNOPROTO,	\
 							2, 0, 0 },	\
 	{ "__builtin_va_end", amd64_builtin_va_end, 0, 1, 0, VOID },	\
-	{ "__builtin_va_copy", amd64_builtin_va_copy, 0, 2, 0, VOID },	\
-	{ "__builtin_frame_address", i386_builtin_frame_address, 	\
-					BTNOPROTO, 0, 0, PTR|VOID },	\
-	{ "__builtin_return_address", i386_builtin_return_address, 	\
-					BTNOPROTO, 0, 0, PTR|VOID },
+	{ "__builtin_va_copy", amd64_builtin_va_copy, 0, 2, 0, VOID },
 
 #define NODE struct node
 struct node;
@@ -284,6 +281,4 @@ NODE *amd64_builtin_stdarg_start(const struct bitable *, NODE *a);
 NODE *amd64_builtin_va_arg(const struct bitable *, NODE *a);
 NODE *amd64_builtin_va_end(const struct bitable *, NODE *a);
 NODE *amd64_builtin_va_copy(const struct bitable *, NODE *a);
-NODE *i386_builtin_frame_address(const struct bitable *, NODE *a);
-NODE *i386_builtin_return_address(const struct bitable *, NODE *a);
 #undef NODE
