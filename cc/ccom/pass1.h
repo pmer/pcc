@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.249 2012/09/07 16:20:14 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.250 2012/09/08 10:39:57 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -570,6 +570,11 @@ struct bitable {
 
 NODE *builtin_check(struct symtab *, NODE *a);
 void builtin_init(void);
+
+/* Some builtins targets need to implement */
+NODE *builtin_frame_address(const struct bitable *bt, NODE *a);
+NODE *builtin_return_address(const struct bitable *bt, NODE *a);
+NODE *builtin_cfa(const struct bitable *bt, NODE *a);
 #endif
 
 
