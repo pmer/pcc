@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.97 2012/09/06 20:40:19 plunky Exp $     */
+/*      $Id: gcc_compat.c,v 1.98 2012/09/07 16:20:14 ragge Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -358,6 +358,7 @@ struct atax {
 	CS(GCC_ATYP_ALIASWEAK)	{ A_1ARG|A1_STR, "aliasweak" },
 	CS(GCC_ATYP_RETURNS_TWICE) { A_0ARG, "returns_twice" },
 	CS(GCC_ATYP_WARNING)	{ A_1ARG|A1_STR, "warning" },
+	CS(GCC_ATYP_NOCLONE)	{ A_0ARG, "noclone" },
 
 	CS(GCC_ATYP_BOUNDED)	{ A_3ARG|A_MANY|A1_NAME, "bounded" },
 };
@@ -385,6 +386,7 @@ struct atax mods[] = {
 	{ LCOMPLEX, "XC" },
 	{ INT, "libgcc_cmp_return" },
 	{ INT, "libgcc_shift_count" },
+	{ LONG, "unwind_word" },
 #ifdef TARGET_TIMODE
 	{ 800, "TI" },
 #endif
