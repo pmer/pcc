@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.251 2012/09/07 09:24:40 plunky Exp $	*/
+/*	$Id: cc.c,v 1.252 2012/09/07 09:32:04 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1833,16 +1833,19 @@ win32commandline(struct strlist *l)
 
 	len = 0;
 	STRLIST_FOREACH(s, l) {
+		len++;
 		for (j = 0; s->value[j] != '\0'; j++) {
-			len++;
 			if (s->value[j] == '\"') {
 				for (k = j-1; k >= 0 && s->value[k] == '\\'; k--)
 					len++;
+				len++;
 			}
+			len++;
 		}
 		for (k = j-1; k >= 0 && s->value[k] == '\\'; k--)
 			len++;
-		len += j + 3;
+		len++;
+		len++;
 	}
 
 	p = cmd = xmalloc(len);
