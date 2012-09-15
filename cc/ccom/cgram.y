@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.363 2012/09/06 20:40:19 plunky Exp $	*/
+/*	$Id: cgram.y,v 1.364 2012/09/07 16:20:14 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2019,6 +2019,12 @@ eve(NODE *p)
 
 	case CAST:
 		p2 = eve(p2);
+#ifndef NO_COMPLEX
+		if (ANYCX(p1) || ANYCX(p2)) {
+			r = cxcast(p1, p2);
+			break;
+		}
+#endif
 #ifdef TARGET_TIMODE
 		if ((r = gcc_eval_ticast(CAST, p1, p2)) != NULL)
 			break;
