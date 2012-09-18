@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.43 2012/09/08 15:56:51 ragge Exp $	*/
+/*	$Id: builtins.c,v 1.44 2012/09/17 19:54:31 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -850,7 +850,7 @@ builtin_init()
 		p->n_df = memset(permalloc(sizeof(union dimfun)), 0,
 		    sizeof(union dimfun));
 		p->n_sp = sp;
-		defid(p, EXTDEF);
+		defid(p, EXTERN);
 		sp->soffset = i;
 		sp->sflags |= SBUILTIN;
 	}
