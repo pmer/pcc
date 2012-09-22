@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.313 2012/09/02 08:38:37 ragge Exp $	*/
+/*	$Id: trees.c,v 1.314 2012/09/07 16:19:27 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1292,7 +1292,7 @@ bpsize(NODE *p)
 				s.sdf++;
 			}
 		}
-		sz = (int)tsize(p->n_type, p->n_df, p->n_ap);
+		sz = (int)tsize(t, s.sdf, p->n_ap);
 		p = buildtree(MUL, q, bcon(sz/SZCHAR));
 	} else
 		p = (offcon(psize(p), p->n_type, p->n_df, p->n_ap));
