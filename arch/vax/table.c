@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.23 2012/08/26 17:07:31 ragge Exp $	*/
+/*	$Id: table.c,v 1.24 2012/08/27 16:32:14 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -390,6 +390,12 @@ struct optab  table[] = {
 	SCON,	TANY,
 		NAREG|NASL,	RESC1|RESCC,
 		"	extzv	AR,ZU,AL,A1\n", },
+
+{ RS,	INAREG|FORCC,
+	SAREG,	TINT|TSHORT|TCHAR,
+	SCON,	TANY,
+		NAREG|NASL,	RESC1|RESCC,
+		"	extv	AR,ZU,AL,A1\n", },
 
 { LS,	INBREG|FORCC,
 	SBREG|AWD,	TLL,
