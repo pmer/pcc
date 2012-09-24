@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.254 2012/09/15 10:36:42 ragge Exp $	*/
+/*	$Id: cc.c,v 1.255 2012/09/23 08:39:48 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1390,7 +1390,7 @@ gettmp(void)
 
 	if ((fd = mkstemp(sfn)) == -1) {
 		fprintf(stderr, "%s: %s\n", sfn, strerror(errno));
-		exit(8);
+		dexit(8);
 	}
 	close(fd);
 	return sfn;
