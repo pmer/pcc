@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.14 2011/02/18 17:08:31 ragge Exp $	*/
+/*	$Id: order.c,v 1.15 2012/09/19 17:06:13 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -94,7 +94,9 @@ offstar(NODE *p, int shape)
 	if (findls(p, 0))
 		return; /* Matched (,%rax,8) */
 
-	if ((p->n_op == PLUS || p->n_op == MINUS) && p->n_left->n_op == ICON) {
+	if ((p->n_op == PLUS || p->n_op == MINUS) &&
+	    p->n_left->n_op == ICON &&
+	    notoff(0, 0,  p->n_left->n_lval, 0) == 0) {
 		l = p->n_right;
 		if (isreg(l))
 			return; /* Matched 4(%rax) */
