@@ -1,4 +1,4 @@
-#	$Id: Makefile.in,v 1.7 2012/03/15 09:22:12 plunky Exp $
+#	$Id: Makefile.in,v 1.8 2012/08/31 18:34:35 plunky Exp $
 #
 # Makefile.in for the cc driver part of pcc.
 #
@@ -14,7 +14,6 @@ libexecdir = @libexecdir@
 includedir = @includedir@
 datarootdir = @datarootdir@
 mandir = @mandir@
-strip = @strip@
 CC = @CC@
 EXEEXT = @EXEEXT@
 TARGOS = @targos@
@@ -54,10 +53,6 @@ $(DEST): $(OBJS)
 install:
 	test -z "$(DESTDIR)$(bindir)" || mkdir -p "$(DESTDIR)$(bindir)"
 	$(INSTALL_PROGRAM) $(DEST) $(DESTDIR)$(bindir)
-	@if [ $(strip) = yes ]; then		\
-		strip $(DESTDIR)$(bindir)/$(DEST) ;	\
-		echo strip $(DESTDIR)$(bindir)/$(DEST) ;	\
-	fi
 
 clean:
 	rm -f  $(OBJS) $(DEST)
