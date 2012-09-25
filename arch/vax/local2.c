@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.33 2012/08/29 17:20:51 ragge Exp $	*/
+/*	$Id: local2.c,v 1.34 2012/09/01 09:17:46 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -459,6 +459,7 @@ void
 zzzcode(NODE *p, int c)
 {
 	NODE *l, *r;
+	TWORD t;
 	int m;
 	char *ch;
 
@@ -573,8 +574,8 @@ zzzcode(NODE *p, int c)
 		return;
 
 	case 'U':	/* 32 - n, for unsigned right shifts */
-		m = p->n_left->n_type == UCHAR ? 8 :
-		    p->n_left->n_type == USHORT ? 16 : 32;
+		t = DEUNSIGN(p->n_left->n_type);
+		m = t == CHAR ? 8 : t == SHORT ? 16 : 32;
 		printf("$" CONFMT, m - p->n_right->n_lval);
 		return;
 
@@ -1195,7 +1196,7 @@ optim2(NODE *p, void *arg)
 			p->n_left = mklnode(ICON, 0, 0, FTN|p->n_type);
 			p->n_left->n_name = "__lshrdi3";
 			p->n_op = CALL;
-		} else if (p->n_type == INT) {
+		} else if (p->n_type == INT || p->n_type == LONGLONG) {
 			/* convert >> to << with negative shift count */
 			/* RS of char & short must use extv */
 			if (p->n_right->n_op == ICON) {
