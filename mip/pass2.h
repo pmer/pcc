@@ -1,4 +1,4 @@
-/*	$Id: pass2.h,v 1.132 2012/08/17 20:59:58 ragge Exp $	*/
+/*	$Id: pass2.h,v 1.133 2012/09/26 18:33:35 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -310,7 +310,6 @@ void p2tree(NODE *p);
 int flshape(NODE *p);
 int ncnt(int needs);
 
-
 extern	char *rnames[];
 extern	int rstatus[];
 extern	int roverlap[MAXREGS][MAXREGS];
@@ -350,14 +349,6 @@ extern	int fldshf, fldsz;
 extern	int ndebug;
 extern	int b2debug, c2debug, e2debug, f2debug, g2debug, o2debug;
 extern	int r2debug, s2debug, t2debug, u2debug, x2debug;
-
-#ifdef FORT
-extern	int Oflag;
-#endif
-
-#ifndef callchk
-#define callchk(x) allchk()
-#endif
 
 extern	int dope[];	/* a vector containing operator information */
 extern	char *opst[];	/* a vector containing names for ops */
