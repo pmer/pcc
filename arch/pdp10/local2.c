@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.103 2012/04/22 21:07:40 plunky Exp $	*/
+/*	$Id: local2.c,v 1.104 2012/09/26 20:22:41 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -632,7 +632,7 @@ printcon(NODE *p)
 	p = p->n_left;
 	if (p->n_lval >= 0700000000000LL) {
 		/* converted to pointer in clocal() */
-		conput(0, p);
+		conput(stdout, p);
 		return;
 	}
 	if (p->n_lval == 0 && p->n_name[0] == '\0') {
@@ -928,18 +928,18 @@ conput(FILE *fp, NODE *p)
 	switch (p->n_op) {
 	case ICON:
 		if (p->n_lval != 0) {
-			acon(stdout, p);
+			acon(fp, p);
 			if (p->n_name[0] != '\0')
-				putchar('+');
+				fputc('+', fp);
 		}
 		if (p->n_name[0] != '\0')
-			printf("%s", p->n_name);
+			fprintf(fp, "%s", p->n_name);
 		if (p->n_name[0] == '\0' && p->n_lval == 0)
-			putchar('0');
+			fputc('0', fp);
 		return;
 
 	case REG:
-		printf("%s", rnames[p->n_rval]);
+		fprintf(fp, "%s", rnames[p->n_rval]);
 		return;
 
 	default:
