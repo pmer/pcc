@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.166 2012/03/22 18:04:41 plunky Exp $	*/
+/*	$Id: local2.c,v 1.167 2012/04/22 21:07:40 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -281,26 +281,24 @@ fldexpand(NODE *p, int cookie, char **cp)
 static void
 starg(NODE *p)
 {
-	FILE *fp = stdout;
-
 #if defined(MACHOABI)
-	fprintf(fp, "	subl $%d,%%esp\n", p->n_stsize);
-	fprintf(fp, "	subl $4,%%esp\n");
-	fprintf(fp, "	pushl $%d\n", p->n_stsize);
+	printf("	subl $%d,%%esp\n", p->n_stsize);
+	printf("	subl $4,%%esp\n");
+	printf("	pushl $%d\n", p->n_stsize);
 	expand(p, 0, "	pushl AL\n");
 	expand(p, 0, "	leal 12(%esp),A1\n");
 	expand(p, 0, "	pushl A1\n");
 	if (kflag) {
-		fprintf(fp, "	call L%s$stub\n", EXPREFIX "memcpy");
+		printf("	call L%s$stub\n", EXPREFIX "memcpy");
 		addstub(&stublist, EXPREFIX "memcpy");
 	} else {
-		fprintf(fp, "	call %s\n", EXPREFIX "memcpy");
+		printf("	call %s\n", EXPREFIX "memcpy");
 	}
-	fprintf(fp, "	addl $16,%%esp\n");
+	printf("	addl $16,%%esp\n");
 #else
 	NODE *q = p->n_left;
 
-	fprintf(fp, "	subl $%d,%%esp\n", (p->n_stsize+3) & ~3);
+	printf("	subl $%d,%%esp\n", (p->n_stsize + 3) & ~3);
 	p->n_left = mklnode(OREG, 0, ESP, INT);
 	zzzcode(p, 'Q');
 	tfree(p->n_left);
