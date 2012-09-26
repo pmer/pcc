@@ -1,4 +1,4 @@
-/*	$Id: pass2.h,v 1.131 2012/03/22 18:51:41 plunky Exp $	*/
+/*	$Id: pass2.h,v 1.132 2012/08/17 20:59:58 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -357,10 +357,6 @@ extern	int Oflag;
 
 #ifndef callchk
 #define callchk(x) allchk()
-#endif
-
-#ifndef PUTCHAR
-#define PUTCHAR(x) putchar(x)
 #endif
 
 extern	int dope[];	/* a vector containing operator information */
