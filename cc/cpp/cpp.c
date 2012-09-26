@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.155 2012/08/24 15:18:47 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.156 2012/08/31 19:33:09 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1289,6 +1289,8 @@ upp:		sbp = stringbuf;
 	}
 
 	/* fetch arguments */
+	if (Cflag)
+		readmac++;
 	if (readargs(sp, argary))
 		error("readargs");
 
@@ -1305,6 +1307,8 @@ upp:		sbp = stringbuf;
 	stringbuf = sbp;
 
 	exparg(1);
+	if (Cflag)
+		readmac--;
 
 	IMP("END");
 
