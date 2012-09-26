@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.106 2012/09/06 20:47:06 plunky Exp $	*/
+/*	$Id: common.c,v 1.107 2012/09/06 20:51:14 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -501,7 +501,7 @@ mkdope(void)
  * output a nice description of the type of t
  */
 void
-tprint(FILE *fp, TWORD t, TWORD q)
+tprint(TWORD t, TWORD q)
 {
 	static char * tnames[] = {
 		"undef",
@@ -538,18 +538,18 @@ tprint(FILE *fp, TWORD t, TWORD q)
 
 	for(;; t = DECREF(t), q = DECREF(q)) {
 		if (ISCON(q))
-			fputc('C', fp);
+			putchar('C');
 		if (ISVOL(q))
-			fputc('V', fp);
+			putchar('V');
 
 		if (ISPTR(t))
-			fprintf(fp, "PTR ");
+			printf("PTR ");
 		else if (ISFTN(t))
-			fprintf(fp, "FTN ");
+			printf("FTN ");
 		else if (ISARY(t))
-			fprintf(fp, "ARY ");
+			printf("ARY ");
 		else {
-			fprintf(fp, "%s%s%s", ISCON(q << TSHIFT) ? "const " : "",
+			printf("%s%s%s", ISCON(q << TSHIFT) ? "const " : "",
 			    ISVOL(q << TSHIFT) ? "volatile " : "", tnames[t]);
 			return;
 		}

@@ -1,4 +1,4 @@
-/*	$Id: pass2.h,v 1.133 2012/09/26 18:33:35 plunky Exp $	*/
+/*	$Id: pass2.h,v 1.134 2012/09/26 18:36:48 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -280,7 +280,7 @@ void myreader(struct interpass *pole);
 int oregok(NODE *p, int sharp);
 void myormake(NODE *);
 int *livecall(NODE *);
-void prtreg(FILE *, NODE *);
+void prtreg(NODE *);
 char *prcook(int);
 int myxasm(struct interpass *ip, NODE *p);
 int xasmcode(char *s);

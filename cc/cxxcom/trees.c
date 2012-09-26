@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.2 2012/03/22 18:51:40 plunky Exp $	*/
+/*	$Id: trees.c,v 1.3 2012/04/22 21:07:41 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1518,11 +1518,11 @@ tymatch(NODE *p)
 #ifdef PCC_DEBUG
 	if (tdebug) {
 		printf("tymatch(%p): ", p);
-		tprint(stdout, tl, 0);
+		tprint(tl, 0);
 		printf(" %s ", copst(o));
-		tprint(stdout, tr, 0);
+		tprint(tr, 0);
 		printf(" => ");
-		tprint(stdout, t, 0);
+		tprint(t, 0);
 		printf("\n");
 		fwalk(p, eprint, 0);
 	}
@@ -1904,7 +1904,7 @@ eprint(NODE *p, int down, int *a, int *b)
 		else
 			printf(", %d, ", p->n_rval);
 	}
-	tprint(stdout, p->n_type, p->n_qual);
+	tprint(p->n_type, p->n_qual);
 	printf( ", %p, ", p->n_df);
 	dump_attr(p->n_ap);
 }
