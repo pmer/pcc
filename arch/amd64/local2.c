@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.49 2011/09/21 21:23:09 plunky Exp $	*/
+/*	$Id: local2.c,v 1.50 2012/08/19 10:47:12 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -62,7 +62,7 @@ prtprolog(struct interpass_prolog *ipp, int addto)
 	/* save permanent registers */
 	for (i = 0; i < MAXREGS; i++)
 		if (TESTBIT(ipp->ipp_regs, i))
-			fprintf(stdout, "\tmovq %s,-%d(%s)\n",
+			printf("\tmovq %s,-%d(%s)\n",
 			    rnames[i], regoff[i], rnames[FPREG]);
 }
 
@@ -165,7 +165,7 @@ eoftn(struct interpass_prolog *ipp)
 		/* return from function code */
 		for (i = 0; i < MAXREGS; i++)
 			if (TESTBIT(ipp->ipp_regs, i))
-				fprintf(stdout, "	movq -%d(%s),%s\n",
+				printf("	movq -%d(%s),%s\n",
 				    regoff[i], rnames[FPREG], rnames[i]);
 
 		/* struct return needs special treatment */
@@ -612,7 +612,7 @@ upput(NODE *p, int size)
 	size /= SZCHAR;
 	switch (p->n_op) {
 	case REG:
-		fprintf(stdout, "%%%s", &rnames[p->n_rval][3]);
+		printf("%%%s", &rnames[p->n_rval][3]);
 		break;
 
 	case NAME:
@@ -622,7 +622,7 @@ upput(NODE *p, int size)
 		p->n_lval -= size;
 		break;
 	case ICON:
-		fprintf(stdout, "$" CONFMT, p->n_lval >> 32);
+		printf("$" CONFMT, p->n_lval >> 32);
 		break;
 	default:
 		comperr("upput bad op %d size %d", p->n_op, size);

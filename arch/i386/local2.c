@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.167 2012/04/22 21:07:40 plunky Exp $	*/
+/*	$Id: local2.c,v 1.168 2012/09/26 18:51:41 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -66,7 +66,7 @@ prtprolog(struct interpass_prolog *ipp, int addto)
 		printf("	subl $%d,%%esp\n", addto);
 	for (i = 0; i < MAXREGS; i++)
 		if (TESTBIT(ipp->ipp_regs, i))
-			fprintf(stdout, "	movl %s,-%d(%s)\n",
+			printf("	movl %s,-%d(%s)\n",
 			    rnames[i], regoff[i], rnames[FPREG]);
 }
 
@@ -124,7 +124,7 @@ eoftn(struct interpass_prolog *ipp)
 	/* return from function code */
 	for (i = 0; i < MAXREGS; i++)
 		if (TESTBIT(ipp->ipp_regs, i))
-			fprintf(stdout, "	movl -%d(%s),%s\n",
+			printf("	movl -%d(%s),%s\n",
 			    regoff[i], rnames[FPREG], rnames[i]);
 
 	/* struct return needs special treatment */
@@ -744,7 +744,7 @@ upput(NODE *p, int size)
 	size /= SZCHAR;
 	switch (p->n_op) {
 	case REG:
-		fprintf(stdout, "%%%s", &rnames[p->n_rval][3]);
+		printf("%%%s", &rnames[p->n_rval][3]);
 		break;
 
 	case NAME:
@@ -754,7 +754,7 @@ upput(NODE *p, int size)
 		p->n_lval -= size;
 		break;
 	case ICON:
-		fprintf(stdout, "$" CONFMT, p->n_lval >> 32);
+		printf("$" CONFMT, p->n_lval >> 32);
 		break;
 	default:
 		comperr("upput bad op %d size %d", p->n_op, size);
