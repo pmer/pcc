@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.102 2008/11/22 16:12:25 ragge Exp $	*/
+/*	$Id: local2.c,v 1.103 2012/04/22 21:07:40 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -29,8 +29,6 @@
 
 # include "pass2.h"
 # include <ctype.h>
-
-# define putstr(s)	fputs((s), stdout)
 
 void acon(FILE *, NODE *p);
 int argsize(NODE *p);
@@ -941,7 +939,7 @@ conput(FILE *fp, NODE *p)
 		return;
 
 	case REG:
-		putstr(rnames[p->n_rval]);
+		printf("%s", rnames[p->n_rval]);
 		return;
 
 	default:
@@ -967,7 +965,7 @@ upput(NODE *p, int size)
 	size /= SZLONG;
 	switch (p->n_op) {
 	case REG:
-		putstr(rnames[p->n_rval + size]);
+		printf("%s", rnames[p->n_rval + size]);
 		break;
 
 	case NAME:

@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.34 2012/09/01 09:17:46 ragge Exp $	*/
+/*	$Id: local2.c,v 1.35 2012/09/25 19:17:50 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -898,7 +898,7 @@ upput(NODE *p, int size)
 	size /= SZCHAR;
 	switch (p->n_op) {
 	case REG:
-		fprintf(stdout, "%s", rnames[regno(p)-16+1]);
+		printf("%s", rnames[regno(p)-16+1]);
 		break;
 
 	case NAME:
@@ -910,7 +910,7 @@ upput(NODE *p, int size)
 		p->n_lval -= size;
 		break;
 	case ICON:
-		fprintf(stdout, "$" CONFMT, p->n_lval >> 32);
+		printf("$" CONFMT, p->n_lval >> 32);
 		break;
 	default:
 		comperr("upput bad op %d size %d", p->n_op, size);
