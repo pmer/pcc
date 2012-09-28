@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.156 2012/08/31 19:33:09 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.157 2012/09/26 18:27:17 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -390,19 +390,21 @@ line(void)
 		goto bad;
 
 	p = (usch *)yytext;
-	if (*p == 'L')
+	if (*p++ == 'L')
 		p++;
 	c = strlen((char *)p);
+	p[c - 1] = '\0';
 	if (llen < c) {
 		/* XXX may lose heap space */
 		lbuf = stringbuf;
 		stringbuf += c;
 		llen = c;
+		if (stringbuf >= &sbf[SBSIZE]) {
+			stringbuf = sbf; /* need space to write error message */
+			error("line filename exceeds buffer size");
+		}
 	}
-	p[strlen((char *)p)-1] = 0;
-	if (strlcpy((char *)lbuf, (char *)&p[1], SBSIZE) >= SBSIZE)
-		error("line exceeded buffer size");
-
+	memcpy(lbuf, p, c);
 	ifiles->fname = lbuf;
 	if (yylex() == '\n')
 		return;
