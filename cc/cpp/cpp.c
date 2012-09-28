@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.157 2012/09/26 18:27:17 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.158 2012/09/28 12:53:39 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -331,7 +331,7 @@ main(int argc, char **argv)
 		t2.tv_sec -= 1;
 	}
 	fprintf(stderr, "cpp total time: %ld s %ld us\n",
-	     t2.tv_sec, t2.tv_usec);
+	     (long)t2.tv_sec, (long)t2.tv_usec);
 #endif
 	return 0;
 }
