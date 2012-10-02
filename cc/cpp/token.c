@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.72 2012/08/31 19:33:09 plunky Exp $	*/
+/*	$Id: token.c,v 1.73 2012/10/02 09:13:13 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -473,7 +473,7 @@ chlit:
 		}
 		yytext[yyp] = 0;
 
-		return (NUMBER);
+		return NUMBER;
 
 	case ' ':
 	case '\t':
@@ -481,7 +481,7 @@ chlit:
 			yytext[yyp++] = (usch)ch;
 		unch(ch);
 		yytext[yyp] = 0;
-		return(WSPACE);
+		return WSPACE;
 
 	case '/':
 		if ((ch = inch()) == '/') {
@@ -556,7 +556,7 @@ chlit:
 				break;
 		}
 		yytext[yyp] = 0;
-		return(STRING);
+		return STRING;
 
 	case 'L':
 		if ((ch = inch()) == '\"' && !tflag) {
