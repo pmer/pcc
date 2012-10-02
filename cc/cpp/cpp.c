@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.163 2012/10/02 09:27:46 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.164 2012/10/02 09:30:29 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -33,9 +33,6 @@
 
 #include "config.h"
 
-#ifdef HAVE_SYS_WAIT_H
-#include <sys/wait.h>
-#endif
 #include <sys/stat.h>
 
 #include <fcntl.h>
