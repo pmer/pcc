@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.77 2012/10/02 09:38:59 plunky Exp $	*/
+/*	$Id: token.c,v 1.78 2012/10/02 09:56:07 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -49,7 +49,6 @@
 #include <unistd.h>
 #endif
 #include <fcntl.h>
-#include <errno.h>
 
 #include "compat.h"
 #include "cpp.h"
