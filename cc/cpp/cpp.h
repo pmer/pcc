@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.57 2012/07/28 20:20:03 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.58 2012/07/30 09:51:52 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -150,7 +150,6 @@ struct nd {
 
 struct symtab *lookup(const usch *namep, int enterf);
 usch *gotident(struct symtab *nl);
-int slow;	/* scan slowly for new tokens */
 int defining;
 int submac(struct symtab *nl, int);
 int kfind(struct symtab *nl);
@@ -174,7 +173,6 @@ char *curfile(void);
 void setline(int);
 void setfile(char *);
 int yyparse(void);
-void yyerror(const char *);
 void unpstr(const usch *);
 usch *savstr(const usch *str);
 void savch(int c);

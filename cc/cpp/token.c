@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.73 2012/10/02 09:13:13 plunky Exp $	*/
+/*	$Id: token.c,v 1.74 2012/10/02 09:18:56 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -70,13 +70,7 @@ static void elifstmt(void);
 static void badop(const char *);
 static int chktg(void);
 static int inpch(void);
-
-extern int yyget_lineno (void);
-extern void yyset_lineno (int);
-
 static int inch(void);
-
-int inif;
 
 #define	PUTCH(ch) if (!flslvl) putch(ch)
 /* protection against recursion in #include */
@@ -706,10 +700,6 @@ yylex(void)
 	return ch;
 }
 
-usch *yyp, yybuf[CPPBUF];
-
-int yywrap(void);
-
 static int
 inpch(void)
 {
@@ -909,8 +899,6 @@ if (c == 10) {
 #endif
 	unch(c);
 }
-
-int yywrap(void) { return 1; }
 
 static int
 dig2num(int c)
