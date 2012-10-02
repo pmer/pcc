@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.166 2012/10/02 09:38:59 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.167 2012/10/02 09:40:10 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -54,6 +54,8 @@
 #endif
 
 #define	SBSIZE	1000000
+
+static const char versstr[] = "PCC preprocessor version " VERSSTR "\n";
 
 static usch	sbf[SBSIZE];
 /* C command */
@@ -213,7 +215,7 @@ main(int argc, char **argv)
 			break;
 #endif
 		case 'v':
-			fprintf(stderr, "PCC preprocessor version %s\n", VERSSTR);
+			write(2, versstr, sizeof(versstr));
 			break;
 
 		case 'x':
