@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.165 2012/10/02 09:31:31 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.166 2012/10/02 09:38:59 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -213,7 +213,7 @@ main(int argc, char **argv)
 			break;
 #endif
 		case 'v':
-			printf("cpp: %s\n", VERSSTR);
+			fprintf(stderr, "PCC preprocessor version %s\n", VERSSTR);
 			break;
 
 		case 'x':
