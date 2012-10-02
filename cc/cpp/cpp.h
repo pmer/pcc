@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.59 2012/10/02 09:24:33 plunky Exp $	*/
+/*	$Id: cpp.h,v 1.60 2012/10/02 09:34:27 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -25,8 +25,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <stdio.h> /* for obuf */
-#include <stdlib.h>
+#include <stdio.h>	/* for debug/printf */
 
 typedef unsigned char usch;
 extern usch yytext[];
