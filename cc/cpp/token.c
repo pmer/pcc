@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.76 2012/10/02 09:37:32 plunky Exp $	*/
+/*	$Id: token.c,v 1.77 2012/10/02 09:38:59 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -67,7 +67,6 @@ static void pragmastmt(void);
 static void undefstmt(void);
 static void cppwarning(void);
 static void elifstmt(void);
-static void badop(const char *);
 static int chktg(void);
 static int inpch(void);
 static int inch(void);
@@ -626,7 +625,7 @@ yylex(void)
 	case '+':
 	case '-':
 		if (ch == c2)
-			badop("");
+			error("invalid preprocessor operator %c%c", ch, c2);
 		break;
 
 	case '/':
@@ -1223,12 +1222,6 @@ pragmastmt(void)
 		putstr(sb);
 	stringbuf = sb;
 	prtline();
-}
-
-static void
-badop(const char *op)
-{
-	error("invalid operator in preprocessor expression: %s", op);
 }
 
 int
