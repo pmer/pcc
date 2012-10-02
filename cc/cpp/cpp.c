@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.162 2012/10/02 09:26:21 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.163 2012/10/02 09:27:46 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1560,20 +1560,6 @@ oho:			while ((c = sloscan()) == '\n') {
 		cunput(WARN), warn--;
 	return 0;
 }
-
-#if 0
-/*
- * Maybe an indentifier (for macro expansion).
- */
-static int
-mayid(usch *s)
-{
-	for (; *s; s++)
-		if (!isdigit(*s) && !isalpha(*s) && *s != '_')
-			return 0;
-	return 1;
-}
-#endif
 
 /*
  * expand a function-like macro.
