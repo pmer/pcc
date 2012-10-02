@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.164 2012/10/02 09:30:29 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.165 2012/10/02 09:31:31 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -125,6 +125,15 @@ usch *stringbuf = sbf;
 /* args for lookup() */
 #define	FIND	0
 #define	ENTER	1
+
+/*
+ * No-replacement array.  If a macro is found and exists in this array
+ * then no replacement shall occur.  This is a stack.
+ */
+struct symtab *norep[RECMAX];	/* Symbol table index table */
+int norepptr = 1;			/* Top of index table */
+unsigned short bptr[RECMAX];	/* currently active noexpand macro stack */
+int bidx;			/* Top of bptr stack */
 
 static int readargs(struct symtab *sp, const usch **args);
 static void exparg(int);

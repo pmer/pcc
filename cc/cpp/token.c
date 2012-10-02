@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.75 2012/10/02 09:24:33 plunky Exp $	*/
+/*	$Id: token.c,v 1.76 2012/10/02 09:37:32 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -105,15 +105,6 @@ char spechr[256] = {
 	C_I,	C_I,	C_I,	0,	C_2,	0,	0,	0,
 
 };
-
-/*
- * No-replacement array.  If a macro is found and exists in this array
- * then no replacement shall occur.  This is a stack.
- */
-struct symtab *norep[RECMAX];	/* Symbol table index table */
-int norepptr = 1;			/* Top of index table */
-unsigned short bptr[RECMAX];	/* currently active noexpand macro stack */
-int bidx;			/* Top of bptr stack */
 
 static void
 unch(int c)
