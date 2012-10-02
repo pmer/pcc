@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.74 2012/10/02 09:18:56 plunky Exp $	*/
+/*	$Id: token.c,v 1.75 2012/10/02 09:24:33 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -889,13 +889,7 @@ void
 cunput(int c)
 {
 #ifdef PCC_DEBUG
-//	extern int dflag;
 //	if (dflag)printf(": '%c'(%d)\n", c > 31 ? c : ' ', c);
-#endif
-#if 0
-if (c == 10) {
-	printf("c == 10!!!\n");
-}
 #endif
 	unch(c);
 }
