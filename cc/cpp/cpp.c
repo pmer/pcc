@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.160 2012/10/02 09:13:13 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.161 2012/10/02 09:16:37 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -47,7 +47,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <ctype.h>
 
 #include "compat.h"
 #include "cpp.h"
@@ -677,9 +676,6 @@ define(void)
 	if (flslvl)
 		return;
 	if (sloscan() != WSPACE || sloscan() != IDENT)
-		goto bad;
-
-	if (isdigit((int)yytext[0]))
 		goto bad;
 
 	np = lookup(yytext, ENTER);
