@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.170 2012/10/02 16:19:48 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.171 2012/10/11 10:03:06 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1049,7 +1049,7 @@ savch(int c)
 }
 
 /*
- * convert _Pragma to #pragma for output.
+ * convert _Pragma() to #pragma for output.
  * Syntax is already correct.
  */
 static void
@@ -1064,7 +1064,7 @@ pragoper(void)
 	while ((t = sloscan()) == WSPACE)
 		;
 	if (t != STRING)
-		error("pragma must have string argument");
+		error("_Pragma() must have string argument");
 	savstr((const usch *)"\n#pragma ");
 	s = yytext;
 	if (*s == 'L')
@@ -1084,7 +1084,7 @@ pragoper(void)
 	while ((t = sloscan()) == WSPACE)
 		;
 	if (t != ')')
-		error("pragma syntax error");
+		error("_Pragma() syntax error");
 }
 
 /*
