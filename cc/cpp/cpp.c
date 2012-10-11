@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.169 2012/10/02 15:58:53 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.170 2012/10/02 16:19:48 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -216,7 +216,7 @@ main(int argc, char **argv)
 			break;
 #endif
 		case 'v':
-			dummy = write(2, versstr, sizeof(versstr));
+			dummy = write(2, versstr, sizeof(versstr) - 1);
 			break;
 
 		case 'x':
