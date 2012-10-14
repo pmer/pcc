@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.364 2012/09/07 16:20:14 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.365 2012/09/15 16:06:22 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -919,9 +919,9 @@ oplist:		   /* nothing */ { $$ = NIL; }
 		|  oper { $$ = $1; }
 		;
 
-oper:		   string '(' e ')' { $$ = xasmop($1, eve($3)); }
+oper:		   string '(' e ')' { $$ = xasmop($1, pconvert(eve($3))); }
 		|  oper ',' string '(' e ')' {
-			$$ = cmop($1, xasmop($3, eve($5)));
+			$$ = cmop($1, xasmop($3, pconvert(eve($5))));
 		}
 		;
 
