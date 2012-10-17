@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.173 2012/10/17 09:52:52 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.174 2012/10/17 10:14:44 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1038,12 +1038,11 @@ donex(void)
 void
 savch(int c)
 {
-	if (stringbuf-sbf < SBSIZE) {
-		*stringbuf++ = (usch)c;
-	} else {
+	if (stringbuf >= &sbf[SBSIZE]) {
 		stringbuf = sbf; /* need space to write error message */
-		error("Too much defining");
-	} 
+		error("out of macro space!");
+	}
+	*stringbuf++ = (usch)c;
 }
 
 /*
