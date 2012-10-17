@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.79 2012/10/02 17:12:32 plunky Exp $	*/
+/*	$Id: token.c,v 1.80 2012/10/11 10:17:42 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -79,6 +79,8 @@ static int inclevel;
 #define	NXTCH() (ifiles->curptr < ifiles->maxread ? *ifiles->curptr++ : inpch())
 
 usch yytext[CPPBUF];
+
+struct includ *ifiles;
 
 char spechr[256] = {
 	0,	0,	0,	0,	C_SPEC,	C_SPEC,	0,	0,
