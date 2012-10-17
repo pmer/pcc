@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.177 2012/10/17 10:38:00 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.178 2012/10/17 10:41:20 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -2150,12 +2150,10 @@ lookup(const usch *key, int enterf)
 static usch *
 xstrdup(const usch *str)
 {
-	size_t len = strlen((const char *)str)+1;
 	usch *rv;
 
-	if ((rv = malloc(len)) == NULL)
+	if ((rv = (usch *)strdup((const char *)str)) == NULL)
 		error("xstrdup: out of mem");
-	strlcpy((char *)rv, (const char *)str, len);
 	return rv;
 }
 
