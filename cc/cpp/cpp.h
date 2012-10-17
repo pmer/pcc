@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.61 2012/10/02 09:44:26 plunky Exp $	*/
+/*	$Id: cpp.h,v 1.62 2012/10/17 09:52:52 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -190,3 +190,4 @@ void xerror(usch *);
 #endif
 int cinput(void);
 void getcmnt(void);
+void xwrite(int, const void *, unsigned int);
