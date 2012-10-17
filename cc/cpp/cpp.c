@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.175 2012/10/17 10:25:49 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.176 2012/10/17 10:33:13 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -895,7 +895,7 @@ id:			savstr(yytext);
 		if (cmprepl(np->value, stringbuf-1)) {
 			sbeg = stringbuf;
 			np->value = stringbuf-1;
-			warning("%s redefined\nprevious define: %s:%d",
+			warning("%s redefined (previously defined at \"%s\" line %d)",
 			    np->namep, np->file, np->line);
 		}
 		stringbuf = sbeg;  /* forget this space */
