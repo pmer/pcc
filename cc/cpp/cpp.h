@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.62 2012/10/17 09:52:52 plunky Exp $	*/
+/*	$Id: cpp.h,v 1.63 2012/10/17 10:14:44 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -179,15 +179,8 @@ void putch(int);
 void putstr(const usch *s);
 void line(void);
 usch *sheap(const char *fmt, ...);
-void xwarning(usch *);
-void xerror(usch *);
-#ifdef HAVE_CPP_VARARG_MACRO_GCC
-#define warning(...) xwarning(sheap(__VA_ARGS__))
-#define error(...) xerror(sheap(__VA_ARGS__))
-#else
-#define warning printf
-#define error printf
-#endif
+void warning(const char *fmt, ...);
+void error(const char *fmt, ...);
 int cinput(void);
 void getcmnt(void);
 void xwrite(int, const void *, unsigned int);
