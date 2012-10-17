@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.81 2012/10/17 09:52:52 plunky Exp $	*/
+/*	$Id: token.c,v 1.82 2012/10/17 10:14:44 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -852,27 +852,26 @@ pushfile(const usch *file, const usch *fn, int idx, void *incs)
 void
 prtline(void)
 {
-	usch *s, *os = stringbuf;
+	usch *sb = stringbuf;
 
 	if (Mflag) {
 		if (dMflag)
 			return; /* no output */
 		if (ifiles->lineno == 1) {
-			s = sheap("%s: %s\n", Mfile, ifiles->fname);
-			xwrite(ofd, s, strlen((char *)s));
+			sheap("%s: %s\n", Mfile, ifiles->fname);
 			if (MPflag &&
-			    strcmp((const char *)ifiles->fname, (char *)MPfile)) {
-				s = sheap("%s:\n", ifiles->fname);
-				xwrite(ofd, s, strlen((char *)s));
-			}
+			    strcmp((const char *)ifiles->fname, (char *)MPfile))
+				sheap("%s:\n", ifiles->fname);
+			xwrite(ofd, sb, stringbuf - sb);
 		}
 	} else if (!Pflag) {
-		putstr(sheap("\n# %d \"%s\"", ifiles->lineno, ifiles->fname));
+		sheap("\n# %d \"%s\"", ifiles->lineno, ifiles->fname);
 		if (ifiles->idx == SYSINC)
-			putstr(sheap(" 3"));
-		putstr(sheap("\n"));
+			sheap(" 3");
+		sheap("\n");
+		putstr(sb);
 	}
-	stringbuf = os;
+	stringbuf = sb;
 }
 
 void
