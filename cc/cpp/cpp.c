@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.174 2012/10/17 10:14:44 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.175 2012/10/17 10:25:49 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1931,7 +1931,7 @@ num2str(int num)
 }
 
 /*
- * similar to sprintf, but only handles %s and %d. 
+ * similar to sprintf, but only handles %c, %s and %d. 
  * saves result on heap.
  */
 usch *
@@ -1955,7 +1955,7 @@ sheap(const char *fmt, ...)
 				savch(va_arg(ap, int));
 				break;
 			default:
-				break; /* cannot call error() here */
+				error("bad sheap");
 			}
 		} else
 			savch(*fmt);
