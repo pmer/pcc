@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.85 2012/10/19 14:32:18 plunky Exp $	*/
+/*	$Id: token.c,v 1.86 2012/10/19 14:34:05 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1043,7 +1043,7 @@ ifdefstmt(void)
 	while (t == WSPACE);
 	if (t != IDENT)
 		error("bad #ifdef");
-	if (lookup(yytext, FIND) == 0) {
+	if (lookup(yytext, FIND) == NULL) {
 		putch('\n');
 		flslvl++;
 	} else
@@ -1065,7 +1065,7 @@ ifndefstmt(void)
 	while (t == WSPACE);
 	if (t != IDENT)
 		error("bad #ifndef");
-	if (lookup(yytext, FIND) != 0) {
+	if (lookup(yytext, FIND) != NULL) {
 		putch('\n');
 		flslvl++;
 	} else
