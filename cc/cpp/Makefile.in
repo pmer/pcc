@@ -1,4 +1,4 @@
-#	$Id: Makefile.in,v 1.44 2012/09/25 11:17:17 plunky Exp $
+#	$Id: Makefile.in,v 1.45 2012/09/26 18:30:11 plunky Exp $
 #
 # Makefile.in for cpp
 #
@@ -92,6 +92,8 @@ test:
 	cmp tests/run15 tests/res15
 	./cpp -C < tests/test15 > tests/run15C
 	cmp tests/run15C tests/res15C
+	./cpp < tests/test16 > tests/run16
+	cmp tests/run16 tests/res16
 
 install:
 	test -z "$(DESTDIR)$(libexecdir)" || mkdir -p "$(DESTDIR)$(libexecdir)"
