@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.83 2012/10/17 10:29:10 plunky Exp $	*/
+/*	$Id: token.c,v 1.84 2012/10/19 14:19:51 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1190,7 +1190,7 @@ undefstmt(void)
 		return;
 	if (sloscan() != WSPACE || sloscan() != IDENT)
 		error("bad undef");
-	if (flslvl == 0 && (np = lookup(yytext, FIND)))
+	if ((np = lookup(yytext, FIND)) != NULL)
 		np->value = 0;
 	chknl(0);
 }
