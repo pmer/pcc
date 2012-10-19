@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.178 2012/10/17 10:41:20 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.179 2012/10/17 11:04:19 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -314,7 +314,7 @@ main(int argc, char **argv)
 	}
 
 	if (argc == 2) {
-		if ((ofd = open(argv[1], O_WRONLY|O_CREAT, 0600)) < 0)
+		if ((ofd = open(argv[1], O_WRONLY|O_CREAT|O_TRUNC, 0666)) < 0)
 			error("Can't creat %s", argv[1]);
 	} else
 		ofd = 1; /* stdout */
