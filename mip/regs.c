@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.231 2012/09/05 15:57:27 ragge Exp $	*/
+/*	$Id: regs.c,v 1.232 2012/09/26 19:56:12 plunky Exp $	*/
 /*
  * Copyright (c) 2005 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1454,9 +1454,9 @@ dce(struct p2env *p2e)
 					    bbnum, ip));
 					break;
 				} else while (!DLIST_ISEMPTY(&prepole, qelem)) {
+					struct interpass *tipp;
 
 					BDEBUG(("bb %d: DCE doing ip prepend\n", bbnum));
-					struct interpass *tipp;
 					tipp = DLIST_NEXT(&prepole, qelem);
 					DLIST_REMOVE(tipp, qelem);
 					DLIST_INSERT_BEFORE(ip, tipp, qelem);
