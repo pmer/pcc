@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.86 2012/10/19 14:34:05 plunky Exp $	*/
+/*	$Id: token.c,v 1.87 2012/10/19 14:35:43 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -219,7 +219,7 @@ cppcmt:				if (Cflag) { PUTCH(ch); } else { PUTCH(' '); }
 			goto xloop;
 
 		case '\n': /* newlines, for pp directives */
-			while (nnl > 0) { PUTCH('\n'); nnl--; }
+			while (nnl > 0) { PUTCH('\n'); nnl--; ifiles->lineno++; }
 run2:			ifiles->lineno++;
 			do {
 				PUTCH(ch);
