@@ -1,4 +1,4 @@
-/*      $Id: match.c,v 1.98 2012/03/22 18:51:41 plunky Exp $   */
+/*      $Id: match.c,v 1.99 2012/09/26 18:33:35 plunky Exp $   */
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -69,15 +69,12 @@
 void setclass(int tmp, int class);
 int getclass(int tmp);
 
-extern char *ltyp[], *rtyp[];
-
 #ifdef PCC_DEBUG
 static char *srtyp[] = { "SRNOPE", "SRDIR", "SROREG", "SRREG" };
 #endif
 
 /*
  * return true if shape is appropriate for the node p
- * side effect for SFLD is to set up fldsz, etc
  *
  * Return values:
  * SRNOPE  Cannot match this shape.
