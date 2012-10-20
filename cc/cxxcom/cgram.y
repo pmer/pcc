@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.3 2012/08/09 13:47:24 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.4 2012/09/06 20:40:19 plunky Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1608,7 +1608,7 @@ init_declarator(NODE *tn, NODE *p, int assign, NODE *a)
 	if (fun_inline && ISFTN(p->n_type))
 		sp->sflags |= SINLINE;
 
-	if (ISFTN(p->n_type) == 0) {
+	if (!ISFTN(p->n_type)) {
 		if (assign) {
 			defid(p, class);
 			sp = p->n_sp;
