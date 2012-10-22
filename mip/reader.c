@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.282 2012/09/26 18:38:57 plunky Exp $	*/
+/*	$Id: reader.c,v 1.283 2012/09/26 19:56:12 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1514,6 +1514,7 @@ again:
 			p->n_name = "i";
 			break;
 		}
+		/* FALLTHROUGH */
 	case 'r': /* general reg */
 		/* set register class */
 		p->n_label = gclass(p->n_left->n_type);
