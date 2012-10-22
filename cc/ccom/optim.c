@@ -1,4 +1,4 @@
-/*	$Id: optim.c,v 1.54 2012/09/15 14:04:23 ragge Exp $	*/
+/*	$Id: optim.c,v 1.55 2012/10/21 09:56:56 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -240,7 +240,7 @@ again:	o = p->n_op;
 		break;
 
 	case QUEST:
-		if (LCON(p) == 0)
+		if (!LCON(p))
 			break;
 		if (LV(p) == 0) {
 			q = p->n_right->n_right;
