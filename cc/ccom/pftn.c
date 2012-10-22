@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.359 2012/09/26 19:56:12 plunky Exp $	*/
+/*	$Id: pftn.c,v 1.360 2012/10/20 20:08:37 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -205,12 +205,13 @@ defid2(NODE *q, int class, char *astr)
 			if (!(class&FIELD) && !ISFTN(type))
 				uerror("declared argument %s missing",
 				    p->sname );
+			break;
 		case MOS:
 		case MOU:
 			cerror("field5");
 		case TYPEDEF:
 		case PARAM:
-			;
+			break;
 		}
 	}
 
