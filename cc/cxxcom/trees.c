@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.6 2012/10/22 09:14:42 plunky Exp $	*/
+/*	$Id: trees.c,v 1.7 2012/10/22 09:18:52 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2439,9 +2439,8 @@ static NODE *
 wrualfld(NODE *val, NODE *d, TWORD t, TWORD ct, int off, int fsz)
 { 
 	NODE *p, *q, *r, *rn, *s;
-	int tsz, ctsz, t2f, inbits;
+	int ctsz, t2f, inbits;
  
-	tsz = (int)tsize(t, 0, 0);
 	ctsz = (int)tsize(ct, 0, 0);
   
 	ct = ENUNSIGN(ct);
