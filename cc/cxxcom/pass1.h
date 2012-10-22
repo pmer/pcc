@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.3 2012/08/09 13:47:24 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.4 2012/10/20 20:15:43 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -172,7 +172,6 @@ struct swents {			/* switch table */
 int mygenswitch(int, TWORD, struct swents **, int);
 
 extern	int blevel;
-extern	int got_type;
 extern	int oldstyle;
 
 extern	int lineno, nerrors;
@@ -229,7 +228,7 @@ extern char *pragma_renamed;
 #define DTORS		12		/* destructor */
 #define	NMSEG		13		/* other (named) segment */
 
-extern int lastloc, nextloc;
+extern int lastloc;
 void locctr(int type, struct symtab *sp);
 void setseg(int type, char *name);
 void defalign(int al);
