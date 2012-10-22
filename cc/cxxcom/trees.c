@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.3 2012/04/22 21:07:41 plunky Exp $	*/
+/*	$Id: trees.c,v 1.4 2012/09/26 19:56:12 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2509,7 +2509,6 @@ wrualfld(NODE *val, NODE *d, TWORD t, TWORD ct, int off, int fsz)
 static NODE *
 rmfldops(NODE *p)
 {
-	CONSZ msk;
 	TWORD t, ct;
 	NODE *q, *r, *t1, *t2, *bt, *t3, *t4;
 	int fsz, foff, tsz;
@@ -2551,7 +2550,6 @@ rmfldops(NODE *p)
 #if TARGET_ENDIAN == TARGET_BE
 		foff = tsz - fsz - foff;
 #endif
-		msk = (((1LL << (fsz-1))-1) << 1) | 1;
 		bt = NULL;
 		if (p->n_right->n_op != ICON && p->n_right->n_op != NAME) {
 			t2 = tempnode(0, p->n_right->n_type, 0, 0);
