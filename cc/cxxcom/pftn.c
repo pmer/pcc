@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.6 2012/09/26 19:56:12 plunky Exp $	*/
+/*	$Id: pftn.c,v 1.7 2012/10/20 20:08:37 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -103,9 +103,9 @@ struct rstack {
  * Linked list for parameter (and struct elements) declaration.
  */
 static struct params {
-	struct params *next, *prev;
+	struct params *prev;
 	struct symtab *sym;
-} *lpole, *lparam;
+} *lparam;
 static int nparams;
 
 /* defines used for getting things off of the initialization stack */
@@ -476,13 +476,8 @@ ssave(struct symtab *sym)
 	struct params *p;
 
 	p = tmpalloc(sizeof(struct params));
-	p->next = NULL;
+	p->prev = lparam;
 	p->sym = sym;
-
-	if ((p->prev = lparam) == NULL)
-		lpole = p;
-	else
-		lparam->next = p;
 	lparam = p;
 }
 
