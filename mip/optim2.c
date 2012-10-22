@@ -1,4 +1,4 @@
-/*	$Id: optim2.c,v 1.83 2012/08/17 20:59:58 ragge Exp $	*/
+/*	$Id: optim2.c,v 1.84 2012/08/18 15:44:14 ragge Exp $	*/
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1084,7 +1084,6 @@ void printDF(struct p2env *p2e)
 
 
 static struct basicblock *currbb;
-static struct interpass *currip;
 
 /* Helper function for findTemps, Find assignment nodes. */
 static void
@@ -1124,8 +1123,6 @@ void findTemps(struct interpass *ip)
 {
 	if (ip->type != IP_NODE)
 		return;
-
-	currip = ip;
 
 	walkf(ip->ip_node, searchasg, 0);
 }
