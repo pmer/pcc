@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.89 2012/10/20 17:20:24 plunky Exp $	*/
+/*	$Id: token.c,v 1.90 2012/10/20 17:24:32 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -126,7 +126,7 @@ eatcmnt(void)
 		ch = inch();
 		if (ch == '\n') {
 			ifiles->lineno++;
-			PUTCH('\n');
+			if (!Cflag) PUTCH('\n');
 		}
 		if (ch == -1)
 			return -1;
