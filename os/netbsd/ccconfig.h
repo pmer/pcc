@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.25 2012/08/29 14:59:07 ragge Exp $	*/
+/*	$Id: ccconfig.h,v 1.26 2012/10/26 11:04:39 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -67,8 +67,6 @@
 #elif defined(mach_vax)
 #define CPPMDADD { "-D__vax__", NULL, }
 #define	PCC_EARLY_SETUP { kflag = 1; }
-#define	PCC_SETUP_AS_ARGS \
-	{ strlist_append(&assembler_flags, "-k"); }
 #elif defined(mach_sparc64)
 #define CPPMDADD { "-D__sparc64__", NULL, }
 #else
