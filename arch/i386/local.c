@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.166 2012/09/06 13:07:28 plunky Exp $	*/
+/*	$Id: local.c,v 1.167 2012/09/08 16:01:54 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -137,9 +137,14 @@ picext(NODE *p)
 
 #if defined(ELFABI)
 
+	struct attr *ga;
 	NODE *q, *r;
 	struct symtab *sp;
 	char *name;
+
+	if ((ga = attr_find(p->n_sp->sap, GCC_ATYP_VISIBILITY)) &&
+	    strcmp(ga->sarg(0), "hidden") == 0)
+		return p; /* no GOT reference */
 
 	q = tempnode(gotnr, PTR|VOID, 0, 0);
 	if ((name = p->n_sp->soname) == NULL)
