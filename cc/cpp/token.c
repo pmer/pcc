@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.94 2012/10/29 17:48:01 plunky Exp $	*/
+/*	$Id: token.c,v 1.95 2012/10/29 17:55:51 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -501,7 +501,7 @@ chlit:
 				else if (c == EBLOCK) {
 					(void)inch();
 					(void)inch();
-				} else if (c == 1) /* WARN */
+				} else if (c == WARN)
 					wrn = 1;
 			}
 			if ((c = inch()) == -1)
@@ -513,7 +513,7 @@ chlit:
 			if (!tflag && !Cflag && !flslvl)
 				unch(' ');
 			if (wrn)
-				unch(1);
+				unch(WARN);
 			goto zagain;
 		}
 		unch(ch);
