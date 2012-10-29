@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.90 2012/10/20 17:24:32 plunky Exp $	*/
+/*	$Id: token.c,v 1.91 2012/10/25 19:59:24 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -116,7 +116,7 @@ unch(int c)
 	*ifiles->curptr = (usch)c;
 }
 
-static int
+static void
 eatcmnt(void)
 {
 	int ch;
@@ -129,7 +129,7 @@ eatcmnt(void)
 			if (!Cflag) PUTCH('\n');
 		}
 		if (ch == -1)
-			return -1;
+			break;
 		if (ch == '*') {
 			ch = inch();
 			if (ch == '/') {
@@ -145,7 +145,6 @@ eatcmnt(void)
 		}
 		if (Cflag) PUTCH(ch);
 	}
-	return 0;
 }
 
 /*
@@ -195,8 +194,8 @@ cppcmt:				if (Cflag) { PUTCH(ch); } else { PUTCH(' '); }
 				} while (ch != -1 && ch != '\n');
 				goto xloop;
 			} else if (ch == '*') {
-				if (eatcmnt() == -1)
-					return;
+				eatcmnt();
+				continue;
 			} else {
 				PUTCH('/');
 				goto xloop;
@@ -213,9 +212,8 @@ cppcmt:				if (Cflag) { PUTCH(ch); } else { PUTCH(' '); }
 			if ((ch = NXTCH()) == '\n') {
 				ifiles->lineno++;
 				continue;
-			} else {
-				PUTCH('\\');
 			}
+			PUTCH('\\');
 			goto xloop;
 
 		case '\n': /* newlines, for pp directives */
@@ -229,10 +227,9 @@ run:				ch = NXTCH();
 					if (ch == '/')
 						goto cppcmt;
 					if (ch == '*') {
-						if (eatcmnt() == -1)
-							return;
+						eatcmnt();
 						goto run;
-					} 
+					}
 					unch(ch);
 					ch = '/';
 				}
@@ -252,10 +249,9 @@ run:				ch = NXTCH();
 				if (ch == ':') {
 					ppdir();
 					continue;
-				} else {
-					unch(ch);
-					ch = '%';
 				}
+				unch(ch);
+				ch = '%';
 			} else if (ch == '?') {
 				if ((ch = chktg()) == '#') {
 					ppdir();
@@ -301,10 +297,9 @@ nxt:				ch = NXTCH();
 					if (ch == '\n') {
 						nnl++;
 						goto nxt;
-					} else {
-						unch(ch);
-						ch = '\\';
 					}
+					unch(ch);
+					ch = '\\';
 				}
 				if (spechr[ch] & C_EP) {
 					PUTCH(ch);
