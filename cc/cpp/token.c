@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.93 2012/10/29 17:26:23 plunky Exp $	*/
+/*	$Id: token.c,v 1.94 2012/10/29 17:48:01 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -355,7 +355,7 @@ con:			PUTCH(ch);
 			if ((spechr[ch] & C_ID) == 0)
 				error("fastscan");
 			if (flslvl) {
-				while (ch != -1 && spechr[ch] & C_ID)
+				while (ch != -1 && (spechr[ch] & C_ID))
 					ch = NXTCH();
 				goto xloop;
 			}
