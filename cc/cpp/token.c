@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.91 2012/10/25 19:59:24 plunky Exp $	*/
+/*	$Id: token.c,v 1.92 2012/10/29 17:23:13 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -109,6 +109,8 @@ char spechr[256] = {
 static void
 unch(int c)
 {
+	if (c == -1)
+		return;
 		
 	--ifiles->curptr;
 	if (ifiles->curptr < ifiles->bbuf)
