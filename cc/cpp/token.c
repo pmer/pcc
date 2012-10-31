@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.96 2012/10/29 17:59:16 plunky Exp $	*/
+/*	$Id: token.c,v 1.97 2012/10/31 11:54:54 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1289,6 +1289,7 @@ static struct {
 	{ "include_next", include_next },
 #endif
 };
+#define	NPPD	(int)(sizeof(ppd) / sizeof(ppd[0]))
 
 /*
  * Handle a preprocessor directive.
@@ -1318,18 +1319,12 @@ ppdir(void)
 	bp[i++] = 0;
 
 	/* got keyword */
-#define	SZ (int)(sizeof(ppd)/sizeof(ppd[0]))
-	for (i = 0; i < SZ; i++)
-		if (bp[0] == ppd[i].name[0] && strcmp(bp, ppd[i].name) == 0)
-			break;
-	if (i == SZ)
-		goto out;
+	for (i = 0; i < NPPD; i++) {
+		if (bp[0] == ppd[i].name[0] && strcmp(bp, ppd[i].name) == 0) {
+			(*ppd[i].fun)();
+			return;
+		}
+	}
 
-	/* Found matching keyword */
-	(*ppd[i].fun)();
-	return;
-
-out:	while ((ch = inch()) != '\n' && ch != -1)
-		;
-	unch('\n');
+out:	error("invalid preprocessor directive");
 }
