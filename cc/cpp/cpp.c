@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.182 2012/10/29 17:07:21 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.183 2012/10/29 17:12:46 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1765,8 +1765,7 @@ sav:			savstr(yytext);
 				cunput(c);
 
 				if (donothing == 0)
-				    if (((spechr[c] & C_ID) && c > 63) || 
-				    c == EBLOCK) {
+				    if ((spechr[c] & C_ID0) || c == EBLOCK) {
 					for (i = 0; i < svbidx; i++) {
 						cunput(svidx[i] >> 8);
 						cunput(svidx[i] & 255);
