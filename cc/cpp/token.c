@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.97 2012/10/31 11:54:54 plunky Exp $	*/
+/*	$Id: token.c,v 1.98 2012/10/31 12:13:43 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -297,7 +297,7 @@ str:			PUTCH(ch);
 		case '0': case '1': case '2': case '3': case '4':
 		case '5': case '6': case '7': case '8': case '9':
 			do {
-				PUTCH(ch);
+nxp:				PUTCH(ch);
 nxt:				ch = NXTCH();
 				if (ch == '\\') {
 					ch = NXTCH();
@@ -314,7 +314,7 @@ nxt:				ch = NXTCH();
 					PUTCH(ch);
 					ch = NXTCH();
 					if (ch == '-' || ch == '+')
-						continue;
+						goto nxp;
 					if (ch == -1)
 						return;
 				}
