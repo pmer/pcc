@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.98 2012/10/31 12:13:43 plunky Exp $	*/
+/*	$Id: token.c,v 1.99 2012/11/02 06:51:52 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1300,8 +1300,26 @@ ppdir(void)
 	char bp[20];
 	int ch, i;
 
-	while ((ch = inch()) == ' ' || ch == '\t')
+redo:	while ((ch = inch()) == ' ' || ch == '\t')
 		;
+	if (ch == '/') {
+		if ((ch = inch()) == '/') {
+			skpln();
+			return;
+		}
+		if (ch == '*') {
+			while ((ch = inch()) != -1) {
+				if (ch == '*') {
+					if ((ch = inch()) == '/')
+						goto redo;
+					unch(ch);
+				} else if (ch == '\n') {
+					putch('\n');
+					ifiles->lineno++;
+				}
+			}
+		}
+	}
 	if (ch == '\n') { /* empty directive */
 		unch(ch);
 		return;
