@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.99 2012/11/02 06:51:52 plunky Exp $	*/
+/*	$Id: token.c,v 1.100 2012/11/02 09:01:24 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1047,7 +1047,6 @@ skpln(void)
 			break;
 		}
 	}
-	flslvl++;
 }
 
 static void
@@ -1056,6 +1055,7 @@ ifdefstmt(void)
 	int t;
 
 	if (flslvl) {
+		flslvl++;
 		skpln();
 		return;
 	}
@@ -1078,6 +1078,7 @@ ifndefstmt(void)
 	int t;
 
 	if (flslvl) {
+		flslvl++;
 		skpln();
 		return;
 	}
