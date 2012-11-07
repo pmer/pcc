@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.101 2012/11/02 10:55:45 plunky Exp $	*/
+/*	$Id: token.c,v 1.102 2012/11/07 09:52:00 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1140,7 +1140,6 @@ elifstmt(void)
 			trulvl++;
 		else
 			flslvl++;
-		}
 	} else if (trulvl) {
 		flslvl++;
 		trulvl--;
