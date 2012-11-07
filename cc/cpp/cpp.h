@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.64 2012/10/17 10:41:20 plunky Exp $	*/
+/*	$Id: cpp.h,v 1.65 2012/10/31 11:54:54 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -101,6 +101,7 @@ struct includ {
 	const usch *fname;	/* current fn, changed if #line found */
 	const usch *orgfn;	/* current fn, not changed */
 	int lineno;
+	int escln;		/* escaped newlines, to be added */
 	int infil;
 	usch *curptr;
 	usch *maxread;

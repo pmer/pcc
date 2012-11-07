@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.183 2012/10/29 17:12:46 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.184 2012/10/31 11:54:54 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -391,6 +391,7 @@ line(void)
 	if ((c = yylex()) != NUMBER)
 		goto bad;
 	ifiles->lineno = (int)(yylval.node.nd_val - 1);
+	ifiles->escln = 0;
 
 	if ((c = yylex()) == '\n')
 		goto okret;
