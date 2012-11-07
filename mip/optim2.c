@@ -1,4 +1,4 @@
-/*	$Id: optim2.c,v 1.84 2012/08/18 15:44:14 ragge Exp $	*/
+/*	$Id: optim2.c,v 1.85 2012/10/22 08:53:41 plunky Exp $	*/
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -70,7 +70,6 @@ void cfg_dfs(struct basicblock *bb, unsigned int parent,
 void dominators(struct p2env *);
 struct basicblock *
 ancestorwithlowestsemi(struct basicblock *bblock, struct bblockinfo *bbinfo);
-void link(struct basicblock *parent, struct basicblock *child);
 void computeDF(struct p2env *, struct basicblock *bblock);
 void printDF(struct p2env *p2e);
 void findTemps(struct interpass *ip);
@@ -978,7 +977,7 @@ dominators(struct p2env *p2e)
 		}
 		bb->semi = s->dfnum;
 		BITSET(s->bucket, bb->dfnum);
-		link(p, bb);
+		bb->ancestor = p->dfnum;
 		for (i = 1; i < p2e->bbinfo.size; i++) {
 			if(TESTBIT(p->bucket, i)) {
 				v = p2e->bbinfo.arr[i];
@@ -1029,12 +1028,6 @@ ancestorwithlowestsemi(struct basicblock *bblock, struct bblockinfo *bbinfo)
 		v = bbinfo->arr[v->ancestor];
 	}
 	return u;
-}
-
-void
-link(struct basicblock *parent, struct basicblock *child)
-{
-	child->ancestor = parent->dfnum;
 }
 
 void
