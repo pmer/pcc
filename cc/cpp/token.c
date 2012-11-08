@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.102 2012/11/07 09:52:00 plunky Exp $	*/
+/*	$Id: token.c,v 1.103 2012/11/07 09:57:02 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -359,8 +359,10 @@ str:			PUTCH(ch);
 					PUTCH('\\');
 					ch = inch();
 				}
-				if (ch == '\n')
+				if (ch == '\n') {
+					warning("unterminated string literal");
 					goto xloop;
+				}
 				if (ch == -1)
 					return;
 				PUTCH(ch);
@@ -393,7 +395,7 @@ nxp:				PUTCH(ch);
 			} while ((spechr[ch] & C_ID) || (ch == '.'));
 			goto xloop;
 
-		case '\'': /* character literal */
+		case '\'': /* character constant */
 con:			PUTCH(ch);
 			if (tflag)
 				break; /* character constants ignored */
@@ -402,8 +404,10 @@ con:			PUTCH(ch);
 					PUTCH('\\');
 					ch = inch();
 				}
-				if (ch == '\n')
+				if (ch == '\n') {
+					warning("unterminated character constant");
 					goto xloop;
+				}
 				if (ch == -1)
 					return;
 				PUTCH(ch);
