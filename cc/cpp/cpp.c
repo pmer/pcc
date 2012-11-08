@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.184 2012/10/31 11:54:54 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.185 2012/11/07 09:51:59 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -76,12 +76,12 @@ static void prrep(const usch *s);
 #endif
 
 int ofd;
-usch outbuf[CPPBUF];
+usch outbuf[CPPBUF], lastoch;
 int obufp, istty;
 int Cflag, Mflag, dMflag, Pflag, MPflag;
 usch *Mfile, *MPfile, *Mxfile;
 struct initar *initar;
-int readmac, lastoch;
+int readmac;
 int defining;
 
 /* include dirs */
