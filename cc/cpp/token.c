@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.103 2012/11/07 09:57:02 plunky Exp $	*/
+/*	$Id: token.c,v 1.104 2012/11/08 11:11:36 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1225,9 +1225,10 @@ pragmastmt(void)
 	if (sloscan() != WSPACE)
 		error("bad #pragma");
 	sb = stringbuf;
-	savstr((const usch *)"#pragma ");
+	savstr((const usch *)"\n#pragma ");
 	savln();
 	putstr(sb);
+	prtline();
 	stringbuf = sb;
 }
 
