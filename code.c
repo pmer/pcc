@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.21 2011/07/28 14:12:07 ragge Exp $	*/
+/*	$Id: code.c,v 1.22 2012/04/22 21:07:40 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -702,3 +702,25 @@ funcode(NODE *p)
 
 	return p;
 }
+
+NODE *
+builtin_cfa(const struct bitable *bt, NODE *a)
+{
+	uerror("missing builtin_cfa");
+	return bcon(0);
+}
+
+NODE *
+builtin_frame_address(const struct bitable *bt, NODE *a)
+{
+	uerror("missing builtin_frame_address");
+	return bcon(0);
+}
+
+NODE *
+builtin_return_address(const struct bitable *bt, NODE *a)
+{       
+	uerror("missing builtin_return_address");
+	return bcon(0);
+}
+
