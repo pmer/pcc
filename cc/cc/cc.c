@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.260 2012/10/26 11:04:39 plunky Exp $	*/
+/*	$Id: cc.c,v 1.261 2012/11/08 11:21:04 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -605,7 +605,7 @@ main(int argc, char *argv[])
 		case 'm': /* target-dependent options */
 #ifdef mach_amd64
 			/* need to call i386 ccom for this */
-			if (strcmp(argp, "-m32") == 0) {
+			if (strcmp(argp, "-melf_i386") == 0) {
 				pass0 = LIBEXECDIR "/ccom_i386";
 				amd64_i386 = 1;
 				break;
