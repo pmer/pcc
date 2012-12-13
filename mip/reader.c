@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.283 2012/09/26 19:56:12 plunky Exp $	*/
+/*	$Id: reader.c,v 1.284 2012/10/22 09:18:52 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1518,7 +1518,7 @@ again:
 	case 'r': /* general reg */
 		/* set register class */
 		p->n_label = gclass(p->n_left->n_type);
-		if (p->n_left->n_op == REG)
+		if (p->n_left->n_op == REG || p->n_left->n_op == TEMP)
 			break;
 		q = p->n_left;
 		r = (cw & XASMINOUT ? tcopy(q) : q);
