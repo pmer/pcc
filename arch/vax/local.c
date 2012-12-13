@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.26 2012/08/06 10:24:48 ragge Exp $	*/
+/*	$Id: local.c,v 1.27 2012/08/22 14:18:40 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -100,10 +100,12 @@ clocal(p) NODE *p; {
 	case SCONV:
 		l = p->n_left;
 		ml = p->n_type;
+#if 0
 		if (ml == INT && l->n_type == UNSIGNED) {
 			p = nfree(p);
 			break;
 		}
+#endif
 		if (l->n_op == ICON) {
 			if (l->n_sp == 0) {
 				p->n_type = UNSIGNED;
