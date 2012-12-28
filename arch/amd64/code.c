@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.66 2012/08/13 07:19:09 ragge Exp $	*/
+/*	$Id: code.c,v 1.67 2012/09/08 15:58:21 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -114,8 +114,13 @@ defloc(struct symtab *sp)
 	if (sp->sclass == EXTDEF) {
 		printf("\t.globl %s\n", name);
 #ifndef MACHOABI
-		printf("\t.type %s,@%s\n", name,
-		    ISFTN(sp->stype)? "function" : "object");
+		if (ISFTN(sp->stype)) {
+			printf("\t.type %s,@function\n", name);
+		} else {
+			printf("\t.type %s,@object\n", name);
+			printf("\t.size %s,%d\n", name,
+			    (int)tsize(sp->stype, sp->sdf, sp->sap)/SZCHAR);
+		}
 #endif
 	}
 	if (sp->slevel == 0)
