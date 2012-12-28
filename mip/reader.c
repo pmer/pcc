@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.284 2012/10/22 09:18:52 plunky Exp $	*/
+/*	$Id: reader.c,v 1.285 2012/12/13 16:03:41 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -795,7 +795,7 @@ void
 genxasm(NODE *p)
 {
 	NODE *q, **nary;
-	int n = 1, o = 0;
+	int n = 1, o = 0, v = 0;
 	char *w;
 
 	if (p->n_left->n_op != ICON || p->n_left->n_type != STRTY) {
@@ -820,7 +820,16 @@ genxasm(NODE *p)
 				putchar('%');
 			else if (XASM_TARGARG(w, nary))
 				; /* handled by target */
-			else if (w[1] < '0' || w[1] > (n + '0'))
+			else if (w[1] == '=') {
+				if (v == 0) v = getlab2();
+				printf("%d", v);
+			} else if (w[1] == 'c') {
+				q = nary[(int)w[2]-'0']; 
+				if (q->n_left->n_op != ICON)
+					uerror("impossible constraint");
+				printf(CONFMT, q->n_left->n_lval);
+				w++;
+			} else if (w[1] < '0' || w[1] > (n + '0'))
 				uerror("bad xasm arg number %c", w[1]);
 			else {
 				if (w[1] == (n + '0'))
