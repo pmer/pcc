@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.50 2012/08/19 10:47:12 ragge Exp $	*/
+/*	$Id: local2.c,v 1.51 2012/09/26 19:00:20 plunky Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1121,6 +1121,8 @@ targarg(char *w, void *arg, int n)
 	if (q->n_op == REG) {
 		if (*w == 'k') {
 			q->n_type = INT;
+		} else if (*w == 'q') {
+			q->n_type = LONG;
 		} else if (*w == 'h' || *w == 'b') {
 			/* Can do this only because we know dx is used */
 			printf("%%d%c", *w == 'h' ? 'h' : 'l');
