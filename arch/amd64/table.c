@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.49 2011/08/21 09:32:46 ragge Exp $	*/
+/*	$Id: table.c,v 1.50 2011/12/13 17:46:18 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2008 Anders Magnusson (ragge@ludd.ltu.se).
@@ -1281,7 +1281,7 @@ struct optab table[] = {
 		"	cmpl AR,AL\n", },
 
 { OPLOG,	FORCC,
-	SCON|SAREG,	TWORD,
+	/* SCON| XXX fix switch in tree of L/R */ SAREG,	TWORD,
 	SAREG|SOREG|SNAME,	TWORD,
 		0, 	RESCC,
 		"	cmpl AR,AL\n", },
