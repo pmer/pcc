@@ -1,4 +1,4 @@
-.\"	$Id: cpp.1,v 1.15 2011/08/31 08:34:00 plunky Exp $
+.\"	$Id: cpp.1,v 1.16 2012/11/08 11:14:03 plunky Exp $
 .\"
 .\" Copyright (c) 2007 Jeremy C. Reed <reed@reedmedia.net>
 .\"
@@ -15,7 +15,7 @@
 .\" ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
 .\" THIS SOFTWARE.
 .\"
-.Dd November 8, 2012
+.Dd February 26, 2013
 .Dt CPP 1
 .Os
 .Sh NAME
@@ -23,7 +23,7 @@
 .Nd C preprocessor
 .Sh SYNOPSIS
 .Nm
-.Op Fl CEMPtVv
+.Op Fl ACEMPtVv
 .Op Fl D Ar macro Ns Oo = Ns Ar value Oc
 .Op Fl d Ar flags
 .Op Fl I Ar path
@@ -62,6 +62,9 @@ output if not provided.
 .Pp
 The options are as follows:
 .Bl -tag -width Ds
+.It Fl A
+For assembler-with-cpp input: treat non-directive lines starting
+with a # as comments.
 .It Fl C
 Do not discard comments.
 .It Fl D Ar macro Ns Oo = Ns Ar value Oc

@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.104 2012/11/08 11:11:36 plunky Exp $	*/
+/*	$Id: token.c,v 1.105 2012/11/29 09:52:14 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1314,5 +1314,10 @@ redo:	while ((ch = inch()) == ' ' || ch == '\t')
 		}
 	}
 
-out:	error("invalid preprocessor directive");
+out:
+	if (flslvl == 0 && Aflag == 0)
+		error("invalid preprocessor directive");
+
+	unch(ch);
+	skpln();
 }

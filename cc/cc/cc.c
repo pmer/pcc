@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.261 2012/11/08 11:21:04 plunky Exp $	*/
+/*	$Id: cc.c,v 1.262 2012/12/12 17:44:37 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1138,8 +1138,10 @@ preprocess_input(char *input, char *output, int dodep)
 
 	strlist_init(&args);
 	strlist_append_list(&args, &preprocessor_flags);
-	if (ascpp)
-		strlist_append(&args, "-D__ASSEMBLER__");
+	if (ascpp) {
+		strlist_append(&args, "-A");
+		strlist_append(&args, "-D__ASSEMBLER__"); 
+	}
 	STRLIST_FOREACH(s, &includes) {
 		strlist_append(&args, "-i");
 		strlist_append(&args, s->value);
