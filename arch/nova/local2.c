@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.8 2012/09/26 18:51:41 plunky Exp $	*/
+/*	$Id: local2.c,v 1.9 2012/09/26 20:22:41 plunky Exp $	*/
 /*
  * Copyright (c) 2006 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -447,7 +447,6 @@ adrput(FILE *io, NODE *p)
 		conput(io, p);
 		return;
 
-	case MOVE:
 	case REG:
 		switch (p->n_type) {
 		case LONGLONG:
