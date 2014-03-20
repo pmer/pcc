@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.98 2012/09/07 16:20:14 ragge Exp $     */
+/*      $Id: gcc_compat.c,v 1.99 2012/09/08 10:39:57 ragge Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -201,11 +201,11 @@ gcc_init(void)
 		udivti3sp->sap = ap;
 		umodti3sp = addftn("__umodti3", STRTY);
 		umodti3sp->sap = ap;
-		ashldi3sp = addftn("__ashldi3", STRTY);
+		ashldi3sp = addftn("__ashldi3", ctype(LONGLONG));
 		ashldi3sp->sap = ap;
-		ashrdi3sp = addftn("__ashrdi3", STRTY);
+		ashrdi3sp = addftn("__ashrdi3", ctype(LONGLONG));
 		ashrdi3sp->sap = ap;
-		lshrdi3sp = addftn("__lshrdi3", STRTY);
+		lshrdi3sp = addftn("__lshrdi3", ctype(LONGLONG));
 		lshrdi3sp->sap = ap;
 
 		floatuntixfsp = addftn("__floatuntixf", LDOUBLE);
