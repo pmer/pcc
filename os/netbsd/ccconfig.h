@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.26 2012/10/26 11:04:39 plunky Exp $	*/
+/*	$Id: ccconfig.h,v 1.27 2012/10/26 11:07:48 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -57,6 +57,8 @@
 #define	CPPMDADD { "-D__i386__", NULL, }
 #define	PCC_SIZE_TYPE		"unsigned int"
 #define	PCC_PTRDIFF_TYPE	"int"
+#elif defined(mach_m68k)
+#define	CPPMDADD { "-D__mc68000__", "-D__mc68020__", "-D__m68k__", NULL, }
 #elif defined(mach_mips)
 #define	CPPMDADD { "-D__mips__", NULL, }
 #elif defined(mach_pdp10)
