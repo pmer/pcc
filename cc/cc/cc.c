@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.263 2013/02/26 19:27:38 plunky Exp $	*/
+/*	$Id: cc.c,v 1.264 2014/03/20 18:48:05 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -847,8 +847,11 @@ main(int argc, char *argv[])
 	strlist_append(&progdirs, LIBEXECDIR);
 	if (pcclibdir)
 		strlist_append(&crtdirs, pcclibdir);
-	for (j = 0; deflibdirs[j]; j++)
+	for (j = 0; deflibdirs[j]; j++) {
+		if (sysroot)
+			deflibdirs[j] = cat(sysroot, deflibdirs[j]);
 		strlist_append(&crtdirs, deflibdirs[j]);
+	}
 
 	setup_cpp_flags();
 	setup_ccom_flags();
