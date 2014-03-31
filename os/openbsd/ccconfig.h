@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.10 2011/06/04 19:27:26 plunky Exp $	*/
+/*	$Id: ccconfig.h,v 1.11 2012/08/05 14:35:00 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -47,6 +47,9 @@
 #define CPPMDADD { "-D__powerpc__", NULL }
 #elif defined(mach_sparc64)
 #define CPPMDADD { "-D__sparc64__", NULL }
+#elif defined(mach_m68k)
+#define CPPMDADD { "-D__mc68000__", "-D__mc68020__", "-D__m68k__", NULL }
+#define STARTLABEL "_start"
 #else
 #error defines for arch missing
 #endif
