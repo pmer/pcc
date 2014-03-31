@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.1 2014/03/23 14:39:10 ragge Exp $	*/
+/*	$Id: order.c,v 1.2 2014/03/30 18:02:57 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -134,6 +134,16 @@ setuni(NODE *p, int cookie)
 struct rspecial *
 nspecial(struct optab *q)
 {
+	switch (q->op) {
+	case STASG:
+		{
+			static struct rspecial s[] = {
+				{ NEVER, D0 }, { NEVER, D1 },
+				{ NEVER, A0 }, { NEVER, A1 },
+				/* { NRES, A0 }, */ { 0 } };
+			return s;
+		}
+	}
 	comperr("nspecial entry %d", q - table);
 	return 0; /* XXX gcc */
 }

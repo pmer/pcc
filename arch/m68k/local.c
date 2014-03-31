@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.1 2014/03/23 14:39:10 ragge Exp $	*/
+/*	$Id: local.c,v 1.2 2014/03/30 18:02:16 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -89,6 +89,24 @@ clocal(NODE *p)
 		case EXTDEF:
 			break;
 		}
+		break;
+	case STASG: /* convert struct assignment to call memcpy */
+		/* first construct arg list */
+		p->n_left = buildtree(ADDROF, p->n_left, 0);
+		r = bcon(tsize(STRTY, p->n_df, p->n_ap)/SZCHAR);
+		p->n_left = buildtree(CM, p->n_left, p->n_right);
+		p->n_right = r;
+		p->n_op = CM;
+		p->n_type = INT;
+
+		r = block(NAME, NIL, NIL, INT, 0, 0);
+		r->n_sp = lookup(addname("memcpy"), SNORMAL);
+		if (r->n_sp->sclass == SNULL) {
+			r->n_sp->sclass = EXTERN;
+			r->n_sp->stype = INCREF(VOID+PTR)+(FTN-PTR);
+		}
+		r->n_type = r->n_sp->stype;
+		p = buildtree(CALL, r, p);
 		break;
 
 	case FORCE:
