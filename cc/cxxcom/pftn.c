@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.7 2012/10/20 20:08:37 plunky Exp $	*/
+/*	$Id: pftn.c,v 1.8 2012/10/22 09:25:40 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -842,7 +842,7 @@ bstruct(char *name, int soru, NODE *gp)
 
 	if (name == NULL) {
 		static int ancnt;
-		sprintf(nbuf, "__%%ANON%d", ancnt++);
+		snprintf(nbuf, sizeof(nbuf), "__%%ANON%d", ancnt++);
 		name = addname(nbuf);
 	}
 
