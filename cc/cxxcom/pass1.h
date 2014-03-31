@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.5 2012/10/22 09:03:22 plunky Exp $	*/
+/*	$Id: pass1.h,v 1.6 2014/03/09 09:31:36 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -321,8 +321,6 @@ void bjobcode(void);
 void ejobcode(int);
 void calldec(NODE *, NODE *);
 int cisreg(TWORD);
-char *tmpsprintf(char *, ...);
-char *tmpvsprintf(char *, va_list);
 void asginit(NODE *);
 void desinit(NODE *);
 void endinit(int);
