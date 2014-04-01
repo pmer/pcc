@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.2 2014/03/30 18:02:16 ragge Exp $	*/
+/*	$Id: local.c,v 1.3 2014/03/31 20:07:20 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -244,6 +244,12 @@ ninval(CONSZ off, int fsz, NODE *p)
 	case FLOAT:
 		u.f = (float)p->n_dcon;
 		printf("\t.long\t0x%x\n", u.i[0]);
+		break;
+
+	case LONGLONG:
+	case ULONGLONG:
+		printf("\t.long\t0x%x\n", (int)(off >> 32) & 0xffffffff);
+		printf("\t.long\t0x%x\n", (int)(off) & 0xffffffff);
 		break;
 	default:
 		return 0;
