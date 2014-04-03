@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.114 2012/08/12 00:42:32 ragge Exp $	*/
+/*	$Id: scan.l,v 1.115 2012/08/22 17:05:30 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -453,6 +453,10 @@ esccon(char **sptr)
 			if (*wr >= '0' && *wr <= '7')
 				val = (val << 3) + (*wr++ - '0');
 		}
+#ifndef CHAR_UNSIGNED
+		if (val > MAX_CHAR)
+			val -= (MAX_UCHAR+1);
+#endif
 		break;
 	default: val = wr[-1];
 	}
