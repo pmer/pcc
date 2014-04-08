@@ -1,4 +1,4 @@
-/*      $Id: match.c,v 1.99 2012/09/26 18:33:35 plunky Exp $   */
+/*      $Id: match.c,v 1.100 2012/10/20 20:15:43 plunky Exp $   */
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -196,7 +196,7 @@ ttype(TWORD t, int tword)
 
 #ifdef PCC_DEBUG
 	if (t2debug)
-		printf("ttype(%o, %o)\n", t, tword);
+		printf("ttype(0x%x, 0x%x)\n", t, tword);
 #endif
 	if (ISPTR(t) && ISFTN(DECREF(t)) && (tword & TFTN)) {
 		/* For funny function pointers */
@@ -696,15 +696,15 @@ relops(NODE *p)
 
 	q = &table[idx];
 
-	(void)shswitch(-1, p->n_left, q->lshape, FORCC,
+	(void)shswitch(-1, p->n_left, q->lshape, INREGS,
 	    q->rewrite & RLEFT, gol);
 
-	(void)shswitch(-1, p->n_right, q->rshape, FORCC,
+	(void)shswitch(-1, p->n_right, q->rshape, INREGS,
 	    q->rewrite & RRIGHT, gor);
 	
 	F2DEBUG(("relops: node %p\n", p));
 	p->n_su = MKIDX(idx, 0);
-	SCLASS(p->n_su, CLASSA); /* XXX */
+	SCLASS(p->n_su, 0); /* XXX */
 	return 0;
 }
 
