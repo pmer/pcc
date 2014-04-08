@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.28 2014/03/23 14:42:37 ragge Exp $	*/
+/*	$Id: ccconfig.h,v 1.29 2014/03/30 18:07:12 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -59,6 +59,8 @@
 #define	PCC_PTRDIFF_TYPE	"int"
 #elif defined(mach_m68k)
 #define	CPPMDADD { "-D__mc68000__", "-D__mc68020__", "-D__m68k__", NULL, }
+#undef DEFLIBS
+#define DEFLIBS	{ "-lc", "-lgcc", NULL }
 #define STARTLABEL "_start"
 #elif defined(mach_mips)
 #define	CPPMDADD { "-D__mips__", NULL, }
