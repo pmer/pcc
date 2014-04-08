@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.105 2012/11/29 09:52:14 plunky Exp $	*/
+/*	$Id: token.c,v 1.106 2013/02/26 19:27:38 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1216,6 +1216,15 @@ undefstmt(void)
 }
 
 static void
+identstmt(void)
+{
+	/* Just ignore */
+	if (sloscan() != WSPACE || sloscan() != STRING)
+		error("bad #ident directive");
+	return;
+}
+
+static void
 pragmastmt(void)
 {
 	usch *sb;
@@ -1255,6 +1264,7 @@ static struct {
 	{ "line", line },
 	{ "pragma", pragmastmt },
 	{ "elif", elifstmt },
+	{ "ident", identstmt },
 #ifdef GCC_COMPAT
 	{ "include_next", include_next },
 #endif
