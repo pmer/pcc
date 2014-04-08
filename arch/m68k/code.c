@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.1 2014/03/23 14:39:09 ragge Exp $	*/
+/*	$Id: code.c,v 1.2 2014/04/01 20:08:24 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -87,9 +87,23 @@ defloc(struct symtab *sp)
  * deals with struct return here
  * The return value is in (or pointed to by) RETREG.
  */
+int sttemp;
+
 void
 efcode(void)
 {
+	NODE *p, *q;
+
+	if (cftnsp->stype != STRTY+FTN && cftnsp->stype != UNIONTY+FTN)
+		return;
+	/* use stasg to get call to memcpy() */
+	p = buildtree(UMUL, tempnode(sttemp, INCREF(STRTY),
+	    cftnsp->sdf, cftnsp->sap), NIL);
+	q = block(REG, 0, 0, INCREF(STRTY), cftnsp->sdf, cftnsp->sap);
+	regno(q) = A0;
+	q = buildtree(UMUL, q, NIL);
+	p = buildtree(ASSIGN, p, q);
+	ecomp(p);
 }
 
 /*
@@ -100,19 +114,19 @@ void
 bfcode(struct symtab **s, int cnt)
 {
 	struct symtab *sp2;
-	NODE *n;
+	NODE *n, *p;
 	int i;
 
-	if (cftnsp->stype == STRTY+FTN || cftnsp->stype == UNIONTY+FTN)
-		cerror("bfcode");
-
-	for (i = 0; i < cnt; i++) {
-		if (s[i]->stype < INT) {
-			s[i]->stype = (s[i]->stype == UCHAR ||
-			    s[i]->stype == USHORT ? UNSIGNED : INT);
-			s[i]->soffset &= ~31; /* even out */
-		}
+	if (cftnsp->stype == STRTY+FTN || cftnsp->stype == UNIONTY+FTN) {
+		n = tempnode(0, INCREF(CHAR), 0, 0);
+		p = block(REG, 0, 0, INCREF(CHAR), 0, 0);
+		regno(p) = A0;
+		sttemp = regno(n);
+		ecomp(buildtree(ASSIGN, n, p));
 	}
+
+	if (xtemps == 0)
+		return;
 
         /* put arguments in temporaries */
         for (i = 0; i < cnt; i++) {

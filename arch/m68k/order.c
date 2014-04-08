@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.2 2014/03/30 18:02:57 ragge Exp $	*/
+/*	$Id: order.c,v 1.3 2014/03/31 20:07:20 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -163,8 +163,11 @@ setorder(NODE *p)
 int *
 livecall(NODE *p)
 {
-	static int r[1] = { -1 };
-	return r;
+	static int r[] = { A0, -1 };
+
+	if (p->n_op == STCALL)
+		return r; /* only if struct return */
+	return &r[1];
 }
 
 /*

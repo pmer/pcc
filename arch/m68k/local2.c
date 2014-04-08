@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.4 2014/04/01 20:07:44 ragge Exp $	*/
+/*	$Id: local2.c,v 1.5 2014/04/04 20:07:06 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -236,6 +236,10 @@ zzzcode(NODE *p, int c)
 		printf("%s " LABFMT "\n", s, p->n_label);
 		break;
 
+	case 'P':
+		printf("	lea -%d(%%fp),%%a0\n", stkpos);
+		break;
+
 	case 'Q': /* struct assign */
 		printf("	move.l %d,-(%%sp)\n", p->n_stsize);
 		expand(p, INAREG, "	move.l AR,-(%sp)\n");
@@ -328,6 +332,11 @@ void
 conput(FILE *fp, NODE *p)
 {
 	long val = p->n_lval;
+
+	if (p->n_type <= UCHAR)
+		val &= 255;
+	else if (p->n_type <= USHORT)
+		val &= 65535;
 
 	switch (p->n_op) {
 	case ICON:
