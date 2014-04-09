@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.99 2012/09/08 10:39:57 ragge Exp $     */
+/*      $Id: gcc_compat.c,v 1.100 2014/03/20 18:48:05 ragge Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -610,14 +610,14 @@ int
 pragmas_gcc(char *t)
 {
 	char u;
-	int ign, warn, err, i;
+	int warn, err, i;
 	extern bittype warnary[], werrary[];
 	extern char *flagstr[], *pragstore;
 
 	if (strcmp((t = pragtok(NULL)), "diagnostic") == 0) {
-		ign = warn = err = 0;
+		warn = err = 0;
 		if (strcmp((t = pragtok(NULL)), "ignored") == 0)
-			ign = 1;
+			;
 		else if (strcmp(t, "warning") == 0)
 			warn = 1;
 		else if (strcmp(t, "error") == 0)

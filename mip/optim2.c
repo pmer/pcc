@@ -1,4 +1,4 @@
-/*	$Id: optim2.c,v 1.85 2012/10/22 08:53:41 plunky Exp $	*/
+/*	$Id: optim2.c,v 1.86 2012/11/07 10:07:17 plunky Exp $	*/
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1924,12 +1924,11 @@ void TraceSchedule(struct p2env* p2e)
 	struct block_map* map ;
 	unsigned long block_count = count_blocks(p2e);
 	unsigned long i ;
-	unsigned long threads;
 	struct interpass *front, *back ;
 
 	map = tmpalloc(block_count * sizeof(struct block_map));
 
-	threads = map_blocks(p2e, map, block_count) ;
+	map_blocks(p2e, map, block_count);
 
 	back = map[0].block->last ;
 	for (i=1; i < block_count; i++) {
