@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.167 2012/09/08 16:01:54 ragge Exp $	*/
+/*	$Id: local.c,v 1.168 2012/10/28 13:59:28 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1056,27 +1056,6 @@ defzero(struct symtab *sp)
 #endif
 }
 
-static char *
-section2string(char *name)
-{
-	int len = strlen(name);
-
-#if defined(ELFABI)
-	if (strncmp(name, "link_set", 8) == 0) {
-		const char postfix[] = ",\"aw\",@progbits";
-		char *s;
-
-		s = IALLOC(len + sizeof(postfix));
-		memcpy(s, name, len);
-		memcpy(s + len, postfix, sizeof(postfix));
-		return s;
-	}
-#endif
-
-	return newstring(name, len);
-}
-
-char *nextsect;
 #ifdef TLS
 static int gottls;
 #endif
@@ -1134,10 +1113,6 @@ mypragma(char *str)
 		return 1;
 	}
 #endif
-	if (strcmp(str, "section") == 0 && a2 != NULL) {
-		nextsect = section2string(a2);
-		return 1;
-	}
 	if (strcmp(str, "alias") == 0 && a2 != NULL) {
 		alias = tmpstrdup(a2);
 		return 1;
