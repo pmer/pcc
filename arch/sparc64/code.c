@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.20 2011/06/23 13:41:25 ragge Exp $	*/
+/*	$Id: code.c,v 1.21 2012/04/22 21:07:40 plunky Exp $	*/
 
 /*
  * Copyright (c) 2008 David Crawshaw <david@zentus.com>
@@ -40,7 +40,8 @@ setseg(int seg, char *name)
 	case DTORS:
 		uerror("FIXME: unknown section");
 	case NMSEG: 
-		printf("\t.section %s,\"aw\",@progbits\n", name);
+		printf("\t.section %s,\"a%c\",@progbits\n", name,
+		    cftnsp ? 'x' : 'w');
 		return;
 	}
 	printf("\t%s\n", name);

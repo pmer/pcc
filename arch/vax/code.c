@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.23 2012/09/08 16:03:32 ragge Exp $	*/
+/*	$Id: code.c,v 1.24 2012/12/13 16:02:15 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -76,7 +76,8 @@ setseg(int seg, char *name)
 		break;
 
 	case NMSEG: 
-		printf("\t.section %s,\"aw\",@progbits\n", name);
+		printf("\t.section %s,\"a%c\",@progbits\n", name,
+		    cftnsp ? 'x' : 'w');
 		return;
 	}
 	printf("\t%s\n", name);
