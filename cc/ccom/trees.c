@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.320 2012/10/22 09:29:49 plunky Exp $	*/
+/*	$Id: trees.c,v 1.321 2014/04/09 10:01:24 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2857,8 +2857,14 @@ pprop(NODE *p, TWORD t, struct attr *ap)
 		t2 = p->n_left->n_type;
 		if (p->n_left->n_op == TEMP) {
 			/* Will be converted to memory in pass2 */
-			if (!ISPTR(t2) && DECREF(t) != t2) 
-				; /* XXX cannot convert this */
+			/* Do not convert if:
+			 * - t2 not ptr and decref(t) != t2
+			 * - decref(t) not ptr and decref(t) != t2
+			 * XXX add PCONV again? Will be removed upwards.
+			 */
+			if ((!ISPTR(t2) && DECREF(t) != t2) ||
+			    (ISPTR(t2) && !ISPTR(DECREF(t))))
+				; /* Cannot convert this */
 			else
 				p->n_left->n_type = DECREF(t);
 			return p;
