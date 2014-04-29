@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.168 2012/10/28 13:59:28 ragge Exp $	*/
+/*	$Id: local.c,v 1.169 2014/04/19 14:14:15 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1134,6 +1134,11 @@ fixdef(struct symtab *sp)
 		sp->sflags |= STLS;
 	gottls = 0;
 #endif
+	if ((ap = attr_find(sp->sap, GCC_ATYP_VISIBILITY)) != NULL &&
+	    strcmp(ap->sarg(0), "hidden") == 0) {
+		char *sn = sp->soname ? sp->soname : sp->sname; 
+		printf("\t.hidden %s\n", sn);
+	}
 	if ((ap = attr_find(sp->sap, GCC_ATYP_ALIAS)) != NULL) {
 		char *an = ap->sarg(0);	 
 		char *sn = sp->soname ? sp->soname : sp->sname; 
