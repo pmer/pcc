@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.47 2014/04/10 18:51:30 plunky Exp $	*/
+/*	$Id: builtins.c,v 1.48 2014/04/28 17:52:08 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -180,7 +180,6 @@ builtin_bswap64(const struct bitable *bt, NODE *a)
 	f = buildtree(OR,
 	    buildtree(OR, buildtree(OR, t1, t2), buildtree(OR, t3, t4)),
 	    buildtree(OR, buildtree(OR, t5, t6), buildtree(OR, t7, t8)));
-	fwalk(f, eprint, 0);
 	return f;
 #undef X
 }
