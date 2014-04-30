@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.366 2012/10/14 19:31:02 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.367 2012/10/20 20:08:36 plunky Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2071,6 +2071,14 @@ eve(NODE *p)
 		break;
 #endif
 	case UMINUS:
+#ifndef NO_COMPLEX
+		p1 = eve(p1);
+		if (ANYCX(p1))
+			r = cxop(UMINUS, p1, p1);
+		else
+			r = buildtree(UMINUS, p1, NIL);
+		break;
+#endif
 	case NOT:
 	case UMUL:
 		p1 = eve(p1);
