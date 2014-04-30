@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.363 2014/04/03 15:11:39 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.364 2014/04/30 14:56:38 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -3208,7 +3208,7 @@ cxop(int op, NODE *l, NODE *r)
 		      buildtree(PLUS,
 			buildtree(MUL, ccopy(real_r), ccopy(real_r)),
 			buildtree(MUL, ccopy(imag_r), ccopy(imag_r))))));
-		p = comop(p, buildtree(ASSIGN, structref(ccopy(q), DOT, real),
+		p = comop(p, buildtree(ASSIGN, structref(ccopy(q), DOT, imag),
 		    buildtree(DIV,
 		      buildtree(MINUS,
 			buildtree(MUL, ccopy(imag_l), ccopy(real_r)),
