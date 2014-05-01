@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.254 2012/10/22 09:03:22 plunky Exp $	*/
+/*	$Id: pass1.h,v 1.255 2014/03/31 20:02:34 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -494,6 +494,7 @@ enum {	ATTR_NONE,
 	GCC_ATYP_RETURNS_TWICE,
 	GCC_ATYP_WARNING,
 	GCC_ATYP_NOCLONE,
+	GCC_ATYP_REGPARM,
 
 	/* other stuff */
 	GCC_ATYP_BOUNDED,	/* OpenBSD extra boundary checks */

@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.100 2014/03/20 18:48:05 ragge Exp $     */
+/*      $Id: gcc_compat.c,v 1.101 2014/04/09 10:01:24 plunky Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -359,6 +359,7 @@ struct atax {
 	CS(GCC_ATYP_RETURNS_TWICE) { A_0ARG, "returns_twice" },
 	CS(GCC_ATYP_WARNING)	{ A_1ARG|A1_STR, "warning" },
 	CS(GCC_ATYP_NOCLONE)	{ A_0ARG, "noclone" },
+	CS(GCC_ATYP_REGPARM)	{ A_1ARG, "regparm" },
 
 	CS(GCC_ATYP_BOUNDED)	{ A_3ARG|A_MANY|A1_NAME, "bounded" },
 };
