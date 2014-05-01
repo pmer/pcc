@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.169 2012/09/26 19:00:20 plunky Exp $	*/
+/*	$Id: local2.c,v 1.170 2014/05/01 06:20:32 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1202,13 +1202,12 @@ lastcall(NODE *p)
 	p->n_qual = 0;
 	if (p->n_op != CALL && p->n_op != FORTCALL && p->n_op != STCALL)
 		return;
-	for (p = p->n_right; p->n_op == CM; p = p->n_left)
-		size += argsiz(p->n_right);
-	size += argsiz(p);
-#if defined(ELFABI)
-	if (kflag)
-		size -= 4;
-#endif
+	for (p = p->n_right; p->n_op == CM; p = p->n_left) {
+		if (p->n_right->n_op != ASSIGN)
+			size += argsiz(p->n_right);
+	}
+	if (p->n_op != ASSIGN)
+		size += argsiz(p);
 	
 #if defined(MACHOABI)
 	int newsize = (size + 15) & ~15;	/* stack alignment */
