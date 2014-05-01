@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.365 2014/04/30 15:56:48 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.366 2014/05/01 12:30:40 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -245,7 +245,7 @@ defid2(NODE *q, int class, char *astr)
 			++ddef;
 		} else if (ISFTN(temp)) {
 			/* add a late-defined prototype here */
-			if (cftnsp == NULL && dsym->dfun == NULL)
+			if (dsym->dfun == NULL)
 				dsym->dfun = ddef->dfun;
 			if (!oldstyle && ddef->dfun != NULL &&
 			    chkftn(dsym->dfun, ddef->dfun))
