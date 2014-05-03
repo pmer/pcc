@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.368 2014/04/30 14:56:38 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.369 2014/05/03 09:47:51 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -306,7 +306,7 @@ type_sq:	   C_TYPE { $$ = $1; }
 
 cf_spec:	   C_CLASS { $$ = $1; }
 		|  C_FUNSPEC { fun_inline = 1;  /* XXX - hack */
-			$$ = block(QUALIFIER, NIL, NIL, 0, 0, 0); }
+			$$ = block(CLASS, NIL, NIL, 0, 0, 0); }
 		;
 
 typeof:		   C_TYPEOF '(' e ')' { $$ = tyof(eve($3)); }
