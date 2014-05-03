@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.28 2014/03/20 18:45:36 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.29 2014/04/29 18:17:04 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -263,6 +263,7 @@ int numconv(void *ip, void *p, void *q);
 #define	XASMCONSTREGS(x)	xasmconstregs(x)
 
 #define	HAVE_WEAKREF
+#define TARGET_FLT_EVAL_METHOD	0	/* all as their type */
 /*
  * builtins.
  */

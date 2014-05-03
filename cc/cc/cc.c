@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.267 2014/04/21 21:26:02 plunky Exp $	*/
+/*	$Id: cc.c,v 1.268 2014/05/02 10:44:33 gmcgarry Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1562,6 +1562,9 @@ static char *gcppflags[] = {
 
 /* These should _not_ be defined here */
 static char *fpflags[] = {
+#ifdef TARGET_FLT_EVAL_METHOD
+	"-D__FLT_EVAL_METHOD__=" MKS(TARGET_FLT_EVAL_METHOD),
+#endif
 #if defined(os_darwin) || defined(os_netbsd)
 	"-D__FLT_RADIX__=2",
 #if defined(mach_vax)
