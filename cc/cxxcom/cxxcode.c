@@ -1,4 +1,4 @@
-/*	$Id: cxxcode.c,v 1.4 2012/10/20 20:08:37 plunky Exp $	*/
+/*	$Id: cxxcode.c,v 1.5 2014/05/03 09:47:51 ragge Exp $	*/
 /*
  * Copyright (c) 2011 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -445,7 +445,9 @@ cxxlookup(NODE *p, int flags)
 	char *n, *s;
 
 #define SPNAME(p) ((char *)(p->n_op == NAME ? p->n_sp : p->n_right->n_sp))
+#ifdef PCC_DEBUG
 	if (cppdebug){ printf("cxxlookup %s\n", SPNAME(p)); symtree(); }
+#endif
 
 	q = p;
 	if (p->n_op == NAME) {
@@ -473,7 +475,9 @@ cxxlookup(NODE *p, int flags)
 			if (sp == NULL) {
 				sp = getsymtab(s, ftyp);
 				if ((flags & SNOCREAT) == 0) {
+#ifdef PCC_DEBUG
 	if (cppdebug)printf("cxxlookup: adding %s %s %s at %s\n", symclass[ftyp], s, sp->soname, nscur ? nscur->sname : "base");
+#endif
 					INSSYM(sp);
 					cxxsetname(sp);
 				}
