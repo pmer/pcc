@@ -1,4 +1,4 @@
-/*	$Id: cxxcode.c,v 1.3 2012/01/04 19:04:08 ragge Exp $	*/
+/*	$Id: cxxcode.c,v 1.4 2012/10/20 20:08:37 plunky Exp $	*/
 /*
  * Copyright (c) 2011 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -40,7 +40,11 @@ void
 dclns(NODE *attr, char *n)
 {
 	struct symtab *sp;
+#ifdef GCC_COMPAT
 	struct attr *ap = gcc_attr_parse(attr);
+#else
+	struct attr *ap = NULL;
+#endif
 
 	if (cppdebug)printf("declaring namespace %s\n", n);
 	n = addname(n);
