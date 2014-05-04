@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.173 2014/05/02 10:44:33 gmcgarry Exp $	*/
+/*	$Id: local.c,v 1.174 2014/05/03 09:47:51 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -458,7 +458,7 @@ clocal(NODE *p)
 		break;
 
 	case ADDROF:
-		if (kflag == 0 || blevel == 0)
+		if (kflag == 0 || blevel == 0 || statinit)
 			break;
 		/* char arrays may end up here */
 		l = p->n_left;
