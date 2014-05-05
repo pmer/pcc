@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.48 2014/04/28 17:52:08 ragge Exp $	*/
+/*	$Id: builtins.c,v 1.49 2014/04/29 19:16:35 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -584,7 +584,7 @@ builtin_islessgreater(const struct bitable *bt, NODE *a)
 
 /*
  * Math-specific builtins that expands to constants.
- * Versins here is for IEEE FP, vax needs its own versions.
+ * Versions here are for IEEE FP, vax needs its own versions.
  */
 #if TARGET_ENDIAN == TARGET_LE
 static const unsigned char vFLOAT[] = { 0, 0, 0x80, 0x7f };
