@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.369 2014/05/03 15:11:36 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.370 2014/05/07 16:46:31 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1741,7 +1741,7 @@ typwalk(NODE *p, void *arg)
 		break;
 
 	case QUALIFIER:
-		if (p->n_qual == 0)
+		if (p->n_qual == 0 && tc->saved && !ISPTR(tc->saved->n_type))
 			uerror("invalid use of 'restrict'");
 		tc->qual |= p->n_qual >> TSHIFT;
 		break;
