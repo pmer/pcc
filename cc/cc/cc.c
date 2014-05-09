@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.269 2014/05/03 10:36:10 ragge Exp $	*/
+/*	$Id: cc.c,v 1.270 2014/05/07 14:08:05 mickey Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -898,7 +898,7 @@ main(int argc, char *argv[])
 		 * C preprocessor
 		 */
 		ascpp = match(suffix, "S");
-		if (ascpp || match(suffix, "c") || cxxsuf(s->value)) {
+		if (ascpp || match(suffix, "c") || cxxsuf(suffix)) {
 			/* find out next output file */
 			if (Mflag || MDflag) {
 				char *Mofile;
