@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.107 2014/04/08 19:54:14 ragge Exp $	*/
+/*	$Id: token.c,v 1.108 2014/05/09 17:18:25 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1055,27 +1055,14 @@ elsestmt(void)
 }
 
 static void
-skpln(void)
-{
-	int ch;
-
-	/* just ignore the rest of the line */
-	while ((ch = inch()) != -1) {
-		if (ch == '\n') {
-			unch('\n');
-			break;
-		}
-	}
-}
-
-static void
 ifdefstmt(void)		 
 { 
 	int t;
 
 	if (flslvl) {
 		flslvl++;
-		skpln();
+		while ((t = sloscan()) && t != '\n')
+			;
 		return;
 	}
 	do
@@ -1097,7 +1084,8 @@ ifndefstmt(void)
 
 	if (flslvl) {
 		flslvl++;
-		skpln();
+		while ((t = sloscan()) && t != '\n')
+			;
 		return;
 	}
 	do
@@ -1276,6 +1264,20 @@ static struct {
 #endif
 };
 #define	NPPD	(int)(sizeof(ppd) / sizeof(ppd[0]))
+
+static void
+skpln(void)
+{
+	int ch;
+
+	/* just ignore the rest of the line */
+	while ((ch = inch()) != -1) {
+		if (ch == '\n') {
+			unch('\n');
+			break;
+		}
+	}
+}
 
 /*
  * Handle a preprocessor directive.
