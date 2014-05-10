@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.370 2014/05/07 16:46:31 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.371 2014/05/08 10:51:24 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -548,11 +548,11 @@ ftnend(void)
 			p = nametree(&sts);
 			p->n_op = ICON;
 			if (gc) {
-				locctr(CTORS, &sts);
+				locctr(CTORS, NULL);
 				inval(0, SZPOINT(0), p);
 			}
 			if (gd) {
-				locctr(DTORS, &sts);
+				locctr(DTORS, NULL);
 				inval(0, SZPOINT(0), p);
 			}
 			tfree(p);
