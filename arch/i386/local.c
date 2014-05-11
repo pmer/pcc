@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.176 2014/05/07 16:35:49 ragge Exp $	*/
+/*	$Id: local.c,v 1.177 2014/05/07 17:02:15 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -427,6 +427,10 @@ clocal(NODE *p)
 			if (kflag == 0) {
 				if (q->slevel == 0)
 					break;
+			} else if (kflag && !statinit && blevel > 0 &&
+			    attr_find(q->sap, GCC_ATYP_WEAKREF)) {
+				/* extern call */
+				p = picext(p);
 			} else if (blevel > 0 && !statinit)
 				p = picstatic(p);
 			break;
