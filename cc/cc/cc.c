@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.270 2014/05/07 14:08:05 mickey Exp $	*/
+/*	$Id: cc.c,v 1.271 2014/05/09 18:55:09 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -901,13 +901,13 @@ main(int argc, char *argv[])
 		if (ascpp || match(suffix, "c") || cxxsuf(suffix)) {
 			/* find out next output file */
 			if (Mflag || MDflag) {
-				char *Mofile;
+				char *Mofile = NULL;
 
 				if (MFfile)
 					Mofile = MFfile;
 				else if (outfile)
 					Mofile = setsuf(outfile, 'd');
-				else
+				else if (MDflag)
 					Mofile = setsuf(ifile, 'd');
 				if (preprocess_input(ifile, Mofile, 1))
 					exandrm(Mofile);
