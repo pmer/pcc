@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.72 2014/05/03 09:47:51 ragge Exp $	*/
+/*	$Id: code.c,v 1.73 2014/05/07 12:55:35 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -275,9 +275,13 @@ bfcode(struct symtab **sp, int cnt)
 	if (xtemps == 0) {
 		/* put regparms in temps, ends up on stack later */
 		for (i = 0; i < regparmarg; i++) {
-			p = block(REG, 0, 0, sp[i]->stype,
-			    sp[i]->sdf, sp[i]->sap);
+			TWORD tt = sp[i]->stype;
+			if (tt < INT)
+				tt = INT;
+			p = block(REG, 0, 0, tt, 0, 0);
 			regno(p) = i == 0 ? EAX : i == 1 ? EDX : ECX;
+			p = ccast(p, sp[i]->stype, sp[i]->squal,
+			    sp[i]->sdf, sp[i]->sap);
 			n = tempnode(0, sp[i]->stype, sp[i]->sdf, sp[i]->sap);
 			sp[i]->soffset = regno(n);
 			sp[i]->sflags |= STNODE;
@@ -296,9 +300,13 @@ bfcode(struct symtab **sp, int cnt)
 		sp2 = sp[i];
 		n = tempnode(0, sp[i]->stype, sp[i]->sdf, sp[i]->sap);
 		if (i < regparmarg) {
-			p = block(REG, 0, 0, sp[i]->stype, sp[i]->sdf,
-			    sp[i]->sap);
+			TWORD tt = sp[i]->stype;
+			if (tt < INT)
+				tt = INT;
+			p = block(REG, 0, 0, tt, 0, 0);
 			regno(p) = i == 0 ? EAX : i == 1 ? EDX : ECX;
+			p = ccast(p, sp[i]->stype, sp[i]->squal,
+			    sp[i]->sdf, sp[i]->sap);
 		} else
 			p = nametree(sp2);
 		n = buildtree(ASSIGN, n, p);
@@ -371,6 +379,10 @@ addreg(NODE *p)
 		return;
 	if (regcvt >= rparg)
 		return;
+	if (p->n_type < INT) {
+		p->n_left = ccast(p->n_left, INT, 0, 0, 0);
+		p->n_type = INT;
+	}
 	p->n_op = ASSIGN;
 	p->n_right = p->n_left;
 	p->n_left = block(REG, 0, 0, p->n_type, 0, 0);
