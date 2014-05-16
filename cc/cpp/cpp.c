@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.188 2013/02/26 19:27:38 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.189 2014/05/02 10:44:34 gmcgarry Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -46,6 +46,7 @@
 #include <time.h>
 
 #include "compat.h"
+#include "unicode.h"
 #include "cpp.h"
 #include "cpy.h"
 
@@ -1009,10 +1010,9 @@ id:			savstr(yytext);
 bad:	error("bad #define");
 }
 
-void
-warning(const char *fmt, ...)
+static void
+vwarning(const char *fmt, va_list ap)
 {
-	va_list ap;
 	usch *sb;
 
 	flbuf();
@@ -1022,14 +1022,30 @@ warning(const char *fmt, ...)
 	if (ifiles != NULL)
 		sheap("%s:%d: warning: ", ifiles->fname, ifiles->lineno);
 
-	va_start(ap, fmt);
 	vsheap(fmt, ap);
-	va_end(ap);
 	savch('\n');
 	xwrite(2, sb, stringbuf - sb);
 	stringbuf = sb;
 
 	warnings++;
+}
+
+void
+u8error(const char *fmt, ...)
+{
+	va_list ap;
+	va_start(ap,fmt);
+	vwarning(fmt,ap);
+	va_end(ap);
+}
+
+void
+warning(const char *fmt, ...)
+{
+	va_list ap;
+	va_start(ap,fmt);
+	vwarning(fmt,ap);
+	va_end(ap);
 }
 
 void
