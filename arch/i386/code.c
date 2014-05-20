@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.74 2014/05/11 09:06:31 ragge Exp $	*/
+/*	$Id: code.c,v 1.75 2014/05/18 09:41:13 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -214,8 +214,8 @@ bfcode(struct symtab **sp, int cnt)
                         cerror("bfcode");
 #else
                 if (snprintf(str, STL,
-                    "call " LABFMT "\n" LABFMT ":\n     popl %%0\n"
-                    "   addl $_GLOBAL_OFFSET_TABLE_+[.-" LABFMT "], %%0\n",
+                    "call " LABFMT "\n" LABFMT ":\n\tpopl %%0\n"
+                    "\taddl $_GLOBAL_OFFSET_TABLE_+[.-" LABFMT "], %%0\n",
                     l, l, l) >= STL)
                         cerror("bfcode");
 #endif
