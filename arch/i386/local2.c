@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.171 2014/05/01 10:17:38 ragge Exp $	*/
+/*	$Id: local2.c,v 1.172 2014/05/24 15:19:53 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -57,13 +57,15 @@ prtprolog(struct interpass_prolog *ipp, int addto)
 {
 	int i;
 
-	printf("	pushl %%ebp\n");
-	printf("	movl %%esp,%%ebp\n");
+#if 1
 #if defined(MACHOABI)
-	printf("	subl $8,%%esp\n");	/* 16-byte stack alignment */
+	addto += 8;
 #endif
-	if (addto)
-		printf("	subl $%d,%%esp\n", addto);
+	if (addto == 0)
+		printf("	pushl %%ebp\n\tmovl %%esp,%%ebp\n");
+	else
+		printf("	enter $%d,$0\n", addto);
+#endif
 	for (i = 0; i < MAXREGS; i++)
 		if (TESTBIT(ipp->ipp_regs, i))
 			printf("	movl %s,-%d(%s)\n",
