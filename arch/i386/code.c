@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.76 2014/05/20 20:56:20 plunky Exp $	*/
+/*	$Id: code.c,v 1.77 2014/05/24 15:19:53 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -162,8 +162,9 @@ efcode(void)
 	ecomp(buildtree(ASSIGN, p, q));
 }
 
-static TWORD regpregs[] = { EAX, EDX, ECX };
 static TWORD longregs[] = { EAXEDX, EDXECX };
+static TWORD regpregs[] = { EAX, EDX, ECX };
+static TWORD charregs[] = { AL, DL, CL };
 
 /*
  * code for the beginning of a function; a is an array of
@@ -316,6 +317,8 @@ bfcode(struct symtab **sp, int cnt)
 				    sp2->sdf, sp2->sap);
 				if (ISLONGLONG(sp2->stype))
 					regno(n) = longregs[sp2->soffset];
+				else if (DEUNSIGN(sp2->stype) == CHAR)
+					regno(n) = charregs[sp2->soffset];
 				else
 					regno(n) = regpregs[sp2->soffset];
 			} else {
