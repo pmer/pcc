@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.113 2014/05/28 08:52:42 plunky Exp $	*/
+/*	$Id: token.c,v 1.114 2014/05/28 20:20:54 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -283,6 +283,10 @@ chkucn(void)
 		}
 		cp = cp * 16 + dig2num(ch);
 	}
+
+	if ((cp < 0xa0 && cp != 0x24 && cp != 0x40 && cp != 0x60)
+	    || (cp >= 0xd800 && cp <= 0xdfff))	/* 6.4.3.2 */
+		error("universal character name cannot be used");
 
 	if (cp > 0x7fffffff)
 		error("universal character name out of range");
