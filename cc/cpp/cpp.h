@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.66 2012/11/07 09:52:00 plunky Exp $	*/
+/*	$Id: cpp.h,v 1.67 2013/02/26 19:27:38 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -123,8 +123,8 @@ extern struct includ *ifiles;
 
 /* Symbol table entry  */
 struct symtab {
-	const usch *namep;    
-	const usch *value;    
+	const usch *namep;
+	const usch *value;
 	const usch *file;
 	int line;
 };
