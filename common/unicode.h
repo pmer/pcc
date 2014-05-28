@@ -1,3 +1,5 @@
+/*	$Id: unicode.h$	*/
+
 #ifndef _UNICODE_H
 #define _UNICODE_H
 
