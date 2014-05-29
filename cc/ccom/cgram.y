@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.370 2014/05/03 15:11:36 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.371 2014/05/16 13:02:02 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1747,14 +1747,12 @@ branch(int lbl)
 static char *
 mkpstr(char *str)
 {
-	char *s, *os;
-	int l = strlen(str)+3; /* \t + \n + \0 */
+	char *s;
+	int l = strlen(str) + 3; /* \t + \n + \0 */
 
-	os = s = inlalloc(l);
-	for (*s++ = '\t'; *str; *s++ = esc2char(&str));
-	*s++ = '\n';
-	*s = 0;
-	return os;
+	s = inlalloc(l);
+	snprintf(s, l, "\t%s\n", str);
+	return s;
 }
 
 /*
