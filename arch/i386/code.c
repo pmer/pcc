@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.77 2014/05/24 15:19:53 ragge Exp $	*/
+/*	$Id: code.c,v 1.78 2014/05/27 20:02:30 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -317,7 +317,7 @@ bfcode(struct symtab **sp, int cnt)
 				    sp2->sdf, sp2->sap);
 				if (ISLONGLONG(sp2->stype))
 					regno(n) = longregs[sp2->soffset];
-				else if (DEUNSIGN(sp2->stype) == CHAR)
+				else if (DEUNSIGN(sp2->stype) == CHAR || sp2->stype == BOOL)
 					regno(n) = charregs[sp2->soffset];
 				else
 					regno(n) = regpregs[sp2->soffset];
