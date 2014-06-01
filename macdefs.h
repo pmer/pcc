@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.16 2011/07/28 14:12:07 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.17 2012/12/01 08:53:40 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -127,7 +127,6 @@ typedef long long OFFSZ;
 /* Definitions mostly used in pass2 */
 
 #define BYTEOFF(x)	((x)&03)
-#define BITOOR(x)	(x)	/* bit offset to oreg offset */
 
 #define	szty(t)		(((t) == DOUBLE || (t) == LDOUBLE || \
 	DEUNSIGN(t) == LONGLONG) ? 2 : 1)
