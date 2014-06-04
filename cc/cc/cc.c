@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.271 2014/05/09 18:55:09 plunky Exp $	*/
+/*	$Id: cc.c,v 1.272 2014/05/11 12:11:00 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -550,11 +550,6 @@ main(int argc, char *argv[])
 			} else if (match(u, "stack-protector") ||
 			    match(u, "stack-protector-all")) {
 				sspflag = j ? 0 : 1;
-#ifdef os_darwin
-			} else if (match(u, "ramework")) {
-				strlist_append(&middle_linker_flags, argp);
-				strlist_append(&middle_linker_flags, nxtopt(0));
-#endif
 			}
 			/* silently ignore the rest */
 			break;
