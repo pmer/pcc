@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.273 2014/06/04 06:43:49 gmcgarry Exp $	*/
+/*	$Id: cc.c,v 1.274 2014/06/06 13:04:37 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -310,6 +310,7 @@ struct Wflags {
 	{ "sign-compare", 0 },
 	{ "unknown-pragmas", INWALL },
 	{ "unreachable-code", 0 },
+	{ "deprecated-declarations", 0 },
 	{ NULL, 0 },
 };
 
