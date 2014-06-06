@@ -1,4 +1,4 @@
-/*	$Id: unicode.c$	*/
+/*	$Id: unicode.c,v 1.6 2014/05/28 06:58:58 plunky Exp $	*/
 /*
  * Copyright (c) 2014 Eric Olson <ejolson@renomath.org>
  * Some rights reserved.
@@ -34,6 +34,7 @@
 #include "manifest.h"
 #include "unicode.h"
 
+#if 0
 /*
  * encode a 32-bit code point as UTF-8
  * return end position
@@ -74,6 +75,7 @@ cp2u8(char *p,unsigned int c)
 	}
 	return (char *)s;
 }
+#endif
 
 /*
  * decode 32-bit code point from UTF-8
