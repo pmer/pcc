@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.326 2014/06/01 07:51:46 ragge Exp $	*/
+/*	$Id: trees.c,v 1.327 2014/06/06 16:21:41 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -358,7 +358,8 @@ buildtree(int o, NODE *l, NODE *r)
 		 * Modify the trees so that the compound op is rewritten.
 		 */
 		/* avoid casting of LHS */
-		if ((cdope(o) & SIMPFLG) && ISINTEGER(l->n_type)) 
+		if ((cdope(o) & SIMPFLG) && ISINTEGER(l->n_type) && 
+		    l->n_type != BOOL) 
 			r = ccast(r, l->n_type, l->n_qual, l->n_df, l->n_ap);
 
 		r = buildtree(UNASG o, ccopy(l), r);
