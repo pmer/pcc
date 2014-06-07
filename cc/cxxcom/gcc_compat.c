@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.7 2014/05/03 09:47:51 ragge Exp $     */
+/*      $Id: gcc_compat.c,v 1.8 2014/06/06 13:19:03 plunky Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -348,7 +348,7 @@ gcc_attribs(NODE *p)
 		cerror("bad variable attribute");
 
 	if ((attr = amatch(name, atax, GCC_ATYP_MAX)) == 0) {
-		werror("unsupported attribute '%s'", name);
+		warner(Wattributes, name);
 		ap = NULL;
 		goto out;
 	}
