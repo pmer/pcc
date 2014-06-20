@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.374 2014/06/06 08:19:02 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.375 2014/06/20 07:04:48 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1259,13 +1259,14 @@ strend(int wide, char *str)
 			}
 		}
 		if (wide) {
-			for (wr = sp->sname, i = 1; *wr; i++) u82cp(&wr);
-		sp->sdf->ddim = i;
+			for (wr = sp->sname, i = 1; *wr; i++)
+				u82cp(&wr);
+			sp->sdf->ddim = i;
 			inwstring(sp);
 		} else {
 			sp->sdf->ddim = strlen(sp->sname)+1;
 			instring(sp);
-	}
+		}
 	}
 
 	p = block(NAME, NIL, NIL, sp->stype, sp->sdf, sp->sap);
