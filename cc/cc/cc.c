@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.275 2014/06/06 13:19:03 plunky Exp $	*/
+/*	$Id: cc.c,v 1.276 2014/06/07 07:04:09 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -526,8 +526,13 @@ main(int argc, char *argv[])
 			cflag++;
 			break;
 
-		case 'd':
-			oerror(argp);
+		case 'd': /* debug options */
+			for (t = &argp[2]; *t; t++) {
+				if (*t == 'M')
+					strlist_append(&preprocessor_flags, "-dM");
+
+				/* ignore others */
+			}
 			break;
 
 		case 'E':

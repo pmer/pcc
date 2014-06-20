@@ -1,4 +1,4 @@
-.\"	$Id: cc.1,v 1.39 2014/04/18 18:18:35 plunky Exp $
+.\"	$Id: cc.1,v 1.40 2014/04/21 21:36:39 plunky Exp $
 .\"
 .\" Copyright (c) 2007 Jeremy C. Reed <reed@reedmedia.net>
 .\"
@@ -26,6 +26,7 @@
 .Op Fl cEgkMPStvX
 .Op Fl B Ns Ar prefix
 .Op Fl D Ar macro Ns Oo = Ns Ar value Oc
+.Op Fl d Ns Ar flags
 .Op Fl f Ns Ar feature
 .Op Fl I Ar path
 .Op Fl include Ar file
@@ -136,6 +137,16 @@ preprocessor to define
 .Ar macro
 with an optional
 .Ar value .
+.It Fl d Ns Ar flags
+Debug options.
+.Ar flags
+is a string of characters, which signify the following actions.
+.Bl -tag -width ".Sy M"
+.It Sy M
+Cause the preprocessor to output a list of macro definitions.
+.El
+.Lp
+any unknown flags are ignored.
 .It Fl E
 Stop after preprocessing with
 .Xr cpp 1 .
