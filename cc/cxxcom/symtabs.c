@@ -1,4 +1,4 @@
-/*	$Id: symtabs.c,v 1.1 2012/01/01 16:20:55 ragge Exp $	*/
+/*	$Id: symtabs.c,v 1.2 2014/05/03 09:47:51 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -72,7 +72,7 @@ addstring(char *key)
  * return its address.
  * This is a simple patricia implementation.
  */
-char *
+static char *
 symtab_add(char *key, struct tree **first, int *tabs, int *stlen)
 {
 	struct tree *w, *new, *last;
