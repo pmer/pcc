@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.70 2014/04/29 18:17:04 ragge Exp $	*/
+/*	$Id: code.c,v 1.71 2014/06/29 07:55:05 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -306,7 +306,7 @@ bfcode(struct symtab **s, int cnt)
 			regno(r) = rno;
 			ecomp(movtomem(r, -autooff, FPREG));
 
-			if (ssz >= SZLONG) {
+			if (ssz > SZLONG) {
 				if (typ == STRSSE || typ == STRIF) {
 					rno = XMM0 + nsse++;
 					t = DOUBLE;
@@ -1092,4 +1092,15 @@ builtin_cfa(const struct bitable *bt, NODE *a)
 	f = block(REG, NIL, NIL, PTR+VOID, 0, 0);
 	regno(f) = FPREG;
 	return block(PLUS, f, bcon(16), INCREF(PTR+VOID), 0, 0);
+}
+
+int codeatyp(NODE *);
+int
+codeatyp(NODE *p)
+{
+	int typ;
+
+	ngpr = nsse = 0;
+	typ = argtyp(DECREF(p->n_type), p->n_df, p->n_ap);
+	return typ;
 }

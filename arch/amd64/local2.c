@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.51 2012/09/26 19:00:20 plunky Exp $	*/
+/*	$Id: local2.c,v 1.52 2012/12/28 16:02:49 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -415,9 +415,24 @@ zzzcode(NODE *p, int c)
 			printf("	addq $%d, %s\n", pr, rnames[RSP]);
 		if ((p->n_op == STCALL || p->n_op == USTCALL) &&
 		    p->n_stsize <= 16) {
+#define	STRREG 6
+#define	STRSSE 8
+#define	STRIF  9
+#define	STRFI  10
 			/* store reg-passed structs on stack */
-			printf("\tmovq %%rax,-%d(%%rbp)\n", stkpos);
-			printf("\tmovq %%rdx,-%d(%%rbp)\n", stkpos-8);
+			if (p->n_stalign == STRREG || p->n_stalign == STRIF)
+				printf("\tmovq %%rax,-%d(%%rbp)\n", stkpos);
+			else
+				printf("\tmovsd %%xmm0,-%d(%%rbp)\n", stkpos);
+			if (p->n_stsize > 8) {
+				if (p->n_stalign == STRREG ||
+				    p->n_stalign == STRFI)
+					printf("\tmovq %%rdx,-%d(%%rbp)\n",
+					    stkpos-8);
+				else
+					printf("\tmovsd %%xmm1,-%d(%%rbp)\n",
+					    stkpos-8);
+			}
 			printf("\tleaq -%d(%%rbp),%%rax\n", stkpos);
 		}
 		break;
