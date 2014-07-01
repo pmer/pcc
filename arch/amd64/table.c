@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.51 2013/02/16 17:00:14 ragge Exp $	*/
+/*	$Id: table.c,v 1.52 2014/04/29 18:16:09 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2008 Anders Magnusson (ragge@ludd.ltu.se).
@@ -59,7 +59,13 @@ struct optab table[] = {
 	SAREG,	TPOINT,
 		NASL|NAREG,	RESC1,
 		"	movl AL,Z1\n", },/* amd64 zero-extends 32-bit movl */
-	
+
+{ PCONV,	INAREG,
+	SAREG|SOREG|SNAME,	TSHORT,
+	SAREG,			TPOINT,
+		NAREG|NASL,	RESC1,
+		"	movswq AL,A1\n", },
+
 
 /*
  * On amd64 casts from larger to smaller integer type in register do nothing.
