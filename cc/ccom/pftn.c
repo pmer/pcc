@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.377 2014/07/01 16:09:36 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.378 2014/07/02 12:14:34 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -3242,6 +3242,19 @@ cxop(int op, NODE *l, NODE *r)
 		p = buildtree(op, comop(p, real_l), real_r);
 		q = buildtree(op, imag_l, imag_r);
 		p = buildtree(op == EQ ? ANDAND : OROR, p, q);
+		return p;
+
+	case ANDAND:
+	case OROR: /* go via EQ to get INT of it */
+		tfree(q);
+		p = buildtree(NE, comop(p, real_l), bcon(0)); /* gets INT */
+		q = buildtree(NE, imag_l, bcon(0));
+		p = buildtree(OR, p, q);
+
+		q = buildtree(NE, real_r, bcon(0));
+		q = buildtree(OR, q, buildtree(NE, imag_r, bcon(0)));
+
+		p = buildtree(op, p, q);
 		return p;
 
 	case UMINUS:
