@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.78 2014/04/30 16:37:20 ragge Exp $	*/
+/*	$Id: local.c,v 1.79 2014/06/29 16:03:55 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -388,6 +388,9 @@ clocal(NODE *p)
 
 		if (o == ICON) {
 			CONSZ val = l->n_lval;
+
+			if (ISPTR(l->n_type) && !nncon(l))
+				break; /* cannot convert named pointers */
 
 			if (!ISPTR(m)) /* Pointers don't need to be conv'd */
 			    switch (m) {
