@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.138 2014/05/24 15:19:53 ragge Exp $	*/
+/*	$Id: table.c,v 1.139 2014/06/04 06:43:49 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -243,7 +243,7 @@ struct optab table[] = {
 
 /* convert int to short. Nothing to do */
 { SCONV,	INAREG,
-	SAREG,	TWORD,
+	SAREG,	TWORD|TPOINT,
 	SANY,	TSHORT|TUSHORT,
 		0,	RLEFT,
 		"", },
