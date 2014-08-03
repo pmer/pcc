@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.329 2014/06/20 07:04:48 plunky Exp $	*/
+/*	$Id: trees.c,v 1.330 2014/07/05 09:05:52 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -3271,6 +3271,9 @@ plabel(int label)
 NODE *
 intprom(NODE *n)
 {
+	if (n->n_op == FLD && UPKFSZ(n->n_rval) < SZINT)
+		return makety(n, INT, 0, 0, 0);
+
 	if ((n->n_type >= CHAR && n->n_type < INT) || n->n_type == BOOL) {
 		if ((n->n_type == UCHAR && MAX_UCHAR > MAX_INT) ||
 		    (n->n_type == USHORT && MAX_USHORT > MAX_INT))
