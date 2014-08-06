@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.240 2014/07/25 16:20:54 ragge Exp $	*/
+/*	$Id: regs.c,v 1.241 2014/08/02 08:41:57 ragge Exp $	*/
 /*
  * Copyright (c) 2005 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2665,9 +2665,14 @@ treerewrite(struct interpass *ipole, REGW *rpole)
 #ifdef PCC_DEBUG
 		RDEBUG(("Storing node %d to save short\n", ASGNUM(longsp)));
 #endif
-		DLIST_INIT(&longregs, link);
-		DLIST_INSERT_AFTER(&longregs, longsp, link);
-		leafrewrite(ipole, &longregs);
+		if (longsp >= &nblock[tempmin] && longsp < &nblock[basetemp]) {
+			int num = longsp - nblock - tempmin;
+			nsavregs[num] = 1;
+		} else {
+			DLIST_INIT(&longregs, link);
+			DLIST_INSERT_AFTER(&longregs, longsp, link);
+			leafrewrite(ipole, &longregs);
+		}
 	} else if (!DLIST_ISEMPTY(spole, link))
 		comperr("treerewrite not empty");
 }
