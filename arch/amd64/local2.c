@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.54 2014/07/02 08:59:40 ragge Exp $	*/
+/*	$Id: local2.c,v 1.55 2014/08/13 20:01:40 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -320,9 +320,6 @@ ultofd(NODE *p)
 static void
 ldtoul(NODE *p)
 {
-	int r;
-
-	r = getlr(p, '1')->n_rval;
 
 	E("	subq $16,%rsp\n");
 	E("	movl $0x5f000000,(%rsp)\n"); /* More than long can have */
