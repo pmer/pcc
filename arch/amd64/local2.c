@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.53 2014/06/29 16:03:55 ragge Exp $	*/
+/*	$Id: local2.c,v 1.54 2014/07/02 08:59:40 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1196,6 +1196,14 @@ static struct {
 	{ "rdx", RDX },
 	{ "rsi", RSI },
 	{ "rdi", RDI },
+	{ "r8", R08 },
+	{ "r9", R09 },
+	{ "r10", R10 },
+	{ "r11", R11 },
+	{ "r12", R12 },
+	{ "r13", R13 },
+	{ "r14", R14 },
+	{ "r15", R15 },
 	{ "st", 040 },
 	{ "st(0)", 040 },
 	{ "st(1)", 041 },
