@@ -1,4 +1,4 @@
-/*	$Id: regs.c,v 1.241 2014/08/02 08:41:57 ragge Exp $	*/
+/*	$Id: regs.c,v 1.242 2014/08/06 20:34:06 ragge Exp $	*/
 /*
  * Copyright (c) 2005 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1084,6 +1084,14 @@ insnwalk(NODE *p)
 		} else {
 			AddEdge(r, p->n_regw);
 			addalledges(r);
+			if (q->needs & NSPECIAL) {
+				struct rspecial *rc;
+				for (rc = nspecial(q); rc->op; rc++) {
+					if (rc->op != NEVER)
+						continue;
+					AddEdge(r, &ablock[rc->num]);
+				}
+			}
 		}
 		if (optype(o) != LTYPE && (q->needs & ncl[CLASS(r)]) == 0)
 			addedge_r(p->n_left, r);
