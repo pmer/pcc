@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.379 2014/07/02 15:31:41 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.380 2014/07/28 19:03:09 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -3456,7 +3456,7 @@ cxcast(NODE *p1, NODE *p2)
 		if (p1->n_type != p2->n_type)
 			p2 = mkcmplx(p2, p1->n_type);
 	} else if (ANYCX(p1)) {
-		p2 = mkcmplx(p2, p1->n_type);
+		p2 = mkcmplx(p2, strmemb(p1->n_ap)->stype);
 	} else /* if (ANYCX(p2)) */ {
 		p2 = cast(structref(p2, DOT, real), p1->n_type, 0);
 	}
