@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.74 2014/07/03 14:03:50 ragge Exp $	*/
+/*	$Id: code.c,v 1.75 2014/08/13 13:20:17 plunky Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -767,9 +767,12 @@ classifystruct(struct symtab *sp, int off)
 		} else if (t == LDOUBLE) {
 			return STRMEM;
 		} else if (ISSOU(t)) {
+#ifdef GCC_COMPAT
 			if (attr_find(sp->sap, GCC_ATYP_PACKED)) {
 				cl = STRMEM;
-			} else {
+			} else
+#endif
+			{
 				cl2 = classifystruct(strmemb(sp->sap), off);
 				if (cl2 == STRMEM) {
 					cl = STRMEM;
@@ -820,9 +823,12 @@ argtyp(TWORD t, union dimfun *df, struct attr *ap)
 	} else if (t == STRTY || t == UNIONTY) {
 		int sz = tsize(t, df, ap);
 
+#ifdef GCC_COMPAT
 		if (attr_find(ap, GCC_ATYP_PACKED)) {
 			cl = STRMEM;
-		} else if (iscplx87(strmemb(ap)) == STRX87) {
+		} else
+#endif
+		if (iscplx87(strmemb(ap)) == STRX87) {
 			cl = STRX87;
 		} else if (sz > 2*SZLONG) {
 			cl = STRMEM;
