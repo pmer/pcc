@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.121 2014/05/16 13:02:02 ragge Exp $	*/
+/*	$Id: scan.l,v 1.122 2014/07/03 17:30:31 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -161,8 +161,8 @@ extern void yyset_lineno (int);
 0[xX]{H}+{IS}?		{ yylval.nodep = cvtdig(16); return(C_ICON); }
 0{D}+{IS}?		{ yylval.nodep = cvtdig(8); return(C_ICON); }
 {D}+{IS}?		{ yylval.nodep = cvtdig(10); return(C_ICON); }
-L'(\\.|[^\\'])+'	{ yylval.nodep = wcharcon(); return(C_ICON); }
-'(\\.|[^\\'])+'		{ yylval.nodep = charcon(); return(C_ICON); }
+L'(\\.|[^\\'])*'	{ yylval.nodep = wcharcon(); return(C_ICON); }
+'(\\.|[^\\'])*'		{ yylval.nodep = charcon(); return(C_ICON); }
 
 {D}+{E}{FS}?		{ yylval.nodep = floatcon(yytext); return(C_FCON); }
 {D}*"."{D}+({E})?{FS}?	{ yylval.nodep = floatcon(yytext); return(C_FCON); }
@@ -525,9 +525,7 @@ charcon(void)
 	int val = 0, i = 0;
 	char *pp = yytext;
 
-	if (*pp == 'L')
-		pp++;
-	pp++;
+	pp++;	/* skip ' */
 	while (*pp != '\'') {
 		val=esc2char(&pp);
 		i++;
@@ -549,9 +547,8 @@ wcharcon(void)
 	unsigned int val = 0, i = 0;
 	char *pp = yytext;
 
-	if (*pp == 'L')
-		pp++;
-	pp++;
+	pp++;	/* skip L */
+	pp++;	/* skip ' */
 	while (*pp != '\'') {
 		if(*pp == '\\') val=esc2char(&pp);
 		else val=u82cp(&pp);
@@ -560,7 +557,7 @@ wcharcon(void)
 
 	if (i == 0)
 		uerror("empty wide-character constant");
-	if (i > 1)
+	else if (i > 1)
 		werror("%d too many characters in wide-character constant",i-1);
 	return xbcon(val, NULL, ctype(UNSIGNED));
 }
