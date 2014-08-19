@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.380 2014/07/28 19:03:09 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.381 2014/08/16 16:11:52 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1571,6 +1571,8 @@ falloc(struct symtab *p, int w, NODE *pty)
 	p->soffset = rpole->rstr;
 	rpole->rstr += w;
 	p->stype = otype;
+	if (w < SZINT)
+		p->stype = INT; /* integer promotions */
 	fldty(p);
 	return(0);
 }
