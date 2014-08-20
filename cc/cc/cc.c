@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.278 2014/07/01 16:09:00 ragge Exp $	*/
+/*	$Id: cc.c,v 1.279 2014/08/18 18:46:05 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1856,8 +1856,10 @@ setup_ld_flags(void)
 		}
 		strap(&middle_linker_flags, &crtdirs, b, 'p');
 		strap(&late_linker_flags, &crtdirs, e, 'a');
-		strap(&middle_linker_flags, &crtdirs, CRTI, 'p');
-		strap(&late_linker_flags, &crtdirs, CRTN, 'a');
+		if (CRTI[0])
+			strap(&middle_linker_flags, &crtdirs, CRTI, 'p');
+		if (CRTN[0])
+			strap(&late_linker_flags, &crtdirs, CRTN, 'a');
 		if (shared == 0) {
 			if (pgflag)
 				b = GCRT0;
