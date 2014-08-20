@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.11 2012/08/05 14:35:00 ragge Exp $	*/
+/*	$Id: ccconfig.h,v 1.12 2014/03/31 20:00:30 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -32,6 +32,8 @@
 /* common cpp predefines */
 #define	CPPADD	{ "-D__OpenBSD__", "-D__ELF__", NULL, }
 #define	DYNLINKER { "-dynamic-linker", "/usr/libexec/ld.so", NULL }
+#define	CRTI ""		/* OpenBSD do not use this */
+#define	CRTN ""		/* OpenBSD do not use this */
 
 #ifdef LANG_F77
 #define F77LIBLIST { "-L/usr/local/lib", "-lF77", "-lI77", "-lm", "-lc", NULL };
