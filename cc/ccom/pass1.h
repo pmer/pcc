@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.261 2014/06/07 07:04:09 plunky Exp $	*/
+/*	$Id: pass1.h,v 1.262 2014/08/06 16:47:52 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -275,6 +275,7 @@ extern struct rstack *rpole;
 int oalloc(struct symtab *, int *);
 void deflabel(char *, NODE *);
 void gotolabel(char *);
+unsigned int esccon(char **);
 void inline_start(struct symtab *, int class);
 void inline_end(void);
 void inline_addarg(struct interpass *);
