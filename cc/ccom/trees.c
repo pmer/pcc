@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.337 2014/08/16 13:40:22 ragge Exp $	*/
+/*	$Id: trees.c,v 1.338 2014/08/26 17:56:37 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2514,7 +2514,7 @@ static NODE *
 rmfldops(NODE *p)
 {
 	TWORD t, ct;
-	NODE *q, *r, *t1, *t2, *bt, *t3, *t4;
+	NODE *q, *r, *t1, *t2, *bt;
 	int fsz, foff;
 
 	if (p->n_op == FLD) {
