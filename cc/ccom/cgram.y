@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.379 2014/08/26 18:00:04 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.380 2014/08/26 20:34:47 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -71,10 +71,10 @@
 
 /*
  * At last count, there were 5 shift/reduce and no reduce/reduce conflicts
- * Four are accounted for;
+ * All are accounted for;
  * One is "dangling else"
  * Two is in attribute parsing
- * One is in ({ }) parsing
+ * Two is in ({ }) parsing
  */
 
 /*
@@ -1159,6 +1159,14 @@ term:		   term C_INCOP {  $$ = biop($2, $1, bcon(1)); }
 		|  C_FCON { $$ = $1; }
 		|  string { $$ = bdty(STRING, $1, widestr); }
 		|   '('  e  ')' { $$=$2; }
+		|  '(' xbegin e ';' '}' ')' {
+			/* XXX - check recursive ({ }) statements */
+			branch(($2)+2);
+			plabel($2);
+			$$ = buildtree(COMOP,
+			    biop(GOTO, bcon(($2)+1), NIL), eve($3));
+			flend();
+		}
 		|  '(' xbegin block_item_list e ';' '}' ')' {
 			/* XXX - check recursive ({ }) statements */
 			branch(($2)+2);
