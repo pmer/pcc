@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.116 2014/06/06 15:32:53 plunky Exp $	*/
+/*	$Id: token.c,v 1.117 2014/08/18 18:46:05 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -599,6 +599,9 @@ ppnum:		for (;;) {
 					yytext[yyp++] = (usch)ch;
 				} else
 					unch(ch);
+				if ((spechr[ch = inch()] & C_DIGIT) == 0)
+					break; /* only digits allowed */
+				unch(ch);
 				continue;
 			}
 			if ((spechr[ch] & C_ID) || ch == '.') {
