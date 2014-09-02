@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.80 2014/06/04 07:18:02 gmcgarry Exp $	*/
+/*	$Id: code.c,v 1.81 2014/08/20 19:43:46 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -407,6 +407,14 @@ bjobcode(void)
 #if defined(MACHOABI)
 	DLIST_INIT(&stublist, link);
 	DLIST_INIT(&nlplist, link);
+#endif
+#if defined(__GNUC__) || defined(__PCC__)
+	/* Be sure that the compiler uses full x87 */
+	/* XXX cross-compiling will fail here */
+	int fcw;
+	__asm("fstcw (%0)" : : "r"(&fcw));
+	fcw |= 0x300;
+	__asm("fldcw (%0)" : : "r"(&fcw));
 #endif
 }
 
