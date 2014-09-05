@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.385 2014/09/03 11:23:44 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.386 2014/09/04 19:36:00 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2426,7 +2426,8 @@ doacall(struct symtab *sp, NODE *f, NODE *a)
 		if (type <= BTMASK && arrt <= BTMASK) {
 #ifndef NO_COMPLEX
 			if ((type != arrt) && (ANYCX(apole->node) ||
-			    attr_find(al[1].sap, ATTR_COMPLEX))) {
+			    (arrt == STRTY &&
+			    attr_find(al[1].sap, ATTR_COMPLEX)))) {
 				cxargfixup(apole->node, arrt, al[1].sap);
 			} else
 #endif
