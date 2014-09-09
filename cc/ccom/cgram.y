@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.380 2014/08/26 20:34:47 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.381 2014/08/27 17:26:25 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2112,6 +2112,8 @@ eve(NODE *p)
 #endif
 	case UPLUS:
 		r = eve(p1);
+		if (r->n_op == FLD || r->n_type < INT)
+			r = buildtree(PLUS, r, bcon(0)); /* must be size int */
 		break;
 
 	case UMINUS:
