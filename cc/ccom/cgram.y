@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.381 2014/08/27 17:26:25 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.382 2014/09/09 08:35:54 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2131,6 +2131,10 @@ eve(NODE *p)
 #ifdef TARGET_TIMODE
 		if ((r = gcc_eval_tiuni(p->n_op, p1)) != NULL)
 			break;
+#endif
+#ifndef NO_COMPLEX
+		if (p->n_op == NOT && ANYCX(p1))
+			p1 = cxop(NE, p1, bcon(0));
 #endif
 		r = buildtree(p->n_op, p1, NIL);
 		break;
