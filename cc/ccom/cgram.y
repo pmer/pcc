@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.382 2014/09/09 08:35:54 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.383 2014/09/15 15:30:49 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2191,6 +2191,7 @@ eve(NODE *p)
 		break;
 #endif
 
+	case COLON:
 	case MUL:
 	case DIV:
 	case PLUS:
@@ -2231,7 +2232,6 @@ eve(NODE *p)
 	case EREQ:
 	case OREQ:
 	case ANDEQ:
-	case COLON:
 	case QUEST:
 		p1 = eve(p1);
 		p2 = eve(p2);

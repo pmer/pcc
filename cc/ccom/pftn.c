@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.387 2014/09/05 07:46:13 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.388 2014/09/15 14:36:08 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -3230,6 +3230,8 @@ cxop(int op, NODE *l, NODE *r)
 	if (op != UMINUS)
 		r = mkcmplx(r, mxtyp);
 
+	if (op == COLON)
+		return buildtree(COLON, l, r);
 
 	/* put a pointer to left and right elements in a TEMP */
 	l = buildtree(ADDROF, l, NIL);
