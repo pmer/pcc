@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.386 2014/09/04 19:36:00 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.387 2014/09/05 07:46:13 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -3456,11 +3456,11 @@ cxret(NODE *p, NODE *q)
 {
 	if (ANYCX(q)) { /* Return complex type */
 		p = mkcmplx(p, strmemb(q->n_ap)->stype);
-	} else if (ISFTY(q->n_type) || ISITY(q->n_type)) { /* real or imag */
-		p = structref(p, DOT, ISFTY(q->n_type) ? real : imag);
+	} else if (q->n_type < STRTY || ISITY(q->n_type)) { /* real or imag */
+		p = structref(p, DOT, ISITY(q->n_type) ? imag : real);
 		if (p->n_type != q->n_type)
 			p = cast(p, q->n_type, 0);
-	} else 
+	} else
 		cerror("cxred failing type");
 	return p;
 }
