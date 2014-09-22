@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.384 2014/09/15 19:46:50 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.385 2014/09/19 17:44:45 plunky Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1998,8 +1998,9 @@ gcc_attr_wrapper(NODE *p)
 #ifdef GCC_COMPAT
 	return gcc_attr_parse(p);
 #else
-	uerror("gcc attribute used");
-	return NULL;
+	if (p != NIL)
+		uerror("gcc attribute used");
+	return NIL;
 #endif
 }
 
