@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.5 2014/04/03 15:16:55 ragge Exp $	*/
+/*	$Id: local.c,v 1.6 2014/04/08 19:51:31 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -212,20 +212,23 @@ spalloc(NODE *t, NODE *p, OFFSZ off)
 
 	p = buildtree(MUL, p, bcon(off/SZCHAR));
 	p = buildtree(PLUS, p, bcon(30));
-	p = buildtree(AND, p, xbcon(-16, NULL, LONG));
+	p = buildtree(AND, p, xbcon(-16, NULL, UNSIGNED));
+	p = cast(p, UNSIGNED, 0);
 
 	/* sub the size from sp */
-	sp = block(REG, NIL, NIL, p->n_type, 0, 0);
+	sp = block(REG, NIL, NIL, UNSIGNED+PTR, 0, 0);
 	sp->n_lval = 0;
 	sp->n_rval = STKREG;
-	ecomp(buildtree(MINUSEQ, sp, p));
+	p = (buildtree(MINUSEQ, sp, p));
+	ecomp(p);
 
 	/* save the address of sp */
-	sp = block(REG, NIL, NIL, PTR+LONG, t->n_df, t->n_ap);
+	sp = block(REG, NIL, NIL, PTR+UNSIGNED, t->n_df, t->n_ap);
 	sp->n_lval = 0;
 	sp->n_rval = STKREG;
 	t->n_type = sp->n_type;
-	ecomp(buildtree(ASSIGN, t, sp)); /* Emit! */
+	p = (buildtree(ASSIGN, t, sp)); /* Emit! */
+	ecomp(p);
 
 }
 
