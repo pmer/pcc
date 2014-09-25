@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.6 2014/04/04 20:07:06 ragge Exp $	*/
+/*	$Id: table.c,v 1.7 2014/04/08 19:51:31 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.ltu.se).
  * All rights reserved.
@@ -442,7 +442,7 @@ struct optab table[] = {
 		0,	0,
 		"	sub.l AR,AL\n", },
 
-{ MINUS, FOREFF|INAREG,
+{ MINUS, INAREG,
 	SBREG,		TPOINT,
 	SBREG,		TPOINT,
 		NAREG,	RESC1,
@@ -533,13 +533,13 @@ struct optab table[] = {
 		0,	RLEFT|RESCC,
 		"	neg.ZA AL\n", },
 
-{ UMINUS,	FOREFF|INDREG|FORCC,
+{ UMINUS,	INDREG|FORCC,
 	SDREG,	TFP,
 	SDREG,	TFP,
 		NDREG,	RESC1|RESCC,
 		"	fmovecr #0xf,A1\n	fsub.x AL,A1\n", },
 
-{ UMINUS,	FOREFF|INDREG|FORCC,
+{ UMINUS,	INDREG|FORCC,
 	SNAME|SOREG,	TFP,
 	SDREG,		TFP,
 		NDREG,	RESC1|RESCC,
@@ -974,6 +974,14 @@ struct optab table[] = {
 	SANY,	TANY,
 		0,	RNOP,
 		"	jmp LL\n", },
+
+#if defined(GCC_COMPAT) || defined(LANG_F77)
+{ GOTO,		FOREFF,
+	SBREG,	TANY,
+	SANY,	TANY,
+		0,	RNOP,
+		"	jmp (AL)\n", },
+#endif
 
 # define DF(x) FORREW,SANY,TANY,SANY,TANY,REWRITE,x,""
 
