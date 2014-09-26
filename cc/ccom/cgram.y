@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.385 2014/09/19 17:44:45 plunky Exp $	*/
+/*	$Id: cgram.y,v 1.386 2014/09/22 14:16:12 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1064,6 +1064,7 @@ e2:		   e %prec ','
 			$3->n_op = TYPE;
 			$$ = biop(CM, $1, $3);
 		}
+		|  cast_type { TYMFIX($1); $1->n_op = TYPE; $$ = $1; }
 		;
 
 /*
