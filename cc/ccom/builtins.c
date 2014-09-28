@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.52 2014/06/06 07:04:42 ragge Exp $	*/
+/*	$Id: builtins.c,v 1.53 2014/09/26 10:30:35 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -513,6 +513,15 @@ builtin_tc(const struct bitable *bt, NODE *a)
 	return p;
 }
 
+static void
+putinlbl(NODE *p, void *arg)
+{
+	if (p->n_op == COMOP && p->n_left->n_op == GOTO) {
+		int v = (int)p->n_left->n_left->n_lval;
+		send_passt(IP_DEFLAB, v+1);
+	}
+}
+
 /*
  * Similar to ?:
  */
@@ -529,9 +538,11 @@ builtin_ce(const struct bitable *bt, NODE *a)
 	if (a->n_left->n_left->n_lval) {
 		p = a->n_left->n_right;
 		a->n_left->n_op = UMUL; /* for tfree() */
+		walkf(a->n_right, putinlbl, 0);
 	} else {
 		p = a->n_right;
 		a->n_op = UMUL; /* for tfree() */
+		walkf(a->n_left->n_right, putinlbl, 0);
 	}
 	tfree(a);
 	return p;
