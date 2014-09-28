@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.78 2014/09/02 14:30:12 ragge Exp $	*/
+/*	$Id: code.c,v 1.79 2014/09/21 09:49:48 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -530,7 +530,7 @@ bjobcode(void)
 	/* XXX cross-compiling will fail here */
 	int fcw = 0;
 	__asm("fstcw (%0)" : : "r"(&fcw));
-	fcw |= 0x300;
+	fcw |= 0x33f;
 	__asm("fldcw (%0)" : : "r"(&fcw));
 #endif
 
