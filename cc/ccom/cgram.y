@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.386 2014/09/22 14:16:12 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.387 2014/09/26 10:30:35 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2435,7 +2435,7 @@ mkclabs(void)
 
 	for (i = 0, l = labp; l; l = l->next, i++)
 		;
-	rv = tmpalloc((i+1)*sizeof(int));
+	rv = inlalloc((i+1)*sizeof(int));
 	for (i = 0, l = labp; l; l = l->next, i++)
 		rv[i] = l->lab;
 	rv[i] = 0;
