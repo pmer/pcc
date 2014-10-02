@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.89 2014/06/01 11:35:02 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.1 2014/09/16 10:47:35 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -49,7 +49,7 @@
 #define SZLDOUBLE	96
 #define SZLONG		32
 #define SZSHORT		16
-#define SZLONGLONG	32
+#define SZLONGLONG	64	/* Doesn't work usefully yet */
 #define SZPOINT(t)	16	/* FIXME: 32 for large model work */
 
 /*
