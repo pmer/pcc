@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.6 2014/04/08 19:51:31 ragge Exp $	*/
+/*	$Id: local2.c,v 1.7 2014/09/24 19:58:05 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -221,6 +221,10 @@ zzzcode(NODE *p, int c)
 	case 'B':
 		if (p->n_qual)
 			printf("	add.l #%d,%%sp\n", (int)p->n_qual);
+		break;
+
+	case 'C': /* jsr or bsr.l XXX - type of CPU? */
+		printf("%s", kflag ? "bsr.l" : "jsr");
 		break;
 
 	case 'F': /* Emit float branches */
