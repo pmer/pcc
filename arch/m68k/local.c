@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.7 2014/09/24 16:39:34 ragge Exp $	*/
+/*	$Id: local.c,v 1.8 2014/10/07 13:31:13 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -112,8 +112,7 @@ picstatic(NODE *p)
 	sp->stype = p->n_sp->stype;
 	r = xbcon(0, sp, INT);
 	q = buildtree(PLUS, q, r);
-//	if (ISARY(p->n_type))
-//		p->n_type = p->n_type - ARY + PTR;
+	q = block(UMUL, q, 0, p->n_type, p->n_df, p->n_ap);
 	q = block(UMUL, q, 0, p->n_type, p->n_df, p->n_ap);
 	q->n_sp = p->n_sp; /* for init */
 	nfree(p);
