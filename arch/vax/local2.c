@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.36 2012/09/26 20:22:42 plunky Exp $	*/
+/*	$Id: local2.c,v 1.37 2012/12/21 21:44:27 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -570,7 +570,7 @@ zzzcode(NODE *p, int c)
 
 
 	case 'Z':	/* complement mask for bit instr */
-		printf("$%Ld", ~p->n_right->n_lval);
+		printf("$%lld", ~p->n_right->n_lval);
 		return;
 
 	case 'U':	/* 32 - n, for unsigned right shifts */
