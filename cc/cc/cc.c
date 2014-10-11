@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.281 2014/10/02 07:40:52 ragge Exp $	*/
+/*	$Id: cc.c,v 1.282 2014/10/10 16:15:08 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -753,8 +753,9 @@ main(int argc, char *argv[])
 			vflag++;
 			break;
 
-		case 'w': /* no warnings at all */
-			break;	/* currently do nothing */
+		case 'w': /* no warnings at all emitted */
+			strlist_append(&compiler_flags, "-w");
+			break;
 
 		case 'W': /* Ignore (most of) W-flags */
 			if ((t = argnxt(argp, "-Wl,"))) {
