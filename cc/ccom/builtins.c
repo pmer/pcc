@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.54 2014/09/28 15:34:35 ragge Exp $	*/
+/*	$Id: builtins.c,v 1.55 2014/10/12 19:59:58 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -435,8 +435,7 @@ builtin_va_arg(const struct bitable *bt, NODE *a)
 static NODE *
 builtin_va_end(const struct bitable *bt, NODE *a)
 {
-	tfree(a);
-	return bcon(0); /* nothing */
+	return a; /* may have side effects */
 }
 
 static NODE *
