@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.39 2014/10/11 15:57:17 ragge Exp $	*/
+/*	$Id: local2.c,v 1.40 2014/10/12 09:59:31 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -603,6 +603,7 @@ zzzcode(NODE *p, int c)
 			register int size;
 
 			size = p->n_stsize;
+			SETOFF(size, 4);
 			l = r = NULL; /* XXX gcc */
 			if( p->n_op == STASG ){
 				l = p->n_left;
@@ -1342,7 +1343,7 @@ argsiz(NODE *p)
 	TWORD t = p->n_type;
 
 	if (t == STRTY || t == UNIONTY)
-		return p->n_stsize/(SZINT/SZCHAR);
+		return (p->n_stsize+3)/4;
 	return szty(t);
 }
 
