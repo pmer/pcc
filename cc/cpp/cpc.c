@@ -1,4 +1,4 @@
-/*      $Id: cpc.c,v 1.1 2014/10/18 15:02:03 ragge Exp $      */
+/*      $Id: cpc.c,v 1.2 2014/10/29 11:54:51 plunky Exp $      */
 
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
@@ -278,13 +278,12 @@ eval(int op, ND *n1, ND *n2)
 
 	switch (op) {
 	case OROR:
-		if (n1->nd_val | n2->nd_val)
+		if (n2->nd_val)
 			n1->nd_val = 1;
 		n1->op = NUMBER;
 		break;
 	case ANDAND:
-		if (n1->nd_val && n2->nd_val)
-			n1->nd_val = 1;
+		n1->nd_val = (n1->nd_val && n2->nd_val);
 		n1->op = NUMBER;
 		break;
 	case '+': n1->nd_val += n2->nd_val; break;
