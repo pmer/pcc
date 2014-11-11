@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.177 2014/06/04 06:43:49 gmcgarry Exp $	*/
+/*	$Id: local2.c,v 1.1 2014/09/16 10:47:35 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -323,16 +323,6 @@ ulltofp(NODE *p)
 	expand(p, 0, "	add sp, 8\n");
 	expand(p, 0, "	cmp UL, 0\n");
 	printf("	jge " LABFMT "\n", jmplab);
-
-//#if defined(ELFABI)
-//FIXME	printf("	fldt " LABFMT "%s\n", loadlab, kflag ? "@GOTOFF" : "");
-//#elif defined(MACHOABI)
-//	printf("\tpushl 0x5f800000\n");
-//	printf("\tfadds (%%sp)\n");
-//	printf("\tadd $4,%%sp\n");
-//#else
-//#error incomplete implementation
-//#endif
 
 	printf("	faddp %%st,%%st(1)\n");
 	printf(LABFMT ":\n", jmplab);
@@ -765,18 +755,6 @@ adrput(FILE *io, NODE *p)
 		printf("]");
 		return;
 	case ICON:
-#ifdef PCC_DEBUG
-		/* Sanitycheck for PIC, to catch adressable constants */
-		if (kflag && p->n_name[0] && 0) {
-			static int foo;
-
-			if (foo++ == 0) {
-				printf("\nfailing...\n");
-				fwalk(p, e2print, 0);
-				comperr("pass2 conput");
-			}
-		}
-#endif
 		/* addressable value of the constant */
 		conput(io, p);
 		return;
