@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.283 2014/10/11 10:50:26 ragge Exp $	*/
+/*	$Id: cc.c,v 1.284 2014/11/11 07:30:49 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -608,6 +608,10 @@ main(int argc, char *argv[])
 			break;
 
 		case 'm': /* target-dependent options */
+			if (strncmp(argp, "-march=", 6) == 0) {
+				strlist_append(&compiler_flags, argp);
+				break;
+			}
 #ifdef mach_amd64
 			/* need to call i386 ccom for this */
 			if (strcmp(argp, "-melf_i386") == 0) {
