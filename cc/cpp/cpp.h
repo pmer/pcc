@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.71 2014/10/19 17:40:36 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.72 2014/11/21 22:47:51 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -181,4 +181,3 @@ void warning(const char *fmt, ...);
 void error(const char *fmt, ...);
 int cinput(void);
 void getcmnt(void);
-void xwrite(int, const void *, unsigned int);
