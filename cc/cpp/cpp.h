@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.72 2014/11/21 22:47:51 plunky Exp $	*/
+/*	$Id: cpp.h,v 1.73 2014/11/28 19:30:35 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -176,6 +176,8 @@ int yyparse(void);
 void unpstr(const usch *);
 usch *savstr(const usch *str);
 void savch(int c);
+void putch(int);
+void putstr(const usch *s);
 usch *sheap(const char *fmt, ...);
 void warning(const char *fmt, ...);
 void error(const char *fmt, ...);
