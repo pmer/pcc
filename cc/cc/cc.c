@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.285 2014/11/13 18:55:20 ragge Exp $	*/
+/*	$Id: cc.c,v 1.286 2014/12/02 21:03:13 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -207,9 +207,9 @@ char *cppmdadd[] = CPPMDADD;
 #endif
 #ifndef DEFLIBDIRS	/* default library search paths */
 #ifdef MULTIARCH_PATH
-#define DEFLIBDIRS	{ "/usr/lib/", 0 }
-#else
 #define DEFLIBDIRS	{ "/usr/lib/", "/usr/lib/" MULTIARCH_PATH "/", 0 }
+#else
+#define DEFLIBDIRS	{ "/usr/lib/", 0 }
 #endif
 #endif
 #ifndef DEFLIBS		/* default libraries included */
