@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.286 2014/12/02 21:03:13 ragge Exp $	*/
+/*	$Id: cc.c,v 1.287 2014/12/10 21:00:43 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1468,7 +1468,7 @@ nxtopt(char *o)
 		if (lav[0][l] != 0)
 			return &lav[0][l];
 	}
-	if (lac == 0)
+	if (lac == 1)
 		errorx(8, "missing argument to '%s'", o);
 	lav++;
 	lac--;
