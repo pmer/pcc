@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.290 2014/12/17 12:12:18 plunky Exp $	*/
+/*	$Id: cc.c,v 1.291 2014/12/17 12:41:42 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1580,6 +1580,7 @@ static char *gcppflags[] = {
 #endif
 #endif
 #endif
+	NULL
 };
 
 /* These should _not_ be defined here */
@@ -1660,6 +1661,7 @@ static char *fpflags[] = {
 	"-D__LDBL_MIN__=2.2250738585072014e-308",
 #endif
 #endif
+	NULL
 };
 
 /*
@@ -1674,14 +1676,14 @@ setup_cpp_flags(void)
 	for (i = 0; i < (int)sizeof(defflags)/(int)sizeof(char *); i++)
 		strlist_prepend(&preprocessor_flags, defflags[i]);
 
-	for (i = 0; i < (int)sizeof(gcppflags)/(int)sizeof(char *); i++)
+	for (i = 0; gcppflags[i]; i++)
 		strlist_prepend(&preprocessor_flags, gcppflags[i]);
 	strlist_prepend(&preprocessor_flags, xgnu89 ?
 	    "-D__GNUC_GNU_INLINE__" : "-D__GNUC_STDC_INLINE__");
 
 	cksetflags(cppflgcheck, &preprocessor_flags, 'p');
 
-	for (i = 0; i < (int)sizeof(fpflags)/(int)sizeof(char *); i++)
+	for (i = 0; fpflags[i]; i++)
 		strlist_prepend(&preprocessor_flags, fpflags[i]);
 
 	for (i = 0; cppadd[i]; i++)
