@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.288 2014/12/16 10:55:28 plunky Exp $	*/
+/*	$Id: cc.c,v 1.289 2014/12/17 12:05:44 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1174,6 +1174,10 @@ preprocess_input(char *input, char *output, int dodep)
 			strlist_append(&args, "-S");
 			strlist_append(&args, s->value);
 		}
+	}
+	STRLIST_FOREACH(s, &dirafterdirs) {
+		strlist_append(&args, "-S");
+		strlist_append(&args, s->value);
 	}
 	if (dodep)
 		strlist_append_list(&args, &depflags);
