@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.289 2014/12/17 12:05:44 plunky Exp $	*/
+/*	$Id: cc.c,v 1.290 2014/12/17 12:12:18 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1587,7 +1587,7 @@ static char *fpflags[] = {
 #ifdef TARGET_FLT_EVAL_METHOD
 	"-D__FLT_EVAL_METHOD__=" MKS(TARGET_FLT_EVAL_METHOD),
 #endif
-#if defined(os_darwin) || defined(os_netbsd)
+#if defined(os_darwin) || defined(os_netbsd) || defined(os_minix)
 	"-D__FLT_RADIX__=2",
 #if defined(mach_vax)
 	"-D__FLT_DIG__=6",
