@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.291 2014/12/17 12:41:42 plunky Exp $	*/
+/*	$Id: cc.c,v 1.292 2014/12/17 21:10:56 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -101,7 +101,7 @@
 #endif
 #include <assert.h>
 
-#ifdef os_win32
+#ifdef  _WIN32
 #include <windows.h>
 #include <process.h>
 #include <io.h>
@@ -265,7 +265,7 @@ void setup_ccom_flags(void);
 void setup_as_flags(void);
 void setup_ld_flags(void);
 static void expand_sysroot(void);
-#ifdef os_win32
+#ifdef  _WIN32
 char *win32pathsubst(char *);
 char *win32commandline(struct strlist *l);
 #endif
@@ -444,7 +444,7 @@ main(int argc, char *argv[])
 	PCC_EARLY_SETUP
 #endif
 
-#ifdef os_win32
+#ifdef _WIN32
 	/* have to prefix path early.  -B may override */
 	incdir = win32pathsubst(incdir);
 	altincdir = win32pathsubst(altincdir);
@@ -1272,7 +1272,7 @@ setsuf(char *s, char ch)
 	return rp;
 }
 
-#ifdef os_win32
+#ifdef _WIN32
 
 static int
 strlist_exec(struct strlist *l)
@@ -1380,7 +1380,7 @@ cunlink(char *f)
 	return (unlink(f));
 }
 
-#ifdef os_win32
+#ifdef _WIN32
 char *
 gettmp(void)
 {
@@ -1902,7 +1902,7 @@ setup_ld_flags(void)
 	}
 }
 
-#ifdef os_win32
+#ifdef _WIN32
 char *
 win32pathsubst(char *s)
 {
