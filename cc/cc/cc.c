@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.292 2014/12/17 21:10:56 plunky Exp $	*/
+/*	$Id: cc.c,v 1.293 2014/12/18 19:21:29 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1884,10 +1884,8 @@ setup_ld_flags(void)
 		}
 		strap(&middle_linker_flags, &crtdirs, b, 'p');
 		strap(&late_linker_flags, &crtdirs, e, 'a');
-		if (CRTI[0])
-			strap(&middle_linker_flags, &crtdirs, CRTI, 'p');
-		if (CRTN[0])
-			strap(&late_linker_flags, &crtdirs, CRTN, 'a');
+		strap(&middle_linker_flags, &crtdirs, CRTI, 'p');
+		strap(&late_linker_flags, &crtdirs, CRTN, 'a');
 		if (shared == 0) {
 			if (pgflag)
 				b = GCRT0;
