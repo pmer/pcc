@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.1 2005/01/08 14:53:42 pj Exp $	*/
+/*	$Id: ccconfig.h,v 1.2 2006/07/30 09:29:27 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -37,7 +37,6 @@
 
 /* common cpp predefines */
 #define	CPPADD	{ NULL, }
-#define	DYNLINKER { NULL }
 #define CRT0FILE ""
 #define STARTFILES { NULL }
 #define	ENDFILES { NULL }

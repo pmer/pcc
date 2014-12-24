@@ -1,4 +1,4 @@
-/* $Id: ccconfig.h,v 1.8 2011/06/04 19:27:26 plunky Exp $ */
+/* $Id: ccconfig.h,v 1.9 2012/08/05 14:35:00 ragge Exp $ */
 /*-
  * Copyright (c) 2007, 2008
  *	Thorsten Glaser <tg@mirbsd.de>
@@ -35,11 +35,7 @@
 }
 
 /* for dynamically linked binaries */
-#define DYNLINKER		{		\
-	"-dynamic-linker",			\
-	"/usr/libexec/ld.so",			\
-	NULL					\
-}
+#define	DYNLINKLIB	"/usr/libexec/ld.so"
 
 #define CRTEND_T	"crtend.o"
 #define DEFLIBS		{ "-lc", NULL }

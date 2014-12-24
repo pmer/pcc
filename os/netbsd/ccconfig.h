@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.29 2014/03/30 18:07:12 ragge Exp $	*/
+/*	$Id: ccconfig.h,v 1.30 2014/04/08 19:52:27 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -38,8 +38,7 @@
 #define F77LIBLIST { "-L/usr/local/lib", "-lF77", "-lI77", "-lm", "-lc", NULL };
 #endif
 
-/* host-independent */
-#define	DYNLINKER { "-dynamic-linker", "/usr/libexec/ld.elf_so", NULL }
+#define	DYNLINKLIB	"/usr/libexec/ld.elf_so"
 
 #define CRTEND_T	"crtend.o"
 
