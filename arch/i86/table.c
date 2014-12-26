@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.2 2014/11/11 07:43:07 ragge Exp $	*/
+/*	$Id: table.c,v 1.3 2014/12/26 11:12:22 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * Copyright (c) 2014 Alan Cox (alan@lxorguk.ukuu.org.uk).
@@ -181,7 +181,7 @@ struct optab table[] = {
 
 /* 8086: Only as op on AL,AX */
 { SCONV,	ININT,
-	SBREG|SOREG|SNAME,	TCHAR,
+	SBREG,	TCHAR|TUCHAR,
 	SAREG,	T16,
 		NSPECIAL|NAREG|NASL,	RESC1,
 		"	cbw\n", },
