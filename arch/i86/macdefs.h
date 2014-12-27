@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.1 2014/09/16 10:47:35 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.2 2014/10/02 07:42:49 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -296,22 +296,24 @@ int COLORMAP(int c, int *r);
 #define SMIXOR		(MAXSPECIAL+4)
 #define SMILWXOR	(MAXSPECIAL+5)
 #define SMIHWXOR	(MAXSPECIAL+6)
+#define	STWO		(MAXSPECIAL+7)	/* exactly two */
+#define	SMTWO		(MAXSPECIAL+8)	/* exactly minus two */
 
 /*
- * i386-specific symbol table flags.
+ * i86-specific symbol table flags.
  */
 #define	SSECTION	SLOCAL1
 #define SSTDCALL	SLOCAL2	
 #define SDLLINDIRECT	SLOCAL3
 
 /*
- * i386-specific node flags.
+ * i86-specific node flags.
  */
 #define FSTDCALL	NLOCAL1
 #define FFPPOP		NLOCAL2
 
 /*
- * i386-specific interpass stuff.
+ * i86-specific interpass stuff.
  */
 
 #define TARGET_IPP_MEMBERS			\
