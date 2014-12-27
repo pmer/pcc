@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.2 2014/10/02 07:42:49 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.3 2014/12/27 21:18:19 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -275,7 +275,7 @@ int COLORMAP(int c, int *r);
 #define ENCRA(x,y)	((x) << (6+y*6))	/* encode regs in int */
 /* XXX - return char in al? */
 #define	RETREG(x)	(x == CHAR || x == UCHAR ? AL : \
-			 x == LONG || x == LONGLONG || x == ULONGLONG ? AXDX : \
+			 x == LONG || x == ULONG || x == LONGLONG || x == ULONGLONG ? AXDX : \
 			 x == FLOAT || x == DOUBLE || x == LDOUBLE ? 31 : AX)
 
 #if 0
