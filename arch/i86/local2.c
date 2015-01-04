@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.3 2014/12/26 11:12:22 ragge Exp $	*/
+/*	$Id: local2.c,v 1.4 2014/12/27 21:18:19 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1429,16 +1429,13 @@ myxasm(struct interpass *ip, NODE *p)
 
 	t = p->n_left->n_type;
 	if (reg == AXDX) {
-		p->n_label = CLASSC;
+		;
 	} else {
-		p->n_label = CLASSA;
 		if (t == CHAR || t == UCHAR) {
-			p->n_label = CLASSB;
 			reg = reg * 2 + 8;
 		}
 	}
 	if (t == FLOAT || t == DOUBLE || t == LDOUBLE) {
-		p->n_label = CLASSD;
 		reg += 037;
 	}
 

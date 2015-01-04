@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.57 2014/08/28 20:14:49 ragge Exp $	*/
+/*	$Id: local2.c,v 1.58 2014/09/29 19:57:47 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1104,13 +1104,10 @@ retry:	switch (c) {
 	t = p->n_left->n_type;
 
 	if (t == FLOAT || t == DOUBLE) {
-		p->n_label = CLASSB;
 		reg += 16;
 	} else if (t == LDOUBLE) {
-		p->n_label = CLASSC;
 		reg += 32;
-	} else
-		p->n_label = CLASSA;
+	}
 
 	if (in && ut)
 		in = tcopy(in);
