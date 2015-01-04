@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.289 2014/10/10 16:12:52 ragge Exp $	*/
+/*	$Id: reader.c,v 1.290 2014/10/11 09:50:21 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -882,7 +882,7 @@ gencode(NODE *p, int cookie)
 	NODE *p1, *l, *r;
 	int o = optype(p->n_op);
 #ifdef FINDMOPS
-	int ismops = (p->n_op == ASSIGN && (p->n_flags & 1));
+	int ismops = (p->n_op == ASSIGN && (p->n_su & ISMOPS));
 #endif
 
 	l = p->n_left;
@@ -1095,7 +1095,7 @@ e2print(NODE *p, int down, int *a, int *b)
 	printf(", " );
 
 	prtreg(p);
-	printf(", SU= %d(%cREG,%s,%s,%s,%s,%s,%s)\n",
+	printf(", SU= %d(%cREG,%s,%s,%s,%s)\n",
 	    TBLIDX(p->n_su), 
 	    TCLASS(p->n_su)+'@',
 #ifdef PRTABLE
@@ -1104,7 +1104,6 @@ e2print(NODE *p, int down, int *a, int *b)
 #else
 	    "",
 #endif
-	    p->n_su & LREG ? "LREG" : "", p->n_su & RREG ? "RREG" : "",
 	    p->n_su & RVEFF ? "RVEFF" : "", p->n_su & RVCC ? "RVCC" : "",
 	    p->n_su & DORIGHT ? "DORIGHT" : "");
 }
