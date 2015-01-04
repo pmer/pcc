@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.181 2014/11/13 19:10:36 ragge Exp $	*/
+/*	$Id: local2.c,v 1.182 2015/01/04 18:41:04 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -473,10 +473,8 @@ zzzcode(NODE *p, int c)
 		break;
 
 	case 'C':  /* remove from stack after subroutine call */
-#ifdef notdef
-		if (p->n_left->n_flags & FSTDCALL)
+		if (attr_find(p->n_left->n_ap, GCC_ATYP_STDCALL))
 			break;
-#endif
 		pr = p->n_qual;
 		if (attr_find(p->n_ap, ATTR_I386_FPPOP))
 			printf("	fstp	%%st(0)\n");
