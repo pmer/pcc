@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.10 2014/03/09 09:32:58 ragge Exp $	*/
+/*	$Id: local2.c,v 1.11 2014/06/03 20:19:50 ragge Exp $	*/
 /*
  * Copyright (c) 2006 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -207,8 +207,9 @@ bfasg(NODE *p)
 static void
 starg(NODE *p)
 {
-	printf("	subl $%d,%%esp\n", p->n_stsize);
-	printf("	pushl $%d\n", p->n_stsize);
+	int sz = attr_find(p->n_ap, ATTR_P2STRUCT)->iarg(0);
+	printf("	subl $%d,%%esp\n", sz);
+	printf("	pushl $%d\n", sz);
 	expand(p, 0, "	pushl AL\n");
 	expand(p, 0, "	leal 8(%esp),A1\n");
 	expand(p, 0, "	pushl A1\n");

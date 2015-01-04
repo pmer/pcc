@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.41 2012/09/26 20:22:41 plunky Exp $	*/
+/*	$Id: local2.c,v 1.42 2014/06/01 11:35:02 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -628,7 +628,7 @@ argsiz(NODE *p)
         if (t == LDOUBLE)
                 return 12;
         if (t == STRTY)
-                return p->n_stsize;
+                return attr_find(p->n_ap, ATTR_P2STRUCT)->iarg(0);
         comperr("argsiz");
         return 0;
 }
