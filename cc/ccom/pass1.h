@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.264 2015/01/01 09:13:17 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.265 2015/01/04 18:41:04 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -493,6 +493,7 @@ enum {	ATTR_FIRST = ATTR_MI_MAX + 1,
 	GCC_ATYP_WARNING,
 	GCC_ATYP_NOCLONE,
 	GCC_ATYP_REGPARM,
+	GCC_ATYP_FASTCALL,
 
 	/* other stuff */
 	GCC_ATYP_BOUNDED,	/* OpenBSD extra boundary checks */

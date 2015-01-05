@@ -1,4 +1,4 @@
-/*      $Id: gcc_compat.c,v 1.106 2014/06/07 07:04:09 plunky Exp $     */
+/*      $Id: gcc_compat.c,v 1.107 2014/12/17 13:20:35 plunky Exp $     */
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -360,6 +360,7 @@ struct atax {
 	CS(GCC_ATYP_WARNING)	{ A_1ARG|A1_STR, "warning" },
 	CS(GCC_ATYP_NOCLONE)	{ A_0ARG, "noclone" },
 	CS(GCC_ATYP_REGPARM)	{ A_1ARG, "regparm" },
+	CS(GCC_ATYP_FASTCALL)	{ A_0ARG, "fastcall" },
 
 	CS(GCC_ATYP_BOUNDED)	{ A_3ARG|A_MANY|A1_NAME, "bounded" },
 };
