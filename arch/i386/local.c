@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.185 2015/01/04 18:41:04 ragge Exp $	*/
+/*	$Id: local.c,v 1.186 2015/01/04 20:02:32 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -164,12 +164,14 @@ picext(NODE *p)
 		p->n_sp->sflags |= SSTDCALL;
 #endif
 	sp->sflags = p->n_sp->sflags & SSTDCALL;
+	sp->sap = p->n_sp->sap;
 	r = xbcon(0, sp, INT);
 	q = buildtree(PLUS, q, r);
 	q = block(UMUL, q, 0, PTR|VOID, 0, 0);
 	q = block(UMUL, q, 0, p->n_type, p->n_df, p->n_ap);
 	q->n_sp = p->n_sp; /* for init */
 	nfree(p);
+printf("pucext\n"); fwalk(q, eprint, 0);
 	return q;
 
 #elif defined(MACHOABI)
@@ -823,12 +825,9 @@ myp2tree(NODE *p)
 	mangle(p);
 
 	if ((p->n_op == STCALL || p->n_op == USTCALL) && 
-	    p->n_left->n_op == ICON &&
-	    attr_find(p->n_left->n_ap, ATTR_COMPLEX) &&
-	    tsize(DECREF(DECREF(p->n_left->n_type)),
-	    p->n_left->n_df, p->n_left->n_ap) == SZLONGLONG) {
+	    attr_find(p->n_ap, ATTR_COMPLEX) &&
+	    strmemb(p->n_ap)->stype == FLOAT)
 		p->n_ap = attr_add(p->n_ap, attr_new(ATTR_I386_FCMPLRET, 1));
-	}
 
 	if (p->n_op != FCON)
 		return;
