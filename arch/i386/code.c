@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.86 2014/12/24 12:31:25 plunky Exp $	*/
+/*	$Id: code.c,v 1.87 2015/01/05 15:21:09 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -296,7 +296,7 @@ bfcode(struct symtab **sp, int cnt)
 			argbase += sz;
 			nrarg = regparmarg;	/* no more in reg either */
 		} else {					/* in reg */
-			sp2->soffset = nrarg;
+			sp2->soffset = regpregs[nrarg];
 			nrarg += sz/SZINT;
 			sp2->sclass = REGISTER;
 		}
@@ -311,7 +311,8 @@ bfcode(struct symtab **sp, int cnt)
 
 		sp2 = sp[i];
 
-		if (ISSOU(sp2->stype) && sp2->sclass == REGISTER) {
+		if ((ISSOU(sp2->stype) && sp2->sclass == REGISTER) ||
+		    (sp2->sclass == REGISTER && xtemps == 0)) {
 			/* must move to stack */
 			sz = tsize(sp2->stype, sp2->sdf, sp2->sap);
 			SETOFF(sz, SZINT);
