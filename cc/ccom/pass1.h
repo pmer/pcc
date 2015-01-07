@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.266 2015/01/05 15:21:09 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.267 2015/01/07 05:14:24 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -501,7 +501,7 @@ enum {	ATTR_FIRST = ATTR_MI_MAX + 1,
 	/* OSX toolchain */
 	GCC_ATYP_WEAKIMPORT,
 
-	GCC_ATYP_MAX
+	GCC_ATYP_MAX,
 #endif
 #ifdef ATTR_P1_TARGET
 	ATTR_P1_TARGET,

@@ -1,4 +1,4 @@
-/*      $Id: local2.c,v 1.36 2015/01/04 19:17:23 ragge Exp $    */
+/*      $Id: local2.c,v 1.37 2015/01/07 05:20:48 gmcgarry Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1385,7 +1385,7 @@ mflags(char *str)
 	} else if (strcasecmp(str, "fpe=vfp") == 0) {
 		fset &= ~(FEATURE_VFP | FEATURE_FPA);
 		fset |= FEATURE_VFP;
-	} else if (strcasecmp(str, "fpe=vfpv3-d16) == 0) {
+	} else if (strcasecmp(str, "fpe=vfpv3-d16") == 0) {
 		fset &= ~(FEATURE_VFP | FEATURE_FPA);
 		fset |= FEATURE_VFP;
 	} else if (strcasecmp(str, "soft-float") == 0) {
