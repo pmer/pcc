@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.265 2015/01/04 18:41:04 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.266 2015/01/05 15:21:09 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -498,7 +498,10 @@ enum {	ATTR_FIRST = ATTR_MI_MAX + 1,
 	/* other stuff */
 	GCC_ATYP_BOUNDED,	/* OpenBSD extra boundary checks */
 
-	GCC_ATYP_MAX,
+	/* OSX toolchain */
+	GCC_ATYP_WEAKIMPORT,
+
+	GCC_ATYP_MAX
 #endif
 #ifdef ATTR_P1_TARGET
 	ATTR_P1_TARGET,
