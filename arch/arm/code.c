@@ -1,4 +1,4 @@
-/*      $Id: code.c,v 1.27 2012/04/22 21:07:40 plunky Exp $    */
+/*      $Id: code.c,v 1.28 2014/04/19 07:47:51 ragge Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -841,6 +841,27 @@ retstruct(NODE *p)
 	}
 
 	return p;
+}
+
+NODE *
+builtin_frame_address(const struct bitable *bt, NODE *a)
+{
+	assert(0);
+	return NULL;
+}
+
+NODE *
+builtin_return_address(const struct bitable *bt, NODE *a)
+{
+	assert(0);
+	return NULL;
+}
+
+NODE *
+builtin_cfa(const struct bitable *bt, NODE *a)
+{
+	assert(0);
+	return NULL;
 }
 
 /*
