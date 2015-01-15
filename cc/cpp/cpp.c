@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.203 2014/12/18 19:21:29 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.204 2015/01/06 12:03:06 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1292,7 +1292,7 @@ unfname(void)
 		savch(*bp);
 	}
 	savch('\"');
-	savch(0);
+	*stringbuf = 0;
 	unpstr(sb);
 }
 
