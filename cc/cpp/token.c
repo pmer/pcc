@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.121 2014/12/05 10:56:37 plunky Exp $	*/
+/*	$Id: token.c,v 1.122 2015/01/17 16:28:19 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1532,7 +1532,7 @@ skpln(void)
  * just search for a new directive.
  */
 static void
-flscan()
+flscan(void)
 {
 	int ch;
 
