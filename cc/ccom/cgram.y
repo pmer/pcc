@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.389 2015/01/04 18:41:04 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.390 2015/02/20 17:39:55 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1286,7 +1286,7 @@ gccexpr(int bn, NODE *q)
 	plabel(bn);
 	r = buildtree(COMOP, biop(GOTO, bcon(bn+1), NIL), q);
 	flend();
-	if (q != NIL) {
+	if (q->n_op != ICON && q->n_type != STRTY) {
 		p = tempnode(0, q->n_type, q->n_df, q->n_ap);
 		r = buildtree(ASSIGN, ccopy(p), r);
 		r = buildtree(COMOP, r, p);
