@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.204 2015/01/06 12:03:06 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.205 2015/01/15 19:38:24 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1618,7 +1618,11 @@ readargs(struct symtab *sp, const usch **args)
 				plev++;
 			if (c == ')')
 				plev--;
-			savstr(yytext);
+			if (c == IDENT && (sp = lookup(yytext, FIND)) &&
+			    (sp == linloc)) {
+				sheap("%d", ifiles->lineno);
+			} else
+				savstr(yytext);
 oho:			while ((c = sloscan()) == '\n') {
 				ifiles->lineno++;
 				putch(cinput());
