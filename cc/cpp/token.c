@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.122 2015/01/17 16:28:19 ragge Exp $	*/
+/*	$Id: token.c,v 1.123 2015/01/21 07:46:50 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1460,10 +1460,23 @@ undefstmt(void)
 static void
 identstmt(void)
 {
-	/* Just ignore */
-	if (sloscan() != WSPACE || sloscan() != STRING)
-		error("bad #ident directive");
+	struct symtab *sp;
+	int i;
+
+	if (sloscan() != WSPACE)
+		goto bad;
+
+	if ((i = sloscan()) == IDENT) {
+		if ((sp = lookup(yytext, FIND)) && kfind(sp))
+			unpstr(stringbuf);
+		i = sloscan();
+	}
+
+	if (i != STRING)
+		goto bad;
 	return;
+bad:
+	error("bad #ident directive");
 }
 
 static void
