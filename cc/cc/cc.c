@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.297 2014/12/24 12:33:10 plunky Exp $	*/
+/*	$Id: cc.c,v 1.298 2015/01/07 05:20:48 gmcgarry Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -723,6 +723,12 @@ main(int argc, char *argv[])
 				printfilename = 1;
 			} else
 				oerror(argp);
+			break;
+
+		case 'R':
+			if (argp[2] == 0)
+				argp = cat(argp, nxtopt(0));
+			strlist_append(&middle_linker_flags, argp);
 			break;
 
 		case 'r':
