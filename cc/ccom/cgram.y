@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.390 2015/02/20 17:39:55 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.391 2015/02/22 14:15:11 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -2002,7 +2002,7 @@ gcc_attr_wrapper(NODE *p)
 #else
 	if (p != NIL)
 		uerror("gcc attribute used");
-	return NIL;
+	return NULL;
 #endif
 }
 
