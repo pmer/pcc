@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.75 2014/12/18 19:21:29 plunky Exp $	*/
+/*	$Id: cpp.h,v 1.76 2015/04/26 18:27:23 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -173,7 +173,7 @@ void line(void);
 int pushfile(const usch *fname, const usch *fn, int idx, void *incs);
 void prtline(void);
 int yylex(void);
-int sloscan(void);
+int sloscan(void (d)(int));
 void cunput(int);
 int yyparse(void);
 void unpstr(const usch *);
