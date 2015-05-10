@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.131 2015/05/05 18:25:25 ragge Exp $	*/
+/*	$Id: token.c,v 1.132 2015/05/09 15:06:56 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -788,7 +788,6 @@ yagain:	yyp = 0;
 		if (tflag && defining)
 			goto any;
 		yytp = 0;
-	strng:
 		faststr(ch, yyts);
 		yyts(0);
 		return STRING;
@@ -805,8 +804,9 @@ yagain:	yyp = 0;
 		if ((c2 == '\"' || c2 == '\'') && !tflag) {
 			yytp = 0;
 			yyts(ch);
-			ch = c2;
-			goto strng;
+			faststr(c2, yyts);
+			yyts(0);
+			return c2 == '\'' ? NUMBER : STRING;
 		}
 		unch(c2);
 		/* FALLTHROUGH */
