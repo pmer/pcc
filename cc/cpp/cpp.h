@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.80 2015/05/09 15:06:56 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.81 2015/06/21 18:04:09 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -77,10 +77,6 @@ extern	FILE	*of;
 
 /* Used in macro expansion */
 #define RECMAX	10000			/* max # of recursive macros */
-extern struct symtab *norep[RECMAX];
-extern int norepptr;
-extern unsigned short bptr[RECMAX];
-extern int bidx;
 #define	MKB(l,h)	(l+((h)<<8))
 
 /* quick checks for some characters */
@@ -99,6 +95,7 @@ extern usch spechr[];
 #define ISWS(x)		((x) == '\t' || (x) == ' ')
 #define ISID(x)		(spechr[x] & C_ID)
 #define ISID0(x)	(spechr[x] & C_ID0)
+#define	ISDIGIT(x)	(spechr[x] & C_DIGIT)
 
 /*
  * definition for include file info

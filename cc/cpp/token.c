@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.133 2015/05/10 07:28:19 ragge Exp $	*/
+/*	$Id: token.c,v 1.134 2015/06/21 18:04:09 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -744,28 +744,14 @@ yagain:	yyp = 0;
 			if (fastcmnt(0))
 				error("comment and no Cflag");
 		} else {
-			extern int readmac;
-
-#if 0
-			if (readmac) {
-				unch(c2 = inch());
-				yytext[1] = 0;
-				if (c2 == '*')
-					return CMNT;
-			}
-#endif
 			yytp = 1;
 			Ccmnt(d ? d : putch);
 			yyts(0);
-			if (readmac)
-				return CMNT;
 			goto zagain;
 		}
 		goto any;
 
 	case '\"':
-		if (tflag && defining)
-			goto any;
 		yytp = 0;
 		faststr(ch, yyts);
 		yyts(0);
