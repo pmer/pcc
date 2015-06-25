@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.215 2015/06/21 18:04:09 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.216 2015/06/21 20:10:17 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1872,7 +1872,7 @@ readargs2(usch **inp, struct symtab *sp, const usch **args)
 /*
  * expand a function-like macro.
  * vp points to end of replacement-list
- * reads function arguments from sloscan(NULL)
+ * reads function arguments from input stream.
  * result is pushed-back for more scanning.
  */
 struct iobuf *
