@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.136 2015/06/25 08:17:37 ragge Exp $	*/
+/*	$Id: token.c,v 1.137 2015/06/25 11:30:20 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1022,8 +1022,8 @@ chknl(int ignore)
 				;
 		} else
 			f("no newline at end of file");
-	} else
-		unch(t);
+	}
+	unch(t);
 }
 
 static void
