@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.83 2015/06/25 11:30:20 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.84 2015/06/27 09:17:43 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -50,18 +50,15 @@ extern	FILE	*of;
 #if defined(mach_pdp11)
 #define CPPBUF  BUFSIZ
 #define	BUF_STACK
-#elif defined(_WIN32)
-/* winxp seems to fail > 26608 bytes */
-#define CPPBUF	16384
 #else
-#define CPPBUF	(65536*2)
+#define CPPBUF	16384
 #endif
 #endif
 
 #define	MAXARGS	128	/* Max # of args to a macro. Should be enough */
 
-#define	NAMEMAX	CPPBUF	/* currently pushbackbuffer */
-#define	BBUFSZ	(NAMEMAX+CPPBUF+1)
+#define	PBMAX	10	/* min pushbackbuffer size */
+#define	BBUFSZ	(PBMAX+CPPBUF+1)
 
 #define	PRAGLOC	0xfa	/* _Pragma */
 #define	LINLOC	0xfb	/* __LINE__ */
