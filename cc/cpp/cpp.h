@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.82 2015/06/21 20:10:17 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.83 2015/06/25 11:30:20 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -183,7 +183,7 @@ void include_next(void);
 void line(void);
 
 int pushfile(const usch *fname, const usch *fn, int idx, void *incs);
-void prtline(void);
+void prtline(int nl);
 int yylex(void);
 void cunput(int);
 int yyparse(void);
