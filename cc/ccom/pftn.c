@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.395 2015/01/05 15:48:47 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.396 2015/07/03 11:45:43 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2189,7 +2189,9 @@ tymerge(NODE *typ, NODE *idp)
 		idp->n_type = t;
 	
 	if (idp->n_op != NAME) {
-		tfree(idp->n_left);
+		for (p = idp->n_left; p->n_op != NAME; p = nfree(p))
+			;
+		nfree(p);
 		idp->n_op = NAME;
 	}
 	/* carefully not destroy any type attributes */
