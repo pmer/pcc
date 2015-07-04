@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.218 2015/06/26 07:24:55 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.219 2015/06/27 09:17:43 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1815,8 +1815,12 @@ readargs2(usch **inp, struct symtab *sp, const usch **args)
 					error("eof in macro");
 			} else if (c == BLKID) {
 				savch(c), savch(raread());
-			} else if (c == '/') error("FIXME ccmnt");
-			else if (c == '\"' || c == '\'') {
+			} else if (c == '/') {
+				if ((c = raread()) == '*')
+					error("FIXME ccmnt");
+				savch('/');
+				continue;
+			} else if (c == '\"' || c == '\'') {
 				if (raptr) {
 					struct iobuf *xob = getobuf();
 					raptr = fstrstr(raptr-1, xob);
