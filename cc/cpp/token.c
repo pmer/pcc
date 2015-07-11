@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.140 2015/06/27 13:02:02 ragge Exp $	*/
+/*	$Id: token.c,v 1.141 2015/07/11 07:38:17 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -350,7 +350,7 @@ chkucn(void)
 	unsigned long cp, m;
 	int ch, n;
 
-	if ((ch = inch()) == -1)
+	if ((ch = inpch()) == -1)
 		return 0;
 	if (ch == 'u')
 		n = 4;
@@ -363,7 +363,7 @@ chkucn(void)
 
 	cp = 0;
 	while (n-- > 0) {
-		if ((ch = inch()) == -1 || (spechr[ch] & C_HEX) == 0) {
+		if ((ch = inpch()) == -1 || (spechr[ch] & C_HEX) == 0) {
 			warning("invalid universal character name");
 			// XXX should actually unput the chars and return 0
 			unch(ch); // XXX eof
