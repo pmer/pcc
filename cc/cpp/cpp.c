@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.221 2015/07/09 21:24:00 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.222 2015/07/11 07:38:17 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1705,11 +1705,11 @@ readargs1(struct symtab *sp, const usch **args)
 		for (;;) {
 			if (plev == 0 && c == ')')
 				break;
-			if (c == '(')
-				plev++;
-			if (c == ')')
-				plev--;
-			savch(c);
+			if (c == '(') plev++;
+			if (c == ')') plev--;
+			if (c == '\"' || c == '\'') faststr(c, savch);
+			else
+				savch(c);
 			if ((c = cinput()) == '\n')
 				ifiles->lineno++, c = ' ';
 		}
