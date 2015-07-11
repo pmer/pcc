@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.84 2015/06/27 09:17:43 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.85 2015/06/27 13:02:02 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -193,6 +193,7 @@ usch *sheap(const char *fmt, ...);
 void warning(const char *fmt, ...);
 void error(const char *fmt, ...);
 int cinput(void);
+int inc2(void);
 int Ccmnt(void (*d)(int));
 usch *heapid(int ch);
 void faststr(int bc, void (*d)(int));

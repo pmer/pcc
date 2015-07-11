@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.139 2015/06/27 09:17:43 ragge Exp $	*/
+/*	$Id: token.c,v 1.140 2015/06/27 13:02:02 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -270,7 +270,7 @@ inc1(void)
 /*
  * 5.1.1.2 Translation phase 2.
  */
-static int
+int
 inc2(void)
 {
 	int ch, c2;
