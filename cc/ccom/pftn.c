@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.397 2015/07/03 15:10:58 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.398 2015/07/13 16:12:54 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1945,10 +1945,12 @@ typenode(NODE *p)
 		q->n_ap = attr_add(q->n_ap, tc.pre);
 	gcc_tcattrfix(q);
 #endif
+#if 0
 	if (tc.align > tsize(q->n_type, q->n_df, q->n_ap)/SZCHAR) {
 		q->n_ap = attr_add(q->n_ap, attr_new(ATTR_ALIGNED, 1));
 		q->n_ap->aa[0].iarg = SZCHAR * tc.align;
 	}
+#endif
 	return q;
 
 bad:	uerror("illegal type combination");
