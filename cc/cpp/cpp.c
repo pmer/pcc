@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.224 2015/07/12 08:13:58 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.225 2015/07/13 15:14:15 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -883,7 +883,7 @@ define(void)
 	if (ISWS(c))
 		c = skipwscmnt(0);
 
-#define	DELEWS() while (stringbuf > sbeg && ISWS(stringbuf[-1])) stringbuf--
+#define	DELEWS() while (stringbuf > sbeg+1+(vararg!=NULL) && ISWS(stringbuf[-1])) stringbuf--
 
 	/* parse replacement-list, substituting arguments */
 	wascon = 0;
