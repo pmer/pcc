@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.267 2015/01/07 05:14:24 gmcgarry Exp $	*/
+/*	$Id: pass1.h,v 1.268 2015/01/07 05:24:53 gmcgarry Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -647,7 +647,7 @@ void stabs_struct(struct symtab *, struct attr *);
 #define LABEL		(MAXOP+34)
 #define BIQUEST		(MAXOP+35)
 #define UPLUS		(MAXOP+36)
-
+#define ALIGN		(MAXOP+37)
 
 /*
  * The following types are only used in pass1.
