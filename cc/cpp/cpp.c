@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.225 2015/07/13 15:14:15 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.226 2015/07/13 20:43:31 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1463,7 +1463,9 @@ kfind(struct symtab *sp)
 				n++;
 		if (c != '(') {
 			putstr(sp->namep);
-			for (ifiles->lineno += n; n; n--)
+			if (n == 0)
+				putch(' ');
+			else for (ifiles->lineno += n; n; n--)
 				putch('\n');
 			cunput(c);
 			return 0; /* Failed */
