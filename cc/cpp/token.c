@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.146 2015/07/13 08:11:09 ragge Exp $	*/
+/*	$Id: token.c,v 1.147 2015/07/13 14:58:15 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -733,10 +733,17 @@ exprline(void)
 	Cflag = ifdef = 0;
 
 	while ((c = inch()) != '\n') {
-		if (ISDIGIT(c) || c == '.')
+		if (c == '\'' || c == '\"') {
+			faststr(c, savch);
+			continue;
+		}
+		if (ISDIGIT(c) || c == '.') {
 			c = fastnum(c, savch);
-		if (c == '\n')
-			break;
+			if (c == '\n')
+				break;
+			unch(c);
+			continue;
+		}
 		if (ISID0(c)) {
 			cp = heapid(c);
 			stringbuf = cp;
@@ -809,7 +816,9 @@ yylex(void)
 
 	case '\'':
 		yynode.op = NUMBER;
+printf("ret NUM1 : yyinp %s\n", yyinp);
 		yynode.nd_val = charcon(&yyinp);
+printf("ret NUM %d: yyinp %s\n", (int)yynode.nd_val, yyinp);
 		return NUMBER;
 
 	case NUMBER:
@@ -1065,7 +1074,9 @@ charcon(usch **yyp)
 
 	} else
 		val = p[-1];
-	*yyp = p;
+	if (*p != '\'')
+		error("bad charcon");
+	*yyp = ++p;
 	return val;
 }
 
