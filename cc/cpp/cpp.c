@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.223 2015/07/11 15:27:37 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.224 2015/07/12 08:13:58 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -856,7 +856,8 @@ define(void)
 					if (isell() == 0 || skipws(0) != ')')
 						goto bad;
 					vararg = args[--narg];
-					break;
+					c = ')';
+					continue;
 				default:
 					goto bad;
 				}
