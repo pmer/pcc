@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.143 2015/07/12 08:13:58 ragge Exp $	*/
+/*	$Id: token.c,v 1.144 2015/07/12 16:21:32 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -508,6 +508,8 @@ faststr(int bc, void (*d)(int))
 		if (ch < 0)
 			return;
 		if (ch == '\\') {
+			if (chkucn())
+				continue;
 			d(ch);
 			ch = inc2();
 		}
