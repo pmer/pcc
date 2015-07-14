@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.399 2015/07/13 16:24:14 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.400 2015/07/14 03:52:38 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1766,6 +1766,15 @@ typwalk(NODE *p, void *arg)
 		if (tc->class)
 			tc->err = 1; /* max 1 class */
 		tc->class = p->n_type;
+		break;
+
+	case FUNSPEC:
+		if (p->n_type == INLINE) {
+			fun_inline = 1;
+		} else if (p->n_type == NORETURN) {
+			tc->pre = attr_add(tc->pre, attr_new(ATTR_NORETURN, 3));
+		} else
+			tc->err = 1;
 		break;
 
 	case QUALIFIER:
