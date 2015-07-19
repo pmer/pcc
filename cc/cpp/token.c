@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.148 2015/07/13 20:15:18 ragge Exp $	*/
+/*	$Id: token.c,v 1.149 2015/07/14 20:49:18 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -672,7 +672,14 @@ run:			while ((ch = inch()) == '\t' || ch == ' ')
 			ch = fastnum(ch, putch);
 			goto xloop;
 
+		case 'u':
+			if (nch == '8' && ifiles->curptr[1] == '\"') {
+				putch(ch);
+				break;
+			}
+			/* FALLTHROUGH */
 		case 'L':
+		case 'U':
 			if (nch == '\"' || nch == '\'') {
 				putch(ch);
 				break;
