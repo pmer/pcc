@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.298 2015/01/07 05:20:48 gmcgarry Exp $	*/
+/*	$Id: cc.c,v 1.299 2015/03/28 08:23:33 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1603,6 +1603,13 @@ static char *defflags[] = {
 	"-D__ORDER_LITTLE_ENDIAN__=1234",
 	"-D__ORDER_BIG_ENDIAN__=4321",
 	"-D__ORDER_PDP_ENDIAN__=3412",
+#ifndef NO_C11
+	"-D__STDC_UTF_16__=1",
+	"-D__STDC_UTF_32__=1",
+	"-D__STDC_NO_ATOMICS__=1",
+	"-D__STDC_NO_THREADS__=1",
+#endif
+
 /*
  * These should probably be changeable during runtime...
  */

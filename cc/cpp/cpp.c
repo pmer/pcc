@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.227 2015/07/13 20:53:39 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.228 2015/07/19 14:14:31 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -304,7 +304,7 @@ main(int argc, char **argv)
 
 		nl = lookup((const usch *)"__STDC_VERSION__", ENTER);
 		nl->value = stringbuf;
-		savch(OBJCT); savstr((const usch *)"199901L"); savch(0);
+		savch(OBJCT); savstr((const usch *)"201112L"); savch(0);
 	}
 
 	if (Mflag && !dMflag) {
