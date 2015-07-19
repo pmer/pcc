@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.270 2015/07/14 08:01:14 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.271 2015/07/19 13:20:37 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -58,7 +58,7 @@ typedef unsigned int bittype; /* XXX - for basicblock */
 #define STATIC		3
 #define REGISTER	4
 #define EXTDEF		5
-/* #define LABEL	6*/
+#define THLOCAL		6
 /* #define ULABEL	7*/
 #define MOS		8
 #define PARAM		9

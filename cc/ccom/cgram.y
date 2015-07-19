@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.394 2015/07/14 08:01:14 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.395 2015/07/19 13:20:37 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -127,6 +127,7 @@
 %token	C_ALIGNAS
 %token	C_ALIGNOF
 %token	C_GENERIC
+%token	C_ATOMIC
 
 /*
  * Precedence
@@ -316,6 +317,10 @@ type_sq:	   C_TYPE { $$ = $1; }
 			$$ = biop(ALIGN, NIL, NIL);
 			$$->n_lval = talign($3->n_type, $3->n_ap)/SZCHAR;
 			tfree($3);
+		}
+		|  C_ATOMIC { uerror("_Atomic not supported"); $$ = bcon(0); }
+		|  C_ATOMIC '(' cast_type ')' {
+			uerror("_Atomic not supported"); $$ = $3;
 		}
 		|  typeof { $$ = $1; }
 		;
