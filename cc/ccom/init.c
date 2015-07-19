@@ -1,4 +1,4 @@
-/*	$Id: init.c,v 1.91 2014/08/22 13:13:29 plunky Exp $	*/
+/*	$Id: init.c,v 1.92 2015/03/05 19:42:55 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004, 2007 Anders Magnusson (ragge@ludd.ltu.se).
@@ -721,6 +721,8 @@ scalinit(NODE *p)
 		    pstk->in_sym->sap);
 
 	nsetval(woff, fsz, q);
+	if (q->n_sp && ((q->n_sp->sflags & SMASK) == SSTRING))
+		q->n_sp->sflags |= SASG;
 
 	stkpop();
 #ifdef PCC_DEBUG
@@ -1236,6 +1238,9 @@ simpleinit(struct symtab *sp, NODE *p)
 			break;
 		}
 #endif
+		if (p->n_op == NAME && p->n_sp &&
+		    (p->n_sp->sflags & SMASK) == SSTRING)
+			p->n_sp->sflags |= SASG;
 		p = optloop(buildtree(ASSIGN, nt, p));
 		q = p->n_right;
 		t = q->n_type;

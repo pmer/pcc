@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.122 2014/05/07 16:46:31 ragge Exp $	*/
+/*	$Id: main.c,v 1.123 2014/10/11 10:50:27 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -316,8 +316,10 @@ main(int argc, char *argv[])
 	(void) yyparse();
 	yyaccpt();
 
-	if (!nerrors)
+	if (!nerrors) {
 		lcommprint();
+		strprint();
+	}
 
 #ifdef STABS
 	if (gflag)
