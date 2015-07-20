@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.55 2014/10/12 19:59:58 ragge Exp $	*/
+/*	$Id: builtins.c,v 1.56 2014/10/13 10:00:55 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -714,7 +714,7 @@ builtin_nanx(const struct bitable *bt, NODE *a)
 	if (a == NULL || a->n_op == CM) {
 		uerror("%s bad argument", bt->name);
 		a = bcon(0);
-	} else if (a->n_op == STRING && *a->n_name == '\0') {
+	} else if (a->n_op == STRING && *a->n_sp->sname == '\0') {
 		a->n_op = FCON;
 		a->n_type = bt->rt;
 		if (sizeof(nLDOUBLE) < sizeof(a->n_dcon))
@@ -780,7 +780,7 @@ static TWORD strchrt[] = { CHAR|PTR, INT };
 static TWORD strcspnt[] = { CHAR|PTR, CHAR|PTR };
 static TWORD strspnt[] = { CHAR|PTR, CHAR|PTR };
 static TWORD strpbrkt[] = { CHAR|PTR, CHAR|PTR };
-static TWORD nant[] = { CHAR|PTR };
+static TWORD nant[] = { CHAR|ARY };
 static TWORD bitt[] = { UNSIGNED };
 static TWORD bsw16t[] = { USHORT };
 static TWORD bitlt[] = { ULONG };
