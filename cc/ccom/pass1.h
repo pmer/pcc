@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.272 2015/07/19 13:59:00 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.273 2015/07/20 15:05:16 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -681,3 +681,16 @@ void stabs_struct(struct symtab *, struct attr *);
 #define clogop(o)	(cdope(o)&LOGFLG)
 #define casgop(o)	(cdope(o)&ASGFLG)
 
+/*
+ * Allocation routines.
+ */
+#if defined(__PCC__) || defined(__GNUC__)
+#define	FUNALLO(x)	__builtin_alloca(x)
+#define	FUNFREE(x)
+#elif defined(HAVE_ALLOCA)
+#define FUNALLO(x)      alloca(x)
+#define FUNFREE(x)
+#else
+#define FUNALLO(x)	malloc(x)
+#define FUNFREE(x)	free(x)
+#endif
