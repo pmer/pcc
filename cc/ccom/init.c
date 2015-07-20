@@ -1,4 +1,4 @@
-/*	$Id: init.c,v 1.92 2015/03/05 19:42:55 ragge Exp $	*/
+/*	$Id: init.c,v 1.93 2015/07/19 13:20:37 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004, 2007 Anders Magnusson (ragge@ludd.ltu.se).
@@ -721,7 +721,8 @@ scalinit(NODE *p)
 		    pstk->in_sym->sap);
 
 	nsetval(woff, fsz, q);
-	if (q->n_sp && ((q->n_sp->sflags & SMASK) == SSTRING))
+	if (q->n_op == ICON && q->n_sp &&
+	    ((q->n_sp->sflags & SMASK) == SSTRING))
 		q->n_sp->sflags |= SASG;
 
 	stkpop();
