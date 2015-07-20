@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.228 2015/07/19 14:14:31 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.229 2015/07/19 14:25:57 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -489,8 +489,7 @@ line(void)
 
 	ifiles->lineno = n;
 	ifiles->escln = 0;
-	if (ISWS(c)) {
-		c = skipws(NULL);
+	if ((c = skipws(NULL)) != '\n') {
 		if (c == 'L')
 			c = cinput();
 		if (c != '\"')
