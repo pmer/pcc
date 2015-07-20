@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.401 2015/07/14 08:01:14 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.402 2015/07/19 13:20:37 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -395,6 +395,9 @@ defid2(NODE *q, int class, char *astr)
 	q->n_sp = p = hide(p);
 
 	enter:  /* make a new entry */
+
+	if (type == VOID)
+		uerror("void not allowed for variables");
 
 #ifdef PCC_DEBUG
 	if(ddebug)
