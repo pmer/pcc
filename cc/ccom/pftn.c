@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.404 2015/07/20 16:09:22 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.405 2015/07/20 19:08:47 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1914,8 +1914,8 @@ typenode(NODE *p)
 	gcc_tcattrfix(q);
 #endif
 
-	if ((ap = attr_find(q->n_ap, ATTR_ALIGNED)) && ap->iarg(0) &&
-	    tc.align > talign(q->n_type, q->n_ap)/SZCHAR) {
+	if (tc.align && (ap = attr_find(q->n_ap, ATTR_ALIGNED)) &&
+	    ap->iarg(0) && tc.align > talign(q->n_type, q->n_ap)/SZCHAR) {
 		q->n_ap = attr_add(q->n_ap, attr_new(ATTR_ALIGNED, 1));
 		q->n_ap->aa[0].iarg = SZCHAR * tc.align;
 	}
