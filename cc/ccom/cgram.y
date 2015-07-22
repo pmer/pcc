@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.397 2015/07/20 15:05:16 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.398 2015/07/21 21:04:01 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -1375,7 +1375,7 @@ struct swdef {
 static void
 addcase(NODE *p)
 {
-	struct swents **put, *w, *sw = tmpalloc(sizeof(struct swents));
+	struct swents **put, *w, *sw = malloc(sizeof(struct swents));
 	CONSZ val;
 
 	p = optloop(p);  /* change enum to ints */
@@ -1488,6 +1488,11 @@ swend(void)
 
 	FUNFREE(sw);
 	FUNFREE(swp);
+	while (swpole->ents) {
+		sw = swpole->ents;
+		swpole->ents = sw->next;
+		free(sw);
+	}
 	sp = swpole->next;
 	free(swpole);
 	swpole = sp;
