@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.123 2014/10/11 10:50:27 ragge Exp $	*/
+/*	$Id: main.c,v 1.124 2015/07/19 13:20:37 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -299,6 +299,7 @@ main(int argc, char *argv[])
 	}
 #endif
 	complinit();
+	kwinit();
 #ifndef NO_BUILTIN
 	builtin_init();
 #endif
