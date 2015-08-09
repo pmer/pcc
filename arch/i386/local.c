@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.189 2015/07/20 15:09:45 ragge Exp $	*/
+/*	$Id: local.c,v 1.190 2015/07/20 15:15:58 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1309,3 +1309,10 @@ pass1_lastchance(struct interpass *ip)
 		ipp->ipp_argstacksize = argstacksize;
 	}
 }
+
+#ifdef PASS1
+void
+mflags(char *s)
+{
+}
+#endif

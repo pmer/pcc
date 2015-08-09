@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.11 2015/01/01 09:13:17 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.12 2015/01/05 21:31:01 plunky Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -601,6 +601,12 @@ void stabs_struct(struct symtab *, struct attr *);
 #else
 #error int size unknown
 #endif
+
+#ifdef TWOPASS
+#define PRTPREF "* "  
+#else
+#define PRTPREF "" 
+#endif 
 
 /* Generate a bitmask from a given type size */
 #define SZMASK(y) ((((1LL << ((y)-1))-1) << 1) | 1)

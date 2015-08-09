@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.274 2015/07/20 19:08:47 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.275 2015/08/01 12:35:25 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -351,7 +351,6 @@ void *inlalloc(int size);
 void *blkalloc(int size);
 void pass1_lastchance(struct interpass *);
 void fldty(struct symtab *p);
-int getlab(void);
 struct suedef *sueget(struct suedef *p);
 void complinit(void);
 void kwinit(void);
@@ -681,6 +680,12 @@ void stabs_struct(struct symtab *, struct attr *);
 #define coptype(o)	(cdope(o)&TYFLG)
 #define clogop(o)	(cdope(o)&LOGFLG)
 #define casgop(o)	(cdope(o)&ASGFLG)
+
+#ifdef TWOPASS
+#define	PRTPREF	"* "
+#else
+#define	PRTPREF ""
+#endif
 
 /*
  * Allocation routines.

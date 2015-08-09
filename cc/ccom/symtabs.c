@@ -1,4 +1,4 @@
-/*	$Id: symtabs.c,v 1.29 2015/07/20 11:41:19 ragge Exp $	*/
+/*	$Id: symtabs.c,v 1.30 2015/07/20 15:05:16 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -429,7 +429,7 @@ defalign(int al)
 #define	P2ALIGN(x)	(x)
 #endif
 	if (al != ALCHAR)
-		printf("\t.align %d\n", P2ALIGN(al/ALCHAR));
+		printf(PRTPREF "\t.align %d\n", P2ALIGN(al/ALCHAR));
 }
 #endif
 
@@ -447,13 +447,13 @@ symdirec(struct symtab *sp)
 	if ((name = sp->soname) == NULL)
 		name = exname(sp->sname);
 	if ((ga = attr_find(sp->sap, GCC_ATYP_WEAK)) != NULL)
-		printf("\t.weak %s\n", name);
+		printf(PRTPREF "\t.weak %s\n", name);
 	if ((ga = attr_find(sp->sap, GCC_ATYP_VISIBILITY)) &&
 	    strcmp(ga->sarg(0), "default"))
-		printf("\t.%s %s\n", ga->sarg(0), name);
+		printf(PRTPREF "\t.%s %s\n", ga->sarg(0), name);
 	if ((ga = attr_find(sp->sap, GCC_ATYP_ALIASWEAK))) {
-		printf("\t.weak %s\n", ga->sarg(0));
-		printf("\t.set %s,%s\n", ga->sarg(0), name);
+		printf(PRTPREF "\t.weak %s\n", ga->sarg(0));
+		printf(PRTPREF "\t.set %s,%s\n", ga->sarg(0), name);
 	}
 #endif
 }

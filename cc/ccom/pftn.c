@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.406 2015/07/21 08:27:31 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.407 2015/07/21 21:04:02 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1282,7 +1282,7 @@ instring(struct symtab *sp)
 		inval(0, SZINT < 32 ? SZLONG : SZINT, p);
 		nfree(p);
 	} else if (t == CHAR || t == UCHAR) {
-		printf("\t.ascii \"");
+		printf(PRTPREF "\t.ascii \"");
 		while (*s) {
 			if (*s == '\\')
 				(void)esccon(&s);
@@ -1291,7 +1291,7 @@ instring(struct symtab *sp)
 	
 			if (s - str > 60) {
 				fwrite(str, 1, s - str, stdout);
-				printf("\"\n\t.ascii \"");
+				printf("\"\n" PRTPREF "\t.ascii \"");
 				str = s;
 			}
 		}

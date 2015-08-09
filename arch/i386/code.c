@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.88 2015/01/06 12:45:46 ragge Exp $	*/
+/*	$Id: code.c,v 1.89 2015/07/20 15:15:58 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -67,11 +67,11 @@ setseg(int seg, char *name)
 	case DTORS: name = ".section\t.dtors,\"aw\",@progbits"; break;
 #endif
 	case NMSEG: 
-		printf("\t.section %s,\"a%c\",@progbits\n", name,
+		printf(PRTPREF "\t.section %s,\"a%c\",@progbits\n", name,
 		    cftnsp ? 'x' : 'w');
 		return;
 	}
-	printf("\t%s\n", name);
+	printf(PRTPREF "\t%s\n", name);
 }
 
 #ifdef MACHOABI
@@ -94,26 +94,26 @@ defloc(struct symtab *sp)
 	if ((name = sp->soname) == NULL)
 		name = exname(sp->sname);
 	if (sp->sclass == EXTDEF) {
-		printf("	.globl %s\n", name);
+		printf(PRTPREF "	.globl %s\n", name);
 #if defined(ELFABI)
-		printf("\t.type %s,@%s\n", name,
+		printf(PRTPREF "\t.type %s,@%s\n", name,
 		    ISFTN(sp->stype)? "function" : "object");
 #endif
 	}
 #if defined(ELFABI)
 	if (!ISFTN(sp->stype)) {
 		if (sp->slevel == 0)
-			printf("\t.size %s,%d\n", name,
+			printf(PRTPREF "\t.size %s,%d\n", name,
 			    (int)tsize(sp->stype, sp->sdf, sp->sap)/SZCHAR);
 		else
-			printf("\t.size " LABFMT ",%d\n", sp->soffset,
+			printf(PRTPREF "\t.size " LABFMT ",%d\n", sp->soffset,
 			    (int)tsize(sp->stype, sp->sdf, sp->sap)/SZCHAR);
 	}
 #endif
 	if (sp->slevel == 0)
-		printf("%s:\n", name);
+		printf(PRTPREF "%s:\n", name);
 	else
-		printf(LABFMT ":\n", sp->soffset);
+		printf(PRTPREF LABFMT ":\n", sp->soffset);
 }
 
 int structrettemp;
@@ -414,7 +414,7 @@ ejobcode(int flag)
 	}
 #endif
 
-	printf("\t.ident \"PCC: %s\"\n", VERSSTR);
+	printf(PRTPREF "\t.ident \"PCC: %s\"\n", VERSSTR);
 }
 
 void
