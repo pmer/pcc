@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.292 2015/01/04 18:41:04 ragge Exp $	*/
+/*	$Id: reader.c,v 1.293 2015/08/09 09:45:54 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -367,6 +367,7 @@ rdnode(char *s)
 	p->n_op = rdint(&s);
 	p->n_type = rdint(&s);
 	p->n_qual = rdint(&s);
+	p->n_name = "";
 	ty = optype(p->n_op);
 	if (ty == BITYPE) {
 		p->n_left = rdnode(rdline());
@@ -376,7 +377,6 @@ rdnode(char *s)
 		p->n_left = rdnode(rdline());
 	} else {
 		p->n_lval = strtoll(s, &s, 10);
-		p->n_name = "";
 		if (p->n_op == NAME || p->n_op == ICON) {
 			while (*s == ' ') s++;
 			if (*s)
