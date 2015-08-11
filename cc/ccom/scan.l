@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.132 2015/07/19 13:59:00 ragge Exp $	*/
+/*	$Id: scan.l,v 1.133 2015/08/01 12:35:25 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -199,7 +199,6 @@ extern void yyset_lineno (int);
 %%
 
 int lineno, issyshdr;
-char *ftitle = "<stdin>";
 
 int
 yywrap(void)
@@ -732,7 +731,8 @@ control(int t)
 		if (*wr != '\"')
 			goto bad;
 		*wr++ = 0;
-		ftitle = addstring(eptr);
+		free(ftitle);
+		ftitle = xstrdup(eptr);
 		while (*wr == ' ')
 			wr++;
 		issyshdr = 0;

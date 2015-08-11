@@ -1,4 +1,4 @@
-/*	$Id: main.c,v 1.126 2015/08/09 09:45:54 ragge Exp $	*/
+/*	$Id: main.c,v 1.127 2015/08/10 18:01:10 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -259,6 +259,7 @@ main(int argc, char *argv[])
 	argc -= optind;
 	argv += optind;
 
+	ftitle = xstrdup("<stdin>");
 	if (argc > 0 && strcmp(argv[0], "-") != 0) {
 		if (freopen(argv[0], "r", stdin) == NULL) {
 			fprintf(stderr, "open input file '%s':",
@@ -331,7 +332,9 @@ main(int argc, char *argv[])
 
 	if (!nerrors) {
 		lcommprint();
+#ifndef NO_STRING_SAVE
 		strprint();
+#endif
 	}
 #endif
 
