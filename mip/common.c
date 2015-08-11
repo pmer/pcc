@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.118 2015/08/09 12:29:56 ragge Exp $	*/
+/*	$Id: common.c,v 1.119 2015/08/10 18:01:11 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -926,6 +926,7 @@ attr_new(int type, int nelem)
 	ap = memset(permalloc(sz), 0, sz);
 	newattrsz += sz;
 	ap->atype = type;
+	ap->sz = nelem;
 	return ap;
 }
 
@@ -973,9 +974,9 @@ attr_copy(struct attr *aps, struct attr *apd, int n)
  * Duplicate an attribute, like strdup.
  */
 struct attr *
-attr_dup(struct attr *ap, int n)
+attr_dup(struct attr *ap)
 {
-	int sz = sizeof(struct attr) + n * sizeof(union aarg);
+	int sz = sizeof(struct attr) + ap->sz * sizeof(union aarg);
 	ap = memcpy(permalloc(sz), ap, sz);
 	ap->next = NULL;
 	return ap;
