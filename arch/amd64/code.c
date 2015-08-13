@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.80 2014/09/28 12:51:31 ragge Exp $	*/
+/*	$Id: code.c,v 1.81 2015/02/17 19:08:45 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -29,6 +29,15 @@
 
 
 # include "pass1.h"
+
+#ifndef LANG_CXX
+#undef NIL
+#define	NIL NULL
+#define	NODE P1ND
+#define	nfree p1nfree
+#define	ccopy p1tcopy
+#define	tfree p1tfree
+#endif
 
 static int nsse, ngpr, nrsp, rsaoff;
 static int thissse, thisgpr, thisrsp;
