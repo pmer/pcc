@@ -1,4 +1,4 @@
-/*	$Id: symtabs.c,v 1.32 2015/08/10 18:01:11 ragge Exp $	*/
+/*	$Id: symtabs.c,v 1.33 2015/08/11 13:56:36 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -30,6 +30,9 @@
 #include "pass1.h"
 #include "unicode.h"
 #include <stdlib.h>
+
+#define	NODE P1ND
+#define	fwalk p1fwalk
 
 /*
  * These definitions are used in the patricia tree that stores

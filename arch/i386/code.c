@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.90 2015/08/09 09:45:54 ragge Exp $	*/
+/*	$Id: code.c,v 1.91 2015/08/09 11:40:22 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -28,6 +28,14 @@
 
 
 # include "pass1.h"
+
+#ifdef LANG_CXX
+#define	p1listf	listf
+#define	p1tfree tfree
+#else
+#define	NODE P1ND
+#define	talloc p1alloc
+#endif
 
 /*
  * Print out assembler segment name.
@@ -560,7 +568,7 @@ funcode(NODE *p)
 
 	regcvt = 0;
 	if (rparg)
-		listf(p->n_right, addreg);
+		p1listf(p->n_right, addreg);
 
 	if (kflag == 0)
 		return p;
@@ -607,7 +615,7 @@ builtin_return_address(const struct bitable *bt, NODE *a)
 
 	nframes = (int)a->n_lval;
   
-	tfree(a);	
+	p1tfree(a);	
 			
 	f = block(REG, NIL, NIL, PTR+VOID, 0, 0);
 	regno(f) = FPREG;
@@ -635,7 +643,7 @@ builtin_frame_address(const struct bitable *bt, NODE *a)
 
 	nframes = (int)a->n_lval;
 
-	tfree(a);
+	p1tfree(a);
 
 	f = block(REG, NIL, NIL, PTR+VOID, 0, 0);
 	regno(f) = FPREG;
