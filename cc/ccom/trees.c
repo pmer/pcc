@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.352 2015/08/11 20:08:22 ragge Exp $	*/
+/*	$Id: trees.c,v 1.353 2015/08/13 11:56:03 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1667,10 +1667,6 @@ block(int o, P1ND *l, P1ND *r, TWORD t, union dimfun *d, struct attr *ap)
 	p->n_qual = 0;
 	p->n_df = d;
 	p->n_ap = ap;
-#if !defined(MULTIPASS)
-	/* p->n_reg = */p->n_su = 0;
-	p->n_regw = 0;
-#endif
 	return(p);
 }
 
@@ -2750,7 +2746,7 @@ pass2_compile(struct interpass *ip)
 		break;
 	case IP_NODE:
 		p2print(ip->ip_node);
-		p1tfree(ip->ip_node);
+		tfree(ip->ip_node);
 		break;
 	case IP_DEFLAB:
 		printf("^ %d\n", ip->ip_lbl);
