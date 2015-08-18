@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.411 2015/08/13 11:56:02 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.412 2015/08/18 08:52:46 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -3455,6 +3455,14 @@ cxargfixup(NODE *a, TWORD dt, struct attr *ap)
 	nfree(p);
 }
 #endif
+
+/*
+ * Allocations:
+ *	permalloc() Never freed. in pass2.
+ *	tmpalloc() during a function lifetime, then freed. in pass2.
+ *	blkalloc() during a block lifetime.  Variables etc.  In pass1.
+ *	stmtalloc() during a statement lifetime.  Expression trees.  In pass1.
+ */
 
 /*
  * Short-time allocations during statements.
