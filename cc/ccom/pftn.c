@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.412 2015/08/18 08:52:46 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.413 2015/08/18 10:07:01 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -81,7 +81,7 @@
 struct symtab *cftnsp;
 int arglistcnt, dimfuncnt;	/* statistics */
 int symtabcnt, suedefcnt;	/* statistics */
-int lcommsz, blkalloccnt, inlalloccnt;
+int lcommsz, blkalloccnt;
 int autooff,		/* the next unused automatic offset */
     maxautooff,		/* highest used automatic offset in function */
     argoff;		/* the next unused argument offset */
@@ -2966,16 +2966,6 @@ blkalloc(int size)
 {
 	return (isinlining || blevel < 2) ? 
 	    (blkalloccnt += size, permalloc(size)) : tmpalloc(size);
-}
-
-/*
- * Allocate on the permanent heap for inlines, otherwise temporary heap.
- */
-void *
-inlalloc(int size)
-{
-	return isinlining ?
-	    (inlalloccnt += size, permalloc(size)) : tmpalloc(size);
 }
 
 /*

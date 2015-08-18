@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.279 2015/08/18 08:52:46 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.280 2015/08/18 10:07:01 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -377,7 +377,6 @@ int fldchk(int);
 int nncon(P1ND *);
 void cunput(char);
 P1ND *nametree(struct symtab *sp);
-void *inlalloc(int size);
 void *blkalloc(int size);
 void pass1_lastchance(struct interpass *);
 void fldty(struct symtab *p);

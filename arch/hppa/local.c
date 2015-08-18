@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.39 2012/09/05 15:12:19 mickey Exp $	*/
+/*	$Id: local.c,v 1.40 2012/09/06 11:32:32 plunky Exp $	*/
 /*	$OpenBSD: local.c,v 1.2 2007/11/18 17:39:55 ragge Exp $	*/
 
 /*
@@ -559,7 +559,7 @@ myp2tree(NODE *p)
 	    ALDOUBLE : ALLDOUBLE );
 	deflab1(i = getlab());
 #endif
-	sp = inlalloc(sizeof(struct symtab));
+	sp = tmpalloc(sizeof(struct symtab));
 	sp->sclass = STATIC;
 	sp->ssue = 0;
 	sp->slevel = 1; /* fake numeric label */
