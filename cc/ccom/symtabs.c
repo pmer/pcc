@@ -1,4 +1,4 @@
-/*	$Id: symtabs.c,v 1.33 2015/08/11 13:56:36 ragge Exp $	*/
+/*	$Id: symtabs.c,v 1.34 2015/08/13 11:56:03 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -602,7 +602,7 @@ strend(char *s, TWORD t)
 	NODE *p;
 
 #ifdef NO_STRING_SAVE
-	sp = getsymtab(s, SSTRING|STEMP);
+	sp = getsymtab(s, SSTRING|SSTMT);
 #else
 	s = addstring(s);
 	sp = lookup(s, SSTRING);

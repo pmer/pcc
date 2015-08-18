@@ -1,4 +1,4 @@
-/*	$Id: cgram.y,v 1.399 2015/07/22 07:49:34 ragge Exp $	*/
+/*	$Id: cgram.y,v 1.400 2015/08/13 11:56:02 ragge Exp $	*/
 
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -543,7 +543,7 @@ block_item_list:   block_item
 		;
 
 block_item:	   declaration
-		|  statement
+		|  statement { stmtfree(); }
 		;
 
 /*
@@ -1119,6 +1119,7 @@ e:		   e ',' e { $$ = biop(COMOP, $1, $3); }
 xbegin:		   begin {
 			$$ = getlab(); getlab(); getlab();
 			branch($$); plabel(($$)+1); }
+			/* $$.stp = stpole; $$.em = cptr; stpole = cptr = 0; */
 		;
 
 term:		   term C_INCOP {  $$ = biop($2, $1, bcon(1)); }
@@ -1185,7 +1186,7 @@ term:		   term C_INCOP {  $$ = biop($2, $1, bcon(1)); }
 		|  C_ICON { $$ = $1; }
 		|  C_FCON { $$ = $1; }
 		|  svstr { $$ = bdty(STRING, $1, styp()); }
-		|   '('  e  ')' { $$=$2; }
+		|  '(' e ')' { $$=$2; }
 		|  '(' xbegin e ';' '}' ')' { $$ = gccexpr($2, eve($3)); }
 		|  '(' xbegin block_item_list e ';' '}' ')' {
 			$$ = gccexpr($2, eve($4));

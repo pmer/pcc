@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.277 2015/08/13 11:56:02 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.278 2015/08/13 20:03:17 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -90,6 +90,7 @@ extern	char *scnames(int);
 
 #define	STLS		00010	/* Thread Local Support variable */
 #define SINSYS		00020	/* Declared in system header */
+#define	SSTMT		SINSYS	/* Allocate symtab on statement stack */
 #define SNOCREAT	00040	/* don't create a symbol in lookup() */
 #define STEMP		00100	/* Allocate symtab from temp or perm mem */
 #define	SDYNARRAY	00200	/* symbol is dynamic array on stack */
@@ -422,6 +423,8 @@ P1ND *rmpconv(P1ND *);
 P1ND *optloop(P1ND *);
 P1ND *nlabel(int label);
 TWORD styp(void);
+void *stmtalloc(size_t);
+void stmtfree(void);
 
 void p1walkf(P1ND *, void (*f)(P1ND *, void *), void *);
 void p1fwalk(P1ND *t, void (*f)(P1ND *, int, int *, int *), int down);
