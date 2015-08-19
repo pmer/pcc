@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.281 2015/08/18 10:15:08 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.282 2015/08/18 18:22:38 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -96,6 +96,7 @@ extern	char *scnames(int);
 #define STEMP		00100	/* Allocate symtab from temp or perm mem */
 #define	SDYNARRAY	00200	/* symbol is dynamic array on stack */
 #define	SINLINE		00400	/* function is of type inline */
+#define	SBLK		SINLINE	/* Allocate symtab from blk mem */
 #define	STNODE		01000	/* symbol shall be a temporary node */
 #define	SBUILTIN	02000	/* this is a builtin function */
 #define	SASG		04000	/* symbol is assigned to already */
