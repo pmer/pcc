@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.90 2014/11/13 19:10:36 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.91 2015/01/04 18:41:04 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -326,6 +326,11 @@ int COLORMAP(int c, int *r);
 
 #define TARGET_IPP_MEMBERS			\
 	int ipp_argstacksize;
+
+#define	target_members_print_prolog(ipp) printf("%d", ipp->ipp_argstacksize)
+#define	target_members_print_epilog(ipp) printf("%d", ipp->ipp_argstacksize)
+#define target_members_read_prolog(ipp) ipp->ipp_argstacksize = rdint(&p)
+#define target_members_read_epilog(ipp) ipp->ipp_argstacksize = rdint(&p)
 
 #define	HAVE_WEAKREF
 #define	TARGET_FLT_EVAL_METHOD	2	/* all as long double */

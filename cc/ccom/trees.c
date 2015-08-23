@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.357 2015/08/18 18:22:38 ragge Exp $	*/
+/*	$Id: trees.c,v 1.358 2015/08/23 17:31:42 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2746,7 +2746,9 @@ pass2_compile(struct interpass *ip)
 		    ipp->ipp_type, ipp->ipp_vis, ip->ip_lbl, ipp->ip_tmpnum,
 		    ipp->ip_lblnum, ipp->ipp_name);
 #ifdef TARGET_IPP_MEMBERS
-//		target_members_print(ip);
+		printf("( ");
+		target_members_print_prolog(ipp);
+		printf("\n");
 #endif
 		break;
 	case IP_NODE:
@@ -2772,6 +2774,11 @@ pass2_compile(struct interpass *ip)
 				printf(" %d", ipp->ip_labels[i]);
 		}
 		printf("\n");
+#ifdef TARGET_IPP_MEMBERS
+		printf(") ");
+		target_members_print_epilog(ipp);
+		printf("\n");
+#endif
 		break;
 	default:
 		cerror("Missing %d", ip->type);

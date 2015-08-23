@@ -1,4 +1,4 @@
-/*	$Id: reader.c,v 1.295 2015/08/09 12:29:56 ragge Exp $	*/
+/*	$Id: reader.c,v 1.296 2015/08/23 17:31:42 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -410,6 +410,9 @@ rdnode(char *s)
 	if (s[0] != '"')
 		comperr("rdnode sync error");
 	s++; s++;
+	p->n_regw = NULL;
+	p->n_ap = NULL;
+	p->n_su = p->n_lval = p->n_rval = 0;
 	p->n_op = rdint(&s);
 	p->n_type = rdint(&s);
 	p->n_qual = rdint(&s);
@@ -504,7 +507,16 @@ mainp2()
 			memset(ipp->ipp_regs, -1, sizeof(ipp->ipp_regs));
 			ipp->ipp_autos = -1;
 			ipp->ip_labels = foo;
-			crslab = ipp->ip_lblnum;
+			crslab2 = ipp->ip_lblnum;
+#ifdef TARGET_IPP_MEMBERS
+			if (*(p = rdline()) != '(')
+				comperr("target member error");
+			p += 2;
+			target_members_read_prolog(ipp);
+			SKIPWS(p);
+			if (*p)
+				comperr("bad prolog '%s' '%s'", p, inpbuf);
+#endif
 			pass2_compile((struct interpass *)ipp);
 			break;
 
@@ -532,6 +544,15 @@ mainp2()
 			SKIPWS(p);
 			if (*p)
 				comperr("bad epilog '%s' '%s'", p, inpbuf);
+#ifdef TARGET_IPP_MEMBERS
+			if (*(p = rdline()) != ')')
+				comperr("target epi member error");
+			p += 2;
+			target_members_read_epilog(ipp);
+			SKIPWS(p);
+			if (*p)
+				comperr("bad epilog2 '%s' '%s'", p, inpbuf);
+#endif
 			pass2_compile((struct interpass *)ipp);
 			break;
 
