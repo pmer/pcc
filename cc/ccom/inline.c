@@ -1,4 +1,4 @@
-/*	$Id: inline.c,v 1.59 2015/08/18 10:07:01 ragge Exp $	*/
+/*	$Id: inline.c,v 1.60 2015/08/28 13:57:46 ragge Exp $	*/
 /*
  * Copyright (c) 2003, 2008 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -146,7 +146,8 @@ intcopy(NODE *p)
 		SLIST_FIRST(&ipole)->flags &= ~CANINL; /* no stack refs */
 	if (q->n_ap)
 		q->n_ap = inapcopy(q->n_ap);
-	if ((q->n_op == NAME || q->n_op == ICON) && *q->n_name)
+	if ((q->n_op == NAME || q->n_op == ICON ||
+	    q->n_op == XASM || q->n_op == XARG) && *q->n_name)
 		q->n_name = xstrdup(q->n_name); /* XXX permstrdup */
 	if (o == BITYPE)
 		q->n_right = intcopy(q->n_right);
