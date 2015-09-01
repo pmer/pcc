@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.359 2015/08/23 18:40:31 ragge Exp $	*/
+/*	$Id: trees.c,v 1.360 2015/08/28 13:57:46 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2878,7 +2878,7 @@ p2tree(P1ND *p)
 
 	case XARG:
 	case XASM:
-		np->n_name = p->n_name;
+		np->n_name = tmpstrdup(p->n_name);
 		break;
 
 	default:
@@ -3203,6 +3203,7 @@ send_passt(int type, ...)
 			return;
 		}
 		ip->ip_asm = va_arg(ap, char *);
+		ip->ip_asm = tmpstrdup(ip->ip_asm);
 		break;
 	default:
 		cerror("bad send_passt type %d", type);
