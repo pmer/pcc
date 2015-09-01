@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.136 2015/08/27 19:59:08 ragge Exp $	*/
+/*	$Id: scan.l,v 1.137 2015/08/28 13:59:34 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -94,7 +94,7 @@ extern void yyset_lineno (int);
 
 			yylval.strp = addname(yytext);
 			if ((s = lookup(yylval.strp, SNOCREAT)) != NULL &&
-			    s->sclass == KEYWORD)
+			    s->sclass == KEYWORD && !inattr)
 				return kwdecode(s);
 
 #ifdef GCC_COMPAT
