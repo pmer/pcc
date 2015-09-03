@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.6 2012/04/22 21:07:40 plunky Exp $	*/
+/*	$Id: code.c,v 1.7 2015/06/29 18:49:36 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -28,6 +28,11 @@
 
 
 # include "pass1.h"
+
+#define NODE P1ND
+#undef NIL
+#define NIL NULL
+#define	talloc p1alloc
 
 /*
  * Print out assembler segment name.
