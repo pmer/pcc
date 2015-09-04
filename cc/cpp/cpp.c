@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.231 2015/08/19 12:04:11 plunky Exp $	*/
+/*	$Id: cpp.c,v 1.232 2015/08/28 16:27:41 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -703,7 +703,7 @@ include(void)
 			nm = xstrdup(ob->buf);
 			bufree(ob);
 			if (pushfile(nm, nm, 0, NULL) == 0) {
-				free(fn);
+				free(fn-1);
 				goto okret;
 			}
 		}
