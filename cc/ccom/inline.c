@@ -1,4 +1,4 @@
-/*	$Id: inline.c,v 1.61 2015/09/01 18:45:26 ragge Exp $	*/
+/*	$Id: inline.c,v 1.62 2015/09/02 17:05:09 ragge Exp $	*/
 /*
  * Copyright (c) 2003, 2008 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -607,7 +607,7 @@ inlinetree(struct symtab *sp, P1ND *f, P1ND *ap)
 		p = tempnode(is->retval + toff, DECREF(sp->stype),
 		    sp->sdf, sp->sap);
 	else
-		p = bcon(0);
+		p = xbcon(0, NULL, DECREF(sp->stype));
 	rp = buildtree(COMOP, rp, p);
 
 	if (is->nargs) {
