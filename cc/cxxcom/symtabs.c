@@ -1,4 +1,4 @@
-/*	$Id: symtabs.c,v 1.2 2014/05/03 09:47:51 ragge Exp $	*/
+/*	$Id: symtabs.c,v 1.3 2014/06/20 07:07:33 plunky Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -458,3 +458,12 @@ symdirec(struct symtab *sp)
 #endif
 }
 #endif
+
+char *
+getexname(struct symtab *sp)
+{  
+	char *s;
+	if ((s = sp->soname) == NULL)
+		s = addname(exname(sp->sname));
+	return s;
+}
