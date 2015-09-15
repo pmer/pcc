@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.81 2015/02/17 19:08:45 ragge Exp $	*/
+/*	$Id: code.c,v 1.82 2015/08/13 12:20:55 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -136,8 +136,7 @@ defloc(struct symtab *sp)
 {
 	char *name;
 
-	if ((name = sp->soname) == NULL)
-		name = exname(sp->sname);
+	name = getexname(sp);
 
 	if (sp->sclass == EXTDEF) {
 		printf("\t.globl %s\n", name);
