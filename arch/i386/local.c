@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.194 2015/09/15 20:01:10 ragge Exp $	*/
+/*	$Id: local.c,v 1.195 2015/09/22 19:54:31 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -765,7 +765,7 @@ fixnames(P1ND *p, void *arg)
 #if defined(ELFABI) || defined(MACHOABI)
 
 	struct symtab *sp;
-	struct attr *ap;
+	struct attr *ap, *ap2;
 	P1ND *q;
 	char *c;
 	int isu;
@@ -793,9 +793,9 @@ fixnames(P1ND *p, void *arg)
 		c = NULL;
 #if defined(ELFABI)
 
-		if ((ap = attr_find(sp->sap, ATTR_SONAME)) == NULL ||
-		    (c = strstr(ap->sarg(0), "@GOT")) == NULL)
-			cerror("fixnames2: %p %s", ap, c);
+		if ((ap2 = attr_find(sp->sap, ATTR_SONAME)) == NULL ||
+		    (c = strstr(ap2->sarg(0), "@GOT")) == NULL)
+			cerror("fixnames2: %p %s", ap2, c);
 		if (isu) {
 			memcpy(c, "@PLT", sizeof("@PLT"));
 		} else
