@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.234 2015/09/20 16:18:13 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.235 2015/09/28 16:25:24 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1365,9 +1365,14 @@ loopover(struct iobuf *ib)
 			xb->cptr = xb->buf;
 			ib->cptr = fstrstr(ib->cptr,xb);
 			*xb->cptr = 0;
-			for (xb->cptr = xb->buf; *xb->cptr; xb->cptr++)
-				if (*xb->cptr > 6)
-					savch(*xb->cptr);
+			for (cp = xb->buf; *cp; cp++) {
+				if (*cp <= BLKID) {
+					if (*cp == BLKID)
+						cp++;
+					continue;
+				}
+				savch(*cp);
+			}
 			continue;
 		case BLKID:
 			l = ib->cptr[1];
