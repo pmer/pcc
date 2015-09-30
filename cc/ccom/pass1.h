@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.284 2015/08/28 13:59:34 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.285 2015/09/15 20:01:10 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -699,6 +699,7 @@ void stabs_struct(struct symtab *, struct attr *);
 #define UPLUS		(MAXOP+36)
 #define ALIGN		(MAXOP+37)
 #define FUNSPEC		(MAXOP+38)
+#define STREF		(MAXOP+39)
 
 /*
  * The following types are only used in pass1.
