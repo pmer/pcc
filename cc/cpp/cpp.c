@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.236 2015/09/28 19:51:27 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.237 2015/09/30 18:30:43 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -696,6 +696,9 @@ include(void)
 
 	fn = xstrdup(ob->buf) + 1;	/* Save on string heap? */
 	bufree(ob);
+	/* test absolute path first */
+	if (fn[0] == '/' && pushfile(fn, fn, 0, NULL) == 0)
+		goto okret;
 	if (fn[-1] == '\"') {
 		/* local includes. first try directly. */
 		if (pushfile(fn, fn, 0, NULL) == 0)
