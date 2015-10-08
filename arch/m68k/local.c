@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.10 2015/08/18 10:15:08 ragge Exp $	*/
+/*	$Id: local.c,v 1.11 2015/10/07 09:51:16 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -125,6 +125,8 @@ picstatic(NODE *p)
 	q = tempnode(gotnr, PTR|VOID, 0, 0);
 	if (p->n_sp->slevel > 0) {
 		char buf[32];
+		if ((p->n_sp->sflags & SMASK) == SSTRING)
+			p->n_sp->sflags |= SASG;
 		snprintf(buf, 32, LABFMT, (int)p->n_sp->soffset);
 		sp = picsymtab("", buf, "@GOT");
 	} else {
