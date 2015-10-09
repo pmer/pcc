@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.195 2015/09/22 19:54:31 ragge Exp $	*/
+/*	$Id: local.c,v 1.196 2015/09/28 15:29:00 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -304,7 +304,6 @@ picstatic(P1ND *p)
 static P1ND *
 tlspic(P1ND *p)
 {
-	struct attr *ap;
 	P1ND *q, *r;
 	struct symtab *sp, *sp2;
 	char *name;
@@ -346,7 +345,6 @@ tlspic(P1ND *p)
 static P1ND *
 tlsnonpic(P1ND *p)
 {
-	struct attr *ap;
 	P1ND *q, *r;
 	struct symtab *sp, *sp2;
 	int ext = p->n_sp->sclass;
