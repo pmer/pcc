@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.11 2015/10/07 09:51:16 ragge Exp $	*/
+/*	$Id: local.c,v 1.12 2015/10/08 20:12:13 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -138,7 +138,6 @@ picstatic(NODE *p)
 	r = xbcon(0, sp, INT);
 	q = buildtree(PLUS, q, r);
 	q = block(UMUL, q, 0, p->n_type, p->n_df, p->n_ap);
-	q = block(UMUL, q, 0, p->n_type, p->n_df, p->n_ap);
 	q->n_sp = p->n_sp; /* for init */
 	nfree(p);
 	return q;
@@ -195,12 +194,10 @@ clocal(NODE *p)
 
 		case USTATIC:
 		case STATIC:
-//printf("pre-static\n"); fwalk(p, eprint, 0);
 			if (kflag == 0)
 				break;
 			if (blevel > 0 && !statinit)
 				p = picstatic(p);
-//printf("post-static\n"); fwalk(p, eprint, 0);
 			break;
 
 		case EXTERN:
