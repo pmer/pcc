@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.12 2015/10/09 14:42:26 ragge Exp $	*/
+/*	$Id: local2.c,v 1.13 2015/10/09 16:30:41 ragge Exp $	*/
 /*
  * Copyright (c) 2014 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -648,7 +648,7 @@ void
 rmove(int s, int d, TWORD t)
 {
 
-	if (t == LONGLONG || t == ULONGLONG) {
+	if (s >= D0D1 && s <= D6D7) {
 		printf("	move.l %s,%s\n",
 		    rnames[s-D0D1], rnames[d-D0D1]);
 		printf("	move.l %s,%s\n",
