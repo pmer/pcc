@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.238 2015/09/30 19:38:35 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.239 2015/10/20 18:24:09 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1714,8 +1714,10 @@ readargs1(struct symtab *sp, const usch **args)
 				cunput(c);
 			} else
 				savch(c);
-			if ((c = cinput()) == '\n')
+			if ((c = cinput()) == '\n') {
+				chkdir();
 				ifiles->lineno++, putch(c), c = ' ';
+			}
 		}
 
 		while (args[i] < stringbuf && ISWSNL(stringbuf[-1]))
