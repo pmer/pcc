@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.240 2015/10/20 20:06:06 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.241 2015/10/29 08:57:58 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -686,7 +686,7 @@ void
 include(void)
 {
 	struct iobuf *ob;
-	usch *fn, *nm;
+	usch *fn, *nm = NULL;
 
 	if (flslvl)
 		return;
@@ -700,9 +700,6 @@ include(void)
 	if (fn[0] == '/' && pushfile(fn, fn, 0, NULL) == 0)
 		goto okret;
 	if (fn[-1] == '\"') {
-		/* local includes. first try directly. */
-		if (pushfile(fn, fn, 0, NULL) == 0)
-			goto okret;
 		/* nope, failed, try to create a path for it */
 		if ((nm = (usch *)strrchr((char *)ifiles->orgfn, '/'))) {
 			ob = strtobuf((usch *)ifiles->orgfn, NULL);
@@ -711,10 +708,12 @@ include(void)
 			putob(ob, 0);
 			nm = xstrdup(ob->buf);
 			bufree(ob);
-			if (pushfile(nm, nm, 0, NULL) == 0) {
-				free(fn-1);
-				goto okret;
-			}
+		} else {
+			nm = xstrdup(fn);
+		}
+		if (pushfile(nm, nm, 0, NULL) == 0) {
+			free(fn-1);
+			goto okret;
 		}
 	}
 	if (fsrch(fn, 0, incdir[0]))
@@ -724,6 +723,8 @@ include(void)
 	/* error() do not return */
 
 okret:
+	if (nm)
+		free(nm);
 	prtline(1);
 }
 
