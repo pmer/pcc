@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.286 2015/09/30 20:04:30 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.287 2015/11/13 11:33:14 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -303,8 +303,8 @@ OFFSZ	tsize(TWORD, union dimfun *, struct attr *),
 P1ND *	typenode(P1ND *new);
 void	spalloc(P1ND *, P1ND *, OFFSZ);
 char	*exname(char *);
-P1ND	*floatcon(char *);
-P1ND	*fhexcon(char *);
+union flt *floatcon(char *);
+union flt *fhexcon(char *);
 P1ND	*bdty(int op, ...);
 extern struct rstack *rpole;
 

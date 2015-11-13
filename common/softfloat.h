@@ -1,4 +1,4 @@
-/*	$Id: scan.l,v 1.140 2015/10/07 19:35:55 ragge Exp $	*/
+/*	$Id: softfloat.h,v 1.1 2015/11/13 11:33:14 ragge Exp $	*/
 
 /*
  * Copyright (c) 2015 Anders Magnusson. All rights reserved.
@@ -29,10 +29,11 @@
  */
 
 
-#define NFAARG	(SZLDOUBLE+(SZPOINT(VOID)-1))/SZPOINT(VOID)
+#define NFAARG	((SZLDOUBLE+SZINT+(SZINT-1))/SZINT)
+#define	FP_TOP	(NFAARG-1)
 union flt {
 	long double fp;
-	int fa[NFAARG];
+	int fa[NFAARG];	/* one more than fp size */
 };
 
 
