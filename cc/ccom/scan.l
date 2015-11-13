@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.139 2015/09/02 20:06:44 ragge Exp $	*/
+/*	$Id: scan.l,v 1.140 2015/10/07 19:35:55 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -382,7 +382,8 @@ f2(char *str)
 #endif
 	dc = typround(dc, eptr, &tw);
 	p = block(FCON, NULL, NULL, tw, 0, 0);
-	p->n_dcon = dc;
+	p->n_dcon = stmtalloc(sizeof(union flt));
+	p->n_dcon->fp = dc;
 	return p;
 }
 
@@ -471,7 +472,8 @@ fhexcon(char *c)
 		d /= 2, ed++;
 	d = typround(d, ep, &tw);
 	p = block(FCON, NULL, NULL, tw, 0, 0);
-	p->n_dcon = d;
+	p->n_dcon = stmtalloc(sizeof(union flt));
+	p->n_dcon->fp = d;
 	return p;
 }
 #endif
@@ -519,7 +521,9 @@ cvtdig(int radix)
 	switch (ntype) {
 	case DOUBLE: /* special case */
 		p = block(FCON, NULL, NULL, IMAG, 0, 0);
-		p->n_dcon = FLOAT_CAST(v, DOUBLE);
+		p->n_dcon = stmtalloc(sizeof(union flt));
+		FLOAT_INT2FP(p->n_dcon, v, ULONGLONG);
+		FLOAT_FP2FP(p->n_dcon, DOUBLE);
 		return p;
 
 	case INT:

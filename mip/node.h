@@ -1,4 +1,4 @@
-/*	$Id: node.h,v 1.40 2015/08/18 08:52:47 ragge Exp $	*/
+/*	$Id: node.h,v 1.41 2015/09/30 20:04:30 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -94,6 +94,8 @@ typedef struct node {
 #endif
 			} n_r;
 		} n_u;
+		void *_dcon;
+#if 0
 #ifdef SOFTFLOAT
 #ifdef FDFLOAT
 		/* To store F- or D-floats */
@@ -105,6 +107,7 @@ typedef struct node {
 #endif
 #else
 		long double	_dcon;
+#endif
 #endif
 	} n_f;
 } NODE;
