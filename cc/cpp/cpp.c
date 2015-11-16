@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.246 2015/11/14 13:49:25 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.247 2015/11/14 17:02:07 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -2126,7 +2126,13 @@ sstr:				for (; bp < cp; bp++)
 			stringbuf = sbp;
 			if (expokb(nl, bl) && expok(nl, m)) {
 				if ((nob = submac(nl, lvl+1, ib, bl))) {
+					if (nob->buf[0] == '-' ||
+					    nob->buf[0] == '+')
+						putob(ob, ' ');
 					strtobuf(nob->buf, ob);
+					if (ob->cptr[-1] == '-' ||
+					    ob->cptr[-1] == '+')
+						putob(ob, ' ');
 					bufree(nob);
 				} else {
 					goto sblk;
