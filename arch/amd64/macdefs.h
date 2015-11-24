@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.33 2015/02/07 08:47:54 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.34 2015/08/13 12:20:55 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -293,3 +293,4 @@ P1ND *amd64_builtin_va_copy(const struct bitable *, P1ND *a);
 
 /* target specific attributes */
 #define ATTR_MI_TARGET  ATTR_AMD64_CMPLRET, ATTR_AMD64_XORLBL
+#define NATIVE_FLOATING_POINT

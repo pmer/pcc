@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.7 2014/06/01 11:35:03 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.8 2014/06/03 20:19:50 ragge Exp $	*/
 /*
  * Copyright (c) 2006 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -177,3 +177,4 @@ int COLORMAP(int c, int *r);
  * special shapes for sp/fp.
  */
 #define	SLDFPSP		(MAXSPECIAL+1)	/* load fp or sp */
+#define NATIVE_FLOATING_POINT
