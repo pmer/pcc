@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.247 2015/11/14 17:02:07 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.248 2015/11/16 21:04:02 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -155,7 +155,8 @@ static int getyp(usch *s);
 static void *xrealloc(void *p, int sz);
 static void *xmalloc(int sz);
 
-usch locs[] = { FILLOC, LINLOC, PRAGLOC, DEFLOC };
+usch locs[] =
+	{ FILLOC, LINLOC, PRAGLOC, DEFLOC, 'd','e','f','i','n','e','d',0 };
 
 int
 main(int argc, char **argv)
