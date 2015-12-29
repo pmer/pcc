@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.17 2015/11/13 11:33:14 ragge Exp $	*/
+/*	$Id: trees.c,v 1.18 2015/11/24 17:30:20 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -272,13 +272,13 @@ buildtree(int o, NODE *l, NODE *r)
 	    (r->n_op == FCON || r->n_op == ICON) && (o == PLUS || o == MINUS ||
 	    o == MUL || o == DIV || (o >= EQ && o <= GT) )) {
 		TWORD t;
+#define D(x)	((union flt *)x)
 #ifndef CC_DIV_0
 		if (o == DIV &&
 		    ((r->n_op == ICON && glval(r) == 0) ||
-		     (r->n_op == FCON && r->n_dcon == 0.0)))
+		     (r->n_op == FCON && FLOAT_EQ(D(r->n_dcon), FLOAT_ZERO))))
 				goto runtime; /* HW dependent */
 #endif
-#define D(x)	((union flt *)x)
 		if (l->n_op == ICON)
 			FLOAT_INT2FP(D(l->n_dcon), glval(l), l->n_type);
 		if (r->n_op == ICON)
