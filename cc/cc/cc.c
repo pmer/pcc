@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.302 2015/11/14 13:49:25 ragge Exp $	*/
+/*	$Id: cc.c,v 1.303 2015/11/17 22:34:17 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -100,6 +100,7 @@
 #include <unistd.h>
 #endif
 #include <assert.h>
+#include <time.h>
 
 #ifdef  _WIN32
 #include <windows.h>
