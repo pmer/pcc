@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.35 2015/10/08 12:57:35 ragge Exp $	*/
+/*	$Id: local.c,v 1.36 2015/12/29 10:04:30 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -462,18 +462,18 @@ ninval(CONSZ off, int fsz, NODE *p)
 #ifdef USE_GAS
                 printf("\t.dword %lld\n", (long long)glval(p));
 #else
-                i = p->n_lval >> 32;
-                j = p->n_lval & 0xffffffff;
+		i = glval(p) >> 32;
+                j = glval(p) & 0xffffffff;
                 p->n_type = INT;
 		if (bigendian) {
-			p->n_lval = j;
+			slval(p, j);
 	                ninval(off, 32, p);
-			p->n_lval = i;
+			slval(p, i);
 			ninval(off+32, 32, p);
 		} else {
-			p->n_lval = i;
+			slval(p, i);
 	                ninval(off, 32, p);
-			p->n_lval = j;
+			slval(p, j);
 			ninval(off+32, 32, p);
 		}
 #endif
