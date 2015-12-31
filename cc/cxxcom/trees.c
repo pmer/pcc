@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.18 2015/11/24 17:30:20 ragge Exp $	*/
+/*	$Id: trees.c,v 1.19 2015/12/29 10:03:22 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -79,6 +79,7 @@ static NODE *strargs(NODE *);
 static void rmcops(NODE *p);
 static NODE *tymatch(NODE *p);
 void putjops(NODE *, void *);
+static void p2tree(NODE *);
 static struct symtab *findmember(struct symtab *, char *);
 int inftn; /* currently between epilog/prolog */
 
