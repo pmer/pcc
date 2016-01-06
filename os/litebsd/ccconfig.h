@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.1 2015/12/29 10:27:47 ragge Exp $	*/
+/*	$Id: ccconfig.h,v 1.2 2015/12/31 16:21:57 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -38,7 +38,7 @@
 #define F77LIBLIST { "-L/usr/local/lib", "-lF77", "-lI77", "-lm", "-lc", NULL };
 #endif
 
-#define	CPPMDADD { "-D__mips__", "-Dmips", "-D__mips=32", "-D__MIPSEL__", \
+#define	CPPMDADD { "-D__mips__", "-Dmips", "-D__mips=32", "-D__MIPSEL", \
 	"-D__MIPSEL__", "-DMIPSEL", "-D_MIPSEL", NULL, }
 
 #define DEFLIBS { "-lc", "-lgcc", NULL }
