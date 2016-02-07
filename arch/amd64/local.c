@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.93 2015/12/13 09:00:04 ragge Exp $	*/
+/*	$Id: local.c,v 1.94 2016/02/07 09:48:39 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -427,7 +427,7 @@ clocal(NODE *p)
 			    (m == LONG || m == ULONG)) {
 				l->n_type = m;
 				l->n_ap = 0;
-				return p1nfree(p);
+				return nfree(p);
 			}
 
 			if (ISPTR(l->n_type) && !nncon(l))
