@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.369 2016/02/09 17:57:35 ragge Exp $	*/
+/*	$Id: trees.c,v 1.370 2016/02/09 18:45:48 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1524,12 +1524,12 @@ ptmatch(P1ND *p)
 			if (ISPTR(t1) && ISPTR(t2)) {
 				if (BTYPE(t1) == VOID) {
 					t = t2;
+					d = d2;
+					ap = ap2;
 					break;
 				}
-				if (BTYPE(t2) == VOID) {
-					t = t1;
+				if (BTYPE(t2) == VOID)
 					break;
-				}
 			}
 			uerror("illegal types in :");
 		}
