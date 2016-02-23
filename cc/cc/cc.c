@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.303 2015/11/17 22:34:17 plunky Exp $	*/
+/*	$Id: cc.c,v 1.304 2015/12/29 09:27:06 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1067,9 +1067,6 @@ main(int argc, char *argv[])
 				exandrm(ofile);
 			ifile = ofile;
 		}
-
-		if (ninput > 1 && !Eflag && ifile == ofile && ifile[0] != '-')
-			printf("%s:\n", ifile);
 
 		strlist_append(&middle_linker_flags, ifile);
 	}
