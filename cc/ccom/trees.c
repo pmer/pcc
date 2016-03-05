@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.371 2016/02/09 21:36:33 ragge Exp $	*/
+/*	$Id: trees.c,v 1.372 2016/03/05 15:31:25 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -181,12 +181,12 @@ buildtree(int o, P1ND *l, P1ND *r)
 
 	if (o == ANDAND || o == OROR || o == NOT) {
 		if (l->n_op == FCON) {
-			p = bcon(!FLOAT_ISZERO(l));
+			p = bcon(!FLOAT_ISZERO(l->n_dcon));
 			p1nfree(l);
 			l = p;
 		}
 		if (o != NOT && r->n_op == FCON) {
-			p = bcon(!FLOAT_ISZERO(r));
+			p = bcon(!FLOAT_ISZERO(r->n_dcon));
 			p1nfree(r);
 			r = p;
 		}
