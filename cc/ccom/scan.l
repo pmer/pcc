@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.145 2016/02/07 18:04:28 ragge Exp $	*/
+/*	$Id: scan.l,v 1.146 2016/03/05 15:31:25 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -758,6 +758,10 @@ control(int t)
 		issyshdr = 0;
 		if (*wr == '3')
 			issyshdr = 1;
+#ifdef DWARF
+		if (gflag)
+			dwarf_file(ftitle);
+#endif
 #ifdef STABS
 		if (gflag)
 			stabs_file(ftitle);

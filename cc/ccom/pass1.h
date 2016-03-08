@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.293 2016/03/05 15:31:24 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.294 2016/03/05 15:49:36 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -650,6 +650,7 @@ void stabs_struct(struct symtab *, struct attr *);
 #endif
 #ifdef DWARF
 void dwarf_init(char *);
+void dwarf_file(char *);
 void dwarf_end(void);
 #endif
 
