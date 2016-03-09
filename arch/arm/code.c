@@ -1,4 +1,4 @@
-/*      $Id: code.c,v 1.28 2014/04/19 07:47:51 ragge Exp $    */
+/*      $Id: code.c,v 1.29 2015/01/07 05:20:48 gmcgarry Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -35,6 +35,16 @@
 
 #include "pass1.h"
 #include "pass2.h"
+
+#ifdef LANG_CXX
+#define p1listf listf
+#define p1tfree tfree
+#else
+#define NODE P1ND
+#define talloc p1alloc
+#define tcopy p1tcopy
+#define nfree p1nfree
+#endif
 
 static int rvnr;
 
@@ -75,7 +85,7 @@ defloc(struct symtab *sp)
 {
 	char *n;
 
-	n = sp->soname ? sp->soname : exname(sp->sname);
+	n = getexname(sp);
 #ifdef USE_GAS
 	if (ISFTN(t))
 		printf("\t.type %s,%%function\n", n);
