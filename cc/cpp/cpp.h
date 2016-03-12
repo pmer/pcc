@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.89 2015/11/14 17:02:07 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.90 2016/02/06 09:39:21 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -56,6 +56,7 @@ extern	FILE	*of;
 #endif
 
 #define	MAXARGS	128	/* Max # of args to a macro. Should be enough */
+#define	MAXIDSZ	63	/* Max length of C99 identifier; 5.2.4.1 */
 
 #define	PBMAX	10	/* min pushbackbuffer size */
 #define	BBUFSZ	(PBMAX+CPPBUF+1)
@@ -144,8 +145,9 @@ struct iobuf {
 	usch *bsz;
 	int ro:1, inuse:1;
 };
-extern struct iobuf *obufp;
-extern struct iobuf *ibufp;
+struct iobuf *getobuf(void);
+void putob(struct iobuf *ob, int ch);
+void bufree(struct iobuf *iob);
 
 /*
  * Struct used in parse tree evaluation.
@@ -197,7 +199,8 @@ int cinput(void);
 int inc2(void);
 int Ccmnt(void (*d)(int));
 usch *heapid(int ch);
+usch *readid(int ch);
 void faststr(int bc, void (*d)(int));
 int fastnum(int ch, void (*d)(int));
-
-
+void *xrealloc(void *p, int sz);
+void *xmalloc(int sz);
