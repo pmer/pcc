@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.158 2016/03/06 09:59:19 ragge Exp $	*/
+/*	$Id: token.c,v 1.159 2016/03/12 10:25:19 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -774,7 +774,7 @@ exprline(void)
 		if (ISID0(c)) {
 			dp = readid(c);
 			nl = lookup(dp, FIND);
-			if (strcmp((char *)dp, "defined") == 0) {
+			if (nl && *nl->value == DEFLOC) {
 				ifdef = 1;
 			} else if (ifdef) {
 				savch(nl ? '1' : '0');
