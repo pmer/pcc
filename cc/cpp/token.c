@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.161 2016/03/12 14:37:48 ragge Exp $	*/
+/*	$Id: token.c,v 1.162 2016/03/12 15:46:06 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -711,8 +711,9 @@ run:			while ((ch = inch()) == '\t' || ch == ' ')
 						putch(' ');
 					for (cp = ob->buf; cp < ob->cptr; cp++)
 						putch(*cp);
-					if (ob->cptr[-1] == '-' ||
-					    ob->cptr[-1] == '+')
+					if (ob->cptr > ob->buf &&
+					    (ob->cptr[-1] == '-' ||
+					    ob->cptr[-1] == '+'))
 						putch(' ');
 					bufree(ob);
 				}
