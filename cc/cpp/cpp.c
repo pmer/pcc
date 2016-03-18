@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.258 2016/03/14 20:27:56 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.259 2016/03/15 20:35:56 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -2228,8 +2228,9 @@ sstr:				for (; bp < cp; bp++)
 					    nob->buf[0] == '+')
 						putob(ob, ' ');
 					strtobuf(nob->buf, ob);
-					if (ob->cptr[-1] == '-' ||
-					    ob->cptr[-1] == '+')
+					if (ob->cptr > ob->buf &&
+					    (ob->cptr[-1] == '-' ||
+					     ob->cptr[-1] == '+'))
 						putob(ob, ' ');
 					bufree(nob);
 				} else {
