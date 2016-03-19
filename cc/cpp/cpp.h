@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.92 2016/03/12 14:37:48 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.93 2016/03/12 15:46:06 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -194,14 +194,15 @@ void putch(int);
 void putstr(const usch *s);
 usch *sheap(const char *fmt, ...);
 struct iobuf *bsheap(struct iobuf *, const char *fmt, ...);
+struct iobuf *strtobuf(usch *str, struct iobuf *iob);
 void warning(const char *fmt, ...);
 void error(const char *fmt, ...);
 int cinput(void);
 int inc2(void);
 int Ccmnt(void (*d)(int));
-usch *heapid(int ch);
+usch *bufid(int ch, struct iobuf *);
 usch *readid(int ch);
-void faststr(int bc, void (*d)(int));
-int fastnum(int ch, void (*d)(int));
+struct iobuf *faststr(int bc, struct iobuf *);
+int fastnum(int ch, struct iobuf *);
 void *xrealloc(void *p, int sz);
 void *xmalloc(int sz);
