@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.163 2016/03/17 11:30:36 ragge Exp $	*/
+/*	$Id: token.c,v 1.164 2016/03/19 14:37:16 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -797,7 +797,7 @@ exprline(void)
 	struct iobuf *ob, *rb;
 	struct symtab *nl;
 	int oCflag = Cflag;
-	usch *bp = stringbuf, *dp;
+	usch *dp;
 	int c, d, ifdef;
 
 	rb = getobuf();
