@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.164 2016/03/19 14:37:16 ragge Exp $	*/
+/*	$Id: token.c,v 1.165 2016/03/21 17:46:42 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1278,43 +1278,38 @@ elifstmt(void)
 		error("#elif in non-conditional section");
 }
 
-/* save line into stringbuf */
-static usch *
+/* save line into iobuf */
+static struct iobuf *
 savln(void)
 {
+	struct iobuf *ob = getobuf();
 	int c;
-	usch *cp = stringbuf;
 
 	while ((c = inch()) != -1) {
 		if (c == '\n') {
 			unch(c);
 			break;
 		}
-		savch(c);
+		putob(ob, c);
 	}
-	savch(0);
-
-	return cp;
+	*ob->cptr = 0;
+	return ob;
 }
 
 static void
 cpperror(void)
 {
-	usch *cp;
-
-	cp = savln();
-	error("#error %s", cp);
-	stringbuf = cp;
+	struct iobuf *ob = savln();
+	error("#error %s", ob->buf);
+	bufree(ob);
 }
 
 static void
 cppwarning(void)
 {
-	usch *cp;
-
-	cp = savln();
-	warning("#warning %s", cp);
-	stringbuf = cp;
+	struct iobuf *ob = savln();
+	error("#warning %s", ob->buf);
+	bufree(ob);
 }
 
 static void

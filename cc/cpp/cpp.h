@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.93 2016/03/12 15:46:06 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.94 2016/03/19 14:37:16 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -188,8 +188,6 @@ void prtline(int nl);
 int yylex(void);
 void cunput(int);
 int yyparse(void);
-usch *savstr(const usch *str);
-void savch(int c);
 void putch(int);
 void putstr(const usch *s);
 usch *sheap(const char *fmt, ...);
