@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.96 2016/03/21 21:27:18 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.97 2016/03/25 12:04:30 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -191,7 +191,7 @@ void putch(int);
 void putstr(const usch *s);
 usch *sheap(const char *fmt, ...);
 struct iobuf *bsheap(struct iobuf *, const char *fmt, ...);
-struct iobuf *strtobuf(usch *str, struct iobuf *iob);
+struct iobuf *strtobuf(const usch *str, struct iobuf *iob);
 struct iobuf *buftobuf(struct iobuf *in, struct iobuf *iob);
 void warning(const char *fmt, ...);
 void error(const char *fmt, ...);
