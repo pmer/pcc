@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.95 2016/03/21 18:22:15 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.96 2016/03/21 21:27:18 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -132,12 +132,6 @@ struct symtab {
 	int line;
 };
 
-struct initar {
-	struct initar *next;
-	int type;
-	char *str;
-};
-
 /* buffer definition */
 #define	BNORMAL	0	/* standard buffer */
 #define	BMAC	1	/* store macro definitions */
@@ -210,3 +204,4 @@ struct iobuf *faststr(int bc, struct iobuf *);
 int fastnum(int ch, struct iobuf *);
 void *xrealloc(void *p, int sz);
 void *xmalloc(int sz);
+void fastscan(void);
