@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.99 2016/03/30 16:15:58 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.100 2016/04/02 09:35:06 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -100,8 +100,8 @@ extern usch spechr[];
 #define	BUTBUF	3	/* write data to stdout */
 struct iobuf {
 	usch *buf;
-	usch *cptr;
-	usch *bsz;
+	int cptr;	/* current pointer */
+	int bsz;	/* bufsize */
 	int ro:1, inuse:1, type:4;
 };
 struct iobuf *getobuf(int);
