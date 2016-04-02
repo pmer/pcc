@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.268 2016/03/30 16:15:58 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.269 2016/04/02 09:35:06 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -652,7 +652,7 @@ fsrch_macos_framework(const usch *fn, const usch *dir)
 {
 	struct iobuf *ob;
 	usch *s = (usch *)strchr((const char*)fn, '/');
-	usch *p, *q;
+	usch *p, *q, *nm;
 	int len  = s - fn;
 
 	if (s == NULL)
