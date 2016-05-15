@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.102 2016/04/12 18:49:35 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.103 2016/05/06 13:48:44 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -94,6 +94,7 @@ extern usch spechr[];
 #define ISID(x)		(spechr[x] & C_ID)
 #define ISID0(x)	(spechr[x] & C_ID0)
 #define	ISDIGIT(x)	(spechr[x] & C_DIGIT)
+#define	ISCQ(x)		(spechr[x] & C_Q)
 
 /* buffer definition */
 #define	BNORMAL	0	/* standard buffer */
