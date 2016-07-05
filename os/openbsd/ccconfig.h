@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.14 2014/12/18 21:37:25 plunky Exp $	*/
+/*	$Id: ccconfig.h,v 1.15 2014/12/24 08:43:29 plunky Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -41,6 +41,8 @@
 
 #if defined(mach_amd64)
 #define	CPPMDADD { "-D__amd64__", NULL, }
+#define DEFLIBS  { "-lc", NULL }
+#define PCC_EARLY_CONFIG { kflag = 1; }
 #elif defined(mach_i386)
 #define	CPPMDADD { "-D__i386__", NULL, }
 #elif defined(mach_vax)
