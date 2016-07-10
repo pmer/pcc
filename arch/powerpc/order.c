@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.7 2008/09/27 07:35:23 ragge Exp $	*/
+/*	$Id: order.c,v 1.8 2009/01/07 11:44:03 gmcgarry Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -104,7 +104,7 @@ myormake(NODE *q)
 		(void)geninsn(p, INAREG);
 	} else if (p->n_op == REG) {
 		q->n_op = OREG;
-		q->n_lval = p->n_lval;
+		setlval(q, getlval(p));
 		q->n_rval = p->n_rval;
 		tfree(p);
 	}
