@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.177 2016/05/16 18:43:50 ragge Exp $	*/
+/*	$Id: token.c,v 1.178 2016/08/03 16:32:23 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1204,7 +1204,7 @@ static void
 cpperror(void)
 {
 	struct iobuf *ob = savln();
-	error("#error %s", ob->buf);
+	error("#error%s", ob->buf);
 	bufree(ob);
 }
 
@@ -1212,7 +1212,7 @@ static void
 cppwarning(void)
 {
 	struct iobuf *ob = savln();
-	error("#warning %s", ob->buf);
+	warning("#warning%s", ob->buf);
 	bufree(ob);
 }
 
