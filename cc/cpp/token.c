@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.176 2016/05/16 17:05:19 ragge Exp $	*/
+/*	$Id: token.c,v 1.177 2016/05/16 18:43:50 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -172,7 +172,7 @@ inpbuf(int n)
 		error("read error on file %s", ifiles->orgfn);
 	if (len > 0) {
 		ib->cptr = PBMAX - sz;
-		ib->bsz = PBMAX + len + sz;
+		ib->bsz = PBMAX + len;
 	}
 	return len + sz;
 }
