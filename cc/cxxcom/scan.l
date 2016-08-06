@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.6 2015/11/13 11:33:14 ragge Exp $	*/
+/*	$Id: scan.l,v 1.7 2016/03/05 15:31:25 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -47,6 +47,8 @@ UL			({L}|\\u{H}{H}{H}{H}|\\U{H}{H}{H}{H}{H}{H}{H}{H})
 
 #include "pass1.h"
 #include "cgram.h"
+
+#define bdebug flexbdebug
 
 static NODE *cvtdig(int radix);
 static NODE *charcon(void);
