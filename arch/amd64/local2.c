@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.61 2015/02/07 08:47:54 ragge Exp $	*/
+/*	$Id: local2.c,v 1.62 2015/12/13 09:00:04 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -501,8 +501,8 @@ zzzcode(NODE *p, int c)
 		case SHORT: case USHORT: s = 'w'; break;
 		case INT: case UNSIGNED: s = 'l'; break;
 		default: s = 'q'; break;
-		printf("%c", s);
 		}
+		printf("%c", s);
 		break;
 
 	case 'U': { /* output branch insn for ucomi */
