@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.282 2016/10/03 20:10:50 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.283 2016/10/11 13:48:24 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -2107,7 +2107,7 @@ subarg(struct symtab *nl, const usch **args, int lvl, struct blocker *bl)
 	narg = nl->narg;
 
 	sp = vp;
-	instr = snuff = 0;
+	snuff = 0;
 #ifdef PCC_DEBUG
 	if (dflag>1) {
 		printf("%d:subarg ARGlist for %s: '", lvl, nl->namep);
