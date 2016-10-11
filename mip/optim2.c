@@ -1,4 +1,4 @@
-/*	$Id: optim2.c,v 1.93 2016/08/09 17:14:58 ragge Exp $	*/
+/*	$Id: optim2.c,v 1.94 2016/09/26 16:45:43 ragge Exp $	*/
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1682,7 +1682,7 @@ printflowdiagram(struct p2env *p2e, char *type) {
 
 	name=plg->ipp_name;
 	
-	filenamesize=strlen(name)+1+strlen(type)+strlen(ext)+1;
+	filenamesize=(int)(strlen(name)+1+strlen(type)+strlen(ext)+1);
 	filename=tmpalloc(filenamesize);
 	snprintf(filename,filenamesize,"%s-%s%s",name,type,ext);
 	

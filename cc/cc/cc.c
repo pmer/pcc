@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.310 2016/08/26 13:52:57 ragge Exp $	*/
+/*	$Id: cc.c,v 1.311 2016/10/10 20:15:58 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1495,7 +1495,7 @@ strlist_exec(struct strlist *l)
 		while (waitpid(child, &rv, 0) == -1 && errno == EINTR)
 			/* nothing */(void)0;
 		rv = WEXITSTATUS(rv);
-		if (result)
+		if (rv)
 			errorx(1, "%s terminated with status %d", argv[0], rv);
 		while (argc-- > 0)
 			free(argv[argc]);
