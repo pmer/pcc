@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.122 2015/09/30 20:04:30 ragge Exp $	*/
+/*	$Id: common.c,v 1.123 2016/10/11 13:48:24 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -206,7 +206,7 @@ struct Warning Warnings[] = {
 		"declaration of '%s' shadows a %s declaration"
 	}, {
 		"pointer-sign", 0, 0,
-		"illegal pointer combination"
+		"pointer sign mismatch"
 	}, {
 		"sign-compare", 0, 0,
 		"comparison between signed and unsigned"
