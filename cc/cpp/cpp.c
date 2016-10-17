@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.289 2016/10/15 12:52:05 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.290 2016/10/16 09:12:11 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1782,7 +1782,8 @@ readargs(struct iobuf *in, struct symtab *sp, const usch **args)
 					error("eof in macro");
 				break;
 			case BLKID:
-				putob(ab, c), putob(ab, cinput());
+				putob(ab, c);
+				putob(ab, ifiles->ib->buf[ifiles->ib->cptr++]);
 				break;
 			case '/':
 				if ((c = cinput()) == '*' || c == '/')
