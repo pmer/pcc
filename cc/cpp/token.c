@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.183 2016/10/11 13:48:24 ragge Exp $	*/
+/*	$Id: token.c,v 1.184 2016/10/13 18:20:36 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1352,9 +1352,12 @@ again:		switch (ch) {
 				return;
 			goto again;
 		case '\'':
-			while ((ch = qcchar()) != '\'')
+			while ((ch = qcchar()) != '\'') {
+				if (ch == '\\')
+					qcchar();
 				if (ch == '\n')
 					return;
+			}
 			break;
 		case '\"':
 			instr = 1;
