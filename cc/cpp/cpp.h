@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.109 2016/10/13 18:20:36 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.110 2016/12/01 20:58:58 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -58,7 +58,7 @@ typedef	unsigned int mvtyp;
 #define	CPPBUF		(1 << CPPL2)
 #define	VALPTR(x)	((x) & (CPPBUF-1))
 #define	VALBUF(x)	((x) >> CPPL2)
-#define	MKVAL(b, c)	(((b) << CPPL2) | (c))
+#define	MKVAL(b, c)	(((b) << CPPL2) + (c))
 
 #define	MAXARGS	128	/* Max # of args to a macro. Should be enough */
 #define	MAXIDSZ	63	/* Max length of C99 identifier; 5.2.4.1 */
