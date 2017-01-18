@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.1 2017/01/18 07:42:01 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.2 2017/01/18 08:45:47 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -107,6 +107,7 @@ typedef long long OFFSZ;
 #undef	FIELDOPS		/* no bit-field instructions */
 #define TARGET_ENDIAN TARGET_LE
 
+#define FINDMOPS	/* to find isz */
 #define	CC_DIV_0	/* division by zero is safe in the compiler */
 #define BYTEOFF(x)	((x)&01)
 #define	MYALIGN
