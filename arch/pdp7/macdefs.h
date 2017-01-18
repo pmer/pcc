@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.94 2016/03/05 15:31:24 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.1 2017/01/18 07:42:01 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -29,6 +29,10 @@
 /*
  * Machine-dependent defines for both passes.
  */
+/*
+ * Convert (multi-)character constant to integer.
+ */
+#define makecc(val,i)	lastcon = val;
 
 #define ARGINIT		18	/* # bits above fp where arguments start */
 #define AUTOINIT	0	/* # bits below fp where automatics start */
