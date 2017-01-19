@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.1 2017/01/17 19:48:36 ragge Exp $	*/
+/*	$Id: local2.c,v 1.2 2017/01/18 18:02:08 ragge Exp $	*/
 /*
  * Copyright (c) 2017 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -350,10 +350,10 @@ static char *
 ccbranches[] = {
 	"je",		/* jumpe */
 	"jne",		/* jumpn */
-	"jle",		/* jumple */
-	"jl",		/* jumpl */
+	"ERROR",	/* jumple */
+	"spa",		/* jumpl */
 	"sma",		/* jumpge */
-	"jg",		/* jumpg */
+	"sma sza",	/* jumpg */
 	"jbe",		/* jumple (jlequ) */
 	"jb",		/* jumpl (jlssu) */
 	"jae",		/* jumpge (jgequ) */
@@ -381,6 +381,17 @@ myreader(struct interpass *ipole)
 void
 mycanon(NODE *p)
 {
+	NODE *q;
+
+	/* Avoid test for result > 0 */
+	if (p->n_op == CBRANCH && p->n_left->n_op == LE) {
+		/* Swap */
+		p = p->n_left;
+		q = p->n_left;
+		p->n_left = p->n_right;
+		p->n_right = q;
+		p->n_op = GT;
+	}
 }
 
 void

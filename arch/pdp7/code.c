@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.2 2017/01/18 18:02:08 ragge Exp $	*/
+/*	$Id: code.c,v 1.3 2017/01/19 07:56:18 ragge Exp $	*/
 /*
  * Copyright (c) 2017 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -121,7 +121,8 @@ bfcode(struct symtab **sp, int cnt)
 	for (i = 0; i < cnt; i++) {
 		sp[i]->sclass = STATIC;
 		sp[i]->soffset = getlab();
-		p2 = cast(buildtree(ADDROF, nametree(cftnsp), 0), INT|PTR, 0);
+		p2 = cast(buildtree(ADDROF,
+			nametree(cftnsp), 0), INCREF(sp[i]->stype), 0);
 		p = buildtree(ASSIGN, nametree(sp[i]), buildtree(UMUL, p2, 0));
 		ecomp(p);
 		send_passt(IP_ASM, c);

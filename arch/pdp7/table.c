@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.1 2017/01/17 19:48:36 ragge Exp $	*/
+/*	$Id: table.c,v 1.2 2017/01/18 18:02:08 ragge Exp $	*/
 /*
  * Copyright (c) 2017 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -31,8 +31,8 @@
 # define ANYSIGNED TINT|TLONG|TSHORT|TCHAR
 # define ANYUSIGNED TUNSIGNED|TULONG|TUSHORT|TUCHAR
 # define ANYFIXED ANYSIGNED|ANYUSIGNED
-# define TUWORD TUNSIGNED|TULONG
-# define TSWORD TINT|TLONG
+# define TUWORD TUNSIGNED
+# define TSWORD TINT
 # define TWORD TUWORD|TSWORD
 #define	 SHINT	SAREG	/* short and int */
 #define	 ININT	INAREG
@@ -756,31 +756,17 @@ struct optab table[] = {
 		0, 	RESCC,
 		"	cma ; tad AR ; cma\n", },
 
-#if 0
-{ OPLOG,	FORCC,
-	SCON|SAREG,	TWORD|TPOINT,
-	SAREG|SOREG|SNAME,	TWORD|TPOINT,
-		0, 	RESCC,
-		"	cmpl AR,AL\n", },
-#endif
+{ EQ,	FORCC,
+	SNAME,	TWORD|TPOINT,
+	SZERO,	TWORD|TPOINT,
+		0, 	0,
+		"	sad AL\n", },
 
 { OPLOG,	FORCC,
-	SAREG|SOREG|SNAME,	TSHORT|TUSHORT,
-	SCON|SAREG,	TANY,
+	SAREG,	TWORD|TPOINT,
+	SZERO,	TWORD|TPOINT,
 		0, 	RESCC,
-		"	cmpw AR,AL\n", },
-
-{ OPLOG,	FORCC,
-	SBREG|SOREG|SNAME,	TCHAR|TUCHAR,
-	SCON|SBREG,	TANY,
-		0, 	RESCC,
-		"	cmpb AR,AL\n", },
-
-{ OPLOG,	FORCC,
-	SDREG,	TLDOUBLE|TDOUBLE|TFLOAT,
-	SDREG,	TLDOUBLE|TDOUBLE|TFLOAT,
-		NSPECIAL, 	RNOP,
-		"ZG", },
+		"", },
 
 { OPLOG,	FORCC,
 	SANY,	TANY,
