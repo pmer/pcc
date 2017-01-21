@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.3 2017/01/18 18:02:08 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.4 2017/01/19 07:56:18 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -88,7 +88,7 @@
 #define	MAX_ULONGLONG	MAX_ULONG
 
 /* Default char is signed */
-#undef	CHAR_UNSIGNED
+#define	CHAR_UNSIGNED
 #define	BOOL_TYPE	UCHAR	/* what used to store _Bool */
 #undef UNALIGNED_ACCESS
 /*

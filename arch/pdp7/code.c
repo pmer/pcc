@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.3 2017/01/19 07:56:18 ragge Exp $	*/
+/*	$Id: code.c,v 1.4 2017/01/19 21:29:24 ragge Exp $	*/
 /*
  * Copyright (c) 2017 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -79,13 +79,16 @@ defalign(int al)
 void
 defloc(struct symtab *sp)
 {
+	extern void dellab(int);
 	char *name;
 
 	name = getexname(sp);
 	if (sp->slevel == 0)
 		printf(PRTPREF "%s:\t", name);
-	else
+	else {
+		dellab(sp->soffset);
 		printf(PRTPREF LABFMT ":\t", sp->soffset);
+	}
 }
 
 /*
@@ -122,8 +125,9 @@ bfcode(struct symtab **sp, int cnt)
 		sp[i]->sclass = STATIC;
 		sp[i]->soffset = getlab();
 		p2 = cast(buildtree(ADDROF,
-			nametree(cftnsp), 0), INCREF(sp[i]->stype), 0);
-		p = buildtree(ASSIGN, nametree(sp[i]), buildtree(UMUL, p2, 0));
+			nametree(cftnsp), 0), INCREF(INCREF(sp[i]->stype)), 0);
+		p = buildtree(ASSIGN, nametree(sp[i]),
+		    buildtree(UMUL, buildtree(UMUL, p2, 0), 0));
 		ecomp(p);
 		send_passt(IP_ASM, c);
 		printf(LABFMT ":	0\n", sp[i]->soffset);
@@ -135,6 +139,8 @@ bfcode(struct symtab **sp, int cnt)
 void
 ejobcode(int flag)
 {
+	extern void printlab(void);
+	printlab();
 }
 
 void
