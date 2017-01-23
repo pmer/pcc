@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.4 2017/01/21 17:18:46 ragge Exp $	*/
+/*	$Id: table.c,v 1.5 2017/01/22 18:06:51 ragge Exp $	*/
 /*
  * Copyright (c) 2017 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -640,7 +640,7 @@ struct optab table[] = {
 /* fetch byte based on byte pointer */
 { UMUL,	INAREG,
 	SANY,	TANY,
-	SAREG,	TUCHAR,
+	SOREG,	TUCHAR,
 		0,	RLEFT,
 		"	jms lbyt\n", },
 
@@ -760,7 +760,7 @@ struct optab table[] = {
 	SANY,	TANY,
 	SCON,	TPTRTO|TCHAR|TUCHAR,
 		NAREG,	RESC1,
-		"	lac ZB\n	ral\n", },
+		"	lac ZB\n	rcl\n", },
 
 { OPLTYPE,	INAREG,
 	SANY,	TANY,
