@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.5 2017/01/22 18:06:51 ragge Exp $	*/
+/*	$Id: table.c,v 1.6 2017/01/23 17:45:32 ragge Exp $	*/
 /*
  * Copyright (c) 2017 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -302,6 +302,24 @@ struct optab table[] = {
 	SNAME,	TWORD|TPOINT,
 		0,	RLEFT,
 		"	tad AR\n", },
+
+{ MINUS,      INAREG|FOREFF,
+      SAREG,  TWORD|TPOINT,
+      SNAME,  TWORD|TPOINT,
+	      0,      RLEFT,
+	      "	      cma\n   tad AR\n	      cma\n", },
+
+{ DIV,	      INAREG,
+      SAREG,	      TWORD,
+      SNAME,	      TWORD,
+	      0,      RLEFT,	      // XXX, how to rewrite to do the
+				      // operands in reverse order?
+				      // I tried RRIGHT and lac AL, no good
+	      "	      lmq\n"
+	      "	      lac AR\n"
+	      "	      dac .+4\n"
+	      "	      lacq\n"
+	      "	      cll; idiv; ..; lacq\n", },
 
 /* Simple r/m->reg ops */
 /* m/r |= r */
