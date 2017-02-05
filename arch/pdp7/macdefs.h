@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.4 2017/01/19 07:56:18 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.5 2017/01/21 17:18:46 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -114,6 +114,9 @@ typedef long long OFFSZ;
 #define MYINSTRING
 #define MYDOTFILE
 #define	printdotfile(ftitle)	/* just ignore */
+void myendinit(void);
+#define	MYENDINIT	myendinit();
+#define	WORD_ADDRESSED
 
 #define	szty(t)	(((t) == DOUBLE || (t) == FLOAT || \
 	(t) == LONGLONG || (t) == ULONGLONG) ? 2 : (t) == LDOUBLE ? 3 : 1)

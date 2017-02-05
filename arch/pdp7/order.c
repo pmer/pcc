@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.2 2017/01/21 17:18:46 ragge Exp $	*/
+/*	$Id: order.c,v 1.3 2017/01/23 17:45:32 ragge Exp $	*/
 /*
  * Copyright (c) 2017 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -84,13 +84,17 @@ int
 shumul(NODE *p, int shape)
 {
 
-	if (x2debug)
+	if (x2debug) {
 		printf("shumul(%p)\n", p);
+		fwalk(p, e2print, 0);
+	}
 
 	if (shape & SOREG)
 		return SROREG;
-	if (shape & SNAME)
+	if ((shape & SNAME) && (p->n_op == NAME))
 		return SRDIR;
+	if (shape & STARREG)
+		return SROREG;
 	return SRNOPE;
 }
 
