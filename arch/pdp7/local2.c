@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.5 2017/01/22 18:06:51 ragge Exp $	*/
+/*	$Id: local2.c,v 1.6 2017/02/05 14:55:20 ragge Exp $	*/
 /*
  * Copyright (c) 2017 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -97,8 +97,9 @@ addicon(int v, char *s)
 		if (co->val == v && co->str == s)
 			return co->lblnum;
 	}
-	co = tmpcalloc(sizeof(struct consts));
-	co->val = v;
+	co = permalloc(sizeof(struct consts));
+	memset(co, 0, sizeof(struct consts));
+	co->val = v & 0777777;
 	co->str = s;
 	co->lblnum = minum++;
 	co->next = copole;
@@ -234,6 +235,10 @@ zzzcode(NODE *p, int c)
 		printf("	lac Lindir i\n");
 		printf("	tad LC%d\n", addicon(getlval(getlr(p, 'R')) & 0777777, 0));
 		printf("	dac Lindir i\n");
+		break;
+
+	case 'J': /* add const */
+		printf("LC%d", addicon(getlval(getlr(p, 'R')) & 0777777, 0));
 		break;
 
 	default:
