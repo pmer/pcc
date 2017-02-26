@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.293 2016/12/01 20:58:58 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.294 2016/12/04 12:55:05 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1873,10 +1873,12 @@ readargs(struct iobuf *in, struct symtab *sp, const usch **args)
 			case '\n':
 				ifiles->escln++;
 				c = skpws();
-				if (c == '#')
+				if (c == '#') {
 					ppdir();
-				else
+				} else {
+					putob(ab, ' ');
 					continue;
+				}
 				break;
 			case '\"':
 			case '\'':
