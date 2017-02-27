@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.294 2016/12/04 12:55:05 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.295 2017/02/26 09:08:56 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1876,7 +1876,9 @@ readargs(struct iobuf *in, struct symtab *sp, const usch **args)
 				if (c == '#') {
 					ppdir();
 				} else {
-					putob(ab, ' ');
+					/* only if not first char on line */
+					if (argary[i] != ab->cptr)
+						putob(ab, ' ');
 					continue;
 				}
 				break;
