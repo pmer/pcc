@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.201 2016/08/09 17:30:26 ragge Exp $	*/
+/*	$Id: local.c,v 1.202 2017/02/26 18:53:51 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -947,7 +947,9 @@ spalloc(P1ND *t, P1ND *p, OFFSZ off)
 int
 ninval(CONSZ off, int fsz, P1ND *p)
 {
+#ifdef NATIVE_FLOATING_POINT
 	union { float f; double d; long double l; int i[3]; } u;
+#endif
 	int i;
 
 	switch (p->n_type) {
@@ -960,6 +962,7 @@ ninval(CONSZ off, int fsz, P1ND *p)
 		slval(p, i);
 		inval(off+32, 32, p);
 		break;
+#ifdef NATIVE_FLOATING_POINT
 	case LDOUBLE:
 		u.i[2] = 0;
 		u.l = (long double)((FLT *)p->n_dcon)->fp;
@@ -981,6 +984,7 @@ ninval(CONSZ off, int fsz, P1ND *p)
 		u.f = (float)((FLT *)p->n_dcon)->fp;
 		printf(PRTPREF "\t.long\t%d\n", u.i[0]);
 		break;
+#endif
 	default:
 		return 0;
 	}
