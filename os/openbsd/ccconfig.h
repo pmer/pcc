@@ -1,4 +1,4 @@
-/*	$Id: ccconfig.h,v 1.19 2016/10/11 15:34:39 ragge Exp $	*/
+/*	$Id: ccconfig.h,v 1.20 2016/10/16 09:10:55 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004 Anders Magnusson (ragge@ludd.luth.se).
@@ -41,7 +41,7 @@
 #define F77LIBLIST { "-L/usr/local/lib", "-lF77", "-lI77", "-lm", "-lc", NULL };
 #endif
 
-#define PCC_EARLY_SETUP { kflag = 2; }
+#define PCC_EARLY_SETUP { kflag = 2; pieflag = 1; }
 
 #if defined(mach_amd64)
 #define	CPPMDADD { "-D__amd64__", "-D__amd64", "-D__x86_64__", "-D__x86_64", \
