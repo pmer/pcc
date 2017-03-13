@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.312 2016/10/11 13:48:23 ragge Exp $	*/
+/*	$Id: cc.c,v 1.313 2016/10/16 09:15:58 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -1896,9 +1896,7 @@ struct flgcheck ccomflgcheck[] = {
 	{ &Oflag, 1, "-xdeljumps" },
 	{ &Oflag, 1, "-xinline" },
 	{ &Oflag, 1, "-xdce" },
-#ifdef notyet
 	{ &Oflag, 1, "-xssa" },
-#endif
 	{ &freestanding, 1, "-ffreestanding" },
 	{ &pgflag, 1, "-p" },
 	{ &gflag, 1, "-g" },
