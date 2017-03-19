@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.188 2016/09/26 16:45:42 ragge Exp $	*/
+/*	$Id: local2.c,v 1.189 2017/03/13 15:56:00 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -662,7 +662,7 @@ zzzcode(NODE *p, int c)
 		break;
 
 	case 'T': /* Print out 8-bit reg name for assign */
-		switch (regno(p->n_right)) {
+		switch (regno(getlr(p, 'R'))) {
 		case EAX: ch = "%al"; break;
 		case EBX: ch = "%bl"; break;
 		case ECX: ch = "%cl"; break;
@@ -670,6 +670,10 @@ zzzcode(NODE *p, int c)
 		default: ch = "ERROR"; break;
 		}
 		printf("%s", ch);
+		break;
+
+	case 'U': /* print a/h for right shift */
+		printf("%c", ISUNSIGNED(p->n_type) ? 'h' : 'a');
 		break;
 
 	default:
