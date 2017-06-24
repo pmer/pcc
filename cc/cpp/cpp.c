@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.301 2017/06/24 10:42:06 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.302 2017/06/24 14:19:03 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1222,15 +1222,15 @@ back:					if (c == '*') {
 				}
 				bc = c;
 				instr = 1;
-				do {
-					macsav(c), c = cinput();
+				macsav(c), c = cinput();
+				while (c != bc) {
 					if (c == '\\')
 						macsav(c), c = cinput();
 					else if (c == '\n')
 						goto bad;
-				} while (c && c != bc);
-				if (c == bc)
-					macsav(c);
+					macsav(c), c = cinput();
+				}
+				macsav(c);
 				instr = 0;
 			}
 			break;
