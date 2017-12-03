@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.17 2014/04/29 18:16:09 ragge Exp $	*/
+/*	$Id: order.c,v 1.18 2015/12/13 09:00:04 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -359,5 +359,7 @@ livecall(NODE *p)
 int
 acceptable(struct optab *op)
 {
+	if (op->visit & MCALL)
+		return (op->visit & mcmodel) != 0;
 	return 1;
 }
