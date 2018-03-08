@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.36 2016/03/05 15:49:36 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.37 2017/12/03 17:34:15 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -112,6 +112,7 @@ typedef long long OFFSZ;
 #define	ARGREG	EBP
 #define ARGOFFSET 8
 #endif
+#define	TARGET_TIMODE		/* has TI/TF/TC types (128 bit) */
 
 #define BACKAUTO 		/* stack grows negatively for automatics */
 #define BACKTEMP 		/* stack grows negatively for temporaries */
