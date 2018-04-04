@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.379 2017/03/02 21:10:45 ragge Exp $	*/
+/*	$Id: trees.c,v 1.380 2017/03/13 15:53:27 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2841,7 +2841,7 @@ p2tree(P1ND *p)
 	if (ty != BITYPE)
 		np->n_rval = p->n_rval;
 	if (ty == LTYPE) {
-		slval(np, glval(p));
+		setlval(np, glval(p));
 	}
 
 	/* cleanup attributes.
