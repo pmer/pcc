@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.31 2015/11/13 11:38:47 ragge Exp $	*/
+/*	$Id: local.c,v 1.32 2018/04/03 14:49:46 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -91,7 +91,7 @@ clocal(p) NODE *p; {
 			/* fake up a structure reference */
 			r = block( REG, NIL, NIL, PTR+STRTY, 0, 0 );
 			slval(r, 0);
-			slval(r, (q->sclass==PARAM?ARGREG:FPREG));
+			regno(r) = q->sclass==PARAM?ARGREG:FPREG;
 			p = stref( block( STREF, r, p, 0, 0, 0 ) );
 			break;
 		}
