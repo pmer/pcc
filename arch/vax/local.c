@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.32 2018/04/03 14:49:46 ragge Exp $	*/
+/*	$Id: local.c,v 1.33 2018/04/04 12:10:48 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -45,6 +45,7 @@
 
 static void r1arg(NODE *p, NODE *q);
 
+#define IALLOC(sz)      (isinlining ? permalloc(sz) : tmpalloc(sz))
 
 /*	this file contains code which is dependent on the target machine */
 
@@ -198,7 +199,7 @@ myp2tree(NODE *p)
 	if (p->n_op != FCON) 
 		return;
 
-	sp = tmpalloc(sizeof(struct symtab));
+	sp = IALLOC(sizeof(struct symtab));
 	sp->sclass = STATIC;
 	sp->sap = 0;
 	sp->slevel = 1; /* fake numeric label */
@@ -206,7 +207,9 @@ myp2tree(NODE *p)
 	sp->sflags = 0;
 	sp->stype = p->n_type;
 	sp->squal = (CON >> TSHIFT);
+	sp->sname = NULL;
 
+	locctr(DATA, sp);
 	defloc(sp);
 	inval(0, tsize(sp->stype, sp->sdf, sp->sap), p);
 
