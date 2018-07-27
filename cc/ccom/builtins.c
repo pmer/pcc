@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.70 2017/03/02 21:10:45 ragge Exp $	*/
+/*	$Id: builtins.c,v 1.71 2018/07/27 14:32:33 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -752,17 +752,17 @@ builtin_islessgreater(const struct bitable *bt, P1ND *a)
 static P1ND *
 builtin_signbit(const struct bitable *bt, P1ND *a)
 {
-	return binhelp(a, INT, "__pcc_signbit");
+	return binhelp(a, INT, "__signbitd");
 }
 static P1ND *
 builtin_signbitf(const struct bitable *bt, P1ND *a)
 {
-	return binhelp(a, INT, "__pcc_signbitf");
+	return binhelp(a, INT, "__signbitf");
 }
 static P1ND *
 builtin_signbitl(const struct bitable *bt, P1ND *a)
 {
-	return binhelp(a, INT, "__pcc_signbitl");
+	return binhelp(a, INT, "__signbitl");
 }
 #endif
 
