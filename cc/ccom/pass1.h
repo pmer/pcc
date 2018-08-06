@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.297 2018/04/07 12:48:13 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.298 2018/04/08 07:35:41 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -448,11 +448,8 @@ P1ND *p1tcopy(P1ND *);
 
 struct flt {
 	union {
-#ifdef NATIVE_FLOATING_POINT
 		long double fp; 
-#else
 		struct softfloat sf;
-#endif
 	};
 	TWORD t;
 };	

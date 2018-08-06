@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.316 2017/12/03 17:31:58 ragge Exp $	*/
+/*	$Id: cc.c,v 1.317 2018/07/28 09:39:11 ragge Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -124,6 +124,7 @@
 
 #undef NATIVE_FLOATING_POINT
 #define NATIVE_FLOATING_POINT	/* avoid ccom typedefs */
+#define CC_DRIVER
 #include "softfloat.h"	/* for CPP floating point macros */
 
 #define	MKS(x) _MKS(x)
