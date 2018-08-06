@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.424 2017/04/01 09:51:30 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.425 2018/04/07 12:48:13 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -2019,6 +2019,17 @@ arglist(NODE *n)
 	}
 	cnt++;
 	ty = w->n_type;
+	if (BTYPE(ty) == ENUMTY) {
+		struct attr *app = attr_find(w->n_ap, ATTR_STRUCT);
+		struct symtab *sp;
+
+		if (app == NULL)
+			uerror("arg %d enum undeclared", cnt);
+		sp = app->amlist;
+		if (sp->stype != ENUMTY)
+			MODTYPE(ty, sp->stype);
+		w->n_type = ty;
+	}
 	if (ty == ENUMTY) {
 		uerror("arg %d enum undeclared", cnt);
 		ty = w->n_type = INT;
