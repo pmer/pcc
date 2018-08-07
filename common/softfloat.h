@@ -1,4 +1,4 @@
-/*	$Id: softfloat.h,v 1.6 2018/08/06 20:19:33 ragge Exp $	*/
+/*	$Id: softfloat.h,v 1.7 2018/08/07 06:32:49 ragge Exp $	*/
 
 /*
  * Copyright (c) 2015 Anders Magnusson. All rights reserved.
@@ -174,6 +174,7 @@ int soft_isnan(SF sf);
 int soft_fpclassify(SF sf, TWORD t);
 SF soft_huge_val(void);
 SF soft_nan(char *);
+SF soft_zero(void);
 #ifdef DEBUGFP
 void fpwarn(char *s, long double soft, long double hard);
 #endif
