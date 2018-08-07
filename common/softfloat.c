@@ -1,4 +1,4 @@
-/*	$Id: softfloat.c,v 1.3 2018/08/07 06:32:49 ragge Exp $	*/
+/*	$Id: softfloat.c,v 1.4 2018/08/07 08:05:48 ragge Exp $	*/
 
 /*
  * Copyright (c) 2008 Anders Magnusson. All rights reserved.
@@ -539,6 +539,7 @@ FPI fpi_binaryx80 = { 64,   1-16383-64+1,
 #define FPI_LDOUBLE_ZERO	{ 0, 0, 0, 0, 0 }
 #define	FPI_LDOUBLE_ISZ(sf)	(sf.fp[0] == 0 && sf.fp[1] == 0 && \
 	sf.fp[2] == 0 && sf.fp[3] == 0 && (sf.fp[4] & 0x7fff) == 0)
+#define	FPI_LDOUBLE_NEG(sf)	sf.fp[4] ^= 0x8000
 #else
 #error need long double definition
 #endif
@@ -966,14 +967,12 @@ soft_fp2int(SF sf, TWORD t)
  */
 
 /*
- * Negate a softfloat. Easy.
- * Do not work correctly for SF_Zero when negative zero are not supported
- * (need to have access to fpi-> (i.e. TWORD t) to solve this.) Not-a-problem
+ * Negate a softfloat.
  */
 SF
 soft_neg(SF sf)
 {
-	sf.kind ^= SF_Neg;
+	FPI_LDOUBLE_NEG(sf);
 	return sf;
 }
 
