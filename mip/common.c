@@ -1,4 +1,4 @@
-/*	$Id: common.c,v 1.123 2016/10/11 13:48:24 ragge Exp $	*/
+/*	$Id: common.c,v 1.124 2016/10/12 07:46:58 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -222,6 +222,9 @@ struct Warning Warnings[] = {
 	}, {
 		"attributes", 1, 0,
 		"unsupported attribute `%s'"
+	}, {
+		"uninitialized", 0, 0,
+		"uninitialized variable"
 	}, {	NULL	}
 };
 
