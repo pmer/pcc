@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.300 2018/08/07 08:05:48 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.301 2018/08/07 08:32:51 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -455,7 +455,6 @@ struct flt {
 };	
 typedef struct flt FLT;	
 #define	fltallo()		stmtalloc(sizeof(FLT))
-#define	FCAST(x)		((FLT *)(x))
 
 #define FLOAT_ISZERO(p)		soft_isz(p->sf)
 #define FLOAT_NEG(p)		p->sf = soft_neg(p->sf)
