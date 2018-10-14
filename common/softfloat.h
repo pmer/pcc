@@ -1,4 +1,4 @@
-/*	$Id: softfloat.h,v 1.8 2018/08/07 08:05:48 ragge Exp $	*/
+/*	$Id: softfloat.h,v 1.9 2018/10/13 20:04:15 ragge Exp $	*/
 
 /*
  * Copyright (c) 2015 Anders Magnusson. All rights reserved.
@@ -92,9 +92,6 @@ typedef SF *SFP;
 #endif
 
 #define	TARGET_FLT_RADIX	C(FLT_FP,_RADIX)
-
-/* classification macros, for internal use (soft_fpclassify) */
-enum { SC_ZERO, SC_NORMAL, SC_SUBNORMAL, SC_INFINITE, SC_NAN };
 
 /*
  * Description of a floating point format, based what is in gdtoa package.
