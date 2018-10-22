@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.303 2018/10/14 10:08:51 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.304 2018/10/21 17:42:14 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -461,17 +461,10 @@ typedef struct flt FLT;
 #define FLOAT_FP2FP(f,t)	f->sf = soft_fp2fp(f->sf, t)
 #define FLOAT_EQ(d1,d2)		soft_cmp(d1->sf, d2->sf, EQ)
 #define FLOAT_NE(d1,d2)		soft_cmp(d1->sf, d2->sf, NE)
-#if 0
-#define FLOAT_GE(d1,d2)		soft_cmp(d1->sf, d2->sf, GE)
 #define FLOAT_GT(d1,d2)		soft_cmp(d1->sf, d2->sf, GT)
+#define FLOAT_GE(d1,d2)		soft_cmp(d1->sf, d2->sf, GE)
 #define FLOAT_LE(d1,d2)		soft_cmp(d1->sf, d2->sf, LE)
 #define FLOAT_LT(d1,d2)		soft_cmp(d1->sf, d2->sf, LT)
-#else
-#define FLOAT_GE(d1,d2)		(d1->fp >= d2->fp)
-#define FLOAT_GT(d1,d2)		(d1->fp > d2->fp)
-#define FLOAT_LE(d1,d2)		(d1->fp <= d2->fp)
-#define FLOAT_LT(d1,d2)		(d1->fp < d2->fp)
-#endif
 
 #ifdef NATIVE_FLOATING_POINT
 #define FLOAT_PLUS(p1,p2)	((p1)->n_dcon->fp += (p2)->n_dcon->fp)
