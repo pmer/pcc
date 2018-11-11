@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.307 2018/10/27 12:49:09 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.308 2018/11/11 11:10:27 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -475,14 +475,13 @@ typedef struct flt FLT;
 #define FLOAT_FP2INT(i,d,t)	i = soft_fp2int(d->sf, t)
 #define FLOAT_PLUS(p1,p2)	p1->n_dcon->sf = \
 	soft_plus(p1->n_dcon->sf, p2->n_dcon->sf, p1->n_type)
+#define FLOAT_MINUS(p1,p2)	p1->n_dcon->sf = \
+	soft_minus(p1->n_dcon->sf, p2->n_dcon->sf, p1->n_type)
 
 #ifdef NATIVE_FLOATING_POINT
-#define FLOAT_MINUS(p1,p2)	((p1)->n_dcon->fp -= (p2)->n_dcon->fp)
 #define FLOAT_MUL(p1,p2)	((p1)->n_dcon->fp *= (p2)->n_dcon->fp)
 #define FLOAT_DIV(p1,p2)	((p1)->n_dcon->fp /= (p2)->n_dcon->fp)
 #else
-#define FLOAT_MINUS(p1,p2)	p1->n_dcon->sf = \
-	soft_minus(p1->n_dcon->sf, p2->n_dcon->sf, p1->n_type)
 #define FLOAT_MUL(p1,p2)	p1->n_dcon->sf = \
 	soft_mul(p1->n_dcon->sf, p2->n_dcon->sf, p1->n_type)
 #define FLOAT_DIV(p1,p2)	p1->n_dcon->sf = \
