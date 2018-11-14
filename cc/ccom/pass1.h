@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.309 2018/11/11 11:27:49 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.310 2018/11/11 17:41:51 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -479,14 +479,8 @@ typedef struct flt FLT;
 	soft_minus(p1->n_dcon->sf, p2->n_dcon->sf, p1->n_type)
 #define FLOAT_MUL(p1,p2)	p1->n_dcon->sf = \
 	soft_mul(p1->n_dcon->sf, p2->n_dcon->sf, p1->n_type)
-
-#ifdef NATIVE_FLOATING_POINT
-#define FLOAT_DIV(p1,p2)	((p1)->n_dcon->fp /= (p2)->n_dcon->fp)
-#else
 #define FLOAT_DIV(p1,p2)	p1->n_dcon->sf = \
 	soft_div(p1->n_dcon->sf, p2->n_dcon->sf, p1->n_type)
-
-#endif
 
 enum {	ATTR_FIRST = ATTR_MI_MAX + 1,
 
