@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.383 2018/08/07 08:05:48 ragge Exp $	*/
+/*	$Id: trees.c,v 1.384 2018/10/21 17:42:14 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1983,7 +1983,7 @@ eprint(P1ND *p, int down, int *a, int *b)
 		printf(CONFMT, glval(p));
 		if (p->n_op == NAME || p->n_op == ICON)
 			printf(", %p, ", p->n_sp);
-#ifdef NATIVE_FLOATING_POINT
+#ifdef notyet
 		else if (p->n_op == FCON)
 			printf(", %Lf, ", p->n_dcon->fp);
 #endif
