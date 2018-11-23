@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.152 2018/08/06 20:19:33 ragge Exp $	*/
+/*	$Id: scan.l,v 1.153 2018/10/15 15:49:32 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -803,6 +803,15 @@ pragmas_unsupp(char *t)
 static int
 pragmas_stdc(char *t)
 {
+	char *s = pragtok(0);
+
+	if (strcmp(s, "FP_CONTRACT") == 0) {
+		if (strcmp(s = pragtok(0), "ON") == 0) {
+				flostat |= FP_CONTR_CBR;
+		} else if (strcmp(s, "OFF") == 0) {
+			flostat &= ~FP_CONTR_CBR;
+		}
+	}
 	return 0; /* Just ignore */
 }
 
