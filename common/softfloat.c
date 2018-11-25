@@ -1,4 +1,4 @@
-/*	$Id: softfloat.c,v 1.17 2018/11/14 20:12:50 ragge Exp $	*/
+/*	$Id: softfloat.c,v 1.18 2018/11/22 19:44:22 ragge Exp $	*/
 
 /*
  * Copyright (c) 2008 Anders Magnusson. All rights reserved.
@@ -1642,7 +1642,7 @@ soft_zero()
  * Save as a static array of uint32_t.
  */
 uint32_t *
-soft_toush(SF osf, TWORD t)
+soft_toush(SF osf, TWORD t, int *nbits)
 {
 	static SF sf;
 
@@ -1676,6 +1676,7 @@ soft_toush(SF osf, TWORD t)
 		fpwarn("soft_toush4", (long double)sf.debugfp, ldt);
 	}
 #endif
+	*nbits = fpis[t-FLOAT]->storage;
 	return sf.fp;
 }
 

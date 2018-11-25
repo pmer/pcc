@@ -1,4 +1,4 @@
-/*	$Id: softfloat.h,v 1.11 2018/11/11 11:10:27 ragge Exp $	*/
+/*	$Id: softfloat.h,v 1.12 2018/11/14 20:12:50 ragge Exp $	*/
 
 /*
  * Copyright (c) 2015 Anders Magnusson. All rights reserved.
@@ -174,7 +174,7 @@ int soft_fpclassify(SF sf, TWORD t);
 SF soft_huge_val(void);
 SF soft_nan(char *);
 SF soft_zero(void);
-uint32_t *soft_toush(SF, TWORD);
+uint32_t *soft_toush(SF, TWORD, int *);
 #ifdef DEBUGFP
 void fpwarn(const char *s, long double soft, long double hard);
 #endif
