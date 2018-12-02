@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.155 2018/12/02 13:36:51 ragge Exp $	*/
+/*	$Id: scan.l,v 1.156 2018/12/02 16:37:53 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -411,9 +411,9 @@ cvtdig(int radix)
 	switch (ntype) {
 	case DOUBLE: /* special case */
 		p = block(FCON, NULL, NULL, IMAG, 0, 0);
-		p->n_dcon = stmtalloc(sizeof(FLT));
-		FLOAT_INT2FP(p->n_dcon, v, ULONGLONG);
-		FLOAT_FP2FP(p->n_dcon, DOUBLE);
+		p->n_scon = sfallo();
+		FLOAT_INT2FP(p->n_scon, v, ULONGLONG);
+		FLOAT_FP2FP(p->n_scon, DOUBLE);
 		return p;
 
 	case INT:
