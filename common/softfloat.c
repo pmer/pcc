@@ -1,4 +1,4 @@
-/*	$Id: softfloat.c,v 1.18 2018/11/22 19:44:22 ragge Exp $	*/
+/*	$Id: softfloat.c,v 1.19 2018/11/25 20:58:21 ragge Exp $	*/
 
 /*
  * Copyright (c) 2008 Anders Magnusson. All rights reserved.
@@ -536,7 +536,7 @@ FPI fpi_binary32 = { 24,  1-127-24+1,
 #define	IEEEFP_32_TOOLARGE(exp, mant)	ieeefp_32_toolarge(exp, mant)
 #define	IEEEFP_32_TOOSMALL(exp, mant)	ieeefp_32_toosmall(exp, mant)
 #define IEEEFP_32_MAKE(rv, sign, exp, mant)	\
-	(rv.fp[0] = (sign << 31) | ((exp & 0xff) << 23) | sfrshift(mant, 41))
+	(rv.fp[0] = (sign << 31) | (((exp & 0xff) << 23) + sfrshift(mant, 41)))
 static int
 ieeefp_32_toolarge(int exp, uint64_t mant)
 {
@@ -921,7 +921,7 @@ floatx80_to_float32(SF a)
 	} else {
 //printf("4\n");
 		exp = exp - LDOUBLE_BIAS + FLOAT_BIAS;
-//printf("4: ecp %d\n", exp);
+//printf("4: ecp %x\n", exp);
 		if (FLOAT_TOOLARGE(exp, mant)) {
 			FLOAT_INF(rv, sign);
 		} else if (FLOAT_TOOSMALL(exp, mant)) {
