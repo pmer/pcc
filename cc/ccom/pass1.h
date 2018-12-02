@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.312 2018/11/23 14:43:06 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.313 2018/12/02 13:36:51 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -455,17 +455,17 @@ typedef struct flt FLT;
  * static (compile-time) initialization or FP_CONTRACT is YES.
  */
 #define	CAN_EVAL_FLOAT()	(statinit || (flostat & FP_CONTR_CBR))
-#define FLOAT_ISZERO(p)		soft_isz(p->sf)
-#define FLOAT_NEG(p)		p->sf = soft_neg(p->sf)
+#define FLOAT_ISZERO(p)		soft_isz(&p->sf)
+#define FLOAT_NEG(p)		soft_neg(&(p->sf))
 #define FLOAT_FP2FP(f,t)	f->sf = soft_fp2fp(f->sf, t)
-#define FLOAT_EQ(d1,d2)		soft_cmp(d1->sf, d2->sf, EQ)
-#define FLOAT_NE(d1,d2)		soft_cmp(d1->sf, d2->sf, NE)
-#define FLOAT_GT(d1,d2)		soft_cmp(d1->sf, d2->sf, GT)
-#define FLOAT_GE(d1,d2)		soft_cmp(d1->sf, d2->sf, GE)
-#define FLOAT_LE(d1,d2)		soft_cmp(d1->sf, d2->sf, LE)
-#define FLOAT_LT(d1,d2)		soft_cmp(d1->sf, d2->sf, LT)
+#define FLOAT_EQ(d1,d2)		soft_cmp(&d1->sf, &d2->sf, EQ)
+#define FLOAT_NE(d1,d2)		soft_cmp(&d1->sf, &d2->sf, NE)
+#define FLOAT_GT(d1,d2)		soft_cmp(&d1->sf, &d2->sf, GT)
+#define FLOAT_GE(d1,d2)		soft_cmp(&d1->sf, &d2->sf, GE)
+#define FLOAT_LE(d1,d2)		soft_cmp(&d1->sf, &d2->sf, LE)
+#define FLOAT_LT(d1,d2)		soft_cmp(&d1->sf, &d2->sf, LT)
 #define FLOAT_INT2FP(f,p,t)	f->sf = soft_int2fp(p, t, ctype(LDOUBLE))
-#define FLOAT_FP2INT(i,d,t)	i = soft_fp2int(d->sf, t)
+#define FLOAT_FP2INT(i,d,t)	i = soft_fp2int(&d->sf, t)
 #define FLOAT_PLUS(p1,p2)	p1->n_dcon->sf = \
 	soft_plus(p1->n_dcon->sf, p2->n_dcon->sf, p1->n_type)
 #define FLOAT_MINUS(p1,p2)	p1->n_dcon->sf = \
