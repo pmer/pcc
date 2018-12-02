@@ -1,4 +1,4 @@
-/*	$Id: pftn.c,v 1.427 2018/08/07 08:05:48 ragge Exp $	*/
+/*	$Id: pftn.c,v 1.428 2018/11/23 14:43:06 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -3440,7 +3440,7 @@ imret(NODE *p, NODE *q)
 		if (ISITY(q->n_type)) {
 			p = block(FCON, 0, 0, q->n_type, 0, 0);
 			p->n_dcon = fltallo();
-			p->n_dcon->sf = soft_zero();
+			FLOAT_INT2FP(p->n_dcon, 0, INT);
 		} else
 			p = bcon(0);
 	}

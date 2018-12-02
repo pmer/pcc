@@ -1,4 +1,4 @@
-/*	$Id: builtins.c,v 1.72 2018/07/27 14:44:50 ragge Exp $	*/
+/*	$Id: builtins.c,v 1.73 2018/08/07 06:32:49 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -772,7 +772,7 @@ builtin_huge_val(const struct bitable *bt, P1ND *a)
 	P1ND *f = block(FCON, NULL, NULL, bt->rt, NULL, 0);
 
 	f->n_dcon = stmtalloc(sizeof(FLT));
-	f->n_dcon->sf = soft_huge_val();
+	soft_huge_val(&f->n_dcon->sf);
 	return f;
 }
 
@@ -790,7 +790,7 @@ builtin_nanx(const struct bitable *bt, P1ND *a)
 		p1nfree(a);
 		a = block(FCON, NULL, NULL, bt->rt, NULL, 0);
 		a->n_dcon = stmtalloc(sizeof(FLT));
-		a->n_dcon->sf = soft_nan(NULL);
+		soft_nan(&a->n_dcon->sf, NULL);
 	} else
 		a = binhelp(eve(a), bt->rt, &bt->name[10]);
 	return a;

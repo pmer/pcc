@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.154 2018/11/23 14:43:06 ragge Exp $	*/
+/*	$Id: scan.l,v 1.155 2018/12/02 13:36:51 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -358,7 +358,7 @@ fhexcon(char *s)
 	FLT flt;
 
 	flt.t = ctype(endtyp(s));
-	flt.sf = strtosf(s, flt.t);
+	strtosf(&flt.sf, s, flt.t);
 	return flt;
 }
 
