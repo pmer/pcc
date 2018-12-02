@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.311 2018/11/14 20:01:25 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.312 2018/11/23 14:43:06 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -255,10 +255,7 @@ typedef struct p1node {
 				struct symtab *_sp;
 			} n_r;
 		} n_u;
-		struct {
-			struct flt *_dcon;
-			struct flt *_ccon;
-		};
+		struct flt *_dcon;
 	} n_f;
 } P1ND;
 
@@ -305,8 +302,8 @@ OFFSZ	tsize(TWORD, union dimfun *, struct attr *),
 P1ND *	typenode(P1ND *new);
 void	spalloc(P1ND *, P1ND *, OFFSZ);
 char	*exname(char *);
-struct flt	*floatcon(char *);
-struct flt *fhexcon(char *);
+struct flt floatcon(char *);
+struct flt fhexcon(char *);
 P1ND	*bdty(int op, ...);
 extern struct rstack *rpole;
 
@@ -447,10 +444,7 @@ void p1tfree(P1ND *);
 P1ND *p1tcopy(P1ND *);
 
 struct flt {
-	union {
-		long double fp; 
-		struct softfloat sf;
-	};
+	struct softfloat sf;
 	TWORD t;
 };	
 typedef struct flt FLT;	

@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.153 2018/10/15 15:49:32 ragge Exp $	*/
+/*	$Id: scan.l,v 1.154 2018/11/23 14:43:06 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -352,17 +352,17 @@ endtyp(char *s)
 	return tw;
 }
 
-FLT *
+FLT
 fhexcon(char *s)
 {
-	FLT *flt = stmtalloc(sizeof(FLT));
+	FLT flt;
 
-	flt->t = ctype(endtyp(s));
-	flt->sf = strtosf(s, flt->t);
+	flt.t = ctype(endtyp(s));
+	flt.sf = strtosf(s, flt.t);
 	return flt;
 }
 
-FLT *
+FLT
 floatcon(char *s)
 {
 	return fhexcon(s);
