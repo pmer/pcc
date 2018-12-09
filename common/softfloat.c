@@ -1,4 +1,4 @@
-/*	$Id: softfloat.c,v 1.24 2018/12/02 18:40:46 ragge Exp $	*/
+/*	$Id: softfloat.c,v 1.25 2018/12/02 20:23:41 ragge Exp $	*/
 
 /*
  * Copyright (c) 2008 Anders Magnusson. All rights reserved.
@@ -758,7 +758,7 @@ getbit(MINT *a, int h)
 }
 
 static void
-mcopy(MINT *a, MINT *b)
+mcopy(MINT *b, MINT *a)
 {
 	int i;
 
@@ -806,7 +806,7 @@ grsround(MINT *a)
 	if (doadd && h >= 0) {
 		MINT d, e;
 		minit(&d);
-		mcopy(&e, a);
+		mcopy(a, &e);
 		d.len = (h/16)+1;
 		d.val[(h/16)] = 1 << (h % 16);
 		madd(&d, &e, a);
@@ -1818,9 +1818,9 @@ mdiv(MINT *n, MINT *d, MINT *q, MINT *r)
 			r->val[r->len++] = 0;
 		r->val[0] |= (n->val[i/16] >> (i % 16)) & 1;
 		if (geq(r, d)) {
-			mcopy(&b, d);
+			mcopy(d, &b);
 			msub(r, &b, &a);
-			mcopy(r, &a);
+			mcopy(&a, r);
 			q->val[i/16] |= (1 << (i % 16));
 		}
 	}
