@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.188 2017/12/10 19:17:20 ragge Exp $	*/
+/*	$Id: token.c,v 1.189 2018/01/21 10:58:26 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -608,7 +608,9 @@ xloop:			if (ch < 0) ch = 0; /* XXX */
 			break;
 
 		case '/': /* Comments */
+			incmnt++;
 			ch = qcchar();
+			incmnt--;
 			if (ch  == '/' || ch == '*') {
 				if (Cflag == 0) {
 					int n = ifiles->lineno;
