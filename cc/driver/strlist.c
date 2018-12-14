@@ -1,4 +1,4 @@
-/*	$Id: strlist.c,v 1.2 2011/05/26 16:48:40 plunky Exp $	*/
+/*	$Id: strlist.c,v 1.3 2014/12/24 09:55:32 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -71,7 +71,7 @@ strlist_make_array(const struct strlist *l, char ***a, size_t *len)
 }
 
 void
-strlist_print(const struct strlist *l, FILE *f, int esc)
+strlist_print(const struct strlist *l, FILE *f, int esc, const char *sep)
 {
 	const struct string *s;
 	int quote, first = 1;
@@ -79,7 +79,7 @@ strlist_print(const struct strlist *l, FILE *f, int esc)
 
 	STRLIST_FOREACH(s, l) {
 		if (!first)
-			putc(' ', f);
+			fputs(sep, f);
 		quote = 0;
 		if (esc) {
 			for (p = s->value; *p; p++) {
