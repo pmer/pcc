@@ -1,4 +1,4 @@
-/*	$Id: cc.c,v 1.319 2018/11/21 18:25:10 ragge Exp $	*/
+/*	$Id: cc.c,v 1.320 2018/12/14 17:41:32 plunky Exp $	*/
 
 /*-
  * Copyright (c) 2011 Joerg Sonnenberger <joerg@NetBSD.org>.
@@ -351,6 +351,7 @@ struct Wflags {
 	{ "unreachable-code", INWEXTRA },
 	{ "deprecated-declarations", INWEXTRA },
 	{ "attributes", 0 },
+	{ "uninitialized", INWEXTRA },
 	{ NULL, 0 },
 };
 
