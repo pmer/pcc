@@ -1,4 +1,4 @@
-/*	$Id: softfloat.c,v 1.38 2019/03/24 10:27:52 ragge Exp $	*/
+/*	$Id: softfloat.c,v 1.39 2019/03/24 15:20:15 ragge Exp $	*/
 
 /*
  * Copyright (c) 2008 Anders Magnusson. All rights reserved.
@@ -954,7 +954,6 @@ soft_cmp(SFP v1p, SFP v2p, int v)
 		xrv = soft_clcmp(c1, c2, s1, s2);
 	} else {
 		/* both are NORMAL */
-//printf("s1 %d s2 %d e1 %d e2 %d\n", s1, s2, e1, e2);
 		if (s1 > s2) {
 			xrv = SFLEFTLESS;
 		} else if (s1 < s2) {
@@ -1433,6 +1432,8 @@ mshl(MINT *a, int nbits)
 {
 	int i, j;
 
+	if (a->len == 0)
+		return; /* nothing to do */
 	/* XXXXXXX must improve speed significantly */
 	for (j = 0; j < nbits; j++) {
 		if (a->val[a->len-1] & 0x8000) {
