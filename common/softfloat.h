@@ -1,4 +1,4 @@
-/*	$Id: softfloat.h,v 1.18 2019/03/21 17:02:49 ragge Exp $	*/
+/*	$Id: softfloat.h,v 1.19 2019/03/24 16:49:09 ragge Exp $	*/
 
 /*
  * Copyright (c) 2015 Anders Magnusson. All rights reserved.
@@ -111,9 +111,12 @@ typedef struct mint {
 
 #ifdef FDFLOAT
 #define	FFLOAT_MANT_DIG	24
-#define FFLOAT_MAX_EXP	+128
+#define	FFLOAT_MIN_EXP	(-127)
+#define FFLOAT_MAX_EXP	(+127)
+
 #define	DFLOAT_MANT_DIG	56
-#define DFLOAT_MAX_EXP	+128
+#define DFLOAT_MIN_EXP	(-127)
+#define DFLOAT_MAX_EXP	(+127)
 #endif
 
 #define	TARGET_FLT_RADIX	C(FLT_FP,_RADIX)
