@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.4 2008/10/18 13:07:25 ragge Exp $	*/
+/*	$Id: table.c,v 1.5 2008/10/19 15:25:25 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -104,6 +104,14 @@ struct optab table[] = {
 	SANY,	TLONG|TULONG,
 		NSPECIAL|NBREG|NBSL,	RESC1,
 		"tst	AL\nsxt	r0\n", },
+
+/* int -> float/double */
+{ SCONV,	INCREG,
+	SAREG|SNAME|SOREG,	TINT,
+	SANY,	TFLOAT|TDOUBLE,
+		NCREG,	RESC1,
+		"movif	AL,A1\n", },
+
 
 /* unsigned -> (u)long. XXX - only in r0 and r1 */
 { SCONV,	INBREG,
@@ -255,6 +263,13 @@ struct optab table[] = {
 	SAREG|SNAME|SOREG|SCON,	TCHAR|TUCHAR,
 		0,	RLEFT|RESCC,
 		"add	AR,AL\n", },
+
+/* floating point */
+{ PLUS,		INCREG|FOREFF|FORCC,
+	SCREG,			TFLOAT|TDOUBLE,
+	SCREG|SNAME|SOREG|SCON,	TFLOAT|TDOUBLE,
+		0,	RLEFT|RESCC,
+		"addf	AR,AL\n", },
 
 /* Post-increment read, byte */
 { MINUS,	INAREG,
@@ -443,6 +458,7 @@ struct optab table[] = {
 		0,	RDEST|RESCC,
 		"movb	AR,AL\n", },
 
+/* Floating point */
 { ASSIGN,	FOREFF|INCREG,
 	SCREG,		TDOUBLE,
 	SNAME|SOREG|SCON,	TDOUBLE,
@@ -603,13 +619,15 @@ struct optab table[] = {
 		0,	RNULL,
 		"ZF", },
 
+#if 0
 /* AND/OR/ER/NOT */
 /* Optimize if high order bits are zero */
 { AND,	FOREFF|INBREG|FORCC,
 	SOREG|SNAME|SBREG,	TLONG|TULONG,
 	SANDSCON,		TLONG|TULONG,
 		0,	RLEFT|RESCC,
-		"clr	AL\nbic	UR,UL\n", },
+		"clr	AL\nbic	ZI,UL\n", },
+#endif
 
 { AND,	INBREG|FORCC,
 	SBREG,			TLONG|TULONG,

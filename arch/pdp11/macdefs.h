@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.12 2017/01/17 13:12:13 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.13 2019/03/28 19:51:32 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -128,6 +128,8 @@ typedef long long OFFSZ;
 #define STOSTARG(p)
 
 #define	FINDMOPS	/* pdp11 has instructions that modifies memory */
+#define	MYDOTFILE
+#define	printdotfile(x)
 
 #define szty(t) ((t) == DOUBLE || (t) == LONGLONG || (t) == ULONGLONG ? 4 : \
 	(t) == FLOAT || (t) == LONG || (t) == ULONG ? 2 : 1)

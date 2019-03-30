@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.9 2017/01/17 13:12:13 ragge Exp $	*/
+/*	$Id: code.c,v 1.10 2019/03/28 19:52:21 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -156,6 +156,8 @@ ejobcode(int flag)
 void
 bjobcode(void)
 {
+	/* ".word" is not printed out for pdp11 as */
+	astypnames[INT] = astypnames[UNSIGNED] = "";
 }
 
 /*
