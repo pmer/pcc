@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.11 2019/03/30 16:15:23 ragge Exp $	*/
+/*	$Id: code.c,v 1.12 2019/03/31 18:30:06 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -44,11 +44,11 @@ setseg(int seg, char *name)
 {
 	switch (seg) {
 	case PROG: name = ".text"; break;
+	case STRNG:
+	case RDATA:
 	case DATA:
 	case LDATA: name = ".data"; break;
 	case UDATA: break;
-	case STRNG:
-	case RDATA: name = ".rodata"; break;
 	default:
 		cerror("setseg");
 	}
