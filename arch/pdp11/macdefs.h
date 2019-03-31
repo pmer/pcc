@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.13 2019/03/28 19:51:32 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.14 2019/03/30 16:15:23 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -98,7 +98,7 @@ typedef	long long CONSZ;
 typedef	unsigned long long U_CONSZ;
 typedef long long OFFSZ;
 
-#define CONFMT	"%lld"		/* format for printing constants */
+#define CONFMT	"%llo"		/* format for printing constants */
 #define LABFMT	"L%d"		/* format for printing labels */
 #ifdef LANG_F77
 #define BLANKCOMMON "_BLNK_"

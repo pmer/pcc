@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.10 2019/03/28 19:52:21 ragge Exp $	*/
+/*	$Id: code.c,v 1.11 2019/03/30 16:15:23 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -156,8 +156,10 @@ ejobcode(int flag)
 void
 bjobcode(void)
 {
+	extern char *asspace;
 	/* ".word" is not printed out for pdp11 as */
 	astypnames[INT] = astypnames[UNSIGNED] = "";
+	asspace = ".=.+"; /* advance counter, not .space */
 }
 
 /*
