@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.17 2019/03/28 19:51:57 ragge Exp $	*/
+/*	$Id: local.c,v 1.18 2019/03/31 20:09:18 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -111,9 +111,19 @@ clocal(NODE *p)
 		l->n_right->n_type = l->n_left->n_type;
 		break;
 
+	case SCONV:
+		l = p->n_left;
+		if (p->n_type != UCHAR || l->n_type != CHAR ||
+		    l->n_op != UMUL || (l->n_left->n_op != TEMP))
+			break;
+		l->n_type = UCHAR;
+		MODTYPE(l->n_left->n_type, UCHAR);
+		p = nfree(p);
+		break;
+
 	case STASG: /* struct assignment, modify left */
 		l = p->n_left;
-		if (l->n_type == STRTY)
+		if (ISSOU(l->n_type))
 			p->n_left = buildtree(ADDROF, l, NIL);
 		break;
 
