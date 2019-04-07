@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.18 2019/03/31 20:09:18 ragge Exp $	*/
+/*	$Id: local.c,v 1.19 2019/04/02 19:46:08 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -187,9 +187,9 @@ andable(NODE *p)
 int
 cisreg(TWORD t)
 {
-	if (t == FLOAT || t == DOUBLE || t == LDOUBLE ||
-	    t == LONGLONG || t == ULONGLONG)
-		return 0; /* not yet */
+//	if (t == FLOAT || t == DOUBLE || t == LDOUBLE ||
+//	    t == LONGLONG || t == ULONGLONG)
+//		return 0; /* not yet */
 	return 1;
 }
 
@@ -215,6 +215,7 @@ spalloc(NODE *t, NODE *p, OFFSZ off)
 	sp = block(REG, NIL, NIL, PTR+INT, t->n_df, t->n_ap);
 	slval(sp, 0);
 	sp->n_rval = STKREG;
+	sp = buildtree(PLUS, sp, bcon(1));
 	t->n_type = sp->n_type;
 	ecomp(buildtree(ASSIGN, t, sp)); /* Emit! */
 
@@ -338,6 +339,13 @@ ctype(TWORD type)
 		MODTYPE(type,DOUBLE);
 		break;
 
+	/* XXX remove as soon as 64-bit is added */
+	case LONGLONG:
+		MODTYPE(type,LONG);
+		break;
+	case ULONGLONG:
+		MODTYPE(type,ULONG);
+		break;
 	}
 	return (type);
 }
