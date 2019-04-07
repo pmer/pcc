@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.7 2019/03/31 20:07:56 ragge Exp $	*/
+/*	$Id: table.c,v 1.8 2019/04/02 19:46:09 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -99,6 +99,13 @@ struct optab table[] = {
 	SANY,	TLONG,
 		NBREG,	RESC1,
 		"movb	AL,U1\nsxt	A1\n", },
+
+/* convert uchar to ulong */
+{ SCONV,	INBREG,
+	SAREG,	TUCHAR,
+	SANY,	TULONG,
+		NBREG|NBSL,	RESC1,
+		"mov	AL,U1\nclr	A1\n", },
 
 /* convert (u)int to char */
 { SCONV,	INAREG,
@@ -201,20 +208,20 @@ struct optab table[] = {
 		"mov	UL,-(sp)\nmov	AL,-(sp)\n"
 		"setl\nmovif	(sp)+,A1\nseti\n", },
 
+/* float/double -> (u)long XXX - correct? */
+{ SCONV,	INBREG,
+	SCREG,	TFLOAT|TDOUBLE,
+	SANY,	TLONG|TULONG,
+		NBREG,	RESC1,
+		"setl\nmovfi	AL,-(sp)\nmov	(sp)+,A1\n"
+		"mov	(sp)+,U1\nseti\n", },
+
 /* double -> int*/
 { SCONV,	INAREG,
 	SCREG,	TFLOAT|TDOUBLE,
 	SANY,	TINT,
 		NAREG,	RESC1,
 		"movfi	AL,A1\n", },
-
-/* double -> long*/
-{ SCONV,	INBREG,
-	SCREG,	TFLOAT|TDOUBLE,
-	SANY,	TLONG,
-		NBREG,	RESC1,
-		"setl\nmovfi	AL,-(sp)\nmov	(sp)+,A1\n"
-		"mov	(sp)+,U1\nseti\n", },
 
 /* float/double -> float/double */
 /* In regs. floating point always stored as double in regs */
@@ -317,6 +324,18 @@ struct optab table[] = {
 		NAREG|NASL,	RESC1,
 		"jsr	pc,*AL\n", },
 
+{ STCALL,	INAREG,
+	SAREG,	TANY,
+	SANY,	TANY,
+		NAREG|NASL,	RESC1,	/* should be 0 */
+		"jsr	pc,(AL)\nZC", },
+
+{ USTCALL,	INAREG,
+	SAREG,	TANY,
+	SANY,	TANY,
+		NAREG|NASL,	RESC1,	/* should be 0 */
+		"jsr	pc,(AL)\n", },
+
 /*
  * The next rules handle all binop-style operators.
  */
@@ -342,8 +361,8 @@ struct optab table[] = {
 		"incb	AL\n", },
 
 { PLUS,		INBREG|FOREFF,
-	SBREG,			TLONG,
-	SBREG|SNAME|SOREG|SCON,	TLONG,
+	SBREG,			TLONG|TULONG,
+	SBREG|SNAME|SOREG|SCON,	TLONG|TULONG,
 		0,	RLEFT,
 		"add	AR,AL\nadd	UR,UL\nadc	AL\n", },
 
@@ -447,7 +466,7 @@ struct optab table[] = {
  */
 { LS,	INBREG|FOREFF,
 	SBREG,	TLONG|TULONG,
-	SAREG,	TINT,
+	SAREG,	TINT|TUNSIGNED,
 		0,	RLEFT,
 		"ashc	AR,AL\n", },
 
@@ -721,7 +740,7 @@ struct optab table[] = {
 	SANY,	TPOINT|TWORD,
 	SOREG,	TFLOAT,
 		NCREG,	RESC1,
-		"movof	AR,A1\n", },
+		"movif	AR,A1\n", },
 
 /*
  * Logical/branching operators
@@ -745,8 +764,14 @@ struct optab table[] = {
 		"cmp	AL,AR\n", },
 
 { OPLOG,	FORCC,
-	SCREG|SOREG|SNAME|SCON,	TFLOAT|TDOUBLE,
-	SCREG,			TFLOAT|TDOUBLE,
+	SCREG|SCON,	TFLOAT,
+	SCREG,		TFLOAT,
+		0, 	RESCC,
+		"cmpf	AL,AR\ncfcc\n", },
+
+{ OPLOG,	FORCC,
+	SCREG|SOREG|SNAME|SCON,	TDOUBLE,
+	SCREG,			TDOUBLE,
 		0, 	RESCC,
 		"cmpf	AL,AR\ncfcc\n", },
 
@@ -995,7 +1020,7 @@ struct optab table[] = {
 		"movf	AL,ZA(sp)\n", },
 
 { STARG,	FOREFF,
-	SAREG,	TPTRTO|TSTRUCT,
+	SAREG,	TPTRTO|TANY,
 	SANY,	TSTRUCT,
 		NSPECIAL,	0,
 		"ZJ", },
