@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.19 2019/04/02 19:46:08 ragge Exp $	*/
+/*	$Id: local.c,v 1.20 2019/04/07 15:48:36 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -24,7 +24,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
+#include "unicode.h"
 #include "pass1.h"
 
 #ifndef LANG_CXX
@@ -229,26 +229,40 @@ spalloc(NODE *t, NODE *p, OFFSZ off)
 void
 instring(struct symtab *sp)
 {
-	char *s;
+	unsigned short sh[2];
 	int val, cnt;
+	TWORD t;
+	char *s;
 
 	defloc(sp);
-
-	for (cnt = 0, s = sp->sname; *s != 0; ) {
-		if (cnt++ == 0)
-			printf(".byte ");
-		if (*s++ == '\\')
-			val = esccon(&s);
-		else
-			val = s[-1];
-		printf("%o", val & 0377);
-		if (cnt > 15) {
-			cnt = 0;
-			printf("\n");
-		} else
-			printf(",");
-	}
-	printf("%s0\n", cnt ? "" : ".byte ");
+	t = BTYPE(sp->stype);
+	s = sp->sname;
+	if (t == UNSIGNED) {
+		/* convert to UTF-16 */
+		while (*s) {
+			cp2u16(u82cp(&s), sh);
+			if (sh[0]) printf("%o\n", sh[0]);
+			if (sh[1]) printf("%o\n", sh[1]);
+		}
+		printf("0\n");
+	} else if (t == CHAR) {
+		for (cnt = 0; *s != 0; ) {
+			if (cnt++ == 0)
+				printf(".byte ");
+			if (*s++ == '\\')
+				val = esccon(&s);
+			else
+				val = s[-1];
+			printf("%o", val & 0377);
+			if (cnt > 15) {
+				cnt = 0;
+				printf("\n");
+			} else
+				printf(",");
+		}
+		printf("%s0\n", cnt ? "" : ".byte ");
+	} else
+		cerror("instring");
 }
 
 /*
