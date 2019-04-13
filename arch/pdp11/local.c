@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.21 2019/04/08 13:31:08 ragge Exp $	*/
+/*	$Id: local.c,v 1.22 2019/04/09 20:07:15 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -52,6 +52,7 @@ NODE *
 clocal(NODE *p)
 {
 
+	CONSZ c;
 	register struct symtab *q;
 	register NODE *r, *l;
 	register int o;
@@ -105,6 +106,9 @@ clocal(NODE *p)
 		if (l->n_left->n_op != SCONV || l->n_right->n_op != ICON)
 			break;
 		if ((r = l->n_left->n_left)->n_type > INT)
+			break;
+		c = glval(l->n_right);
+		if (c < MIN_INT || c > MAX_UNSIGNED)
 			break;
 		/* compare with constant without casting */
 		nfree(l->n_left);
