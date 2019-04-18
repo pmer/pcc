@@ -1,4 +1,4 @@
-/*	$Id: softfloat.c,v 1.47 2019/04/07 07:38:42 ragge Exp $	*/
+/*	$Id: softfloat.c,v 1.48 2019/04/09 16:36:57 ragge Exp $	*/
 
 /*
  * Copyright (c) 2008 Anders Magnusson. All rights reserved.
@@ -194,7 +194,7 @@ dfloat_make(SFP sfp, int typ, int sign, int exp, MINT *m)
 	    sftyp[typ], sign, exp, m->val[3], m->val[2], m->val[1], m->val[0]));
 	switch (typ) {
 	case SOFT_ZERO:
-		sfp->fp[0] = 0;
+		sfp->fp[0] = sfp->fp[1] = 0;
 		break;
 	case SOFT_INFINITE:
 		sfp->fp[0] |= 0xffff7fff; /* highest possible number */
