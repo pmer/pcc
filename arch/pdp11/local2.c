@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.14 2019/04/02 19:46:09 ragge Exp $	*/
+/*	$Id: local2.c,v 1.15 2019/04/09 20:07:41 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -657,10 +657,12 @@ myreader(struct interpass *ipole)
 		printip(ipole);
 	}
 #endif
+#if 0
 	DLIST_FOREACH(ip, ipole, qelem) {
 		if (ip->type == IP_NODE)
 			cvtree(ip->ip_node, ip);
 	}
+#endif
 #ifdef PCC_DEBUG
 	if (x2debug) {
 		printf("myreader after\n");
@@ -740,7 +742,7 @@ COLORMAP(int c, int *r)
 		if (r[CLASSA] > 2) return 0;
 		return 1;
 	case CLASSC:
-		return r[CLASSC] < 8;
+		return r[CLASSC] < 4;
 	}
 	return 0;
 }
