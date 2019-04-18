@@ -1,4 +1,4 @@
-/*	$Id: order.c,v 1.7 2019/04/09 20:07:41 ragge Exp $	*/
+/*	$Id: order.c,v 1.8 2019/04/13 08:28:00 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -113,11 +113,19 @@ myormake(NODE *p)
 	}
 	if (q->n_op != OREG)
 		return;
+	if (TBLIDX(q->n_su))
+		return; /* got sub-conversion, cannot convert */
+	if (R2TEST(regno(q)))
+		return; /* cannot convert anymore */
 	if (p->n_type >= LONG && p->n_type <= ULONGLONG)
 		return;
 	p->n_op = OREG;
 	setlval(p, getlval(q));
 	p->n_rval = R2PACK(q->n_rval, 0, 0);
+	if (x2debug) {
+		printf("myormake end(%p)\n", p);
+		fwalk(p, e2print, 0);
+	}
 	nfree(q);
 }
 
