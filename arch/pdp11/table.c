@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.11 2019/04/13 08:28:17 ragge Exp $	*/
+/*	$Id: table.c,v 1.12 2019/04/18 08:18:42 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -49,6 +49,13 @@ struct optab table[] = {
 	SAREG,	TWORD|TPOINT,
 		0,	RLEFT,
 		"", },
+
+/* long -> ptr */
+{ PCONV,	INAREG,
+	SBREG|SOREG|SNAME,	TLONG|TULONG,
+	SAREG,			TPOINT,
+		NAREG|NASL,	RESC1,
+		"mov	UL,A1\n", },
 
 /* convert uchar to char; sign-extend byte */
 { SCONV,	INAREG,
@@ -683,12 +690,20 @@ struct optab table[] = {
 		0,	RDEST,
 		"movfo	AR,AL\n", },
 
+#if 0
 /* Struct assigns */
 { STASG,	FOREFF|INAREG,
 	SAREG,	TANY,
 	SAREG,	TPTRTO|TANY,
 		NSPECIAL,	RDEST,
 		"Fpush	r1\nZIFpop	r1\n", },
+#endif
+/* Struct assigns */
+{ STASG,	FOREFF|INAREG,
+	SOREG|SNAME,	TANY,
+	SAREG,		TPTRTO|TANY,
+		NSPECIAL,	RDEST,
+		"Fpush	r0\nZIFpop	r0\n", },
 
 /*
  * DIV/MOD/MUL 

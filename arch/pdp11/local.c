@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.22 2019/04/09 20:07:15 ragge Exp $	*/
+/*	$Id: local.c,v 1.23 2019/04/13 08:27:18 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -177,11 +177,13 @@ clocal(NODE *p)
 		p = nfree(p);
 		break;
 
+#if 0
 	case STASG: /* struct assignment, modify left */
 		l = p->n_left;
 		if (ISSOU(l->n_type))
 			p->n_left = buildtree(ADDROF, l, NIL);
 		break;
+#endif
 
 	case FORCE:
 		/* put return value in return reg */
