@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.12 2019/04/18 08:18:42 ragge Exp $	*/
+/*	$Id: table.c,v 1.13 2019/04/19 07:54:24 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -454,8 +454,14 @@ struct optab table[] = {
 
 /* floating point */
 { PLUS,		INCREG|FOREFF|FORCC,
-	SCREG,			TFLOAT|TDOUBLE,
-	SCREG|SNAME|SOREG|SCON,	TFLOAT|TDOUBLE,
+	SCREG,	TFLOAT,
+	SCREG,	TFLOAT,
+		0,	RLEFT|RESCC,
+		"addf	AR,AL\n", },
+
+{ PLUS,		INCREG|FOREFF|FORCC,
+	SCREG,			TDOUBLE,
+	SCREG|SNAME|SOREG,	TDOUBLE,
 		0,	RLEFT|RESCC,
 		"addf	AR,AL\n", },
 
@@ -515,8 +521,14 @@ struct optab table[] = {
 
 /* floating point */
 { MINUS,	INCREG|FOREFF|FORCC,
-	SCREG,			TFLOAT|TDOUBLE,
-	SCREG|SNAME|SOREG|SCON,	TFLOAT|TDOUBLE,
+	SCREG,	TFLOAT,
+	SCREG,	TFLOAT,
+		0,	RLEFT|RESCC,
+		"subf	AR,AL\n", },
+
+{ MINUS,	INCREG|FOREFF|FORCC,
+	SCREG,			TDOUBLE,
+	SCREG|SNAME|SOREG,	TDOUBLE,
 		0,	RLEFT|RESCC,
 		"subf	AR,AL\n", },
 
@@ -724,8 +736,14 @@ struct optab table[] = {
 		"jsr	pc,lmul\nadd	$10,sp\n", },
 
 { MUL,	INCREG,
-	SCREG,				TFLOAT|TDOUBLE,
-	SCREG|SNAME|SOREG,		TFLOAT|TDOUBLE,
+	SCREG,		TFLOAT,
+	SCREG,		TFLOAT,
+		0,	RLEFT,
+		"mulf	AR,AL\n", },
+
+{ MUL,	INCREG,
+	SCREG,			TDOUBLE,
+	SCREG|SNAME|SOREG,	TDOUBLE,
 		0,	RLEFT,
 		"mulf	AR,AL\n", },
 
@@ -752,8 +770,14 @@ struct optab table[] = {
 		"jsr	pc,ldiv\nadd	$10,sp\n", },
 
 { DIV,	INCREG,
-	SCREG,			TFLOAT|TDOUBLE,
-	SCREG|SNAME|SOREG,	TFLOAT|TDOUBLE,
+	SCREG,	TFLOAT,
+	SCREG,	TFLOAT,
+		0,	RLEFT,
+		"divf	AR,AL\n", },
+
+{ DIV,	INCREG,
+	SCREG,			TDOUBLE,
+	SCREG|SNAME|SOREG,	TDOUBLE,
 		0,	RLEFT,
 		"divf	AR,AL\n", },
 
