@@ -1,4 +1,4 @@
-/*	$Id: macdefs.h,v 1.15 2019/03/31 18:30:06 ragge Exp $	*/
+/*	$Id: macdefs.h,v 1.16 2019/04/07 15:49:19 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -178,7 +178,7 @@ typedef long long OFFSZ;
 #define	RSTATUS	\
 	SAREG|TEMPREG, SAREG|TEMPREG, SAREG, SAREG, SAREG, 0, 0, 0, \
 	SBREG, SBREG, SBREG, SBREG, 0, 0, 0, 0,		\
-	SCREG, SCREG, SCREG, SCREG, 0, 0, 0, 0,		\
+	SCREG|TEMPREG, SCREG|TEMPREG, SCREG|TEMPREG, SCREG|TEMPREG, 0, 0, 0, 0,		\
 	SDREG, SDREG, SDREG, SDREG,
 
 #define	ROVERLAP \
