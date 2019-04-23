@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.13 2019/04/19 07:54:24 ragge Exp $	*/
+/*	$Id: table.c,v 1.14 2019/04/22 09:21:36 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -800,8 +800,8 @@ struct optab table[] = {
 
 /* need extra move to be sure N flag is correct for sxt */
 { MOD,	INAREG,
-	ANYSH,		TINT|TPOINT,
-	ANYSH,		TINT|TPOINT,
+	SAREG,		TINT|TPOINT,
+	SAREG,		TINT|TPOINT,
 		NSPECIAL,	RDEST,
 		"mov	AL,r1\nsxt	r0\ndiv	AR,r0\n", },
 
