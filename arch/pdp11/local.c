@@ -1,4 +1,4 @@
-/*	$Id: local.c,v 1.23 2019/04/13 08:27:18 ragge Exp $	*/
+/*	$Id: local.c,v 1.24 2019/04/19 07:54:23 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -307,10 +307,10 @@ instring(struct symtab *sp)
 		for (cnt = 0; *s != 0; ) {
 			if (cnt++ == 0)
 				printf(".byte ");
-			if (*s++ == '\\')
+			if (*s == '\\')
 				val = esccon(&s);
 			else
-				val = s[-1];
+				val = *s++;
 			printf("%o", val & 0377);
 			if (cnt > 15) {
 				cnt = 0;
