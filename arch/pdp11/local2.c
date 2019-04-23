@@ -1,4 +1,4 @@
-/*	$Id: local2.c,v 1.16 2019/04/18 08:20:43 ragge Exp $	*/
+/*	$Id: local2.c,v 1.17 2019/04/19 07:54:23 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -624,7 +624,13 @@ fixops(NODE *p, void *arg)
 	case AND:
 		if (p->n_right->n_op == ICON) {
 			CONSZ val = getlval(p->n_right);
-			val = ((~val) & 0177777);
+			TWORD t = p->n_right->n_type;
+			if (t == LONGLONG || t == ULONGLONG)
+				val = ~val;
+			else if (t == LONG || t == ULONG)
+				val = ((~val) & 0xffffffff);
+			else
+				val = ((~val) & 0177777);
 			setlval(p->n_right, val);
 		} else if (p->n_right->n_op == COMPL) {
 			NODE *q = p->n_right->n_left;
