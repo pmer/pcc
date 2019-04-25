@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.15 2019/04/07 15:47:25 ragge Exp $	*/
+/*	$Id: code.c,v 1.16 2019/04/19 07:54:23 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -84,6 +84,7 @@ defloc(struct symtab *sp)
 		printf("	.globl %s\n", n);
 	if (sp->slevel == 0) {
 		printf("%s:\n", n);
+		printf("~~%s:\n", n+1);
 	} else {
 		printf(LABFMT ":\n", sp->soffset);
 	}
