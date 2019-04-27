@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.15 2019/04/23 16:12:47 ragge Exp $	*/
+/*	$Id: table.c,v 1.16 2019/04/27 14:32:05 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -723,9 +723,12 @@ struct optab table[] = {
 	SBREG|SNAME|SCON|SOREG,		TLONG|TULONG,
 	SBREG|SNAME|SCON|SOREG,		TLONG|TULONG,
 		NSPECIAL|NBREG|NBSL|NBSR,		RESC1,
+#if 0
 		"mov	UR,-(sp)\nmov	AR,-(sp)\n"
 		"mov	UL,-(sp)\nmov	AL,-(sp)\n"
-		"jsr	pc,lmul\nadd	$10,sp\n", },
+		"jsr	pc,lmul\nadd	$10,sp\n",
+#endif
+		"ZK", },
 
 { MUL,	INCREG,
 	SCREG,		TFLOAT,
@@ -757,9 +760,12 @@ struct optab table[] = {
 	SBREG|SNAME|SCON|SOREG,		TLONG|TULONG,
 	SBREG|SNAME|SCON|SOREG,		TLONG|TULONG,
 		NSPECIAL|NBREG|NBSL|NBSR,		RESC1,
+#if 0
 		"mov	UR,-(sp)\nmov	AR,-(sp)\n"
 		"mov	UL,-(sp)\nmov	AL,-(sp)\n"
-		"jsr	pc,ldiv\nadd	$10,sp\n", },
+		"jsr	pc,ldiv\nadd	$10,sp\n",
+#endif
+		"ZK", },
 
 { DIV,	INCREG,
 	SCREG,	TFLOAT,
@@ -1043,10 +1049,16 @@ struct optab table[] = {
  * Arguments to functions.
  */
 { FUNARG,	FOREFF,
-	SCON|SBREG|SNAME|SOREG,	TLONG|TULONG,
+	SBREG|SNAME|SOREG,	TLONG|TULONG,
 	SANY,	TLONG|TULONG,
 		0,	RNULL,
 		"mov	UL,ZA(sp)\nmov	AL,-(sp)\n", },
+
+{ FUNARG,	FOREFF,
+	SCON,	TLONG|TULONG,
+	SANY,	TLONG|TULONG,
+		0,	RNULL,
+		"ZD", },
 
 { FUNARG,	FOREFF,
 	SZERO,	TANY,
