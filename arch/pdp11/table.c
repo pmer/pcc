@@ -1,4 +1,4 @@
-/*	$Id: table.c,v 1.14 2019/04/22 09:21:36 ragge Exp $	*/
+/*	$Id: table.c,v 1.15 2019/04/23 16:12:47 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -702,14 +702,6 @@ struct optab table[] = {
 		0,	RDEST,
 		"movfo	AR,AL\n", },
 
-#if 0
-/* Struct assigns */
-{ STASG,	FOREFF|INAREG,
-	SAREG,	TANY,
-	SAREG,	TPTRTO|TANY,
-		NSPECIAL,	RDEST,
-		"Fpush	r1\nZIFpop	r1\n", },
-#endif
 /* Struct assigns */
 { STASG,	FOREFF|INAREG,
 	SOREG|SNAME,	TANY,
@@ -884,29 +876,11 @@ struct optab table[] = {
 		0, 	RESCC,
 		"cmp	AL,AR\n", },
 
-#if 0
-{ OPLOG,	FORCC,
-	SBREG|SOREG|SNAME|SCON,	TLONG|TULONG,
-	SZERO,	TANY,
-		0,	RNULL,
-		"ZD", },
-#endif
-
 { OPLOG,	FORCC,
 	SBREG|SOREG|SNAME,	TLONG|TULONG,
 	SBREG|SOREG|SNAME,	TLONG|TULONG,
 		0,	RNULL,
 		"ZF", },
-
-#if 0
-/* AND/OR/ER/NOT */
-/* Optimize if high order bits are zero */
-{ AND,	FOREFF|INBREG|FORCC,
-	SOREG|SNAME|SBREG,	TLONG|TULONG,
-	SANDSCON,		TLONG|TULONG,
-		0,	RLEFT|RESCC,
-		"clr	AL\nbic	ZI,UL\n", },
-#endif
 
 { AND,	INBREG|FORCC,
 	SBREG,			TLONG|TULONG,
