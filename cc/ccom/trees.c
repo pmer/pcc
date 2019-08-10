@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.386 2018/11/23 14:43:06 ragge Exp $	*/
+/*	$Id: trees.c,v 1.387 2018/12/02 18:40:46 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -1459,7 +1459,8 @@ oconvert(register P1ND *p)
 	case MINUS:
 		p->n_type = INTPTR;
 		p->n_ap = NULL;
-		return(clocal(VBLOCK(p, bpsize(p->n_left), INT, 0, 0)));
+		p = (clocal(VBLOCK(p, bpsize(p->n_left), INT, 0, 0)));
+		return( p );
 		}
 
 	cerror( "illegal oconvert: %d", p->n_op );

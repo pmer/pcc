@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.315 2018/12/02 16:37:53 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.316 2018/12/02 18:40:46 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -450,6 +450,11 @@ struct flt {
 };	
 typedef struct flt FLT;	
 #define	sfallo()		stmtalloc(sizeof(struct softfloat))
+
+struct lexint {
+	CONSZ val;
+	TWORD t;
+};
 
 /*
  * Only allowed to do float evaluation if either doing
