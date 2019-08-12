@@ -1,4 +1,4 @@
-/*	$Id: softfloat.c,v 1.49 2019/04/18 13:43:55 ragge Exp $	*/
+/*	$Id: softfloat.c,v 1.50 2019/08/11 20:23:47 ragge Exp $	*/
 
 /*
  * Copyright (c) 2008 Anders Magnusson. All rights reserved.
@@ -40,7 +40,7 @@
 #endif
 
 #ifdef SFDEBUG
-int sfdebug=1;
+int sfdebug=0;
 #define	SD(x)	if (sfdebug) printf x
 #else
 #define SD(x)
@@ -999,6 +999,11 @@ soft_div(SFP x1p, SFP x2p, TWORD t)
 		mshl(&m1, LDBLPTR->nbits);
 		mdiv(&m1, &m2, &q, &r);
 		sh = topbit(&q) - LDBLPTR->nbits;
+		if (sh < -1) {
+			int s = -1 - sh;
+			mshl(&q, s);
+			e1 += s;
+		}
 
 		/* divide remainder as well, for use in rounding */
 		mshl(&r, LDBLPTR->nbits);
@@ -1582,9 +1587,10 @@ mdump(char *c, MINT *a)
 	int i;
 
 	printf("%s: ", c);
-	printf("len %d sign %d:\n", a->len, (unsigned)a->sign);
-	for (i = 0; i < a->len; i++)
-		printf("%05d: %04x\n", i, a->val[i]);
+	printf("len %d sign %d: ", a->len, (unsigned)a->sign);
+	for (i = a->len-1; i >= 0; i--)
+		printf("%04x ", a->val[i]);
+	printf("\n");
 }
 
 
