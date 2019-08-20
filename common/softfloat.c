@@ -1,4 +1,4 @@
-/*	$Id: softfloat.c,v 1.51 2019/08/12 14:54:59 ragge Exp $	*/
+/*	$Id: softfloat.c,v 1.52 2019/08/18 13:40:28 ragge Exp $	*/
 
 /*
  * Copyright (c) 2008 Anders Magnusson. All rights reserved.
@@ -887,6 +887,11 @@ soft_plus(SFP x1p, SFP x2p, TWORD t)
 			*x1p = *x2p;
 			return; /* result x2 */
 		}
+		if ((d = topbit(&m1)) < LDBLPTR->nbits-1)
+			mshl(&m1, LDBLPTR->nbits-1 - d);
+		if ((d = topbit(&m2)) < LDBLPTR->nbits-1)
+			mshl(&m2, LDBLPTR->nbits-1 - d);
+
 		if (e1 > e2)
 			mshl(&m1, ediff), mtop = LDBLPTR->nbits-1+ediff;
 		else
