@@ -1,4 +1,4 @@
-/*	$Id: softfloat.c,v 1.52 2019/08/18 13:40:28 ragge Exp $	*/
+/*	$Id: softfloat.c,v 1.53 2019/08/20 07:06:34 ragge Exp $	*/
 
 /*
  * Copyright (c) 2008 Anders Magnusson. All rights reserved.
@@ -1430,11 +1430,14 @@ strtosf(SFP sfp, char *str, TWORD tw)
 	SD(("strtosf: rv %d, expt %d, m %04x%04x, %04x%04x\n",
 	    rv, e, m.val[3], m.val[2], m.val[1], m.val[0]));
 
+
 	LDBLPTR->make(sfp, rv, 0, e, &m);
+	soft_fp2fp(sfp, tw);
 
 #ifdef DEBUGFP
 	{
 		long double ld = strtold(str, NULL);
+		ld = tw == DOUBLE ? (double)ld : tw == FLOAT ? (float)ld : ld;
 		if (ld != sfp2ld(sfp))
 			fpwarn("strtosf", sfp2ld(sfp), ld);
 	}
