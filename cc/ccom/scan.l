@@ -1,5 +1,5 @@
 %{
-/*	$Id: scan.l,v 1.159 2019/08/11 07:08:03 ragge Exp $	*/
+/*	$Id: scan.l,v 1.160 2019/08/21 19:55:46 ragge Exp $	*/
 
 /*
  * Copyright (c) 2002 Anders Magnusson. All rights reserved.
@@ -335,7 +335,7 @@ kwdecode(struct symtab *s)
 static TWORD
 endtyp(char *s)
 {
-	TWORD tw = LDOUBLE;
+	TWORD tw = DOUBLE;
 
 	for (; *s; s++)
 		;
@@ -343,9 +343,9 @@ endtyp(char *s)
 	if (*s == 'i' || *s == 'I')
 		tw += (FIMAG-FLOAT), s--;
 	if (*s == 'f' || *s == 'F')
-		tw-=2, s--;
+		tw--, s--;
 	else if (*s == 'l' || *s == 'L')
-		s--;
+		tw++,s--;
 	if ((*s == 'i' || *s == 'I') && ISFTY(tw))
 		tw += (FIMAG-FLOAT), s--;
 /* XXX complain */
