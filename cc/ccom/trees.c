@@ -1,4 +1,4 @@
-/*	$Id: trees.c,v 1.388 2019/08/10 20:26:38 ragge Exp $	*/
+/*	$Id: trees.c,v 1.389 2019/08/11 18:52:26 ragge Exp $	*/
 /*
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
  * All rights reserved.
@@ -817,7 +817,7 @@ concast(P1ND *p, TWORD t)
 		return 0;
 
 //printf("concast till %d\n", t);
-//fwalk(p, eprint, 0);
+//p1fwalk(p, eprint, 0);
 
 #define	TYPMSK(y) ((((1LL << (y-1))-1) << 1) | 1)
 	if (p->n_op == ICON) {
@@ -1650,7 +1650,7 @@ P1ND *
 makety(P1ND *p, TWORD t, TWORD q, union dimfun *d, struct attr *ap)
 {
 
-	if (t == p->n_type) {
+	if (t == p->n_type && t != FLOAT && t != DOUBLE) {
 		p->n_df = d;
 		p->n_ap = ap;
 		p->n_qual = q;
