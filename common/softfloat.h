@@ -1,4 +1,4 @@
-/*	$Id: softfloat.h,v 1.21 2019/04/07 07:38:42 ragge Exp $	*/
+/*	$Id: softfloat.h,v 1.22 2019/08/24 13:37:56 ragge Exp $	*/
 
 /*
  * Copyright (c) 2015 Anders Magnusson. All rights reserved.
@@ -109,7 +109,7 @@ typedef struct mint {
 #define IEEEFP_X80_MIN 3.36210314311209350626e-4932L
 #define IEEEFP_X80_MANT_DIG 64
 #define IEEEFP_X80_HAS_SUBNORM 1
-#define IEEEFP_X80_TRUE_MIN 0x1.0p-16435L
+#define IEEEFP_X80_TRUE_MIN 0x1.0p-16445L
 #endif
 #ifdef IEEEFP_128
 #endif
