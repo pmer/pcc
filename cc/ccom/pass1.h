@@ -1,4 +1,4 @@
-/*	$Id: pass1.h,v 1.317 2019/08/10 20:26:38 ragge Exp $	*/
+/*	$Id: pass1.h,v 1.318 2019/08/11 07:08:03 ragge Exp $	*/
 /*
  * Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
  *
@@ -318,7 +318,7 @@ void inline_ref(struct symtab *);
 void inline_prtout(void);
 void inline_args(struct symtab **, int);
 P1ND *inlinetree(struct symtab *, P1ND *, P1ND *);
-void ftnarg(P1ND *);
+void argsave(P1ND *p);
 struct rstack *bstruct(char *, int, P1ND *);
 void moedef(char *);
 void beginit(struct symtab *);
