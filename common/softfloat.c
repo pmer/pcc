@@ -1,4 +1,4 @@
-/*	$Id: softfloat.c,v 1.55 2019/08/24 13:39:11 ragge Exp $	*/
+/*	$Id: softfloat.c,v 1.56 2019/08/25 14:34:18 ragge Exp $	*/
 
 /*
  * Copyright (c) 2008 Anders Magnusson. All rights reserved.
@@ -1488,9 +1488,11 @@ uint32_t * soft_toush(SFP sfp, TWORD t, int *nbits)
 
 	MINTDECL(mant);
 
+#ifdef DEBUGFP
 	SD(("soft_toush: sfp %Lf %La t %d\n", sfp->debugfp, sfp->debugfp, t));
+#endif
 	SD(("soft_toushLD: %x %x %x\n", sfp->fp[2], sfp->fp[1], sfp->fp[0]));
-#ifdef SFDEBUG
+#ifdef DEBUGFP
 	if (sfdebug) {
 	double d = sfp->debugfp;
 	printf("soft_toush-D: d %08x %08x\n", *(((int *)&d)+1), *(int *)&d);
