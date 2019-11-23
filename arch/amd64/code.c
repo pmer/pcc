@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.91 2018/12/01 17:18:55 ragge Exp $	*/
+/*	$Id: code.c,v 1.92 2019/11/23 10:33:27 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -571,20 +571,11 @@ bjobcode(void)
 
 #ifdef GCC_COMPAT
 	/*
-	 * gcc defines __float128 on amd64.  We handcraft a struct 
-	 * as a typedef of two long here to make glibc happy.
+	 * gcc defines __float128 on amd64.  We handcraft a typedef 
+	 * of long double here to make glibc happy. (size is same).
 	 */
-	static char *f128l, *f128h;
-
-	f128l = addname("f128l");
-	f128h = addname("f128h");
-	rp = bstruct(NULL, STNAME, NULL);
-	p = block(NAME, NIL, NIL, LONG, 0, 0);
-	soumemb(p, f128l, 0);
-	soumemb(p, f128h, 0);
-	nfree(p);
 	p = bdty(NAME, c = addname("__float128"));
-	p = tymerge(q = dclstruct(rp), p);
+	p = tymerge(q = mkty(LDOUBLE, 0, 0), p);
 	p->n_sp = lookup(c, 0);
 	defid(p, TYPEDEF);
 	nfree(q);
