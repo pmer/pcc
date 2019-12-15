@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.310 2019/12/14 15:03:16 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.311 2019/12/14 15:12:52 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1336,6 +1336,8 @@ back:					if (c == '*') {
 	cunput(c);
 	/* remove trailing whitespace */
 	delews(begpos);
+
+	Cflag = oCflag; /* Enable comments again */
 
 	macsav(0);
 	if (vararg)
