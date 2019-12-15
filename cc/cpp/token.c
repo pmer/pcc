@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.193 2019/12/12 17:47:29 ragge Exp $	*/
+/*	$Id: token.c,v 1.194 2019/12/13 09:10:58 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1358,7 +1358,7 @@ again:		switch (ch) {
 				if (ch == '\\')
 					qcchar();
 				if (ch == '\n')
-					return;
+					break;
 			}
 			break;
 		case '\"':
