@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.311 2019/12/14 15:12:52 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.312 2019/12/15 09:04:03 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -874,7 +874,10 @@ incfn(void)
 	struct symtab *nl;
 	usch *dp;
 	int c;
+	int oCflag;
 
+	oCflag = Cflag;
+	Cflag = 0;
 	if (spechr[c = skipws(NULL)] & C_ID0) {
 		dp = readid(c);
 		if ((nl = lookup(dp, FIND)) == NULL)
@@ -891,6 +894,7 @@ incfn(void)
 			return NULL;
 		cunput(c);
 	}
+	Cflag = oCflag;
 
 	/* now we have an (expanded?) filename in obuf */
 	while (0 < ob->cptr && ISWS(ob->buf[ob->cptr-1]))
