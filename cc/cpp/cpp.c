@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.312 2019/12/15 09:04:03 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.313 2020/01/12 09:11:12 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -2623,7 +2623,7 @@ lookup(const usch *key, int enterf)
 	const usch *k, *m;
 
 	/* Count full string length */
-	for (k = key, len = 0; ISID(*k) & C_ID; k++, len++)
+	for (k = key, len = 0; ISID(*k); k++, len++)
 		;
 
 	switch (numsyms) {
