@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.113 2019/12/14 15:03:16 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.114 2020/01/31 21:24:19 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -30,7 +30,12 @@
 #include <vmf.h>
 #endif
 
-typedef unsigned char usch;
+typedef char usch;
+#ifdef CHAR_UNSIGNED
+#define SPECADD	0
+#else
+#define SPECADD	128
+#endif
 
 extern	int	trulvl;
 extern	int	flslvl;
@@ -100,12 +105,15 @@ typedef	unsigned int mvtyp;
 
 extern usch spechr[];
 
-#define ISWSNL(x)	(spechr[x] & (C_WSNL))
+#define ISSPEC(x)	((SPECADD+spechr)[(int)(x)] & (C_SPEC))
+#define ISC2(x)		((SPECADD+spechr)[(int)(x)] & (C_2))
+#define ISWSNL(x)	((SPECADD+spechr)[(int)(x)] & (C_WSNL))
 #define ISWS(x)		((x) == '\t' || (x) == ' ')
-#define ISID(x)		(spechr[x] & C_ID)
-#define ISID0(x)	(spechr[x] & C_ID0)
-#define	ISDIGIT(x)	(spechr[x] & C_DIGIT)
-#define	ISCQ(x)		(spechr[x] & C_Q)
+#define ISID(x)		((SPECADD+spechr)[(int)(x)] & C_ID)
+#define ISID0(x)	((SPECADD+spechr)[(int)(x)] & C_ID0)
+#define	ISDIGIT(x)	((SPECADD+spechr)[(int)(x)] & C_DIGIT)
+#define	ISCQ(x)		((SPECADD+spechr)[(int)(x)] & C_Q)
+#define	ISHEX(x)	((SPECADD+spechr)[(int)(x)] & C_HEX)
 
 /* buffer definition */
 #define	BNORMAL	0	/* standard buffer */
