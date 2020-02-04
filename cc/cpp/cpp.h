@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.115 2020/02/02 11:07:17 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.116 2020/02/04 16:26:07 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -100,7 +100,7 @@ typedef	unsigned int mvtyp;
 #define	C_PACK	0010		/* [\0\\\?\r] */
 #define C_ID	(C_ID0|C_HEX)	/* [_a-zA-Z0-9] */
 #define C_ID0	0020		/* [_a-zA-Z] */
-#define C_Q	0040		/* [\r\\\?] */
+#define C_Q	0040		/* [\0\\/] */
 #define C_DIGIT	0100		/* [0-9] */
 #define C_HEX	0200		/* [0-9a-fA-F] */
 
