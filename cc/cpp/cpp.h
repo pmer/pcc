@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.116 2020/02/04 16:26:07 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.117 2020/02/04 21:03:56 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -64,6 +64,8 @@ typedef	unsigned int mvtyp;
 #define	VALPTR(x)	((x) & (CPPBUF-1))
 #define	VALBUF(x)	((x) >> CPPL2)
 #define	MKVAL(b, c)	(((b) << CPPL2) + (c))
+
+extern usch pbbeg[CPPBUF], *pbinp, *pbend;
 
 #define	MAXARGS	128	/* Max # of args to a macro. Should be enough */
 #define	MAXIDSZ	63	/* Max length of C99 identifier; 5.2.4.1 */
@@ -131,7 +133,6 @@ struct iobuf {
 struct iobuf *getobuf(int);
 void putob(struct iobuf *ob, int ch);
 void bufree(struct iobuf *iob);
-extern struct iobuf pb;
 
 #define	curptr	ib->cptr
 #define	maxread	ib->bsz
@@ -231,7 +232,6 @@ void Ccmnt2(struct iobuf *, int);
 usch *bufid(int ch, struct iobuf *);
 usch *readid(int ch);
 struct iobuf *faststr(int bc, struct iobuf *);
-int fastnum(int ch, struct iobuf *);
 void *xrealloc(void *p, int sz);
 void *xmalloc(int sz);
 void fastscan(void);
