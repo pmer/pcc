@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.203 2020/02/05 21:05:58 ragge Exp $	*/
+/*	$Id: token.c,v 1.204 2020/02/07 10:37:55 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -1008,6 +1008,7 @@ pushfile(const usch *file, const usch *fn, int idx, void *incs)
 	pend = inp = pbeg = (usch *)ifiles->vseg->s_cinfo;
 #else
 	pend = inp = pbeg = xmalloc(CPPBUF);
+	*inp = 0;
 #endif
 	ic->lineno = 1;
 	ic->escln = 0;

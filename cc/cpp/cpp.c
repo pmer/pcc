@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.318 2020/02/07 10:37:55 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.319 2020/02/09 15:57:50 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -101,9 +101,9 @@ int warnings, Mxlen, skpows;
 usch pbbeg[CPPBUF], *pbinp = pbbeg, *pbend = pbbeg + CPPBUF;
 
 static void macstr(const usch *s);
+int lckmacbuf;
 #if LIBVMF
 struct vspace ibspc, macspc;
-int lckmacbuf;
 struct vseg *macvseg;
 #endif
 
@@ -583,17 +583,18 @@ macsav(int ch)
 		mend = mbeg + BYTESPERSEG;
 	}
 #else
+	if (minp == mend) {
+		if (++lckmacbuf == nmacptr) {
+			macptr = xrealloc(macptr, (nmacptr + 10) * sizeof(char **));
+			memset(macptr+nmacptr, 0, 10 * sizeof(char **));
+			nmacptr += 10;
+		}
 
-	if (cpos == nmacptr) {
-		macptr = xrealloc(macptr, (nmacptr + 10) * sizeof(char **));
-		memset(macptr+nmacptr, 0, 10 * sizeof(char **));
-		nmacptr += 10;
+		if ((mbeg = macptr[lckmacbuf]) == NULL)
+			mbeg = macptr[lckmacbuf] = xmalloc(CPPBUF);
+		mend = mbeg + CPPBUF;
+		minp = mbeg;
 	}
-	if ((mp = macptr[cpos]) == NULL)
-		mbeg = macptr[cpos] = xmalloc(CPPBUF);
-	mbeg = minp = macptr[cpos];
-	mend = mbeg + CPPBUF;
-	minp = mbeg + cptr;
 #endif
 	*minp++ = ch;
 }
@@ -1182,7 +1183,7 @@ define(void)
 	else
 		Cflag = 1; /* need comments if -t */
 
-	begpos = MKVAL(lckmacbuf, minp - mbeg);;
+	begpos = MKVAL(lckmacbuf, minp - mbeg);
 	if (ISWS(c))
 		c = skipwscmnt(0);
 
