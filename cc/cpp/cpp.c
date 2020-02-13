@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.319 2020/02/09 15:57:50 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.320 2020/02/09 17:33:25 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -1987,7 +1987,7 @@ readargs(register struct iobuf *in, struct symtab *sp, const usch **args)
 	register int c, infil, i, j, plev, narg, ellips = 0;
 	int argary[MAXARGS+1];
 
-	DPRINT(("readargs\n"));
+	DPRINT(("readargs: in %p\n", in));
 	narg = sp->narg;
 	ellips = sp->type == VARG;
 
@@ -2036,8 +2036,6 @@ readargs(register struct iobuf *in, struct symtab *sp, const usch **args)
 					pend = opend;
 					inp = oinp;
 					pbeg = opbeg;
-					/* XXX */
-					in->cptr--; /* qcchar() walks over */
 					in = NULL;
 				} else
 					error("eof in macro");
