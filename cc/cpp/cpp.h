@@ -1,4 +1,4 @@
-/*	$Id: cpp.h,v 1.117 2020/02/04 21:03:56 ragge Exp $	*/
+/*	$Id: cpp.h,v 1.118 2020/02/07 10:37:55 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -102,7 +102,7 @@ extern usch pbbeg[CPPBUF], *pbinp, *pbend;
 #define	C_PACK	0010		/* [\0\\\?\r] */
 #define C_ID	(C_ID0|C_HEX)	/* [_a-zA-Z0-9] */
 #define C_ID0	0020		/* [_a-zA-Z] */
-#define C_Q	0040		/* [\0\\/] */
+#define C_Q	0040		/* [\0/] */
 #define C_DIGIT	0100		/* [0-9] */
 #define C_HEX	0200		/* [0-9a-fA-F] */
 
