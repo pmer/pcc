@@ -1,4 +1,4 @@
-/*	$Id: token.c,v 1.207 2020/02/13 11:51:23 ragge Exp $	*/
+/*	$Id: token.c,v 1.208 2020/02/13 12:24:35 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2009 Anders Magnusson. All rights reserved.
@@ -111,6 +111,7 @@ static void elifstmt(void);
 int inclevel;
 int incmnt, instr;
 extern int skpows;
+int escln;
 
 struct includ *ifiles;
 usch *pbeg, *outp, *inp, *pend;
@@ -780,9 +781,9 @@ fastscan(void)
 
 		case '\n': /* newlines, for pp directives */
 			/* take care of leftover \n */
-			while (ifiles->escln > 0) {
+			while (escln > 0) {
 				putch('\n');
-				ifiles->escln--;
+				escln--;
 				ifiles->lineno++;
 			}
 			putch('\n');
@@ -1052,7 +1053,7 @@ pushfile(const usch *file, const usch *fn, int idx, void *incs)
 	*inp = 0;
 #endif
 	ic->lineno = 1;
-	ic->escln = 0;
+	escln = 0;
 	ic->idx = idx;
 	ic->incs = incs;
 	ic->fn = fn;
