@@ -1,4 +1,4 @@
-/*	$Id: code.c,v 1.92 2019/11/23 10:33:27 ragge Exp $	*/
+/*	$Id: code.c,v 1.93 2019/11/23 15:58:47 ragge Exp $	*/
 /*
  * Copyright (c) 2008 Michael Shalayeff
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -814,11 +814,9 @@ fillstr(struct symtab *sp)
 {
 	int cl = NO_CLASS;
 	TWORD t;
-	int sz;
 
 	for (; sp; sp = sp->snext) {
 		t = sp->stype;
-		sz = (int)tsize(t, sp->sdf, sp->sap);
 		while (ISARY(t))
 			t = DECREF(t);
 
