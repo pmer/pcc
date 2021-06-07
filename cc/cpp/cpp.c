@@ -1,4 +1,4 @@
-/*	$Id: cpp.c,v 1.323 2020/02/16 11:19:36 ragge Exp $	*/
+/*	$Id: cpp.c,v 1.324 2020/02/26 17:58:19 ragge Exp $	*/
 
 /*
  * Copyright (c) 2004,2010 Anders Magnusson (ragge@ludd.luth.se).
@@ -723,7 +723,7 @@ void
 line(void)
 {
 	register struct iobuf *ob;
-	register int x, n, ln, oidx;
+	register int x, n, ln = 0, oidx;
 
 	oidx = ifiles->idx;
 
