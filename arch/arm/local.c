@@ -1,4 +1,4 @@
-/*      $Id: local.c,v 1.34 2016/03/09 18:19:56 ragge Exp $    */
+/*      $Id: local.c,v 1.35 2019/11/13 16:25:10 ragge Exp $    */
 /*
  * Copyright (c) 2007 Gregory McGarry (g.mcgarry@ieee.org).
  * Copyright (c) 2003 Anders Magnusson (ragge@ludd.luth.se).
@@ -401,7 +401,6 @@ spalloc(NODE *t, NODE *p, OFFSZ off)
 int
 ninval(CONSZ off, int fsz, NODE *p)
 {
-	union { float f; double d; int i[2]; } u;
 	struct symtab *q;
 	TWORD t;
 	int i, j;
